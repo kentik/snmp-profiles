@@ -3,7 +3,7 @@ name: Notify Ktranslate
 on:
   push:
     branches:
-      - [main, pye-test]
+      - pye-test
 
 jobs:
   notify:
