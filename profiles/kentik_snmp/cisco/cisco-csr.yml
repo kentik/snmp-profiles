@@ -1,0 +1,57 @@
+# http://www.circitor.fr/Mibs/Html/C/CISCO-PRODUCTS-MIB.php
+# http://www.circitor.fr/Mibs/Html/O/OLD-CISCO-CPU-MIB.php
+# http://www.circitor.fr/Mibs/Html/C/CISCO-PROCESS-MIB.php
+# http://www.circitor.fr/Mibs/Html/C/CISCO-MEMORY-POOL-MIB.php
+---
+extends:
+  - bgp4-mib.yml
+  - if-mib.yml
+  - system-mib.yml
+
+provider: kentik-router
+
+sysobjectid:
+  - 1.3.6.1.4.1.9.1.1537  # Cisco CSR 1000V
+
+metrics:
+  - MIB: OLD-CISCO-CPU-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.2.1.58.0
+      name: avgBusy5
+      tag: controlPlane_CPU
+  - MIB: CISCO-PROCESS-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.109.1.1.1
+      name: cpmCPUTotalTable
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.8
+        name: cpmCPUTotal5minRev
+        tag: dataPlane_CPU
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.12
+        name: cpmCPUMemoryUsed
+        tag: dataPlane_MemoryUsed
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.13
+        name: cpmCPUMemoryFree
+        tag: dataPlane_MemoryFree
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.1
+          name: cpmCPUTotalIndex
+  - MIB: CISCO-MEMORY-POOL-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.48.1.1
+      name: ciscoMemoryPoolTable
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.48.1.1.1.5
+        name: ciscoMemoryPoolUsed
+        tag: controlPlane_MemoryUsed
+      - OID: 1.3.6.1.4.1.9.9.48.1.1.1.6
+        name: ciscoMemoryPoolFree
+        tag: controlPlane_MemoryFree
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.9.9.48.1.1.1.2
+          name: ciscoMemoryPoolName
+        tag: memory_pool_name
