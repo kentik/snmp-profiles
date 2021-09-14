@@ -10,3 +10,74 @@ extends:
 profile: kentik-sase
 
 sysobjectid: 1.3.6.1.4.1.23867.1.2.*
+
+metrics:
+  - MIB: SILVERPEAK-MGMT-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.23867.3.1.1.1.1.0
+      name: spsSystemVersion
+  - MIB: SILVERPEAK-MGMT-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.23867.3.1.1.1.2.0
+      name: spsProductModel
+  - MIB: SILVERPEAK-MGMT-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.23867.3.1.1.1.3.0
+      name: spsOperStatus
+  - MIB: SILVERPEAK-MGMT-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.23867.3.1.1.1.4.0
+      name: spsActiveAlarmCount
+  - MIB: SILVERPEAK-MGMT-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.23867.3.1.1.1.6.0
+      name: spsSystemSerial
+  - MIB: SILVERPEAK-MGMT-MIB
+    table:
+      OID: 1.3.6.1.4.1.23867.3.1.1.2.1
+      name: spsActiveAlarmTable
+    symbols:
+      - OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.3
+        name: spsActiveAlarmSeverity
+        enum:
+           info: 0
+           warning: 1
+           minor: 2
+           major: 3
+           critical: 4
+           cleared: 5
+           acknowledged: 6
+           unacknowledged: 7
+           indeterminate: 8
+      - OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.8
+        name: spsActiveAlarmAcked
+        enum:
+          no: 0
+          yes: 1
+      - OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.9
+        name: spsActiveAlarmActive
+        enum:
+          no: 0
+          yes: 1
+      - OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.10
+        name: spsActiveAlarmClearable
+        enum:
+          no: 0
+          yes: 1
+      - OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.12
+        name: spsActiveAlarmServiceAffect
+        enum:
+          no: 0
+          yes: 1
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.1
+          name: spsActiveAlarmIndex
+          OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.4
+          name: spsActiveAlarmName
+          OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.5
+          name: spsActiveAlarmDescr
+          OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.6
+          name: spsActiveAlarmSource
+          OID: 1.3.6.1.4.1.23867.3.1.1.2.1.1.7
+          name: spsActiveAlarmType
