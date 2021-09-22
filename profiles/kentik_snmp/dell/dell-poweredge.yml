@@ -7,6 +7,9 @@ extends:
 
 provider: kentik-physical-server
 
+# disable the SNMP bulk walk operation for these devices
+no_use_bulkwalkall: true
+
 sysobjectid:
   - 1.3.6.1.4.1.8072.3.2.10
 
