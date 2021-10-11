@@ -9,7 +9,7 @@ extends:
 provider: kentik-call-manager
 
 sysobjectid:
-- 1.3.6.1.4.1.9.1.1348  # Cisco UC Virtual Machine
+  - 1.3.6.1.4.1.9.1.1348  # Cisco UC Virtual Machine
 
 metrics:
 # Active Objects
