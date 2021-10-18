@@ -1,0 +1,118 @@
+# https://oidref.com/1.3.6.1.4.1.12532
+---
+extends:
+  - system-mib.yml
+  - if-mib.yml
+  - host-resources-mib.yml
+  - tcp-mib.yml
+  - udp-mib.yml
+  - ip-mib.yml
+  - ucd-mib.yml
+
+provider: kentik-firewall
+
+sysobjectid: 1.3.6.1.4.1.12532.256.*
+
+metrics:
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.1
+      name: logFullPercent
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.2
+      name: signedInWebUsers
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.3
+      name: signedInMailUsers
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.10
+      name: iveCpuUtil
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.11
+      name: iveMemoryUtil
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.12
+      name: iveConcurrentUsers
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.13
+      name: clusterConcurrentUsers
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.14
+      name: iveTotalHits
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.15
+      name: iveFileHits
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.16
+      name: iveWebHits
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.17
+      name: iveAppletHits
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.18
+      name: ivetermHits
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.19
+      name: iveSAMHits
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.20
+      name: iveNCHits
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.21
+      name: meetingHits
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.24
+      name: iveSwapUtil
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.25
+      name: diskFullPercent
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.42
+      name: iveTemperature
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.43
+      name: iveVPNTunnels
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.44
+      name: iveSSLConnections
+  - MIB: JUNIPER-IVE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.12532.48
+      name: iveTotalSignedInUsers
+
+metric_tags:
+  - column:
+      OID: 1.3.6.1.4.1.12532.6
+      name: productName
+    tag: productName
+  - column:
+      OID: 1.3.6.1.4.1.12532.7
+      name: productVersion
+    tag: product_version
+  - column:
+      OID: 1.3.6.1.4.1.12532.45
+      name: esapVersion
+    tag: product_name
+  - column:
+      OID: 1.3.6.1.4.1.12532.55
+      name: iveMaxConcurrentUsersLicenseCapacity
+    tag: licensed_capacity
