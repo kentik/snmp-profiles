@@ -40,6 +40,42 @@ metrics:
       name: memCached
   - MIB: UCD-SNMP-MIB
     table:
+      OID: 1.3.6.1.4.1.2021.9
+      name: dskTable
+    symbols:
+      - OID: 1.3.6.1.4.1.2021.9.1.6
+        name: dskTotal
+      - OID: 1.3.6.1.4.1.2021.9.1.7
+        name: dskAvail
+      - OID: 1.3.6.1.4.1.2021.9.1.8
+        name: dskUsed
+      - OID: 1.3.6.1.4.1.2021.9.1.9
+        name: dskPercent
+      - OID: 1.3.6.1.4.1.2021.9.1.10
+        name: dskPercentNode
+    metric_tags:
+      - tag: dsk_index
+        column:
+          OID: 1.3.6.1.4.1.2021.9.1.1
+          name: dskIndex
+      - tag: dsk_path
+        column:
+          OID: 1.3.6.1.4.1.2021.9.1.2
+          name: dskPath
+      - tag: dsk_device
+        column:
+          OID: 1.3.6.1.4.1.2021.9.1.3
+          name: dskDevice
+      - tag: dsk_error_flag
+        column:
+          OID: 1.3.6.1.4.1.2021.9.1.100
+          name: dskErrorFlag
+      - tag: dsk_error_msg
+        column:
+          OID: 1.3.6.1.4.1.2021.9.1.101
+          name: dskErrorMsg
+  - MIB: UCD-SNMP-MIB
+    table:
       OID: 1.3.6.1.4.1.2021.10
       name: laTable
     symbols:
