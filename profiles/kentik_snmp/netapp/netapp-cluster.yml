@@ -1,13 +1,85 @@
 # http://oid-info.com/get/1.3.6.1.4.1.789.2.5
+# https://mibs.observium.org/mib/NETAPP-MIB/#
 ---
 extends:
   - system-mib.yml
 
 profile: kentik-nas
 
-sysobjectid: 1.3.6.1.4.1.789.2.5
+sysobjectid: 1.3.6.1.4.1.789.2.5   # NetApp Cluster
 
 metrics:
+  # Scalar Product OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.1.1.0
+      name: productType
+      enum:
+        eisa-based: 1
+        pci-based: 2
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.1.2.0
+      name: productVersion
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.1.4.0
+      name: productVendor
+      enum:
+        netapp: 1
+        dell: 2
+        ibm: 3
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.1.6.0
+      name: productFirmwareVersion
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.1.9.0
+      name: productSerialNum
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.1.11.0
+      name: productCPUArch
+      enum:
+        x86: 1
+        alpha: 2
+        mips: 3
+        sparc: 4
+
+  # Scalar CPU OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.1.3.0
+      name: cpuBusyTimePerCent
+      tag: CPU
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.1.6.0
+      name: cpuCount
+
+  # Scalar Misc OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.2.4.0
+      name: miscGlobalStatus
+      enum:
+        other: 1
+        unknown: 2
+        ok: 3
+        nonCritical: 4
+        critical: 5
+        nonRecoverable: 6
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.2.23.0
+      name: miscCacheAge
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.2.25.0
+      name: miscGlobalStatusMessage
+
+  # Scalar Clusterd Failover OIDs
   - MIB: NETAPP-MIB
     symbol:
       OID: 1.3.6.1.4.1.789.1.2.3.8
@@ -17,18 +89,649 @@ metrics:
         down: 2
         partialFailure: 3
         up: 4
+
+  # Scalar Consistency Point OIDs
   - MIB: NETAPP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.789.1.2.2.23.0
-      name: miscCacheAge
+      OID: 1.3.6.1.4.1.789.1.2.6.2.0
+      name: cpFromTimerOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.3.0
+      name: cpFromSnapshotOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.4.0
+      name: cpFromLowWaterOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.5.0
+      name: cpFromHighWaterOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.6.0
+      name: cpFromLogFullOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.7.0
+      name: cpFromCpOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.8.0
+      name: cpTotalOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.9.0
+      name: cpFromFlushOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.10.0
+      name: cpFromSyncOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.12.0
+      name: cpFromCpDeferredOps
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.6.13.0
+      name: cpFromLowDatavecsOps
+
+  # Scalar AutoSupport OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.7.1.0
+      name: autosupportStatus
+      enum:
+        ok: 1
+        smtpFailure: 2
+        postFailure: 3
+        smtp-postFailure: 4
+        unknown: 5
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.7.2.0
+      name: autosupportStatusMessage
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.7.3.0
+      name: autosupportSuccessfulSends
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.2.7.4.0
+      name: autosupportFailedSends
+
+  # Scalar df OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.5.6.0
+      name: dfNumber
+
+  # Scalar vol OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.5.9.0
+      name: volNumber
+
+  # Scalar aggr OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.5.12.0
+      name: aggrNumber
+
+  # Scalar disk OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.1.0
+      name: diskTotalCount
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.2.0
+      name: diskActiveCount
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.3.0
+      name: diskReconstructingCount
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.4.0
+      name: diskReconstructingParityCount
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.5.0
+      name: diskVerifyingParityVound
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.6.0
+      name: diskScrubbingCount
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.7.0
+      name: diskFailedCount
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.8.0
+      name: diskSpareCount
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.9.0
+      name: diskAddingSpareCount
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.10.0
+      name: diskFailedMessage
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.4.11.0
+      name: diskPrefailedCount
+
+  # Scalar RAIDV OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.5.0
+      name: raidVNumber
+
+  # Scalar Spare OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.6.0
+      name: spareNumber
+
+  # Scalar Other Disk OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.7.0
+      name: otherDiskNumber
+
+  # Scalar RAIDP OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.8.0
+      name: raidPNumber
+
+  # Scalar Out of Date OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.6.12.0
+      name: outOfDateDiskCount
+
+  # Scalar Net Connection OIDs
   - MIB: NETAPP-MIB
     symbol:
       OID: 1.3.6.1.4.1.789.1.8.3.6.36
       name: ncHttpActiveCliConns
+
+  # Scalar encl OIDs
+  - MIB: NETAPP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.789.1.21.1.1.0
+      name: enclNumber
+
+  # Scalar External Cache OIDs
   - MIB: NETAPP-MIB
     symbol:
       OID: 1.3.6.1.4.1.789.1.26.8
       name: extcache64Hits
+
+  # qvStateTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.4.4
+      name: qvStateTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.4.4.1.3
+        name: qvStateStat
+        enum:
+          quotaStateOff: 1
+          quotaStateOn: 2
+          quotaStateInit: 3
+      - OID: qvStateInitPercent
+        name: 1.3.6.1.4.1.789.1.4.4.1.4
+    metric_tags:
+      - tag: qvStateVolume_Index
+        column: 
+          OID: 1.3.6.1.4.1.789.1.4.4.1.1
+          name: qvStateVolume
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.4.4.1.2
+          name: qvStateName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.4.4.1.5
+          name: qvStateVserver
+
+  # dfTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.5.4
+      name: dfTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.6
+        name: dfPerCentKBytesCapacity
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.7
+        name: dfInodesUsed
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.8
+        name: dfInodesFree
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.9
+        name: dfPerCentInodeCapacity
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.11
+        name: dfMaxFilesAvail
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.12
+        name: dfMaxFilesUsed
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.20
+        name: dfStatus
+        enum:
+          unmounted: 1
+          mounted: 2
+          frozen: 3
+          destroying: 4
+          creating: 5
+          mounting: 6
+          unmounting: 7
+          nofsinfo: 8
+          replaying: 9
+          replayed: 10
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.21
+        name: dfMirrorStatus
+        enum:
+          invalid: 1
+          uninitialized: 2
+          needcpcheck: 3
+          cpcheckwait: 4
+          unmirrored: 5
+          normal: 6
+          degraded: 7
+          resyncing: 8
+          failed: 9
+          limbo: 10
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.22
+        name: dfPlexCount
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.23
+        name: dfType
+        enum:
+          traditionalVolume: 1
+          flexibleVolume: 2
+          aggregate: 3
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.29
+        name: df64TotalKBytes
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.30
+        name: df64UsedKBytes
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.31
+        name: df64AvailKBytes
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.43
+        name: df64TotalReservedKBytes
+    metric_tags:
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.4.1.1
+          name: dfIndex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.4.1.2
+          name: dfFileSys
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.4.1.10
+          name: dfMountedOn
+      - column: 
+          OID: dfVserver
+          name: 1.3.6.1.4.1.789.1.5.4.1.34
+
+  # volTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.5.8
+      name: volTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.5.8.1.5
+        name: volState
+      - OID: 1.3.6.1.4.1.789.1.5.8.1.6
+        name: volStatus
+      - OID: 1.3.6.1.4.1.789.1.5.8.1.10
+        name: volType
+        enum:
+          traditional: 1
+          flexible: 2
+      - OID: 1.3.6.1.4.1.789.1.5.8.1.11
+        name: volClone
+        enum:
+          false: 1
+          true: 2
+    metric_tags:
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.8.1.1
+          name: volIndex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.8.1.2
+          name: volName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.8.1.3
+          name: volFSID
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.8.1.7
+          name: volOptions
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.8.1.8
+          name: volUUID
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.8.1.9
+          name: volAggrName
+
+  # qtreeTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.5.10
+      name: qtreeTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.5.10.1.6
+        name: qtreeStyle
+        enum:
+          unix: 1
+          ntfs: 2
+          mixed: 3
+      - OID: 1.3.6.1.4.1.789.1.5.10.1.7
+        name: qtreeStatus
+        enum:
+          normal: 1
+          snapmirrored: 2
+          snapvaulted: 3
+      - OID: 1.3.6.1.4.1.789.1.5.10.1.8
+        name: qtreeOplock
+        enum:
+          enabled: 1
+          disabled: 2
+    metric_tags:
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.10.1.1
+          name: qtreeIndex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.10.1.2
+          name: qtreeVolume
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.10.1.3
+          name: qtreeVolumeName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.10.1.4
+          name: qtreeId
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.10.1.5
+          name: qtreeName
+
+  # aggrTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.5.11
+      name: aggrTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.5.11.1.5
+        name: aggrState
+      - OID: 1.3.6.1.4.1.789.1.5.11.1.6
+        name: aggrStatus
+    metric_tags:
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.11.1.1
+          name: aggrIndex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.11.1.2
+          name: aggrName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.11.1.3
+          name: aggrFSID
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.11.1.7
+          name: aggrOptions
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.11.1.8
+          name: aggrUUID
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.5.11.1.10
+          name: aggrType
+
+  # raidVTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.6.2
+      name: raidVTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.6.2.1.3
+        name: raidVStatus
+        enum:
+          active: 1
+          reconstructionInProgress: 2
+          parityReconstructionInProgress: 3
+          parityVerificationInProgress: 4
+          scrubbingInProgress: 5
+          failed: 6
+          prefailed: 9
+      - OID: 1.3.6.1.4.1.789.1.6.2.1.7
+        name: raidVUsedMb
+      - OID: 1.3.6.1.4.1.789.1.6.2.1.9
+        name: raidVTotalMb
+      - OID: 1.3.6.1.4.1.789.1.6.2.1.11
+        name: raidVCompletionPerCent
+    metric_tags:
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.1
+          name: raidVIndex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.2
+          name: raidVDiskName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.12
+          name: raidVVol
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.13
+          name: raidVGroup
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.14
+          name: raidVDiskNumber
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.15
+          name: raidVGroupNumber
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.19
+          name: raidVShelf
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.20
+          name: raidVBay
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.21
+          name: raidVPlex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.22
+          name: raidVPlexGroup
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.23
+          name: raidVPlexNumber
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.24
+          name: raidVPlexName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.25
+          name: raidVSectorSize
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.26
+          name: raidVDiskSerialNumber
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.27
+          name: raidVDiskVendor
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.28
+          name: raidVDiskModel
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.29
+          name: raidVDiskFirmwareRevision
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.30
+          name: raidVDiskRPM
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.31
+          name: raidVDiskType
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.32
+          name: raidVDiskPool
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.2.1.33
+          name: raidVDiskCopyDestDiskName
+
+  # spareTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.6.3
+      name: spareTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.6.3.1.3
+        name: spareStatus
+        enum:
+          spare: 1
+          addingspare: 2
+          bypassed: 3
+          unknown: 4
+      - OID: 1.3.6.1.4.1.789.1.6.3.1.7
+        name: spareTotalMb
+    metric_tags:
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.1
+          name: spareIndex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.2
+          name: spareDiskName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.12
+          name: spareShelf
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.13
+          name: spareBay
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.14
+          name: sparePool
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.15
+          name: spareSectorSize
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.16
+          name: spareDiskSerialNumber
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.17
+          name: spareDiskVendor
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.18
+          name: spareDiskModel
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.19
+          name: spareDiskFirmwareRevision
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.20
+          name: spareDiskRPM
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.3.1.21
+          name: spareDiskType
+
+  # raidPTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.6.10
+      name: raidPTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.6.10.1.2
+        name: raidPStatus
+        enum:
+          active: 1
+          reconstructionInProgress: 2
+          parityReconstructionInProgress: 3
+          parityVerificationInProgress: 4
+          scrubbingInProgress: 5
+          failed: 6
+          prefailed: 9
+      - OID: 1.3.6.1.4.1.789.1.6.10.1.20
+        name: raidPUsedMb
+      - OID: 1.3.6.1.4.1.789.1.6.10.1.22
+        name: raidPTotalMb
+      - OID: 1.3.6.1.4.1.789.1.6.10.1.24
+        name: raidPCompletionPerCent
+    metric_tags:
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.1
+          name: raidPIndex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.3
+          name: raidPVol
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.4
+          name: raidPPlex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.5
+          name: raidPGroup
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.6
+          name: raidPPlexNumber
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.7
+          name: raidPGroupNumber
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.8
+          name: raidPDiskNumber
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.9
+          name: raidPPlexName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.10
+          name: raidPDiskName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.17
+          name: raidPShelf
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.18
+          name: raidPBay
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.19
+          name: raidPSectorSize
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.25
+          name: raidPDiskSerialNumber
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.26
+          name: raidPDiskVendor
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.27
+          name: raidPDiskModel
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.28
+          name: raidPDiskFirmwareRevision
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.29
+          name: raidPDiskRPM
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.30
+          name: raidPDiskType
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.31
+          name: raidPDiskPool
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.10.1.32
+          name: raidPDiskCopyDestDiskName
+
+  # plexTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.6.11
+      name: plexTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.6.11.1.4
+        name: plexStatus
+        enum:
+          offline: 1
+          resyncing: 2
+          online: 3
+      - OID: 1.3.6.1.4.1.789.1.6.11.1.5
+        name: plexPercentResyncing
+    metric_tags:
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.11.1.1
+          name: plexIndex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.11.1.2
+          name: plexName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.6.11.1.3
+          name: plexVolName
+
+  # snapvaultStatusTable
   - MIB: NETAPP-MIB
     table:
       OID: 1.3.6.1.4.1.789.1.19.11
@@ -56,6 +759,8 @@ metrics:
         column:
           OID: 1.3.6.1.4.1.789.1.19.11.1.3
           name: svDst
+
+  # snapmirrorStatusTable
   - MIB: NETAPP-MIB
     table:
       OID: 1.3.6.1.4.1.789.1.9.20
@@ -66,36 +771,55 @@ metrics:
       - OID: 1.3.6.1.4.1.789.1.9.20.1.9
         name: snapmirrorTotalFailures
     metric_tags:
-      - tag: snapmirror_index
-        column:
+      - column:
           OID: 1.3.6.1.4.1.789.1.9.20.1.1
           name: snapmirrorIndex
-      - tag: snapmirror_state
-        column:
+      - column:
           OID: 1.3.6.1.4.1.789.1.9.20.1.5
           name: snapmirrorState
+
+  # enclTable
   - MIB: NETAPP-MIB
     table:
-      OID: 1.3.6.1.4.1.789.1.5.4
-      name: dfTable
+      OID: 1.3.6.1.4.1.789.1.21.1.2
+      name: enclTable
     symbols:
-      - OID: 1.3.6.1.4.1.789.1.5.4.1.29
-        name: df64TotalKBytes
-      - OID: 1.3.6.1.4.1.789.1.5.4.1.31
-        name: df64AvailKBytes
-      - OID: 1.3.6.1.4.1.789.1.5.4.1.7
-        name: dfInodesUsed
-      - OID: 1.3.6.1.4.1.789.1.5.4.1.8
-        name: dfInodesFree
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.2
+        name: enclContactState
+        enum:
+          initializing: 1
+          transitioning: 2
+          active: 3
+          inactive: 4
+          reconfiguring: 5
+          nonexistent: 6
     metric_tags:
-      - tag: df_index
-        column:
-          OID: 1.3.6.1.4.1.789.1.5.4.1.1
-          name: dfIndex
-      - tag: df_file_system
-        column:
-          OID: 1.3.6.1.4.1.789.1.5.4.1.2
-          name: dfFileSys
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.1
+          name: enclIndex
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.3
+          name: enclChannelShelfAddr
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.4
+          name: enclProductLogicalID
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.5
+          name: enclProductID
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.6
+          name: enclProductVendor
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.7
+          name: enclProductModel
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.8
+          name: enclProductRevision
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.9
+          name: enclProductSerialNo
+
+  # netifTable
   - MIB: NETAPP-MIB
     table:
       OID: 1.3.6.1.4.1.789.1.22.1.2
@@ -103,12 +827,20 @@ metrics:
     symbols:
       - OID: 1.3.6.1.4.1.789.1.22.1.2.1.25
         name: if64InOctets
+      - OID: 1.3.6.1.4.1.789.1.22.1.2.1.28
+        name: if64InDiscards
+      - OID: 1.3.6.1.4.1.789.1.22.1.2.1.29
+        name: if64InErrors
+      - OID: 1.3.6.1.4.1.789.1.22.1.2.1.31
+        name: if64OutOctets
+      - OID: 1.3.6.1.4.1.789.1.22.1.2.1.34
+        name: if64OutDiscards
+      - OID: 1.3.6.1.4.1.789.1.22.1.2.1.35
+        name: if64OutErrors
     metric_tags:
-      - tag: network_interface_index
-        column:
+      - column: 
           OID: 1.3.6.1.4.1.789.1.22.1.2.1.1
-          name: ifIndex
-      - tag: network_interface_description
-        column:
+          name: netifIndex
+      - column: 
           OID: 1.3.6.1.4.1.789.1.22.1.2.1.2
-          name: ifDescr
+          name: netifDesc
