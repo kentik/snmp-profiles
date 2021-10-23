@@ -38,8 +38,8 @@ metrics:
       - column:
           OID: 1.3.6.1.2.1.75.1.2.1.1.1
           name: portIndex
+          conversion: hextoint:BigEndian:uint16
         tag: port_index
-        conversion: hextoint:BigEndian:uint16
 
   - MIB: FIBRE-CHANNEL-FE-MIB
     table:
@@ -64,5 +64,5 @@ metrics:
         column:
           OID: 1.3.6.1.2.1.75.1.2.1.1.1
           name: portIndex
+          conversion: hextoint:BigEndian:uint16
         tag: port_index
-        conversion: hextoint:BigEndian:uint16
