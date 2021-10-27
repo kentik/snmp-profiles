@@ -1,0 +1,102 @@
+# http://oid-info.com/get/1.3.6.1.4.1.6574.1
+# https://global.download.synology.com/download/Document/Software/DeveloperGuide/Firmware/DSM/All/enu/Synology_DiskStation_MIB_Guide.pdf
+---
+extends:
+  - system-mib.yml
+  - if-mib.yml
+  - ip-mib.yml
+
+profile: kentik-nas
+
+sysobjectid: 1.3.6.1.4.1.6574.*   # DSM
+
+metrics:
+  - MIB: SYNOLOGY-SYSTEM-MIB
+    symbols:
+      - OID: 1.3.6.1.4.1.6574.1.1
+        name: systemStatus
+        enum:
+          normal: 1
+          failed: 2
+      - OID: 1.3.6.1.4.1.6574.1.2
+        name: temperature
+      - OID: 1.3.6.1.4.1.6574.1.3
+        name: powerStatus
+        enum:
+          normal: 1
+          failed: 2
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.6574.1.5.1
+          name: modelName
+      - column:
+          OID: 1.3.6.1.4.1.6574.1.5.2
+          name: serialNumber
+      - column:
+          OID: 1.3.6.1.4.1.6574.1.5.3
+          name: version
+
+  - MIB: SYNOLOGY-DISK-MIB
+    table:
+      OID: 1.3.6.1.4.1.6574.2.1
+      name: diskTable
+    symbols:
+      - OID: 1.3.6.1.4.1.6574.2.1.1.5
+        name: diskStatus
+        enum:
+          Normal: 1
+          Initialized: 2
+          NotInitialized: 3
+          SystemPartitionFailed: 4
+          Crashed: 5
+      - OID: 1.3.6.1.4.1.6574.2.1.1.6
+        name: diskTemperature
+      - OID: 1.3.6.1.4.1.6574.2.1.1.11
+        name: diskRemainLife
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.6574.2.1.1.1
+          name: diskIndex
+      - column:
+          OID: 1.3.6.1.4.1.6574.2.1.1.2
+          name: diskID
+      - column:
+          OID: 1.3.6.1.4.1.6574.2.1.1.3
+          name: diskModel
+      - column:
+          OID: 1.3.6.1.4.1.6574.2.1.1.4
+          name: diskType
+      - column:
+          OID: 1.3.6.1.4.1.6574.2.1.1.7
+          name: diskRole
+      - column:
+          OID: 1.3.6.1.4.1.6574.2.1.1.12
+          name: diskName
+
+  - MIB: SYNOLOGY-RAID-MIB
+    table:
+      OID: 1.3.6.1.4.1.6574.3.1
+      name: raidTable
+    symbols:
+      - OID: 1.3.6.1.4.1.6574.3.1.1.3
+        name: raidStatus
+        enum:
+          Normal: 1
+          Repairing: 2
+          Migrating: 3
+          Expanding: 4
+          Deleting: 5
+          Creating: 6
+          RaidSyncing: 7
+          RaidParityChecking: 8
+          RaidAssembling: 9
+          Canceling: 10
+          Degrade: 11
+          Crashed: 12
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.6574.3.1.1.1
+          name: raidIndex
+      - column:
+          OID: 1.3.6.1.4.1.6574.3.1.1.2
+          name: raidName
