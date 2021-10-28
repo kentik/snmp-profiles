@@ -4,6 +4,8 @@
 extends:
   - juniper-all-devices.yml
 
+provider: kentik-router
+
 sysobjectid:
   - 1.3.6.1.4.1.2636.1.1.1.2.21
   - 1.3.6.1.4.1.2636.1.1.1.4.21.*
