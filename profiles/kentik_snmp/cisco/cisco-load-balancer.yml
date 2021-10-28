@@ -13,7 +13,7 @@ sysobjectid:
 metrics:
   - MIB: CISCO-SLB-MIB
     symbol:
-      OID: c
+      OID: 1.3.6.1.4.1.9.9.161.1.1.1.1.6
       name: slbStatsCreatedConnections
   - MIB: CISCO-SLB-MIB
     symbol:
