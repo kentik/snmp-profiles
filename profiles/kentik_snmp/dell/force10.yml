@@ -9,9 +9,7 @@ provider: kentik-switch
 
 sysobjectid:
   - 1.3.6.1.4.1.6027.1.3.* # Dell Networking S Family
-  - 1.3.6.1.4.1.6027.1.3.12 # S60
-  - 1.3.6.1.4.1.6027.1.3.14 # S4810
-  
+
 metrics:
   - MIB: F10-S-SERIES-CHASSIS-MIB
     symbol:
