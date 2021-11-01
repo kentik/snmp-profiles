@@ -28,6 +28,15 @@ metrics:
         enum:
           normal: 1
           failed: 2
+      - OID: 1.3.6.1.4.1.2021.10.1.5.1
+        name: laLoadInt1
+        tag: CPU
+      - OID: 1.3.6.1.4.1.2021.4.5.0
+        name: memTotalReal
+        tag: MemoryTotal
+      - OID: 1.3.6.1.4.1.2021.4.11.0
+        name: memTotalFree
+        tag: MemoryFree
     metric_tags:
       - column:
           OID: 1.3.6.1.4.1.6574.1.5.1
@@ -96,6 +105,16 @@ metrics:
           Canceling: 10
           Degrade: 11
           Crashed: 12
+          DataScrubbing: 13
+          RaidDeploying: 14
+          RaidUnDeploying: 15
+          RaidMountCache: 16
+          RaidUnmountCache: 17
+          RaidExpandingUnfinishedSHR: 18
+          RaidConvertSHRToPool: 19
+          RaidMigrateSHR1ToSHR2: 20
+          RaidUnknownStatus: 21
+
     metric_tags:
       - column:
           OID: 1.3.6.1.4.1.6574.3.1.1.1
