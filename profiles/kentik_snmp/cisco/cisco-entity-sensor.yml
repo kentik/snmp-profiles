@@ -1,0 +1,142 @@
+# http://oid-info.com/get/1.3.6.1.4.1.9.9.91.1
+---
+
+metrics:
+  - MIB: CISCO-ENTITY-SENSOR-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.91
+      name: ciscoEntitySensorMIB
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.4
+        name: entSensorValue
+    metric_tags:
+      - MIB: ENTITY-MIB
+        column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.1
+          name: entPhysicalIndex
+        table: entPhysicalTable
+        tag: entity_index
+      - MIB: ENTITY-MIB
+        column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.2
+          name: entPhysicalDescr
+        table: entPhysicalTable
+        tag: entity_description
+      - MIB: ENTITY-MIB
+        column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.5
+          name: entPhysicalClass
+          enum:
+            other: 1
+            unknown: 2
+            chassis: 3
+            backplane: 4
+            container: 5
+            powerSupply: 6
+            fan: 7
+            sensor: 8
+            module: 9
+            port: 10 
+            stack: 11 
+            cpu: 12
+        table: entPhysicalTable
+        tag: entity_class
+      - MIB: ENTITY-MIB
+        column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.7
+          name: entPhysicalName
+        table: entPhysicalTable
+        tag: entity_name
+      - MIB: ENTITY-MIB
+        column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.11
+          name: entPhysicalSerialNum
+        table: entPhysicalTable
+        tag: entity_serial
+      - MIB: ENTITY-MIB
+        column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.13
+          name: entPhysicalModelName
+        table: entPhysicalTable
+        tag: entity_model
+      - MIB: CISCO-ENTITY-SENSOR-MIB
+        column:
+          OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.1
+          name: entSensorType
+          enum:
+            other: 1
+            unknown: 2
+            voltsAC: 3
+            voltsDC: 4
+            amperes: 5
+            watts: 6
+            hertz: 7
+            celsius: 8
+            percentRH: 9
+            rpm: 10
+            cmm: 11
+            truthvalue: 12
+            specialEnum: 13
+            dBm: 14
+            dB: 15
+        table: entSensorValues
+        tag: entity_sensor_type
+      - MIB: CISCO-ENTITY-SENSOR-MIB
+        column:
+          OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.2
+        name: entSensorScale
+        enum:
+          yocto: 1
+          zepto: 2
+          atto: 3
+          femto: 4
+          pico: 5
+          nano: 6
+          micro: 7
+          milli: 8
+          units: 9
+          kilo: 10
+          mega: 11
+          giga: 12
+          tera: 13
+          exa: 14
+          peta: 15
+          zetta: 6
+          yotta: 17
+        table: entSensorValues
+        tag: entity_sensor_scale
+      - MIB: CISCO-ENTITY-SENSOR-MIB
+        column:
+          OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.3
+          name: entSensorPrecision
+        table: entSensorValues
+        tag: entity_sensor_precision
+      - MIB: CISCO-ENTITY-SENSOR-MIB
+        column:
+          OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.5
+          name: entSensorStatus
+          enum:
+            ok: 1
+            unavailable: 2
+            nonoperational: 3
+        table: entSensorValues
+        tag: entity_sensor_status
+  - MIB: CISCO-ENTITY-SENSOR-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.91.1.2
+      name: entSensorThresholds
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.2
+        name: entSensorThresholdSeverity
+        enum:
+          other: 1
+          minor: 10
+          major: 20
+          critical: 30
+    metric_tags:
+      - MIB: ENTITY-MIB
+        column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.1
+          name: entPhysicalIndex
+        table: entPhysicalTable
+        tag: entity_index
