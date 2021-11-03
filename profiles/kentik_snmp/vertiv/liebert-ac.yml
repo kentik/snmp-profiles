@@ -1,0 +1,72 @@
+# http://oidref.com/1.3.6.1.4.1.476.1.42.3.4
+---
+extends:
+  - system-mib.yml
+
+profile: kentik-air-conditioner
+
+sysobjectid:
+  - 1.3.6.1.4.1.476.1.42 # Liebert Global
+
+metrics:
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.1.2.3.1.3.1
+      name: lgpEnvTemperatureMeasurementDegF
+      tag: temp_f
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.1.3.3.1.3.1
+      name: lgpEnvTemperatureMeasurementDegC
+      tag: temp_c
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.2.2.3.1.3.1
+      name: lgpEnvHumidityMeasurementRel
+      tag: relative_humidity
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.6.1.0
+      name: lgpEnvStatisticsComp1RunHr
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.6.2.0
+      name: lgpEnvStatisticsComp2RunHr
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.6.3.0
+      name: lgpEnvStatisticsFanRunHr
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.6.4.0
+      name: lgpEnvStatisticsHumRunHr
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.6.7.0
+      name: lgpEnvStatisticsReheat1RunHr
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.6.8.0
+      name: lgpEnvStatisticsReheat2RunHr
+  - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.6.9.0
+      name: lgpEnvStatisticsReheat3RunHr
+
+metric_tags:
+  - column:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.1.2.1.0
+      name: lgpEnvTemperatureSettingDegF
+    tag: temp_setting
+  - column:
+      OID: 1.3.6.1.4.1.476.1.42.3.4.1.2.2.0
+      name: lgpEnvTemperatureToleranceDegF
+    tag: temp_tolerance
+  - column:
+      OID: 1.3.6.1.4.1.476.1.42.2.1.2
+      name: lgpAgentIdentModel
+    tag: model
+  - column:
+      OID: 1.3.6.1.4.1.476.1.42.2.1.4
+      name: lgpAgentIdentSerialNumber
+    tag: serial_number
