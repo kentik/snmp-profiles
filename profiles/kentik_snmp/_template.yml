@@ -1,0 +1,66 @@
+# Top level comments, it is recommended to use this section to provide links to public websites outlining the vendor MIB(s) in this profile: 
+# e.g.: http://www.circitor.fr/Mibs/Html/P/PowerNet-MIB.php
+---
+
+# The 'extends' section is used to inherit OIDs from other profiles 
+# This section supports a list of profile file names
+extends:
+  - system-mib.yml
+
+# The 'provider' section annotates the value of the 'provider' key sent to New Relic for entity synthesis
+provider: kentik-default
+
+# The 'sysobjectid' section accepts a list of sysOIDs to promote automatic matching of devices to profiles during SNMP discovery
+# This field will accept wildcard [*] entries as well
+sysobjectid:
+  - 1.2.3.4.5.6.7.8.9                         # Matches the exact sysOID
+  - 1.2.3.4.5.6.7.8.*                         # Matches all sysOIDs under the '.8' root
+
+# The 'metrics' section accepts a list of scalar and table OIDs for collection
+metrics:
+  # Scalar OIDs can be directly polled and are individually added to the profile
+  - MIB: CISCO-SYSTEM-EXT-MIB                 # The name of the target MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.305.1.1.1.0        # The target scalar OID value
+      name: cseSysCPUUtilization              # The target scalar OID name
+      tag: CPU                                # OPTIONAL: Used to rename the metric key sent to New Relic
+      # OPTIONAL: You can also add an 'enum' function here, see the tabular OID section below for an example
+
+  # Tabular OIDs work under a common 'MIB' element to combine multiple OIDs together
+  # They are matched based on the value of a provided 'Index', based on SNMP standards
+  - MIB: CISCO-ENTITY-SENSOR-MIB             # The name of the target MIB
+    # The 'table' section is where you announce the target MIB table
+    table:
+      OID: 1.3.6.1.4.1.9.9.91.1.2.1          # The root OID of the target table
+      name: entSensorThresholdTable          # The name of the target table
+    # The 'symbols' section accepts a list of OIDs to target within the table
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.2    # The target tabular OID value
+        name: entSensorThresholdSeverity     # The target tabular OID name
+        enum:                                # OPTIONAL: This section creates string:int maps that decorate the metric string attributes
+          other: 1                           # ex: metric value == 1; string decoration == 'other'
+          minor: 10
+          major: 20
+          critical: 30
+      - OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.4    # The target tabular OID value
+        name: entSensorThresholdValue        # The target tabular OID name
+      - OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.5    # The target tabular OID value
+        name: entSensorThresholdEvaluation   # The target tabular OID name
+        enum:
+          true: 1
+          false: 2
+    # The 'metric_tags' section accepts a list of OIDs to target that will be used to decorate the table metrics
+    # This is primarily used for the index to match on, but also very useful for adding string-value OIDs to your metrics
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.1
+          name: entSensorThresholdIndex
+          # OPTIONAL: You can also add a 'tag' function here, see the scalar OID section above for an example
+
+    # OPTIONAL: There is also a supported 'conversion' function for edge cases where an OID returns a non-string/non-numeric value
+    # ex: conversion: powerset_status | hwaddr | hextoint:<current>:<desired>
+    # powerset_status == used for enumeration of the 'upsBasicStateOutputState' OID in the POWERNET-MIB
+    # hwaddr == used to convert physical MAC addresses into human-readable form
+    # hextoint == used to convert hexadecimal into integer format
+    #   <current> == LittleEndian | BigEndian
+    #   <desired> == uint16 | uint32 | uint64
