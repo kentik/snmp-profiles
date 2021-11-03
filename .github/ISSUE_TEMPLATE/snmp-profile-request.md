@@ -7,18 +7,26 @@ assignees: ''
 
 ---
 
+*Please add the Device Vendor and Model to the issue title as well*
+
 Device Vendor: 
 
 Device Model: 
 
 System Object Identifier (SysOID): 
 
-List of MIBs expected: 
+List of critical metrics that you expect in the profile (does not need to be all-inclusive, just a general idea of your expectations):
 
+ - 
+ -
+ -
 
-**If possible, please add a current SNMP walk of the device, with sensitive information removed**
+**Please provide a [public gist](https://gist.github.com/) with a sanitized SNMP walk of the device** *(sensitive information removed)*
 
+Gist Link: 
 
+---
+Example SNMP walk commands:
 ```
 # v2c example
 snmpwalk -v 2c -On -c $COMMUNITY_STRING $IP_ADDRESS . >> $DEVICE_TYPE.out
