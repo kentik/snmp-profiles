@@ -1,107 +1,185 @@
-# http://oid-info.com/get/1.3.6.1.4.1.9.9.117.1.1.2
 # http://oid-info.com/get/1.3.6.1.4.1.9.9.109.1.1.1
-# http://oid-info.com/get/1.3.6.1.4.1.9.9.276.1.1.2
-# http://oid-info.com/get/1.3.6.1.4.1.9.9.13.1
-# http://oid-info.com/get/1.3.6.1.4.1.9.9.500.1.2
 # http://oid-info.com/get/1.3.6.1.4.1.9.9.48.1.1
-# http://oid-info.com/get/1.3.6.1.4.1.9.9.147.1.2
+# http://oid-info.com/get/1.3.6.1.4.1.9.9.276.1.1.2
+# http://oid-info.com/get/1.3.6.1.4.1.9.9.500.1.2
+# http://oid-info.com/get/1.3.6.1.2.1.47.1.1.1.1.7
 # http://oid-info.com/get/1.3.6.1.4.1.9.9.388.1.2.2
-# http://oid-info.com/get/1.3.6.1.4.1.9.9.42.1.2
-# https://oidref.com/1.3.6.1.4.1.9.9.807.1.4.2.1
-# http://oidref.com/1.3.6.1.4.1.9.9.91.1.1.1
-# http://oidref.com/1.3.6.1.4.1.9.9.91.1.2.1
 ---
+
 extends:
+  - bgp4-mib.yml
   - if-mib.yml
+  - ip-mib.yml
+  - ospf-mib.yml
   - tcp-mib.yml
   - udp-mib.yml
-  - ospf-mib.yml
-  - bgp4-mib.yml
-  - ip-mib.yml
 
 metrics:
-  - MIB: CISCO-ENTITY-SENSOR-MIB
+  - MIB: CISCO-PROCESS-MIB
     table:
-      OID: 1.3.6.1.4.1.9.9.91.1.1.1
-      name: entSensorValueTable
+      OID: 1.3.6.1.4.1.9.9.109.1.1.1
+      name: cpmCPUTotalTable
     symbols:
-      - OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.1
-        name: entSensorType
-        enum:
-          other: 1
-          unknown: 2
-          voltsAC: 3
-          voltsDC: 4
-          amperes: 5
-          watts: 6
-          hertz: 7
-          celsius: 8
-          percentRH: 9
-          rpm: 10
-          cmm: 11
-          truthvalue: 12
-          specialEnum: 13
-          dBm: 14
-          dB: 15
-      - OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.2
-        name: entSensorScale
-        enum:
-          yocto: 1
-          zepto: 2
-          atto: 3
-          femto: 4
-          pico: 5
-          nano: 6
-          micro: 7
-          milli: 8
-          units: 9
-          kilo: 10
-          mega: 11
-          giga: 12
-          tera: 13
-          exa: 14
-          peta: 15
-          zetta: 6
-          yotta: 17
-      - OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.3
-        name: entSensorPrecision
-      - OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.4
-        name: entSensorValue
-      - OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.5
-        name: entSensorStatus
-        enum:
-          ok: 1
-          unavailable: 2
-          nonoperational: 3
-      - OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.8
-        name: entSensorMeasuredEntity
+      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.10
+        name: cpmCPUTotalMonIntervalValue
+      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.12
+        name: cpmCPUMemoryUsed
+      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.13
+        name: cpmCPUMemoryFree
+      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.7
+        name: cpmCPUTotal1minRev
+        tag: CPU
     metric_tags:
-      - index: 1
-        tag: sensor_id
-  - MIB: CISCO-ENTITY-SENSOR-MIB
+      - column: 
+          OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.1
+          name: cpmCPUTotalIndex
+        tag: cpu_index
+  - MIB: CISCO-MEMORY-POOL-MIB
     table:
-      OID: 1.3.6.1.4.1.9.9.91.1.2.1
-      name: entSensorThresholdTable
+      OID: 1.3.6.1.4.1.9.9.48.1.1
+      name: ciscoMemoryPoolTable
     symbols:
-      - OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.2
-        name: entSensorThresholdSeverity
-        enum:
-          other: 1
-          minor: 10
-          major: 20
-          critical: 30
-      - OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.4
-        name: entSensorThresholdValue
-      - OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.5
-        name: entSensorThresholdEvaluation
-        # true == threshold is violated
-        enum:
-          true: 1
-          false: 2
+      - OID: 1.3.6.1.4.1.9.9.48.1.1.1.5
+        name: ciscoMemoryPoolUsed
+        tag: MemoryUsed
+      - OID: 1.3.6.1.4.1.9.9.48.1.1.1.6
+        name: ciscoMemoryPoolFree
+        tag: MemoryFree
+      - OID: 1.3.6.1.4.1.9.9.48.1.1.1.7
+        name: ciscoMemoryPoolLargestFree
     metric_tags:
       - column:
-          OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.1
-          name: entSensorThresholdIndex
+          OID: 1.3.6.1.4.1.9.9.48.1.1.1.2
+          name: ciscoMemoryPoolName
+        tag: memory_pool_name
+  - MIB: CISCO-IF-EXTENSION-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.276.1.1.2
+      name: cieIfInterfaceTable
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.276.1.1.2.1.1
+        name: cieIfResetCount
+    metric_tags:
+      - MIB: IF-MIB
+        column:
+          OID: 1.3.6.1.2.1.31.1.1.1.1
+          name: ifName
+        tag: interface_name
+  - MIB: CISCO-STACKWISE-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.500.1.2.2
+      name: cswStackPortInfoTable
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.500.1.2.2.1.1
+        name: cswStackPortOperStatus
+        enum:
+          up: 1
+          down: 2
+          forcedDown: 3
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.2.1.31.1.1.1.1
+          name: ifName
+        tag: interface_name
+  - MIB: CISCO-STACKWISE-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.500.1.2.1
+      name: cswSwitchInfoTable
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.500.1.2.1.1.6
+        name: cswSwitchState
+        enum:
+          waiting: 1
+          progressing: 2
+          added: 3
+          ready: 4
+          sdmMismatch: 5
+          verMismatch: 6
+          featureMismatch: 7
+          newMasterInit: 8
+          provisioned: 9
+          invalid: 10
+          removed: 11
+    metric_tags:
+      - tag: mac_address
+        column:
+          OID: 1.3.6.1.4.1.9.9.500.1.2.1.1.7
+          name: cswSwitchMacAddress
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.7
+          name: entPhysicalName
+        tag: entity_name
+  - MIB: CISCO-VIRTUAL-SWITCH-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.388.1.2.2
+      name: cvsChassisTable
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.388.1.2.2.1.3
+        name: cvsChassisUpTime
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.9.9.388.1.2.2.1.1
+          name: cvsChassisSwitchID
+        tag: chassis_switch_id
+  - MIB: CISCO-ENTITY-FRU-CONTROL-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.117.1.1.1
+      name: cefcFRUPowerSupplyGroup
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.1
+        name: cefcPowerRedundancyMode
+        enum:
+          notsupported: 1
+          redundant: 2
+          combined: 3
+          nonRedundant: 4
+          psRedundant: 5
+          inPwrSrcRedundant: 6
+          psRedundantSingleInput:
+      - OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.2
+        name: cefcPowerUnits
+      - OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.3
+        name: cefcTotalAvailableCurrent
+      - OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.4
+        name: cefcTotalDrawnCurrent
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.1
+          name: entPhysicalIndex
+        tag: entity_index
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.2
+          name: entPhysicalDescr
+        tag: entity_description
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.5
+          name: entPhysicalClass
+          enum:
+            other: 1
+            unknown: 2
+            chassis: 3
+            backplane: 4
+            container: 5
+            powerSupply: 6
+            fan: 7
+            sensor: 8
+            module: 9
+            port: 10 
+            stack: 11 
+            cpu: 12
+        tag: entity_class
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.7
+          name: entPhysicalName
+        tag: entity_name
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.11
+          name: entPhysicalSerialNum
+        tag: entity_serial
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.13
+          name: entPhysicalModelName
+        tag: entity_model
   - MIB: CISCO-ENTITY-FRU-CONTROL-MIB
     table:
       OID: 1.3.6.1.4.1.9.9.117.1.1.2
@@ -133,8 +211,159 @@ metrics:
       - OID: 1.3.6.1.4.1.9.9.117.1.1.2.1.3
         name: cefcFRUCurrent
     metric_tags:
-      - index: 1
-        tag: field_replaceable_unit
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.1
+          name: entPhysicalIndex
+        tag: entity_index
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.2
+          name: entPhysicalDescr
+        tag: entity_description
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.5
+          name: entPhysicalClass
+          enum:
+            other: 1
+            unknown: 2
+            chassis: 3
+            backplane: 4
+            container: 5
+            powerSupply: 6
+            fan: 7
+            sensor: 8
+            module: 9
+            port: 10 
+            stack: 11 
+            cpu: 12
+        tag: entity_class
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.7
+          name: entPhysicalName
+        tag: entity_name
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.11
+          name: entPhysicalSerialNum
+        tag: entity_serial
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.13
+          name: entPhysicalModelName
+        tag: entity_model
+  - MIB: CISCO-ENTITY-FRU-CONTROL-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.117.1.2.1
+      name: cefcModuleTable
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.117.1.2.1.1.1
+        name: cefcModuleAdminStatus
+        enum:
+          enabled: 1
+          disabled: 2
+          reset: 3
+          outOfServiceAdmin: 4
+      - OID: 1.3.6.1.4.1.9.9.117.1.2.1.1.2
+        name: cefcModuleOperStatus
+        enum:
+          unknown: 1
+          ok: 2
+          disabled: 3
+          okButDiagFailed: 4
+          boot: 5
+          selfTest: 6
+          failed: 7
+          missing: 8
+          mismatchWithParent: 9
+          mismatchConfig: 10
+          diagFailed: 11
+          dormant: 12
+          outOfServiceAdmin: 13
+          outOfServiceEnvTemp: 14
+          poweredDown: 15
+          poweredUp: 16
+          powerDenied: 17
+          powerCycled: 18
+          okButPowerOverWarning: 19
+          okButPowerOverCritical: 20
+          syncInProgress: 21
+          upgrading: 22
+          okButAuthFailed: 23
+          mdr: 24
+          fwMismatchFound: 25
+          fwDownloadSuccess: 26
+          fwDownloadFailure: 27
+      - OID: 1.3.6.1.4.1.9.9.117.1.2.1.1.3
+        name: cefcModuleResetReason
+        enum:
+          unknown: 1
+          powerUp: 2
+          parityError: 3
+          clearConfigReset: 4
+          manualReset: 5
+          watchDogTimeoutReset: 6
+          resourceOverflowReset: 7
+          missingTaskReset: 8
+          lowVoltageReset: 9
+          controllerReset: 10
+          systemReset: 11
+          switchoverReset: 12
+          upgradeReset: 13
+          downgradeReset: 14
+          cacheErrorReset: 15
+          deviceDriverReset: 16
+          softwareExceptionReset: 17
+          restoreConfigReset: 18
+          abortRevReset: 19
+          burnBootReset: 20
+          standbyCdHealthierReset: 21
+          nonNativeConfigClearReset: 22
+          memoryProtectionErrorReset: 23
+      - OID: 1.3.6.1.4.1.9.9.117.1.2.1.1.4
+        name: cefcModuleStatusLastChangeTime
+      - OID: 1.3.6.1.4.1.9.9.117.1.2.1.1.5
+        name: cefcModuleLastClearConfigTime
+      - OID: 1.3.6.1.4.1.9.9.117.1.2.1.1.6
+        name: cefcModuleResetReasonDescription
+      - OID: 1.3.6.1.4.1.9.9.117.1.2.1.1.7
+        name: cefcModuleStateChangeReasonDescr
+      - OID: 1.3.6.1.4.1.9.9.117.1.2.1.1.8
+        name: cefcModuleUpTime
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.1
+          name: entPhysicalIndex
+        tag: entity_index
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.2
+          name: entPhysicalDescr
+        tag: entity_description
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.5
+          name: entPhysicalClass
+          enum:
+            other: 1
+            unknown: 2
+            chassis: 3
+            backplane: 4
+            container: 5
+            powerSupply: 6
+            fan: 7
+            sensor: 8
+            module: 9
+            port: 10 
+            stack: 11 
+            cpu: 12
+        tag: entity_class
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.7
+          name: entPhysicalName
+        tag: entity_name
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.11
+          name: entPhysicalSerialNum
+        tag: entity_serial
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.13
+          name: entPhysicalModelName
+        tag: entity_model
   - MIB: CISCO-ENTITY-FRU-CONTROL-MIB
     table:
       OID: 1.3.6.1.4.1.9.9.117.1.4.1
@@ -148,87 +377,200 @@ metrics:
           down: 3
           warning: 4
     metric_tags:
-      - index: 1
-        tag: field_replaceable_unit
-  - MIB: CISCO-PROCESS-MIB
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.1
+          name: entPhysicalIndex
+        tag: entity_index
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.2
+          name: entPhysicalDescr
+        tag: entity_description
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.5
+          name: entPhysicalClass
+          enum:
+            other: 1
+            unknown: 2
+            chassis: 3
+            backplane: 4
+            container: 5
+            powerSupply: 6
+            fan: 7
+            sensor: 8
+            module: 9
+            port: 10 
+            stack: 11 
+            cpu: 12
+        tag: entity_class
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.7
+          name: entPhysicalName
+        tag: entity_name
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.11
+          name: entPhysicalSerialNum
+        tag: entity_serial
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.13
+          name: entPhysicalModelName
+        tag: entity_model
+  - MIB: CISCO-ENTITY-FRU-CONTROL-MIB
     table:
-      OID: 1.3.6.1.4.1.9.9.109.1.1.1
-      name: cpmCPUTotalTable
+      OID: 1.3.6.1.4.1.9.9.117.1.4.2
+      name: cefcFanTable
     symbols:
-      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.10
-        name: cpmCPUTotalMonIntervalValue
-      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.12
-        name: cpmCPUMemoryUsed
-      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.13
-        name: cpmCPUMemoryFree
-      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.7
-        name: cpmCPUTotal1minRev
-        tag: CPU
+      - OID: 1.3.6.1.4.1.9.9.117.1.4.2.1.1
+        name: cefcFanSpeed
+      - OID: 1.3.6.1.4.1.9.9.117.1.4.2.1.2
+        name: cefcFanSpeedPercent
     metric_tags:
-      - index: 1
-        tag: cpu
-  - MIB: CISCO-IF-EXTENSION-MIB
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.1
+          name: entPhysicalIndex
+        tag: entity_index
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.2
+          name: entPhysicalDescr
+        tag: entity_description
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.5
+          name: entPhysicalClass
+          enum:
+            other: 1
+            unknown: 2
+            chassis: 3
+            backplane: 4
+            container: 5
+            powerSupply: 6
+            fan: 7
+            sensor: 8
+            module: 9
+            port: 10 
+            stack: 11 
+            cpu: 12
+        tag: entity_class
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.7
+          name: entPhysicalName
+        tag: entity_name
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.11
+          name: entPhysicalSerialNum
+        tag: entity_serial
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.13
+          name: entPhysicalModelName
+        tag: entity_model
+  - MIB: CISCO-ENTITY-SENSOR-MIB
     table:
-      OID: 1.3.6.1.4.1.9.9.276.1.1.2
-      name: cieIfInterfaceTable
+      OID: 1.3.6.1.4.1.9.9.91
+      name: ciscoEntitySensorMIB
     symbols:
-      - OID: 1.3.6.1.4.1.9.9.276.1.1.2.1.1
-        name: cieIfResetCount
+      - OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.4
+        name: entSensorValue
     metric_tags:
-      - MIB: IF-MIB
-        column:
-          OID: 1.3.6.1.2.1.31.1.1.1.1
-          name: ifName
-        table: ifXTable
-        tag: interface_name
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.1
+          name: entPhysicalIndex
+        tag: entity_index
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.2
+          name: entPhysicalDescr
+        tag: entity_description
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.5
+          name: entPhysicalClass
+          enum:
+            other: 1
+            unknown: 2
+            chassis: 3
+            backplane: 4
+            container: 5
+            powerSupply: 6
+            fan: 7
+            sensor: 8
+            module: 9
+            port: 10 
+            stack: 11 
+            cpu: 12
+        tag: entity_class
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.7
+          name: entPhysicalName
+        tag: entity_name
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.11
+          name: entPhysicalSerialNum
+        tag: entity_serial
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.13
+          name: entPhysicalModelName
+        tag: entity_model
+      - column:
+          OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.1
+          name: entSensorType
+          enum:
+            other: 1
+            unknown: 2
+            voltsAC: 3
+            voltsDC: 4
+            amperes: 5
+            watts: 6
+            hertz: 7
+            celsius: 8
+            percentRH: 9
+            rpm: 10
+            cmm: 11
+            truthvalue: 12
+            specialEnum: 13
+            dBm: 14
+            dB: 15
+        tag: entity_sensor_type
+      - column:
+          OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.2
+          name: entSensorScale
+          enum:
+            yocto: 1
+            zepto: 2
+            atto: 3
+            femto: 4
+            pico: 5
+            nano: 6
+            micro: 7
+            milli: 8
+            units: 9
+            kilo: 10
+            mega: 11
+            giga: 12
+            tera: 13
+            exa: 14
+            peta: 15
+            zetta: 6
+            yotta: 17
+        tag: entity_sensor_scale
+      - column:
+          OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.3
+          name: entSensorPrecision
+        tag: entity_sensor_precision
+      - column:
+          OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.5
+          name: entSensorStatus
+          enum:
+            ok: 1
+            unavailable: 2
+            nonoperational: 3
+        tag: entity_sensor_status
   - MIB: CISCO-ENVMON-MIB
     table:
-      OID: 1.3.6.1.4.1.9.9.13.1.3
-      name: ciscoEnvMonTemperatureStatusTable
+      OID: 1.3.6.1.4.1.9.9.13
+      name: ciscoEnvMonMIB
     symbols:
+      - OID: 1.3.6.1.4.1.9.9.13.1.2.1.3
+        name: ciscoEnvMonVoltageStatusValue
+        tag: voltage_value
       - OID: 1.3.6.1.4.1.9.9.13.1.3.1.3
         name: ciscoEnvMonTemperatureStatusValue
-      - OID: 1.3.6.1.4.1.9.9.13.1.3.1.6
-        name: ciscoEnvMonTemperatureState
-        enum:
-          normal: 1
-          warning: 2
-          critical: 3
-          shutdown: 4
-          notPresent: 5
-          notFunctioning: 6
-        tag: temp_state
-    metric_tags:
-      - tag: temp_index
-        index: 1
-  - MIB: CISCO-ENVMON-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.13.1.5
-      name: ciscoEnvMonSupplyStatusTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.13.1.5.1.3
-        name: ciscoEnvMonSupplyState
-        enum:
-          normal: 1
-          warning: 2
-          critical: 3
-          shutdown: 4
-          notPresent: 5
-          notFunctioning: 6
-    metric_tags:
-      - column:
-          OID: 1.3.6.1.4.1.9.9.13.1.5.1.4
-          name: ciscoEnvMonSupplySource
-        tag: power_source
-      - column:
-          OID: 1.3.6.1.4.1.9.9.13.1.5.1.2
-          name: ciscoEnvMonSupplyStatusDescr
-        tag: power_status_description
-  - MIB: CISCO-ENVMON-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.13.1.4
-      name: ciscoEnvMonFanStatusTable
-    symbols:
+        tag: temp_value
       - OID: 1.3.6.1.4.1.9.9.13.1.4.1.3
         name: ciscoEnvMonFanState
         enum:
@@ -238,232 +580,94 @@ metrics:
           shutdown: 4
           notPresent: 5
           notFunctioning: 6
+        tag: fan_state
+      - OID: 1.3.6.1.4.1.9.9.13.1.5.1.3
+        name: ciscoEnvMonSupplyState
+        enum:
+          normal: 1
+          warning: 2
+          critical: 3
+          shutdown: 4
+          notPresent: 5
+          notFunctioning: 6
+        tag: power_supply_state
     metric_tags:
+      - MIB: ENTITY-MIB
+        column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.1
+          name: entPhysicalIndex
+        tag: entity_index
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.2
+          name: entPhysicalDescr
+        tag: entity_description
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.5
+          name: entPhysicalClass
+          enum:
+            other: 1
+            unknown: 2
+            chassis: 3
+            backplane: 4
+            container: 5
+            powerSupply: 6
+            fan: 7
+            sensor: 8
+            module: 9
+            port: 10
+            stack: 11
+            cpu: 12
+        tag: entity_class
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.7
+          name: entPhysicalName
+        tag: entity_name
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.11
+          name: entPhysicalSerialNum
+        tag: entity_serial
+      - column:
+          OID: 1.3.6.1.2.1.47.1.1.1.1.13
+          name: entPhysicalModelName
+        tag: entity_model
+      - column:
+          OID: 1.3.6.1.4.1.9.9.13.1.2.1.7
+          name: ciscoEnvMonVoltageState
+          enum:
+            normal: 1
+            warning: 2
+            critical: 3
+            shutdown: 4
+            notPresent: 5
+            notFunctioning: 6
+        tag: voltage_state
+      - column:
+          OID: 1.3.6.1.4.1.9.9.13.1.3.1.6
+          name: ciscoEnvMonTemperatureState
+          enum:
+            normal: 1
+            warning: 2
+            critical: 3
+            shutdown: 4
+            notPresent: 5
+            notFunctioning: 6
+        tag: temp_state
+      - column:
+          OID: 1.3.6.1.4.1.9.9.13.1.5.1.4
+          name: ciscoEnvMonSupplySource
+          enum:
+            unknown: 1
+            ac: 2
+            dc: 3
+            externalPowerSupply: 4
+            internalRedundant: 5
+        tag: power_source
       - column:
           OID: 1.3.6.1.4.1.9.9.13.1.4.1.1
           name: ciscoEnvMonFanStatusIndex
+        table: ciscoEnvMonFanStatusTable
         tag: fan_status_index
-  - MIB: CISCO-STACKWISE-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.500.1.2.2
-      name: cswStackPortInfoTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.500.1.2.2.1.1
-        name: cswStackPortOperStatus
-        enum:
-          up: 1
-          down: 2
-          forcedDown: 3
-    metric_tags:
-      - MIB: IF-MIB
-        column:
-          OID: 1.3.6.1.2.1.31.1.1.1.1
-          name: ifName
-        table: ifXTable
-        tag: interface_name
-  - MIB: CISCO-STACKWISE-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.500.1.2.1
-      name: cswSwitchInfoTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.500.1.2.1.1.6
-        name: cswSwitchState
-        enum:
-          waiting: 1
-          progressing: 2
-          added: 3
-          ready: 4
-          sdmMismatch: 5
-          verMismatch: 6
-          featureMismatch: 7
-          newMasterInit: 8
-          provisioned: 9
-          invalid: 10
-          removed: 11
-    metric_tags:
-      - tag: mac_address
-        column:
-          OID: 1.3.6.1.4.1.9.9.500.1.2.1.1.7
-          name: cswSwitchMacAddress
-      - MIB: ENTITY-MIB
-        column:
-          OID: 1.3.6.1.2.1.47.1.1.1.1.7
-          name: entPhysicalName
-        table: entPhysicalTable
-        tag: entity_name
-  - MIB: CISCO-MEMORY-POOL-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.48.1.1
-      name: ciscoMemoryPoolTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.48.1.1.1.5
-        name: ciscoMemoryPoolUsed
-        tag: MemoryUsed
-      - OID: 1.3.6.1.4.1.9.9.48.1.1.1.6
-        name: ciscoMemoryPoolFree
-        tag: MemoryFree
-      - OID: 1.3.6.1.4.1.9.9.48.1.1.1.7
-        name: ciscoMemoryPoolLargestFree
-    metric_tags:
       - column:
-          OID: 1.3.6.1.4.1.9.9.48.1.1.1.2
-          name: ciscoMemoryPoolName
-        tag: memory_pool_name
-  - MIB: CISCO-FIREWALL-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.147.1.2.2.2
-      name: cfwConnectionStatTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.147.1.2.2.2.1.4
-        name: cfwConnectionStatCount
-      - OID: 1.3.6.1.4.1.9.9.147.1.2.2.2.1.2
-        name: cfwConnectionStatType
-        tag: connection_type
-        enum:
-          other: 1
-          totalOpen: 2
-          currentOpen: 3
-          currentClosing: 4
-          currentHalfOpen: 5
-          currentInUse: 6
-          high: 7
-  - MIB: CISCO-FIREWALL-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.147.1.2.1.1
-      name: cfwHardwareStatusTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.147.1.2.1.1.1.3
-        name: cfwHardwareStatusValue
-        enum:
-          other: 1
-          up: 2
-          down: 3
-          error: 4
-          overTemp: 5
-          busy: 6
-          noMedia: 7
-          backup: 8
-          active: 9
-          standby: 10
-    metric_tags:
-      - index: 1
-        tag: hardware_type
-      - column:
-          OID: 1.3.6.1.4.1.9.9.147.1.2.1.1.1.2
-          name: cfwHardwareInformation
-        tag: hardware_description
-  - MIB: CISCO-VIRTUAL-SWITCH-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.388.1.2.2
-      name: cvsChassisTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.388.1.2.2.1.3
-        name: cvsChassisUpTime
-    metric_tags:
-      - column:
-          OID: 1.3.6.1.4.1.9.9.388.1.2.2.1.1
-          name: cvsChassisSwitchID
-        tag: chassis_switch_id
-  - MIB: CISCO-RTTMON-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.42.1.2.10
-      name: rttMonLatestRttOperTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.42.1.2.10.1.1
-        name: rttMonLatestRttOperCompletionTime
-      - OID: 1.3.6.1.4.1.9.9.42.1.2.10.1.2
-        name: rttMonLatestRttOperSense
-        enum:
-          other: 0
-          ok: 1
-          disconnected: 2
-          overThreshold: 3
-          timeout: 4
-          busy: 5
-          notConnected: 6
-          dropped: 7
-          sequenceError: 8
-          verifyError: 9
-          applicationSpecific: 10
-          dnsServerTimeout: 11
-          tcpConnectTimeout: 12
-          httpTransactionTimeout: 13
-          dnsQueryError: 14
-          httpError: 15
-          error: 16
-          mplsLspEchoTxError: 17
-          mplsLspUnreachable: 18
-          mplsLspMalformedReq: 19
-          mplsLspReachButNotFEC: 20
-          enableOk: 21
-          enableNoConnect: 22
-          enableVersionFail: 23
-          enableInternalError: 24
-          enableAbort: 25
-          enableFail: 26
-          enableAuthFail: 27
-          enableFormatError: 28
-          enablePortInUse: 29
-          statsRetrieveOk: 30
-          statsRetrieveNoConnect: 31
-          statsRetrieveVersionFail: 32
-          statsRetrieveInternalError: 33
-          statsRetrieveAbort: 34
-          statsRetrieveFail: 35
-          statsRetrieveAuthFail: 36
-          statsRetrieveFormatError: 37
-          statsRetrievePortInUse: 38
-    metric_tags:
-      - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.10
-          name: rttMonCtrlOperState
-        table: rttMonCtrlOperTable
-        tag: rtt_operation_state
-      - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.1.1.4
-          name: rttMonCtrlAdminRttType
-        table: rttMonCtrlAdminTable
-        tag: rtt_operation_type
-      - index: 1
-        tag: rtt_operation_index
-  - MIB: CISCO-RTTMON-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.42.1.2.9
-      name: rttMonCtrlOperTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.6
-        name: rttMonCtrlOperTimeoutOccurred
-    metric_tags:
-      - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.10
-          name: rttMonCtrlOperState
-        tag: rtt_operation_state
-      - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.1.1.4
-          name: rttMonCtrlAdminRttType
-        table: rttMonCtrlAdminTable
-        tag: rtt_operation_type
-      - index: 1
-        tag: rtt_operation_index
-  - MIB: CISCO-VPC-MIB
-    table:
-      OID: 1.3.6.1.4.1.9.9.807.1.4.2
-      name: cVpcStatusHostLinkTable
-    symbols:
-      - OID: 1.3.6.1.4.1.9.9.807.1.4.2.1.4
-        name: cVpcStatusHostLinkStatus
-        enum:
-          down: 1
-          downStar: 2
-          up: 3
-      - OID: 1.3.6.1.4.1.9.9.807.1.4.2.1.5
-        name: cVpcStatusHostLinkConsistencyStatus
-        enum:
-          success: 1
-          failed: 2
-          notApplicable: 3
-    metric_tags:
-      - column:
-          OID: 1.3.6.1.4.1.9.9.807.1.4.2.1.3
-          name: cVpcStatusHostLinkIfIndex
-        tag: link_if_index
+          OID: 1.3.6.1.4.1.9.9.13.1.5.1.2
+          name: ciscoEnvMonSupplyStatusDescr
+        tag: power_status_description
