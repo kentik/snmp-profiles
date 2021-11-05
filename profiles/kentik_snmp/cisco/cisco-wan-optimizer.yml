@@ -1,0 +1,81 @@
+# https://oidref.com/1.3.6.1.4.1.9.9.762.1.2
+---
+extends:
+  - cisco-all-devices.yml
+  - system-mib.yml
+  - host-resources-mib.yml
+
+profile: kentik-cisco-wan-optimizer
+
+sysobjectid:
+  - 1.3.6.1.4.1.9.1.1351 # Cisco WAVE 7541
+
+metrics:
+  - MIB: CISCO-PROCESS-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.7.0
+      name: cpmCPUTotal1minRev
+      tag: CPU
+  - MIB: CISCO-CONTENT-ENGINE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.178.1.6.2.1.0
+      name: cceAlarmCriticalCount
+  - MIB: CISCO-CONTENT-ENGINE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.178.1.6.2.2.0
+      name: cceAlarmMajorCount
+  - MIB: CISCO-CONTENT-ENGINE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.178.1.6.2.3.0
+      name: cceAlarmMinorCount
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.1.0
+      name: cwoTfoStatsTotalOptConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.2.0
+      name: cwoTfoStatsActiveOptConn
+      tag: active_connections
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.4.0
+      name: cwoTfoStatsActiveOptTCPPlusConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.5.0
+      name: cwoTfoStatsActiveOptTCPOnlyConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.6.0
+      name: cwoTfoStatsActiveOptTCPPrepConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.7.0
+      name: cwoTfoStatsActiveADConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.8.0
+      name: cwoTfoStatsReservedConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.9.0
+      name: cwoTfoStatsPendingConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.10.0
+      name: cwoTfoStatsActivePTConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.11.0
+      name: cwoTfoStatsTotalNormalClosedConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.12.0
+      name: cwoTfoStatsResetConn
+  - MIB: CISCO-WAN-OPTIMIZATION-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.762.1.2.1.13.0
+      name: cwoTfoStatsLoadStatus
+
+metric_tags:
