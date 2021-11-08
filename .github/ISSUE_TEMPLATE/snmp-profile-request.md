@@ -7,11 +7,13 @@ assignees: ''
 
 ---
 
-*Please add the Device Vendor and Model to the issue title as well*
+[NOTE]: # ( ^^ Please add the Device Vendor and Model in the title above. ^^ )
 
 Device Vendor: 
 
 Device Model: 
+
+[NOTE]: # (If you do not know your SysOID, it can be gathered from the SNMP walk you provide at the end of this issue. It is the value of this OID in the SYSTEM-MIB: `1.3.6.1.2.1.1.2.0`)
 
 System Object Identifier (SysOID): 
 
@@ -21,7 +23,7 @@ List of critical metrics that you expect in the profile (does not need to be all
  -
  -
 
-**Please provide a [public gist](https://gist.github.com/) with a sanitized SNMP walk of the device** *(sensitive information removed)*
+**Please provide a [public gist](https://gist.github.com/) with a sanitized** *(sensitive information removed)* **SNMP walk of the device. Providing MIB files is not a substitute for an SNMP walk and failure to provide one here will result in delays for closing this issue. The output of these commands shows the "true story" of what a device will respond to in SNMP and is used to ensure that our profiles are efficient and accurate for your devices.**
 
 Gist Link: 
 
@@ -29,8 +31,8 @@ Gist Link:
 Example SNMP walk commands:
 ```
 # v2c example
-snmpwalk -v 2c -On -c $COMMUNITY_STRING $IP_ADDRESS . >> $DEVICE_TYPE.out
+snmpwalk -v 2c -On -c $COMMUNITY_STRING $IP_ADDRESS . >> snmp_walk.out
 
 # v3 example
-snmpwalk -v3 -On -l authPriv -u $USERNAME -a MD5|SHA -A $AUTH_PASS -x DES|AES -X $PRIV_PASS $IP_ADDRESS . >> $DEVICE_TYPE.out
+snmpwalk -v3 -On -l authPriv -u $USERNAME -a MD5|SHA -A $AUTH_PASS -x DES|AES -X $PRIV_PASS $IP_ADDRESS . >> snmp_walk.out
 ```
