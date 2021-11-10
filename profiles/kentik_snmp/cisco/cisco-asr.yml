@@ -1,5 +1,6 @@
 # https://www.circitor.fr/Mibs/Html/C/CISCO-PROCESS-MIB.php
 # http://www.circitor.fr/Mibs/Html/C/CISCO-MEMORY-POOL-MIB.php
+# https://www.circitor.fr/Mibs/Html/C/CISCO-PROCESS-MIB.php
 ---
 extends:
   - bgp4-mib.yml
@@ -11,6 +12,7 @@ provider: kentik-router
 
 sysobjectid:
   - 1.3.6.1.4.1.9.1.46    # Cisco 7513 Router
+  - 1.3.6.1.4.1.9.1.110   # Cisco 3640 Router
   - 1.3.6.1.4.1.9.1.223   # Cisco 7204 VXR
   - 1.3.6.1.4.1.9.1.338   # Cisco 3661 AC
   - 1.3.6.1.4.1.9.1.403   # Cisco 7401 ASE
