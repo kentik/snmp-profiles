@@ -1,6 +1,6 @@
 # https://www.circitor.fr/Mibs/Html/C/CISCO-PROCESS-MIB.php
 # http://www.circitor.fr/Mibs/Html/C/CISCO-MEMORY-POOL-MIB.php
-# https://www.circitor.fr/Mibs/Html/C/CISCO-PROCESS-MIB.php
+# https://www.circitor.fr/Mibs/Html/C/CISCO-PRODUCT-MIB.php
 ---
 extends:
   - bgp4-mib.yml
