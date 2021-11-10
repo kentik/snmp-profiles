@@ -1,6 +1,7 @@
 # http://oid-info.com/get/1.3.6.1.4.1.30065.1
 # https://eos.arista.com/introduction-to-managing-eos-devices-monitoring/
 # https://mibs.observium.org/mib/HOST-RESOURCES-MIB
+# https://mibs.observium.org/mib/HOST-RESOURCES-TYPES/
 ---
 
 provider: kentik-switch
@@ -86,6 +87,13 @@ metrics:
         column:
           OID: 1.3.6.1.2.1.25.2.3.1.3
           name: hrStorageDescr
+      # Limit results to only hrStorageRam types
+      - tag: storage_type
+        column:
+          OID: 1.3.6.1.2.1.25.2.3.1.2
+          name: hrStorageType
+          match_attributes:
+            - ".*25\.2\.1\.2$"
   # CPU Utilization
   - MIB: HOST-RESOURCES-MIB
     table:
