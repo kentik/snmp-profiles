@@ -9,7 +9,6 @@ extends:
   - system-mib.yml
   - if-mib.yml
   - ip-mib.yml
-  - host-resources-mib.yml
   - ospf-mib.yml
   - bgp4-mib.yml
   - tcp-mib.yml
@@ -70,3 +69,34 @@ metrics:
         column:
           OID: 1.3.6.1.4.1.30065.3.6.1.2.1.2
           name: aristaEgressQueueIndex
+  # Memory Utilization
+  - MIB: HOST-RESOURCES-MIB
+    table:
+      OID: 1.3.6.1.2.1.25.2.3
+      name: hrStorageTable
+    symbols:
+      - OID: 1.3.6.1.2.1.25.2.3.1.5
+        name: hrStorageSize
+        tag: MemoryTotal
+      - OID: 1.3.6.1.2.1.25.2.3.1.6
+        name: hrStorageUsed
+        tag: MemoryUsed
+    metric_tags:
+      - tag: storage_description
+        column:
+          OID: 1.3.6.1.2.1.25.2.3.1.3
+          name: hrStorageDescr
+  # CPU Utilization
+  - MIB: HOST-RESOURCES-MIB
+    table:
+      OID: 1.3.6.1.2.1.25.3.3
+      name: hrProcessorTable
+    symbols:
+      - OID: 1.3.6.1.2.1.25.3.3.1.2
+        name: hrProcessorLoad
+        tag: CPU
+    metric_tags:
+      - tag: processor_id
+        column:
+          OID: 1.3.6.1.2.1.25.3.3.1.1
+          name: hrProcessorFrwID
