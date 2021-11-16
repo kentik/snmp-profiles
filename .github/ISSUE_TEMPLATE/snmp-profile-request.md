@@ -34,5 +34,5 @@ Example SNMP walk commands:
 snmpwalk -v 2c -On -c $COMMUNITY_STRING $IP_ADDRESS . >> snmp_walk.out
 
 # v3 example
-snmpwalk -v3 -On -l authPriv -u $USERNAME -a MD5|SHA -A $AUTH_PASS -x DES|AES -X $PRIV_PASS $IP_ADDRESS . >> snmp_walk.out
+snmpwalk -v3 -l authPriv -u $USERNAME -a MD5|SHA -A $AUTH_PASS -x DES|AES -X $PRIV_PASS -ObentU -Cc $IP_ADDRESS . >> snmp_walk.out
 ```
