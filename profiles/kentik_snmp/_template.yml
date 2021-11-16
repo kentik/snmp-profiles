@@ -59,11 +59,12 @@ metrics:
         # OPTIONAL: You can also add a 'tag' function here, see the scalar OID section above for an example
 
     # OPTIONAL: There is also a supported 'conversion' function for edge cases where an OID returns a non-string/non-numeric value
-    # ex: conversion: powerset_status | hwaddr | hextoint:<current>:<desired>
+    # ex: conversion: powerset_status | hwaddr | hextoint:<current>:<desired> | hextoip
     # powerset_status == used for enumeration of the 'upsBasicStateOutputState' OID in the POWERNET-MIB
     # hwaddr == used to convert physical MAC addresses into human-readable form
     # hextoint == used to convert hexadecimal into integer format
     #   <current> == LittleEndian | BigEndian
     #   <desired> == uint16 | uint32 | uint64
+    # hextoip == converts a hex string into a 4 octet ip addresses string
     
 #OPTIONAL: You can also create a 'metric_tags' section here to provide OID's to decorate all polled data from this profile
