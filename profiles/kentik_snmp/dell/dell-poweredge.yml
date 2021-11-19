@@ -1,17 +1,6 @@
+# Profile is intended to be used in an extends block
 # https://www.circitor.fr/Mibs/Html/M/MIB-Dell-10892.php
-# This profile matches on the generic Linux SysOID
-# https://oidref.com/1.3.6.1.4.1.8072.3.2.10
 ---
-extends:
-  - system-mib.yml
-
-provider: kentik-physical-server
-
-# disable the SNMP bulk walk operation for these devices
-no_use_bulkwalkall: true
-
-sysobjectid:
-  - 1.3.6.1.4.1.8072.3.2.10
 
 metrics:
   # operatingSystemMemoryTable

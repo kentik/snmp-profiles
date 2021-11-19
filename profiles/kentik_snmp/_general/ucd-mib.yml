@@ -1,4 +1,5 @@
-# Alternative MIB for host-resources-mib used on some older devices
+# Profile is intended to be used in an extends block
+# Alternative MIB for host-resources-mib used on some devices
 # http://oid-info.com/get/1.3.6.1.4.1.2021
 
 metrics:
