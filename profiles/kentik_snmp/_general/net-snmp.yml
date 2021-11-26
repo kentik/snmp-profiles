@@ -4,6 +4,7 @@
 extends:
   - host-resources-mib.yml
   - if-mib.yml
+  - ip.yml
   - system-mib.yml
   - ucd-mib.yml
   - dell-poweredge.yml
