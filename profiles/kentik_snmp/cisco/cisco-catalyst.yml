@@ -371,6 +371,7 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.2688    #  Catalyst 9500 Virtual
   - 1.3.6.1.4.1.9.1.2694    #  Catalyst 9200
   - 1.3.6.1.4.1.9.1.2695    #  Catalyst 9200R
+  - 1.3.6.1.4.1.9.6.1.83.10.1    # SG300-10 Managed Switch
 
 metrics:
   - MIB: CISCO-IF-EXTENSION-MIB
