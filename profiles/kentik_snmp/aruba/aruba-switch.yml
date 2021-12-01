@@ -6,7 +6,6 @@ extends:
   - if-mib.yml
   - ip-mib.yml
   - system-mib.yml
-  - tcp-mib.yml
 
 profile: kentik-switch
 
