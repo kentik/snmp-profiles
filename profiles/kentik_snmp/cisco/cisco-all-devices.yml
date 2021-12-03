@@ -642,6 +642,14 @@ metrics:
             notFunctioning: 6
         tag: voltage_state
       - column:
+          OID: 1.3.6.1.4.1.9.9.13.1.3.1.2
+          name: ciscoEnvMonTemperatureStatusDescr
+        tag: temp_descr
+      - column:
+          OID: 1.3.6.1.4.1.9.9.13.1.3.1.4
+          name: ciscoEnvMonTemperatureThreshold
+        tag: temp_threshold
+      - column:
           OID: 1.3.6.1.4.1.9.9.13.1.3.1.6
           name: ciscoEnvMonTemperatureState
           enum:
