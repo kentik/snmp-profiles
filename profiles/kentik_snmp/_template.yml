@@ -67,4 +67,4 @@ metrics:
     #   <desired> == uint16 | uint32 | uint64
     # hextoip == converts a hex string into a 4 octet ip addresses string
     
-#OPTIONAL: You can also create a 'metric_tags' section here to provide OID's to decorate all polled data from this profile
+#OPTIONAL: You can also create an additional 'metric_tags' section here to provide OID's to decorate all the scalar OIDs in this profile.  Note that tags applied at this level do no get decorated to data inside of table stanzas.
