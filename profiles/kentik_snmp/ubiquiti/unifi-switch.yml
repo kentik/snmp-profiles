@@ -1,0 +1,28 @@
+# https://mibs.observium.org/mib/EdgeSwitch-SWITCHING-MIB/
+---
+extends: 
+  - if-mib.yml
+  - ip-mib.yml
+  - system-mib.yml
+
+provider: kentik-switch
+
+sysobjectid:
+  - 1.3.6.1.4.1.4413  # Broadcom
+
+metrics:
+  - MIB: EdgeSwitch-SWITCHING-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.4413.1.1.1.1.4.1.0
+      name: agentSwitchCpuProcessMemFree
+      tag: MemoryFree
+  - MIB: EdgeSwitch-SWITCHING-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.4413.1.1.1.1.4.2.0
+      name: agentSwitchCpuProcessMemAvailable
+      tag: MemoryTotal
+  - MIB: EdgeSwitch-SWITCHING-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.4413.1.1.1.1.4.9.0
+      name: agentSwitchCpuProcessTotalUtilization
+      tag: CPU
