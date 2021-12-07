@@ -92,6 +92,7 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.2678  # Cisco 92012SZD ASR
   - 1.3.6.1.4.1.9.1.2679  # Cisco 92012SZA ASR
   - 1.3.6.1.4.1.9.1.2705  # Cisco 92020SZM ASR
+  - 1.3.6.1.4.1.9.6.1.23.3.13.0.4  # Cisco RV340 Dual WAN Gigabit VPN Router
 
 metrics:
   - MIB: CISCO-PROCESS-MIB
