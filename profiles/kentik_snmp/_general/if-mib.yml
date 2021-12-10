@@ -35,6 +35,7 @@ metrics:
   - column:
       OID: 1.3.6.1.2.1.2.2.1.1
       name: ifIndex
+    tag: if_Index
   - column:
       OID: 1.3.6.1.2.1.2.2.1.3
       name: ifType
@@ -273,6 +274,7 @@ metrics:
         macSecUncontrolledIF: 232
         aviciOpticalEther: 233
         atmbond: 234
+    tag: if_Type
   - column:
       OID: 1.3.6.1.2.1.2.2.1.7
       name: ifAdminStatus
@@ -280,6 +282,7 @@ metrics:
         up: 1
         down: 2
         testing: 3
+    tag: if_AdminStatus
   - column: 
       OID: 1.3.6.1.2.1.2.2.1.8
       name: ifOperStatus
@@ -291,15 +294,16 @@ metrics:
         dormant: 5
         notPresent: 6
         lowerLayerDown: 7
+    tag: if_OperStatus
   - column:
       OID: 1.3.6.1.2.1.31.1.1.1.1
       name: ifName
-    tag: interface_name
+    tag: if_interface_name
   - column:
       OID: 1.3.6.1.2.1.31.1.1.1.15
       name: ifHighSpeed
-    tag: interface_speed
+    tag: if_Speed
   - column:
       OID: 1.3.6.1.2.1.31.1.1.1.18
       name: ifAlias
-    tag: interface_alias
+    tag: if_Alias
