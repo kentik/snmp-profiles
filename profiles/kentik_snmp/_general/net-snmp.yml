@@ -18,7 +18,7 @@ no_use_bulkwalkall: true
 # Regex is run on _lower case_ version of the sysDesc string.
 matches:
   "^pfsense": pf_sense.yml
-  "barracuda": barracuda.yml
+  "barracuda email security gateway": barracuda-email-gateway.yml
   "^uap-ac-inwall": unifi-access-point.yml
 
 sysobjectid:
