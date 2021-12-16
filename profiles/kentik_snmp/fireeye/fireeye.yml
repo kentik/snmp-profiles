@@ -1,0 +1,78 @@
+# https://community.fireeye.com/s/article/000002198
+---
+extends: 
+  - system-mib.yml
+  - if-mib.yml
+
+sysobjectid:
+  - 1.3.6.1.4.1.25597.1    # FireEye appliances seem to all use this SysOID
+
+provider: kentik-web-gateway
+
+metrics:
+  # CPU Utilization
+  - MIB: HOST-RESOURCES-MIB
+    table:
+      OID: 1.3.6.1.2.1.25.3.3
+      name: hrProcessorTable
+    symbols:
+      - OID: 1.3.6.1.2.1.25.3.3.1.2
+        name: hrProcessorLoad
+        tag: CPU
+    metric_tags:
+      - tag: processor_id
+        column:
+          OID: 1.3.6.1.2.1.25.3.3.1.1
+          name: hrProcessorFrwID
+  # Memory Total
+  - MIB: HOST-RESOURCES-MIB
+    symbol:
+      OID: 1.3.6.1.2.1.25.2.3.1.6.1
+      name: hrStorageUsed
+      tag: MemoryTotal
+  # Memory Buffers
+  - MIB: HOST-RESOURCES-MIB
+    symbol:
+      OID: 1.3.6.1.2.1.25.2.3.1.6.6
+      name: hrStorageUsed
+      tag: MemoryBuffer
+  # Memory Cache
+  - MIB: HOST-RESOURCES-MIB
+    symbol:
+      OID: 1.3.6.1.2.1.25.2.3.1.6.7
+      name: hrStorageUsed
+      tag: MemoryCache
+  # Whether the product license is active
+  - MIB: FE-FIREEYE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.25597.11.5.1.10.0
+      name: feProductLicenseActive
+      enum:
+        true: 1
+        false: 2
+  # Hardware model
+  - MIB: FE-FIREEYE-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.25597.11.1.1.2.0
+      name: feHardwareModel
+  # The physical disk table
+  - MIB: FE-FIREEYE-MIB
+    table:
+      OID: 1.3.6.1.4.1.25597.11.2.1.3
+      name: fePhysicalDiskTable
+    symbols:
+      # Whether a physical disk is healthy
+      - OID: 1.3.6.1.4.1.25597.11.2.1.3.1.4
+        name: fePhysicalDiskIsHealthy
+        enum:
+          true: 1
+          false: 2
+    metric_tags:
+      # A unique value for each disk
+      - column:
+          OID: 1.3.6.1.4.1.25597.11.2.1.3.1.1
+          name: fePhysicalDiskIndex
+      # Physical disk name
+      - column:
+          OID: 1.3.6.1.4.1.25597.11.2.1.3.1.2
+          name: fePhysicalDiskName
