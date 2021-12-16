@@ -1,0 +1,68 @@
+# Profile is intended to be used in an extends block
+# https://www.circitor.fr/Mibs/Html/E/ENTITY-SENSOR-MIB.php
+
+metrics:
+- MIB: ENTITY-SENSOR-MIB
+    table:
+      OID: 1.3.6.1.2.1.99.1.1
+      name: entPhySensorTable
+    symbols:
+      - OID: 1.3.6.1.2.1.99.1.1.1.4
+        name: entPhySensorValue
+        tag: sensor_value
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.2.1.99.1.1.1.1
+          name: entPhySensorType
+          enum:
+            other: 1
+            unknown: 2
+            voltsAC: 3
+            voltsDC: 4
+            amperes: 5
+            watts: 6
+            hertz: 7
+            celsius: 8
+            percentRH: 9
+            rpm: 10
+            cmm: 11
+            truthvalue: 12
+        tag: sensor_type
+      - column:
+          OID: 1.3.6.1.2.1.99.1.1.1.2
+          name: entPhySensorScale
+          enum:
+            yocto: 1
+            zepto: 2
+            atto: 3
+            femto: 4
+            pico: 5
+            nano: 6
+            micro: 7
+            milli: 8
+            units: 9
+            kilo: 10
+            mega: 11
+            giga: 12
+            tera: 13
+            exa: 14
+            peta: 15
+            zetta: 16
+            yotta: 17
+        tag: sensor_scale
+      - column:
+          OID: 1.3.6.1.2.1.99.1.1.1.3
+          name: entPhySensorPrecision
+        tag: sensor_precision
+      - column:
+          OID: 1.3.6.1.2.1.99.1.1.1.5
+          name: entPhySensorOperStatus
+          enum:
+            ok: 1
+            unavailable: 2
+            nonoperational: 3
+        tag: sensor_status
+      - column:
+          OID: 1.3.6.1.2.1.99.1.1.1.6
+          name: entPhySensorUnitsDisplay
+        tag: sensor_units
