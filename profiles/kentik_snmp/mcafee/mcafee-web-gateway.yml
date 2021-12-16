@@ -27,7 +27,7 @@ metrics:
     symbol:
       name: stMalwareDetected
       OID: 1.3.6.1.4.1.1230.2.7.2.1.2.0
-  # Number of connections that not have been blocked
+  # Number of connections that have not been blocked
   - MIB: MCAFEE-MWG-MIB
     symbol:
       name: stConnectionsLegitimate
