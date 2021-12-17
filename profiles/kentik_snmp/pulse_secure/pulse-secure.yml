@@ -30,11 +30,13 @@ metrics:
     symbol:
       OID: 1.3.6.1.4.1.12532.10
       name: iveCpuUtil
+      poll_time_sec: 60
       tag: CPU
   - MIB: JUNIPER-IVE-MIB
     symbol:
       OID: 1.3.6.1.4.1.12532.11
       name: iveMemoryUtil
+      poll_time_sec: 60
       tag: MemoryUtilization
   - MIB: JUNIPER-IVE-MIB
     symbol:
