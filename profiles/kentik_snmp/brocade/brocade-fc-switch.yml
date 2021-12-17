@@ -14,11 +14,13 @@ metrics:
     symbol:
       OID: 1.3.6.1.4.1.1588.2.1.1.1.26.1.0
       name: swCpuUsage
+      poll_time_sec: 60
       tag: CPU
   - MIB: RESOURCE-MIB
     symbol:
       OID: 1.3.6.1.4.1.1588.2.1.1.1.26.6.0
       name: swMemUsage
+      poll_time_sec: 60
       tag: MemoryUtilization
   - MIB: FIBRE-CHANNEL-FE-MIB
     table:
