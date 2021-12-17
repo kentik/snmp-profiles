@@ -73,14 +73,6 @@ metrics:
           acnone: 4
           unknown: 99
     metric_tags:
-      # Power Module Enclosure ID
-      - column:
-          name: powerEnclosureID
-          OID: 1.3.6.1.4.1.19746.1.1.1.1.1.1.1
-      # Power Module index
-      - column:
-          name: powerModuleIndex
-          OID: 1.3.6.1.4.1.19746.1.1.1.1.1.1.2
       # Power Module Description
       - column:
           name: powerModuleDescription
@@ -104,10 +96,6 @@ metrics:
           overheatWarning: 3
           overheatCritical: 4
     metric_tags:
-      # Temperature Sensor Number
-      - column:
-          name: tempSensorIndex
-          OID: 1.3.6.1.4.1.19746.1.1.2.1.1.1.2
       # Temperature Sensor Description
       - column:
           name: tempSensorDescription
@@ -134,14 +122,6 @@ metrics:
           ok: 1
           fail: 2
     metric_tags:
-      # Enclosure ID of fan
-      - column:
-          name: fanEnclosureID
-          OID: 1.3.6.1.4.1.19746.1.1.3.1.1.1.1
-      # Fan Number Index of the fan
-      - column:
-          name: fanIndex
-          OID: 1.3.6.1.4.1.19746.1.1.3.1.1.1.2
       # Vendor supplied description of the fan
       - column:
           name: fanDescription
@@ -168,10 +148,6 @@ metrics:
       - name: fileSystemSpaceCleanable
         OID: 1.3.6.1.4.1.19746.1.3.2.1.1.8
     metric_tags:
-      # File system resource trap index
-      - column:
-          name: fileSystemResourceTrapIndex
-          OID: 1.3.6.1.4.1.19746.1.3.2.1.1.2
       # File system resource name
       - column:
           name: fileSystemResourceName
@@ -267,11 +243,6 @@ metrics:
       # Number of KBytes per second sent for Replication
       - name: relOutKBytesPerSecond
         OID: 1.3.6.1.4.1.19746.1.5.1.1.1.16
-    metric_tags:
-      # System Stats Row index
-      - column:
-          name: systemStatsIndex
-          OID: 1.3.6.1.4.1.19746.1.5.1.1.1.1
   # A table containing entries of DiskPropertiesEntry
   - MIB: DATA-DOMAIN-MIB
     table:
@@ -350,12 +321,3 @@ metrics:
           failed: 4
           spare: 5
           available: 6
-    metric_tags:
-      # Enclosure ID of disk
-      - column:
-          name: diskPerfEnclosureID
-          OID: 1.3.6.1.4.1.19746.1.6.2.1.1.1
-      # Disk Number
-      - column:
-          name: diskPerfIndex
-          OID: 1.3.6.1.4.1.19746.1.6.2.1.1.2
