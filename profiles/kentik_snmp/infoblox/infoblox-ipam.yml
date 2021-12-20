@@ -1,0 +1,161 @@
+# http://www.circitor.fr/Mibs/Html/I/IB-SMI-MIB.php
+# http://www.circitor.fr/Mibs/Html/I/IB-PLATFORMONE-MIB.php
+# http://www.circitor.fr/Mibs/Html/I/IB-DHCPONE-MIB.php
+# http://www.circitor.fr/Mibs/Html/I/IB-DNSONE-MIB.php
+---
+extends:
+  - if-mib.yml
+  - system-mib.yml
+
+provider: kentik-ipam
+
+sysobjectid:
+  - 1.3.6.1.4.1.7779.1.1501    # IB-815
+  - 1.3.6.1.4.1.7779.1.1403    # IB-1420
+
+metrics:
+  # Current average CPU usage
+  - MIB: IB-PLATFORMONE-MIB
+    symbol:
+      name: ibSystemMonitorCpuUsage
+      OID: 1.3.6.1.4.1.7779.3.1.1.2.1.8.1.1.0
+      tag: CPU
+  # Current Memory usage
+  - MIB: IB-PLATFORMONE-MIB
+    symbol:
+      name: ibSystemMonitorMemUsage
+      OID: 1.3.6.1.4.1.7779.3.1.1.2.1.8.2.1.0
+      tag: MemoryUtilization
+  # The size of deferred dynamic DNS update queue
+  - MIB: IB-DHCPONE-MIB
+    symbol:
+      name: ibDhcpDeferredQueueSize
+      OID: 1.3.6.1.4.1.7779.3.1.1.4.1.4.0
+  # A table of named ZONE statistics
+  - MIB: IB-DNSONE-MIB
+    table:
+      name: ibZoneStatisticsTable
+      OID: 1.3.6.1.4.1.7779.3.1.1.3.1.1
+    symbols:
+      # Number of Successful responses since DNS process started.
+      - name: ibBindZoneSuccess
+        OID: 1.3.6.1.4.1.7779.3.1.1.3.1.1.1.2
+      # Number of DNS referrals since DNS process started.
+      - name: ibBindZoneReferral
+        OID: 1.3.6.1.4.1.7779.3.1.1.3.1.1.1.3
+      # Number of DNS query received for non-existent record.
+      - name: ibBindZoneNxRRset
+        OID: 1.3.6.1.4.1.7779.3.1.1.3.1.1.1.4
+      # Number of DNS query received for non-existent domain.
+      - name: ibBindZoneNxDomain
+        OID: 1.3.6.1.4.1.7779.3.1.1.3.1.1.1.5
+      # Number of Queries received using recursion since DNS process started.
+      - name: ibBindZoneRecursion
+        OID: 1.3.6.1.4.1.7779.3.1.1.3.1.1.1.6
+      # Number of Failed queries since DNS process started.
+      - name: ibBindZoneFailure
+        OID: 1.3.6.1.4.1.7779.3.1.1.3.1.1.1.7
+    metric_tags:
+      # DNS Zone name. The first one is global summary statistics. Index name for global statistics is 'summary'. All zones live in the default view.
+      - column:
+          name: ibBindZoneName
+          OID: 1.3.6.1.4.1.7779.3.1.1.3.1.1.1.1
+  # A table of Physical Node's Grid Replication Status.
+  - MIB: IB-PLATFORMONE-MIB
+    table:
+      name: ibClusterReplicationStatusTable
+      OID: 1.3.6.1.4.1.7779.3.1.1.2.1.2
+    symbols:
+      # Sent queue size from master.
+      - name: ibNodeQueueFromMaster
+        OID: 1.3.6.1.4.1.7779.3.1.1.2.1.2.1.3
+      # Receive queue size to master.
+      - name: ibNodeQueueToMaster
+        OID: 1.3.6.1.4.1.7779.3.1.1.2.1.2.1.5
+    metric_tags:
+      # Physical node IP address.
+      - column:
+          name: ibNodeIPAddress
+          OID: 1.3.6.1.4.1.7779.3.1.1.2.1.2.1.1
+      # Replication queue status for this node.
+      - column:
+          name: ibNodeReplicationStatus
+          OID: 1.3.6.1.4.1.7779.3.1.1.2.1.2.1.2
+  # A table of member service status.
+  - MIB: IB-PLATFORMONE-MIB
+    table:
+      name: ibMemberServiceStatusTable
+      OID: 1.3.6.1.4.1.7779.3.1.1.2.1.9
+    symbols:
+      # Service Status
+      - name: ibServiceStatus
+        OID: 1.3.6.1.4.1.7779.3.1.1.2.1.9.1.1.2
+        enum:
+          working: 1
+          warning: 2
+          failed: 3
+          inactive: 4
+          unknown: 5
+    metric_tags:
+      # Service Name
+      - column:
+          name: ibServiceName
+          OID: 1.3.6.1.4.1.7779.3.1.1.2.1.9.1.1.1
+          enum:
+            dhcp: 1
+            dns: 2
+            ntp: 3
+            radius: 4
+            tftp: 5
+            http-file-dist: 6
+            ftp: 7
+            bloxtools-move: 8
+            bloxtools: 9
+            node-status: 10
+            disk-usage: 11
+            enet-lan: 12
+            enet-lan2: 13
+            enet-ha: 14
+            enet-mgmt: 15
+            lcd: 16
+            memory: 17
+            replication: 18
+            db-object: 19
+            raid-summary: 20
+            raid-disk1: 21
+            raid-disk2: 22
+            raid-disk3: 23
+            raid-disk4: 24
+            fan1: 25
+            fan2: 26
+            fan3: 27
+            power-supply: 28
+            ntp-sync: 29
+            cpu1-temp: 30
+            cpu2-temp: 31
+            sys-temp: 32
+            raid-battery: 33
+            cpu-usage: 34
+            ospf: 35
+            bgp: 36
+      # Service Description
+      - column:
+          name: ibServiceDescription
+          OID: 1.3.6.1.4.1.7779.3.1.1.2.1.9.1.1.3
+
+metric_tags:
+  # Infoblox One hardware type
+  - MIB: IB-PLATFORMONE-MIB
+    symbol:
+      name: ibHardwareType
+      OID: 1.3.6.1.4.1.7779.3.1.1.2.1.4
+  # Infoblox One device serial number
+  - MIB: IB-PLATFORMONE-MIB
+    symbol:
+      name: ibSerialNumber
+      OID: 1.3.6.1.4.1.7779.3.1.1.2.1.6
+  # Infoblox One NIOS version
+  - MIB: IB-PLATFORMONE-MIB
+    symbol:
+      name: ibNiosVersion
+      OID: 1.3.6.1.4.1.7779.3.1.1.2.1.7
