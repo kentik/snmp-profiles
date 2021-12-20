@@ -15,12 +15,14 @@ metrics:
     symbol:
       name: stCPULoad
       OID: 1.3.6.1.4.1.1230.2.7.2.5.1.0
+      poll_time_sec: 60
       tag: CPU
   # Virtual memory consumption of the main processes divided by RAM + half of SWAP space. Projected to 0-100.
   - MIB: MCAFEE-MWG-MIB
     symbol:
       name: stMemConsumed
       OID: 1.3.6.1.4.1.1230.2.7.2.5.15.0
+      poll_time_sec: 60
       tag: MemoryUtilization
   # Number of infections detected by the McAfee Gateway Antimalware Engine
   - MIB: MCAFEE-MWG-MIB
