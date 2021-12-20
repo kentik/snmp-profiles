@@ -145,20 +145,14 @@ metrics:
 
 metric_tags:
   # Infoblox One hardware type
-  - MIB: IB-PLATFORMONE-MIB
-    symbol:
+  - column:
       name: ibHardwareType
       OID: 1.3.6.1.4.1.7779.3.1.1.2.1.4
-    tag: hardware_type
   # Infoblox One device serial number
-  - MIB: IB-PLATFORMONE-MIB
-    symbol:
+  - column:
       name: ibSerialNumber
       OID: 1.3.6.1.4.1.7779.3.1.1.2.1.6
-    tag: serial_number
   # Infoblox One NIOS version
-  - MIB: IB-PLATFORMONE-MIB
-    symbol:
+  - column:
       name: ibNiosVersion
       OID: 1.3.6.1.4.1.7779.3.1.1.2.1.7
-    tag: nios_version
