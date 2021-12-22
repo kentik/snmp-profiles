@@ -1,0 +1,118 @@
+# http://oidref.com/1.3.6.1.4.1.476.1.42.3.4
+---
+extends:
+  - cisco-all-devices.yml
+  - system-mib.yml
+  - host-resources-mib.yml
+
+profile: kentik-wireless-controller
+
+sysobjectid:
+  - 1.3.6.1.4.1.9.1.828  # Cisco Air WLC 2106
+  - 1.3.6.1.4.1.9.1.1069 # Cisco 5500 WLC
+  - 1.3.6.1.4.1.9.1.1295 # Cisco 7500 WLC
+  - 1.3.6.1.4.1.9.1.1615 # Cisco 8500 WLC
+  - 1.3.6.1.4.1.9.1.1631 # Cisco Virtual WLC
+  - 1.3.6.1.4.1.9.1.1645 # Cisco 5760 WLC
+  - 1.3.6.1.4.1.9.1.2170 # Cisco 5520 WLC
+  - 1.3.6.1.4.1.9.1.2171 # Cisco 8520 WLC
+
+metrics:
+  - MIB: CISCO-RF-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.176.1.1.2.0
+      name: cRFStatusUnitState
+      enum:
+        notKnown: 1
+        disabled: 2
+        initialization: 3
+        negotiation: 4
+        standbyCold: 5
+        standbyColdConfig: 6
+        standbyColdFileSys: 7
+        standbyColdBulk: 8
+        standbyHot: 9
+        activeFast: 10
+        activeDrain: 11
+        activePreconfig: 12
+        activePostconfig: 13
+        active: 14
+        activeExtraload: 15
+        activeHandback: 16
+  - MIB: CISCO-RF-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.176.1.1.3.0
+      name: cRFStatusPeerUnitId
+  - MIB: CISCO-RF-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.176.1.1.4.0
+      name: cRFStatusPeerUnitState
+      enum:
+        notKnown: 1
+        disabled: 2
+        initialization: 3
+        negotiation: 4
+        standbyCold: 5
+        standbyColdConfig: 6
+        standbyColdFileSys: 7
+        standbyColdBulk: 8
+        standbyHot: 9
+        activeFast: 10
+        activeDrain: 11
+        activePreconfig: 12
+        activePostconfig: 13
+        active: 14
+        activeExtraload: 15
+        activeHandback: 16
+  - MIB: CISCO-RF-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.176.1.1.8
+      name: cRFStatusLastSwactReasonCode
+      enum:
+        unsupported: 1
+        none: 2
+        notKnown: 3
+        userInitiated: 4
+        userForced: 5
+        activeUnitFailed: 6
+        activeUnitRemoved: 7
+  - MIB: CISCO-RF-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.176.1.1.9
+      name: cRFStatusFailoverTime
+  - MIB: CISCO-RF-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.176.1.2.16
+      name: cRFCfgRedundancyOperMode
+      enum: 
+        nonRedundant: 1
+        staticLoadShareNonRedundant: 2
+        dynamicLoadShareNonRedundant: 3
+        staticLoadShareRedundant: 4
+        dynamicLoadShareRedundant: 5
+        coldStandbyRedundant: 6
+        warmStandbyRedundant: 7
+        hotStandbyRedundant: 8
+  - MIB: CISCO-VPC-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.512.1.1.1
+      name: cLWlanConfigTable
+    symbols:
+      - OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.2
+        name: cLWlanRowStatus
+        enum:
+            active: 1
+            notInService: 2
+            notReady: 3
+            createAndGo: 4
+            createAndWait: 5
+            destroy: 6
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.3
+          name: cLWlanProfileName
+        tag: wlan_profile_name
+      - column:
+          OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.4
+          name: cLWlanSsid
+        tag: wlan_ssid
