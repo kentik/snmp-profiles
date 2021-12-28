@@ -7,7 +7,7 @@ extends:
   - ip-mib.yml
   - system-mib.yml
 
-profile: kentik-switch
+provider: kentik-switch
 
 sysobjectid:
   - 1.3.6.1.4.1.11.2.3.7.11.181.21    # JL256A/2930F

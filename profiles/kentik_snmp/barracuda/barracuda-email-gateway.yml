@@ -8,7 +8,7 @@ extends:
   - system-mib.yml
   - ucd-mib.yml
 
-profile: kentik-barracuda-email-gateway
+provider: kentik-barracuda-email-gateway
 
 sysobjectid:
   - 1.3.6.1.4.1.8072.3.2.10.barracuda
