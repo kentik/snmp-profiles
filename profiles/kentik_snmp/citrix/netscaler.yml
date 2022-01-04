@@ -1,0 +1,212 @@
+# https://mibs.observium.org/mib/NS-ROOT-MIB/
+---
+extends:
+  - system-mib.yml
+
+provider: kentik-netscaler
+
+sysobjectid:
+  - 1.3.6.1.4.1.5951.1    # NetScaler root
+
+metrics:
+  # CPU utilization percentage
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: resCpuUsage
+      OID: 1.3.6.1.4.1.5951.4.1.1.41.1.0
+      poll_time_sec: 60
+      tag: CPU
+  # Percentage of memory utilization on NetScaler
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: resMemUsage
+      OID: 1.3.6.1.4.1.5951.4.1.1.41.2.0
+      poll_time_sec: 60
+      tag: MemoryUtilization
+  # This shows whether NetScaler is in standalone mode or whether it is primary or secondary in case of failover mode
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: sysHighAvailabilityMode
+      OID: 1.3.6.1.4.1.5951.4.1.1.6.0
+      enum:
+        standalone: 0
+        primary: 1
+        secondary: 2
+        unknown: 3
+  # This represents the state of the failover peer NetScaler whether Primary or Secondary
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: haPeerState
+      OID: 1.3.6.1.4.1.5951.4.1.1.23.3.0
+      enum:
+        standalone: 0
+        primary: 1
+        secondary: 2
+        unknown: 3
+  # Total number of master state changes that the NetScaler appliance has made from primary to secondary and vice-versa
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: haTotStateTransitions
+      OID: 1.3.6.1.4.1.5951.4.1.1.23.4.0
+  # This represents the time since the NetScaler underwent a state change from primary to secondary or vice-versa
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: haTimeofLastStateTransition
+      OID: 1.3.6.1.4.1.5951.4.1.1.23.5.0
+  # Whether a NetScaler appliance is configured for high availability
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: haCurStatus
+      OID: 1.3.6.1.4.1.5951.4.1.1.23.23.0
+      enum:
+        no: 0
+        yes: 1
+  # State of the HA node, based on its health, in a high availability setup
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: haCurState
+      OID: 1.3.6.1.4.1.5951.4.1.1.23.24.0
+      enum:
+        unknown: 0
+        init: 1
+        down: 2
+        up: 3
+        partialFail: 4
+        monitorFail: 5
+        monitorOk: 6
+        completeFail: 7
+        dumb: 8
+        disabled: 9
+        partialFailSsl: 10
+        routemonitorFail: 11
+  # Number of services defined on this NetScaler appliance
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: svcCount
+      OID: 1.3.6.1.4.1.5951.4.1.2.6.1.0
+  # Number of servers defined on this NetScaler appliance
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: serverCount
+      OID: 1.3.6.1.4.1.5951.4.1.2.6.2.0
+  # Number of service groups defined on this NetScaler appliance
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: svcgroupCount
+      OID: 1.3.6.1.4.1.5951.4.1.2.6.3.0
+  # Number of service group members defined on this NetScaler appliance
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: svcgroupmemCount
+      OID: 1.3.6.1.4.1.5951.4.1.2.6.4.0
+  # Number of services configured on this NetScaler appliance
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: syssvcCount
+      OID: 1.3.6.1.4.1.5951.4.1.2.6.5.0
+  # Number of configured services which are up on this NetScaler appliance
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: sysupsvcCount
+      OID: 1.3.6.1.4.1.5951.4.1.2.6.6.0
+  # Number of configured service items which are up on this NetScaler appliance
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: sysupvcitmCount
+      OID: 1.3.6.1.4.1.5951.4.1.2.6.7.0
+  # Total number of vservers configured on the NetScaler
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: curConfigVservers
+      OID: 1.3.6.1.4.1.5951.4.1.3.5.1.0
+  # Number of virtual server bindings on this NetScaler appliance
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: vsvrBindCount
+      OID: 1.3.6.1.4.1.5951.4.1.3.5.2.0
+  # Number of virtual server, service group bindings on this NetScaler appliance
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: vsvrSvcGroupBindCount
+      OID: 1.3.6.1.4.1.5951.4.1.3.5.3.0
+  # Total number of LB vservers configured on the NetScaler
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: curConfigLbVservers
+      OID: 1.3.6.1.4.1.5951.4.1.3.5.4.0
+  # Total number of GSLB vservers configured on the NetScaler
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: curConfigGslbVservers
+      OID: 1.3.6.1.4.1.5951.4.1.3.5.5.0
+  # Total count of spillovers
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: totSpilloverCount
+      OID: 1.3.6.1.4.1.5951.4.1.3.5.6.0
+  # This table contains information about the disk space of the NetScaler
+  - MIB: NS-ROOT-MIB
+    table:
+      name: nsSysHealthDiskTable
+      OID: 1.3.6.1.4.1.5951.4.1.1.41.8
+    symbols:
+      # The total disk space in MBytes (includes available and used spaces also)
+      - name: sysHealthDiskSize
+        OID: 1.3.6.1.4.1.5951.4.1.1.41.8.1.2
+      # The total disk space available in MBytes
+      - name: sysHealthDiskAvail
+        OID: 1.3.6.1.4.1.5951.4.1.1.41.8.1.3
+      # The total disk space used in MBytes
+      - name: sysHealthDiskUsed
+        OID: 1.3.6.1.4.1.5951.4.1.1.41.8.1.4
+      # The Percentage of the disk space used
+      - name: sysHealthDiskPerusage
+        OID: 1.3.6.1.4.1.5951.4.1.1.41.8.1.5
+    metric_tags:
+      # The disk name
+      - column:
+          name: sysHealthDiskName
+          OID: 1.3.6.1.4.1.5951.4.1.1.41.8.1.1
+  # The interface related statistics table
+  - MIB: NS-ROOT-MIB
+    table:
+      name: nsIfStatsTable
+      OID: 1.3.6.1.4.1.5951.4.1.1.54
+    symbols:
+      # Number of bytes received by an interface since the NetScaler appliance was started or the interface statistics were cleared
+      - name: ifTotRxBytes
+        OID: 1.3.6.1.4.1.5951.4.1.1.54.1.3
+        tag: if_InBytes
+      # Number of bytes transmitted by an interface since the NetScaler appliance was started or the interface statistics were cleared
+      - name: ifTotTxBytes
+        OID: 1.3.6.1.4.1.5951.4.1.1.54.1.7
+        tag: if_OutBytes
+      # Interface throughput in Mbps
+      - name: ifThroughput
+        OID: 1.3.6.1.4.1.5951.4.1.1.54.1.48
+        tag: if_Speed
+    metric_tags:
+      # The name of the interface
+      - column:
+          name: ifName
+          OID: 1.3.6.1.4.1.5951.4.1.1.54.1.1
+        tag: if_interface_name
+      # The media type of the interface
+      - column:
+          name: ifMedia
+          OID: 1.3.6.1.4.1.5951.4.1.1.54.1.2
+        tag: if_Media
+
+metric_tags:
+  # This shows the version of the kernel build running on the NetScaler
+  - column:
+      name: sysBuildVersion
+      OID: 1.3.6.1.4.1.5951.4.1.1.1.0
+  # The hardware version description of the NetScaler system
+  - column:
+      name: sysHardwareVersionDesc
+      OID: 1.3.6.1.4.1.5951.4.1.1.11.0
+  # The serial number of the NetScaler system
+  - column:
+      name: sysHardwareSerialNumber
+      OID: 1.3.6.1.4.1.5951.4.1.1.14.0
