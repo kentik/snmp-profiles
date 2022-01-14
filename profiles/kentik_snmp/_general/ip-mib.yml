@@ -145,4 +145,4 @@ metrics:
         4: ipv6z
         16: dns
     - index: 2
-      tag: if_interface_name
+      tag: interface_name
