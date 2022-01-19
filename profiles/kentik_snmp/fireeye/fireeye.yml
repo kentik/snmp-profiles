@@ -68,10 +68,6 @@ metrics:
           true: 1
           false: 2
     metric_tags:
-      # A unique value for each disk
-      - column:
-          OID: 1.3.6.1.4.1.25597.11.2.1.3.1.1
-          name: fePhysicalDiskIndex
       # Physical disk name
       - column:
           OID: 1.3.6.1.4.1.25597.11.2.1.3.1.2
