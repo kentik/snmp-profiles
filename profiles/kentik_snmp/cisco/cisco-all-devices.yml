@@ -56,6 +56,7 @@ metrics:
           name: ciscoMemoryPoolName
         tag: memory_pool_name
   - MIB: CISCO-IF-EXTENSION-MIB
+    is_interface: true
     table:
       OID: 1.3.6.1.4.1.9.9.276.1.1.2
       name: cieIfInterfaceTable
@@ -69,12 +70,14 @@ metrics:
           name: ifName
         tag: if_interface_name
   - MIB: CISCO-STACKWISE-MIB
+    is_interface: true
     table:
       OID: 1.3.6.1.4.1.9.9.500.1.2.2
       name: cswStackPortInfoTable
     symbols:
       - OID: 1.3.6.1.4.1.9.9.500.1.2.2.1.1
         name: cswStackPortOperStatus
+        format: gauge
         enum:
           up: 1
           down: 2
