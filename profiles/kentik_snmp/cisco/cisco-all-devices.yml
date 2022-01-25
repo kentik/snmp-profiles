@@ -31,10 +31,6 @@ metrics:
         poll_time_sec: 60
         tag: CPU
     metric_tags:
-      - column:
-          OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.1
-          name: cpmCPUTotalIndex
-        tag: cpu_index
   - MIB: CISCO-MEMORY-POOL-MIB
     table:
       OID: 1.3.6.1.4.1.9.9.48.1.1
@@ -132,27 +128,28 @@ metrics:
       OID: 1.3.6.1.4.1.9.9.117.1.1.1
       name: cefcFRUPowerSupplyGroup
     symbols:
-      - OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.1
-        name: cefcPowerRedundancyMode
-        enum:
-          notsupported: 1
-          redundant: 2
-          combined: 3
-          nonRedundant: 4
-          psRedundant: 5
-          inPwrSrcRedundant: 6
-          psRedundantSingleInput:
-      - OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.2
-        name: cefcPowerUnits
-      - OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.3
-        name: cefcTotalAvailableCurrent
       - OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.4
         name: cefcTotalDrawnCurrent
     metric_tags:
       - column:
-          OID: 1.3.6.1.2.1.47.1.1.1.1.1
-          name: entPhysicalIndex
-        tag: entity_index
+          OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.1
+          name: cefcPowerRedundancyMode
+          enum:
+            notsupported: 1
+            redundant: 2
+            combined: 3
+            nonRedundant: 4
+            psRedundant: 5
+            inPwrSrcRedundant: 6
+            psRedundantSingleInput:
+        tag: redundancy_mode
+      - column:
+          OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.2
+          name: cefcPowerUnits
+      - column:
+          OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.3
+          name: cefcTotalAvailableCurrent
+        tag: available_current
       - column:
           OID: 1.3.6.1.2.1.47.1.1.1.1.2
           name: entPhysicalDescr
@@ -191,36 +188,36 @@ metrics:
       OID: 1.3.6.1.4.1.9.9.117.1.1.2
       name: cefcFRUPowerStatusTable
     symbols:
-      - OID: 1.3.6.1.4.1.9.9.117.1.1.2.1.1
-        name: cefcFRUPowerAdminStatus
-        enum:
-          on: 1
-          off: 2
-          inlineAuto: 3
-          inlineOn: 4
-          powerCycle: 5
-      - OID: 1.3.6.1.4.1.9.9.117.1.1.2.1.2
-        name: cefcFRUPowerOperStatus
-        enum:
-          offEnvOther: 1
-          on: 2
-          offAdmin: 3
-          offDenied: 4
-          offEnvPower: 5
-          offEnvTemp: 6
-          offEnvFan: 7
-          failed: 8
-          onButFanFail: 9
-          offCooling: 10
-          offConnectorRating: 11
-          onButInlinePowerFail: 12
       - OID: 1.3.6.1.4.1.9.9.117.1.1.2.1.3
         name: cefcFRUCurrent
     metric_tags:
       - column:
-          OID: 1.3.6.1.2.1.47.1.1.1.1.1
-          name: entPhysicalIndex
-        tag: entity_index
+          OID: 1.3.6.1.4.1.9.9.117.1.1.2.1.1
+          name: cefcFRUPowerAdminStatus
+          enum:
+            on: 1
+            off: 2
+            inlineAuto: 3
+            inlineOn: 4
+            powerCycle: 5
+        tag: fru_power_admin_status
+      - column:
+          OID: 1.3.6.1.4.1.9.9.117.1.1.2.1.2
+          name: cefcFRUPowerOperStatus
+          enum:
+            offEnvOther: 1
+            on: 2
+            offAdmin: 3
+            offDenied: 4
+            offEnvPower: 5
+            offEnvTemp: 6
+            offEnvFan: 7
+            failed: 8
+            onButFanFail: 9
+            offCooling: 10
+            offConnectorRating: 11
+            onButInlinePowerFail: 12
+        tag: fru_power_oper_status
       - column:
           OID: 1.3.6.1.2.1.47.1.1.1.1.2
           name: entPhysicalDescr
@@ -335,10 +332,6 @@ metrics:
         name: cefcModuleUpTime
     metric_tags:
       - column:
-          OID: 1.3.6.1.2.1.47.1.1.1.1.1
-          name: entPhysicalIndex
-        tag: entity_index
-      - column:
           OID: 1.3.6.1.2.1.47.1.1.1.1.2
           name: entPhysicalDescr
         tag: entity_description
@@ -385,10 +378,6 @@ metrics:
           warning: 4
     metric_tags:
       - column:
-          OID: 1.3.6.1.2.1.47.1.1.1.1.1
-          name: entPhysicalIndex
-        tag: entity_index
-      - column:
           OID: 1.3.6.1.2.1.47.1.1.1.1.2
           name: entPhysicalDescr
         tag: entity_description
@@ -432,10 +421,6 @@ metrics:
         name: cefcFanSpeedPercent
     metric_tags:
       - column:
-          OID: 1.3.6.1.2.1.47.1.1.1.1.1
-          name: entPhysicalIndex
-        tag: entity_index
-      - column:
           OID: 1.3.6.1.2.1.47.1.1.1.1.2
           name: entPhysicalDescr
         tag: entity_description
@@ -476,10 +461,6 @@ metrics:
       - OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.4
         name: entSensorValue
     metric_tags:
-      - column:
-          OID: 1.3.6.1.2.1.47.1.1.1.1.1
-          name: entPhysicalIndex
-        tag: entity_index
       - column:
           OID: 1.3.6.1.2.1.47.1.1.1.1.2
           name: entPhysicalDescr
@@ -599,11 +580,6 @@ metrics:
           notFunctioning: 6
         tag: power_supply_state
     metric_tags:
-      - MIB: ENTITY-MIB
-        column:
-          OID: 1.3.6.1.2.1.47.1.1.1.1.1
-          name: entPhysicalIndex
-        tag: entity_index
       - column:
           OID: 1.3.6.1.2.1.47.1.1.1.1.2
           name: entPhysicalDescr
@@ -678,11 +654,6 @@ metrics:
             internalRedundant: 5
         tag: power_source
       - column:
-          OID: 1.3.6.1.4.1.9.9.13.1.4.1.1
-          name: ciscoEnvMonFanStatusIndex
-        table: ciscoEnvMonFanStatusTable
-        tag: fan_status_index
-      - column:
           OID: 1.3.6.1.4.1.9.9.13.1.5.1.2
           name: ciscoEnvMonSupplyStatusDescr
         tag: power_status_description
@@ -695,8 +666,8 @@ metrics:
         name: rttMonLatestRttOperCompletionTime
     metric_tags:
       - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.1.1.12
-          name: rttMonCtrlAdminLongTag
+          OID: 1.3.6.1.4.1.9.9.42.1.2.1.1.3
+          name: rttMonCtrlAdminTag
         tag: rtt_operation_tag
       - column:
           OID: 1.3.6.1.4.1.9.9.42.1.2.1.1.4
@@ -741,64 +712,31 @@ metrics:
             destroy: 6
         tag: rtt_operation_admin_status
       - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.1
-          name: rttMonEchoAdminProtocol
-          enum:
-            notApplicable: 1
-            ipIcmpEcho: 2
-            ipUdpEchoAppl: 3
-            snaRUEcho: 4
-            snaLU0EchoAppl: 5
-            snaLU2EchoAppl: 6
-            snaLU62Echo: 7
-            snaLU62EchoAppl: 8
-            appleTalkEcho: 9
-            appleTalkEchoAppl: 10
-            decNetEcho: 11
-            decNetEchoAppl: 12
-            ipxEcho: 13
-            ipxEchoAppl: 14
-            isoClnsEcho: 15
-            isoClnsEchoAppl: 16
-            vinesEcho: 17
-            vinesEchoAppl: 18
-            xnsEcho: 19
-            xnsEchoAppl: 20
-            apolloEcho: 21
-            apolloEchoAppl: 22
-            netbiosEchoAppl: 23
-            ipTcpConn: 24
-            httpAppl: 25
-            dnsAppl: 26
-            jitterAppl: 27
-            dlswAppl: 28
-            dhcpAppl: 29
-            ftpAppl: 30
-            mplsLspPingAppl: 31
-            voipAppl: 32
-            rtpAppl: 33
-            icmpJitterAppl: 34
-            ethernetPingAppl: 35
-            ethernetJitterAppl: 36
-            videoAppl: 37
-            y1731dmm: 38
-            y17311dm: 39
-            y1731lmm: 40
-            mcastJitterAppl: 41
-            y1731slm: 42
-            y1731dmmv1: 43
-            fabricPathEchoAppl: 44
-        tag: rtt_operation_protocol
-      - column:
           OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.2
-          name: rttMonEchoAdminTargetAddress
-#          conversion: hex_octet
+          name: rttMonEchoAdminTargetAddress 
+          conversion: hextoip
         tag: rtt_echo_target_ip
       - column:
           OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.5
-          name: rttMonEchoAdminTargetPort
-#          conversion: hex_octet
+          name: rttMonEchoAdminTargetPort 
         tag: rtt_echo_target_port
+      - column:
+          OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.6
+          name: rttMonEchoAdminSourceAddress 
+        tag: rtt_echo_source_address
+        conversion: hextoip
+      - column:
+          OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.7
+          name: rttMonEchoAdminSourcePort 
+        tag: rtt_echo_source_port
+      - column:
+          OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.12
+          name: rttMonEchoAdminNameServer 
+        tag: rtt_echo_name_server
+      - column:
+          OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.15
+          name: rttMonEchoAdminURL 
+        tag: rtt_echo_url
       - column:
           OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.6
           name: rttMonCtrlOperTimeoutOccurred
