@@ -58,6 +58,24 @@ metrics:
       OID: 1.3.6.1.4.1.789.1.2.1.6.0
       name: cpuCount
 
+  # Tabular CPU OIDs
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.2.1.14
+      name: cDOTCpuTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.2.1.14.1.3
+        name: cDOTCpuBusyTimePerCent
+      - OID: 1.3.6.1.4.1.789.1.2.1.14.1.12
+        name: cDOTCpuCPInterruptPercent
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.789.1.2.1.14.1.1
+          name: cDOTCpuNodeName
+      - column:
+          OID: 1.3.6.1.4.1.789.1.2.1.14.1.7
+          name: cDOTCpuCount
+
   # Scalar Misc OIDs
   - MIB: NETAPP-MIB
     symbol:
@@ -287,8 +305,7 @@ metrics:
       - OID: qvStateInitPercent
         name: 1.3.6.1.4.1.789.1.4.4.1.4
     metric_tags:
-      - tag: qvStateVolume_Index
-        column: 
+      - column: 
           OID: 1.3.6.1.4.1.789.1.4.4.1.1
           name: qvStateVolume
       - column: 
@@ -316,40 +333,10 @@ metrics:
         name: dfMaxFilesAvail
       - OID: 1.3.6.1.4.1.789.1.5.4.1.12
         name: dfMaxFilesUsed
-      - OID: 1.3.6.1.4.1.789.1.5.4.1.20
-        name: dfStatus
-        enum:
-          unmounted: 1
-          mounted: 2
-          frozen: 3
-          destroying: 4
-          creating: 5
-          mounting: 6
-          unmounting: 7
-          nofsinfo: 8
-          replaying: 9
-          replayed: 10
-      - OID: 1.3.6.1.4.1.789.1.5.4.1.21
-        name: dfMirrorStatus
-        enum:
-          invalid: 1
-          uninitialized: 2
-          needcpcheck: 3
-          cpcheckwait: 4
-          unmirrored: 5
-          normal: 6
-          degraded: 7
-          resyncing: 8
-          failed: 9
-          limbo: 10
       - OID: 1.3.6.1.4.1.789.1.5.4.1.22
         name: dfPlexCount
-      - OID: 1.3.6.1.4.1.789.1.5.4.1.23
-        name: dfType
-        enum:
-          traditionalVolume: 1
-          flexibleVolume: 2
-          aggregate: 3
+      - OID: 1.3.6.1.4.1.789.1.5.4.1.28
+        name: dfPerCentSaved
       - OID: 1.3.6.1.4.1.789.1.5.4.1.29
         name: df64TotalKBytes
       - OID: 1.3.6.1.4.1.789.1.5.4.1.30
@@ -368,9 +355,50 @@ metrics:
       - column: 
           OID: 1.3.6.1.4.1.789.1.5.4.1.10
           name: dfMountedOn
+      - column:
+          OID: 1.3.6.1.4.1.789.1.5.4.1.20
+          name: dfStatus
+          enum:
+            unmounted: 1
+            mounted: 2
+            frozen: 3
+            destroying: 4
+            creating: 5
+            mounting: 6
+            unmounting: 7
+            nofsinfo: 8
+            replaying: 9
+            replayed: 10
+      - column:
+          OID: 1.3.6.1.4.1.789.1.5.4.1.21
+          name: dfMirrorStatus
+          enum:
+            invalid: 1
+            uninitialized: 2
+            needcpcheck: 3
+            cpcheckwait: 4
+            unmirrored: 5
+            normal: 6
+            degraded: 7
+            resyncing: 8
+            failed: 9
+            limbo: 10
+      - column:
+          OID: 1.3.6.1.4.1.789.1.5.4.1.23
+          name: dfType
+          enum:
+            traditionalVolume: 1
+            flexibleVolume: 2
+            aggregate: 3
       - column: 
           OID: dfVserver
           name: 1.3.6.1.4.1.789.1.5.4.1.34
+      - column: 
+          OID: dfStateOnline
+          name: 1.3.6.1.4.1.789.1.5.4.1.35
+          enum:
+            false: 0
+            true: 1
 
   # volTable
   - MIB: NETAPP-MIB
@@ -628,16 +656,6 @@ metrics:
       OID: 1.3.6.1.4.1.789.1.6.10
       name: raidPTable
     symbols:
-      - OID: 1.3.6.1.4.1.789.1.6.10.1.2
-        name: raidPStatus
-        enum:
-          active: 1
-          reconstructionInProgress: 2
-          parityReconstructionInProgress: 3
-          parityVerificationInProgress: 4
-          scrubbingInProgress: 5
-          failed: 6
-          prefailed: 9
       - OID: 1.3.6.1.4.1.789.1.6.10.1.20
         name: raidPUsedMb
       - OID: 1.3.6.1.4.1.789.1.6.10.1.22
@@ -648,6 +666,17 @@ metrics:
       - column: 
           OID: 1.3.6.1.4.1.789.1.6.10.1.1
           name: raidPIndex
+      - column:
+          OID: 1.3.6.1.4.1.789.1.6.10.1.2
+          name: raidPStatus
+          enum:
+            active: 1
+            reconstructionInProgress: 2
+            parityReconstructionInProgress: 3
+            parityVerificationInProgress: 4
+            scrubbingInProgress: 5
+            failed: 6
+            prefailed: 9
       - column: 
           OID: 1.3.6.1.4.1.789.1.6.10.1.3
           name: raidPVol
@@ -793,10 +822,44 @@ metrics:
           inactive: 4
           reconfiguring: 5
           nonexistent: 6
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.11
+        name: enclDisksPresent
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.15
+        name: enclPowerSuppliesFailed
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.18
+        name: enclFansFailed
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.21
+        name: enclTempSensorsOverTempFail
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.22
+        name: enclTempSensorsOverTempWarn
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.23
+        name: enclTempSensorsUnderTempFail
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.24
+        name: enclTempSensorsUnderTempWarn
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.25
+        name: enclTempSensorsCurrentTemp
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.33
+        name: enclElectronicsFailed
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.36
+        name: enclVoltSensorsOverVoltFail
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.37
+        name: enclVoltSensorsOverVoltWarn
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.38
+        name: enclVoltSensorsUnderVoltFail
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.39
+        name: enclVoltSensorsUnderVoltWarn
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.40
+        name: enclVoltSensorsCurrentVolt
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.47
+        name: enclCurSensorsOverCurFail
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.48
+        name: enclCurSensorsOverCurWarn
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.49
+        name: enclCurSensorsCurrentCur
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.62
+        name: enclFansSpeed
+        
     metric_tags:
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.1
-          name: enclIndex
       - column: 
           OID: 1.3.6.1.4.1.789.1.21.1.2.1.3
           name: enclChannelShelfAddr
@@ -818,6 +881,73 @@ metrics:
       - column: 
           OID: 1.3.6.1.4.1.789.1.21.1.2.1.9
           name: enclProductSerialNo
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.10
+          name: enclNumberDiskBays
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.1.2.1.65
+          name: enclNodeName
+          
+  # haTable
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.21.2
+      name: haTable
+    symbols:
+      - OID: 1.3.6.1.4.1.789.1.22.1.2.1.25
+        name: haState
+        enum:
+          dead: 1
+          canTakeover: 2
+          cannotTakeover: 3
+          takeover: 4
+          partialGiveback: 5
+
+    metric_tags:
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.2.1.1
+          name: haNodeName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.2.1.5
+          name: haCannotTakeoverCause
+          enum:
+            ok: 1
+            unknownReason: 2
+            disabledByOperator: 3
+            interconnectOffline: 4
+            disabledByPartner: 5
+            takeoverFailed: 6
+            mailboxIsInDegradedState: 7
+            partnermailboxIsInUninitialisedState: 8
+            mailboxVersionMismatch: 9
+            nvramSizeMismatch: 10
+            kernelVersionMismatch: 11
+            partnerIsInBootingStage: 12
+            diskshelfIsTooHot: 13
+            partnerIsPerformingRevert: 14
+            nodeIsPerformingRevert: 15
+            sametimePartnerIsAlsoTryingToTakeUsOver: 16
+            alreadyInTakenoverMode: 17
+            nvramLogUnsynchronized: 18
+            stateofBackupMailboxIsDoubtful: 19
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.2.1.6
+          name: haPartnerStatus
+          enum:
+            maybeDown: 1
+            ok: 2
+            dead: 3
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.2.1.8
+          name: haPartnerName
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.21.2.1.10
+          name: haInterconnectStatus
+          enum:
+            notPresent: 1
+            down: 2
+            partialFailure: 3
+            up: 4
 
   # netifTable
   - MIB: NETAPP-MIB
@@ -838,9 +968,6 @@ metrics:
       - OID: 1.3.6.1.4.1.789.1.22.1.2.1.35
         name: if64OutErrors
     metric_tags:
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.22.1.2.1.1
-          name: netifIndex
       - column: 
           OID: 1.3.6.1.4.1.789.1.22.1.2.1.2
           name: netifDesc
