@@ -216,7 +216,7 @@ metrics:
   - MIB: NETAPP-MIB
     symbol:
       OID: 1.3.6.1.4.1.789.1.6.4.5.0
-      name: diskVerifyingParityVound
+      name: diskVerifyingParityCount
   - MIB: NETAPP-MIB
     symbol:
       OID: 1.3.6.1.4.1.789.1.6.4.6.0
@@ -799,13 +799,31 @@ metrics:
         name: snapmirrorLag
       - OID: 1.3.6.1.4.1.789.1.9.20.1.9
         name: snapmirrorTotalFailures
+      - OID: 1.3.6.1.4.1.789.1.9.20.1.14
+        name: snapmirrorMirrorTimestamp
+      - OID: 1.3.6.1.4.1.789.1.9.20.1.16
+        name: snapmirrorLastTransType
+      - OID: 1.3.6.1.4.1.789.1.9.20.1.17
+        name: snapmirrorLastTransMBs
+      - OID: 1.3.6.1.4.1.789.1.9.20.1.18
+        name: snapmirrorLastTransTimeSeconds
     metric_tags:
       - column:
           OID: 1.3.6.1.4.1.789.1.9.20.1.1
           name: snapmirrorIndex
       - column:
+          OID: 1.3.6.1.4.1.789.1.9.20.1.2
+          name: snapmirrorSrc
+      - column:
+          OID: 1.3.6.1.4.1.789.1.9.20.1.3
+          name: snapmirrorDst
+      - column:
           OID: 1.3.6.1.4.1.789.1.9.20.1.5
           name: snapmirrorState
+      - column:
+          OID: 1.3.6.1.4.1.789.1.9.20.1.4
+          name: snapmirrorStatus
+
 
   # enclTable
   - MIB: NETAPP-MIB
