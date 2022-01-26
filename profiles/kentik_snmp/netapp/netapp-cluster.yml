@@ -275,7 +275,7 @@ metrics:
   # Scalar Net Connection OIDs
   - MIB: NETAPP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.789.1.8.3.6.36
+      OID: 1.3.6.1.4.1.789.1.8.3.6.36.0
       name: ncHttpActiveCliConns
 
   # Scalar encl OIDs
@@ -287,7 +287,7 @@ metrics:
   # Scalar External Cache OIDs
   - MIB: NETAPP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.789.1.26.8
+      OID: 1.3.6.1.4.1.789.1.26.8.0
       name: extcache64Hits
 
   # qvStateTable
@@ -302,8 +302,8 @@ metrics:
           quotaStateOff: 1
           quotaStateOn: 2
           quotaStateInit: 3
-      - OID: qvStateInitPercent
-        name: 1.3.6.1.4.1.789.1.4.4.1.4
+      - OID: 1.3.6.1.4.1.789.1.4.4.1.4
+        name: qvStateInitPercent
     metric_tags:
       - column: 
           OID: 1.3.6.1.4.1.789.1.4.4.1.1
