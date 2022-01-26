@@ -17,110 +17,110 @@ metrics:
   # Spam in queue size
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.2
+      OID: 1.3.6.1.4.1.20632.2.2.0
       name: inQueueSize
   # Spam out queue size
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.3
+      OID: 1.3.6.1.4.1.20632.2.3.0
       name: outQueueSize
   # Spam deferred queue size
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.4
+      OID: 1.3.6.1.4.1.20632.2.4.0
       name: deferredQueueSize
   # Spam avg. email latency
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.5
+      OID: 1.3.6.1.4.1.20632.2.5.0
       name: avgEmailLatency
   # Spam out queue size
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.8
+      OID: 1.3.6.1.4.1.20632.2.8.0
       name: notifyQueueSize
   # Time in minutes since last message was delivered
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.11
+      OID: 1.3.6.1.4.1.20632.2.11.0
       name: lastMessageDelivery
   # Number of unique recipients in last 24 hours
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.12
+      OID: 1.3.6.1.4.1.20632.2.12.0
       name: uniqueRecipients
   # Total number of blocked inbound messages
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.20
+      OID: 1.3.6.1.4.1.20632.2.20.0
       name: totalInboundBlocked
   # Total number of inbound messages blocked containing viruses
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.23
+      OID: 1.3.6.1.4.1.20632.2.23.0
       name: totalInboundVirusBlocked
   # Total number of blocked inbound message connections
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.26
+      OID: 1.3.6.1.4.1.20632.2.26.0
       name: totalInboundRateControlled
   # Total number of inbound messages quarantined
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.29
+      OID: 1.3.6.1.4.1.20632.2.29.0
       name: totalInboundQuarantined
   # Total number of tagged inbound messages
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.32
+      OID: 1.3.6.1.4.1.20632.2.32.0
       name: totalInboundTagged
   # Total number of allowed inbound messages
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.35
+      OID: 1.3.6.1.4.1.20632.2.35.0
       name: totalAllowed
   # Total number of outbound messages blocked due to policy violations
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.38
+      OID: 1.3.6.1.4.1.20632.2.38.0
       name: totalOutboundPolicyBlocked
   # Total number of outbound spam messages
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.41
+      OID: 1.3.6.1.4.1.20632.2.41.0
       name: totalOutboundSpamBlocked
   # Total number of outbound messages blocked containing viruses
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.44
+      OID: 1.3.6.1.4.1.20632.2.44.0
       name: totalOutboundVirusBlocked
   # Total number of blocked outbound message connections
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.47
+      OID: 1.3.6.1.4.1.20632.2.47.0
       name: totalOutboundRateControlled
   # Total number of outbound messages quarantined
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.50
+      OID: 1.3.6.1.4.1.20632.2.50.0
       name: totalOutboundQuarantined
   # Total number of messages encrypted
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.53
+      OID: 1.3.6.1.4.1.20632.2.53.0
       name: totalEncrypted
   # Total number of messages redirected
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.56
+      OID: 1.3.6.1.4.1.20632.2.56.0
       name: totalRedirected
   # Total number of outbound messages allowed
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.59
+      OID: 1.3.6.1.4.1.20632.2.59.0
       name: totalSent
   # Number of inbound domains hosted
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
-      OID: 1.3.6.1.4.1.20632.2.62
+      OID: 1.3.6.1.4.1.20632.2.62.0
       name: domainCount
