@@ -17,7 +17,7 @@ metrics:
   - MIB: STATISTICS-MIB
     symbol:
       name: hpSwitchCpuStat
-      OID: 1.3.6.1.4.1.11.2.14.11.5.1.9.6.1
+      OID: 1.3.6.1.4.1.11.2.14.11.5.1.9.6.1.0
       tag: CPU
   # A table that contains information on all the local memory for each slot
   - MIB: NETSWITCH-MIB
