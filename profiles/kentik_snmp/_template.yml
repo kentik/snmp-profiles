@@ -28,7 +28,7 @@ metrics:
       # OPTIONAL: You can also add an 'enum' function here, see the tabular OID section below for an example
 
   # Tabular OIDs work under a common 'MIB' element to combine multiple OIDs together
-  # They are matched based on the value of a provided 'Index', based on SNMP standards
+  # They are matched based on the value of a provided 'Index', based on SNMP standards.  The index is decorated to the data automatically for all tabular OIDs.
   - MIB: CISCO-ENTITY-SENSOR-MIB             # The name of the target MIB
     # The 'table' section is where you announce the target MIB table
     table:
@@ -51,12 +51,19 @@ metrics:
           true: 1
           false: 2
     # Using a 'metric_tags' section here provides a list of OIDs to target that will be used to decorate corresponding rows of tabular metrics
-    # This is primarily used for the index to match on, but also very useful for adding string-value OIDs such as row labels
+    # This is primarily used for things like row names and descriptions and other rarely changed string data.
+    # IMPORTANT: Tag OID are only polled every 3 hours, they should not be used for values where it is important to stay current
     metric_tags:
       - column:
-          OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.1
-          name: entSensorThresholdIndex
-          # OPTIONAL: You can use enum in metric_tags the same as you would above
+          OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.3
+          name: entSensorThresholdRelation
+          enum:
+            lessThan: 1
+            lessOrEqual: 2
+            greaterThan: 3
+            greaterOrEqual: 4
+            equalTo: 5
+            notEqualTo: 6
         # OPTIONAL: You can also add a 'tag' function here, see the scalar OID section above for an example
 
     # OPTIONAL: There is also a supported 'conversion' function for edge cases where an OID returns a non-string/non-numeric value
