@@ -557,7 +557,7 @@ metrics:
     symbols:
       # Type of this container, containers containing flexible volumes are aggregate.
       - OID: 1.3.6.1.4.1.789.1.5.11.1.10
-        name: 
+        name: aggrType
         enum:
           unknown: 0
           traditional: 1
