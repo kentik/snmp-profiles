@@ -1194,3 +1194,27 @@ metrics:
       - column: 
           OID: 1.3.6.1.4.1.789.1.22.1.2.1.2
           name: netifDesc
+  # Table of per-node statuses.
+  - MIB: NETAPP-MIB
+    table:
+      OID: 1.3.6.1.4.1.789.1.2.2.36
+      name: cDOTMiscTable
+    symbols:
+      # This indicates the overall status of the node.
+      - OID: 1.3.6.1.4.1.789.1.2.2.36.1.2
+        name: cDOTMiscGlobalStatus
+        enum:
+          other: 1
+          unknown: 2
+          ok: 3
+          nonCritical: 4
+          critical: 5
+          nonRecoverable: 6
+      # A string describing the global status, including a description of the condition (if any) that caused the status to be anything other than ok(3).
+      - OID: 1.3.6.1.4.1.789.1.2.2.36.1.3
+        name: cDOTMiscGlobalStatusMessage
+    metric_tags:
+      # Node name
+      - column: 
+          OID: 1.3.6.1.4.1.789.1.2.2.36.1.1
+          name: cDOTNodeName
