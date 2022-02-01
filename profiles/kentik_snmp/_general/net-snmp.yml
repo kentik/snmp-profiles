@@ -20,6 +20,7 @@ matches:
   "^pfsense": pf_sense.yml
   "barracuda email security gateway": barracuda-email-gateway.yml
   "^uap-ac-inwall": unifi-access-point.yml
+  "root@sensey": opnsense-protectli.yml
 
 sysobjectid:
   - 1.3.6.1.4.1.8072.*
