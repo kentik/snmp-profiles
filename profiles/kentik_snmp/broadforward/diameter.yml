@@ -11,8 +11,8 @@ extends:
 # We may look at building a new entity type for these devices if needed
 provider: kentik-net-snmp
 
-sysobjectid:
-  - 1.3.6.1.4.1.8072.*
+# Do not want this profile to automatically get applied to other linux servers, hard coded only
+# sysobjectid:
 
 metrics:
   - MIB: MF-DIAMETER-MIB
