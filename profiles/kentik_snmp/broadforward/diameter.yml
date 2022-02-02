@@ -23,8 +23,8 @@ metrics:
       - OID: 1.3.6.1.4.1.39216.1.50.1.2.1.1.2
         name: dmtrPeerAdminStatus
         enum:
-          - inactive: 0
-          - active: 1
+          inactive: 0
+          active: 1
       - OID: 1.3.6.1.4.1.39216.1.50.1.2.1.4
         name: dmtrPeerConnectionStatus
         enum:
