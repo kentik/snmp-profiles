@@ -1,7 +1,7 @@
 ---
-name: SNMP Profile Request
-about: Request a new profile be created for a device
-title: "[Missing SNMP Profile]"
+name: SNMP Polling Profile Request
+about: Request a new polling profile be created for a device
+title: "[Missing SNMP Polling Profile]"
 labels: profile
 assignees: ''
 
