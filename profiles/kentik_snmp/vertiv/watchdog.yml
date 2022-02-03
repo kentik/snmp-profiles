@@ -87,6 +87,7 @@ metric_tags:
   - column:
       OID: 1.3.6.1.4.1.21239.5.1.1.4.0
       name: productMacAddress
+      conversion: hwaddr
   # Product's main URL access point
   - column:
       OID: 1.3.6.1.4.1.21239.5.1.1.5.0
