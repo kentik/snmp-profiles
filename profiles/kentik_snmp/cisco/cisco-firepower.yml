@@ -1,13 +1,47 @@
-# https://www.cisco.com/c/en/us/products/collateral/security/firepower-ngfw/white-paper-c11-741739.html#_Toc5440015
-# This profile uses the UC Davis MIB for CPU and Memory based on Cisco's doc above
+# http://www.circitor.fr/Mibs/Html/C/CISCO-ENHANCED-MEMPOOL-MIB.php
 ---
 extends:
   - if-mib.yml
   - system-mib.yml
-  - ucd-mib.yml
 
 provider: kentik-firepower
 
 sysobjectid:
   - 1.3.6.1.4.1.9.1.1902           # Cisco VASA (Cisco Firepower Threat Defense, Version 6.7.0.2)
-  - 1.3.6.1.4.1.9.12.3.1.3.1788    # FPR 4120 
+  - 1.3.6.1.4.1.9.12.3.1.3.1788    # FPR 4120
+
+metrics:
+  # A table of overall CPU statistics.
+  - MIB: CISCO-PROCESS-MIB
+    table:
+      OID: 1.3.6.1.4.1.9.9.109.1.1.1
+      name: cpmCPUTotalTable
+    symbols:
+      # The overall CPU busy percentage in the last 1 minute period.
+      - OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.7
+        name: cpmCPUTotal1minRev
+        tag: CPU
+        poll_time_sec: 60
+  # A table of memory pool monitoring entries for all physical entities on a managed system.
+  - MIB: CISCO-ENHANCED-MEMPOOL-MIB
+    table:
+      OID: 	1.3.6.1.4.1.9.9.221.1.1.1
+      name: cempMemPoolTable
+    symbols:
+      # Indicates the number of bytes from the memory pool that are currently in use by applications on the physical entity. This object is a 64-bit version of cempMemPoolUsed.
+      - OID: 1.3.6.1.4.1.9.9.221.1.1.1.1.18
+        name: cempMemPoolHCUsed
+        tag: MemoryUsed
+        poll_time_sec: 60
+      # Indicates the number of bytes from the memory pool that are currently unused on the physical entity. This object is a 64-bit version of cempMemPoolFree.
+      - OID: 1.3.6.1.4.1.9.9.221.1.1.1.1.20
+        name: cempMemPoolHCFree
+        tag: MemoryFree
+        poll_time_sec: 60
+    metric_tags:
+      # Limit results to only System Memory
+      - column:
+          OID: 1.3.6.1.4.1.9.9.221.1.1.1.1.3
+          name: cempMemPoolName
+          match_attributes:
+            - "System memory"
