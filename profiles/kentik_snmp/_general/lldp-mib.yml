@@ -1,0 +1,39 @@
+# Profile is intended to be used in an extends block
+# http://oid-info.com/get/1.0.8802.1.1.2.1.4.1
+metrics:
+- MIB: LLDP-MIB
+  table:
+    OID: 1.0.8802.1.1.2.1.4.1
+    name: lldpRemTable
+  symbols:
+  - OID: 1.0.8802.1.1.2.1.4.1.1.1
+    name: lldpRemTimeMark
+    poll_time_sec: 300
+  - OID: 1.0.8802.1.1.2.1.4.1.1.2
+    name: lldpRemLocalPortNum
+    poll_time_sec: 300
+  - OID: 1.0.8802.1.1.2.1.4.1.1.3
+    name: lldpRemIndex
+    poll_time_sec: 300
+  - OID: 1.0.8802.1.1.2.1.4.1.1.4
+    name: lldpRemChassisIdSubtype
+    poll_time_sec: 300
+  - OID: 1.0.8802.1.1.2.1.4.1.1.5
+    name: lldpRemChassisId
+    poll_time_sec: 300
+  - OID: 1.0.8802.1.1.2.1.4.1.1.6
+    name: lldpRemPortIdSubtype
+    poll_time_sec: 300
+  - OID: 1.0.8802.1.1.2.1.4.1.1.7
+    name: lldpRemPortId
+    poll_time_sec: 300
+  - OID: 1.0.8802.1.1.2.1.4.1.1.8
+    name: lldpRemPortDesc
+    poll_time_sec: 300
+  - OID: 1.0.8802.1.1.2.1.4.1.1.9
+    name: lldpRemSysName
+    poll_time_sec: 300
+  - OID: 1.0.8802.1.1.2.1.4.1.1.10
+    name: lldpRemSysDesc
+    poll_time_sec: 300
+  metric_tags:
