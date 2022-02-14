@@ -22,29 +22,20 @@ metrics:
         name: cpmCPUTotal1minRev
         tag: CPU
         poll_time_sec: 60
-  # A table of memory pool monitoring entries for all physical entities on a managed system.
+  # Indicates the number of bytes from the memory pool that are currently in use by applications on the physical entity. This object is a 64-bit version of cempMemPoolUsed.
   - MIB: CISCO-ENHANCED-MEMPOOL-MIB
-    table:
-      OID: 	1.3.6.1.4.1.9.9.221.1.1.1
-      name: cempMemPoolTable
-    symbols:
-      # Indicates the number of bytes from the memory pool that are currently in use by applications on the physical entity. This object is a 64-bit version of cempMemPoolUsed.
-      - OID: 1.3.6.1.4.1.9.9.221.1.1.1.1.18
-        name: cempMemPoolHCUsed
-        tag: MemoryUsed
-        poll_time_sec: 60
-      # Indicates the number of bytes from the memory pool that are currently unused on the physical entity. This object is a 64-bit version of cempMemPoolFree.
-      - OID: 1.3.6.1.4.1.9.9.221.1.1.1.1.20
-        name: cempMemPoolHCFree
-        tag: MemoryFree
-        poll_time_sec: 60
-    metric_tags:
-      # Limit results to only DP System Memory or System Memory
-      - column:
-          OID: 1.3.6.1.4.1.9.9.221.1.1.1.1.3
-          name: cempMemPoolName
-          match_attributes:
-            - "(^DP System Memory)|(^System Memory)"
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.221.1.1.1.1.18.2.1
+      name: cempMemPoolHCUsed
+      tag: MemoryUsed
+      poll_time_sec: 60
+  # Indicates the number of bytes from the memory pool that are currently unused on the physical entity. This object is a 64-bit version of cempMemPoolFree.
+  - MIB: CISCO-ENHANCED-MEMPOOL-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.9.9.221.1.1.1.1.20.2.1
+      name: cempMemPoolHCFree
+      tag: MemoryFree
+      poll_time_sec: 60
   # The number of currently active sessions.
   - MIB: CISCO-REMOTE-ACCESS-MONITOR-MIB
     symbol:
