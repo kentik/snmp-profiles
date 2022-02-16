@@ -1,27 +1,34 @@
 # Profile is intended to be used in an extends block
 # http://oid-info.com/get/1.0.8802.1.1.2.1.4.1
 metrics:
+  # This table contains one or more rows per physical network connection known to this agent.
   - MIB: LLDP-MIB
     table:
       OID: 1.0.8802.1.1.2.1.4.1
       name: lldpRemTable
     symbols:
+      # The type of encoding used to identify the chassis associated with the remote system.
       - OID: 1.0.8802.1.1.2.1.4.1.1.4
         name: lldpRemChassisIdSubtype
         poll_time_sec: 600
+        # The type of port identifier encoding used in the associated 'lldpRemPortId' object.
       - OID: 1.0.8802.1.1.2.1.4.1.1.6
         name: lldpRemPortIdSubtype
         poll_time_sec: 600
     metric_tags:
+      # The string value used to identify the port component associated with the remote system.
       - column:
           OID: 1.0.8802.1.1.2.1.4.1.1.7
           name: lldpRemPortId
+      # The string value used to identify the description of the given port associated with the remote system.
       - column:
           OID: 1.0.8802.1.1.2.1.4.1.1.8
           name: lldpRemPortDesc
+      # The string value used to identify the system name of the remote system.
       - column:
           OID: 1.0.8802.1.1.2.1.4.1.1.9
           name: lldpRemSysName
+      # The string value used to identify the system description of the remote system.
       - column:
           OID: 1.0.8802.1.1.2.1.4.1.1.10
           name: lldpRemSysDesc
