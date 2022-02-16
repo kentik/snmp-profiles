@@ -20,15 +20,7 @@ metrics:
       - column:
           OID: 1.0.8802.1.1.2.1.4.1.1.7
           name: lldpRemPortId
-      # The string value used to identify the description of the given port associated with the remote system.
-      - column:
-          OID: 1.0.8802.1.1.2.1.4.1.1.8
-          name: lldpRemPortDesc
       # The string value used to identify the system name of the remote system.
       - column:
           OID: 1.0.8802.1.1.2.1.4.1.1.9
           name: lldpRemSysName
-      # The string value used to identify the system description of the remote system.
-      - column:
-          OID: 1.0.8802.1.1.2.1.4.1.1.10
-          name: lldpRemSysDesc
