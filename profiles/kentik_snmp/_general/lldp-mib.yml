@@ -12,7 +12,7 @@ metrics:
       # The type of encoding used to identify the chassis associated with the remote system.
       - OID: 1.0.8802.1.1.2.1.4.1.1.4
         name: lldpRemChassisIdSubtype
-        poll_time_sec: 600
+        poll_time_sec: 3600
         enum:
           chassisComponent: 1
           interfaceAlias: 2
@@ -24,7 +24,7 @@ metrics:
         # The type of port identifier encoding used in the associated 'lldpRemPortId' object.
       - OID: 1.0.8802.1.1.2.1.4.1.1.6
         name: lldpRemPortIdSubtype
-        poll_time_sec: 600
+        poll_time_sec: 3600
         enum:
           interfaceAlias: 1
           portComponent: 2
