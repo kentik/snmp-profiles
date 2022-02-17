@@ -9,18 +9,6 @@ metrics:
       OID: 1.0.8802.1.1.2.1.4.1
       name: lldpRemTable
     symbols:
-      # The type of encoding used to identify the chassis associated with the remote system.
-      - OID: 1.0.8802.1.1.2.1.4.1.1.4
-        name: lldpRemChassisIdSubtype
-        poll_time_sec: 3600
-        enum:
-          chassisComponent: 1
-          interfaceAlias: 2
-          portComponent: 3
-          macAddress: 4
-          networkAddress: 5
-          interfaceName: 6
-          local: 7
       # The type of port identifier encoding used in the associated 'lldpRemPortId' object.
       - OID: 1.0.8802.1.1.2.1.4.1.1.6
         name: lldpRemPortIdSubtype
