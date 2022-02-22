@@ -3,7 +3,7 @@
 extends:
   - system-mib.yml
 
-provider: kentik-netscaler
+provider: kentik-load-balancer
 
 sysobjectid:
   - 1.3.6.1.4.1.5951.1    # NetScaler root
