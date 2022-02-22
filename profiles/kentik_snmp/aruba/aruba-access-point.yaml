@@ -1,0 +1,30 @@
+# http://oidref.com/1.3.6.1.4.1.14823.2.3
+---
+extends:
+  - if-mib.yml
+  - system-mib.yml
+
+provider: kentik-wap
+
+sysobjectid:
+  - 1.3.6.1.4.1.14823.1.2.86   # Aruba IAP-305
+
+metrics:
+  - MIB: STATISTICS-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.14823.2.3.3.1.2.1.1.7
+      name: aiAPCPUUtilization
+      poll_time_sec: 60
+      tag: CPU
+  - MIB: STATISTICS-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.14823.2.3.3.1.2.1.1.8
+      name: aiAPMemoryFree
+      poll_time_sec: 60
+      tag: MemoryFree
+  - MIB: STATISTICS-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.14823.2.3.3.1.2.1.1.10
+      name: aiAPTotalMemory
+      poll_time_sec: 60
+      tag: MemoryTotal
