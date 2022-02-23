@@ -12,6 +12,9 @@ provider: kentik-poweriq
 sysobjectid:
   - 1.3.6.1.4.1.8072.3.2.10.poweriq
 
+# disable the SNMP bulk walk operation for these devices
+no_use_bulkwalkall: true
+
 metrics:
   # The (conceptual) table of devices contained by the host.
   - MIB: HOST-RESOURCES-MIB
