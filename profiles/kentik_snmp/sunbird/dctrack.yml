@@ -8,6 +8,10 @@ extends:
 
 provider: kentik-dctrack
 
+# We're using regex matching for the sysDescr on the net-snmp.yml profile here
+sysobjectid:
+  - 1.3.6.1.4.1.8072.3.2.10.dctrack
+
 # The sysDescr for these devices has no unique identifiers
 # Do not want this profile to automatically get applied to other linux servers, hard coded only
 # sysobjectid:
