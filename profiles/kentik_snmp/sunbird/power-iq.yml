@@ -91,7 +91,7 @@ metrics:
           OID: 1.3.6.1.2.1.25.4.2.1.5
       # The type of this software.
       - column:
-          name: hrSWRunTypeType
+          name: hrSWRunType
           OID: 1.3.6.1.2.1.25.4.2.1.6
           enum:
             unknown: 1
