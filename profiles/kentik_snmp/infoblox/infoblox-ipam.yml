@@ -10,7 +10,10 @@ extends:
 provider: kentik-ipam
 
 sysobjectid:
+  - 1.3.6.1.4.1.7779.1.1004    # Virtual Device
+  - 1.3.6.1.4.1.7779.1.1425    # Infoblox, Model Unknown
   - 1.3.6.1.4.1.7779.1.1501    # IB-815
+  - 1.3.6.1.4.1.7779.1.1512    # IB-2215
   - 1.3.6.1.4.1.7779.1.1403    # IB-1420
 
 metrics:
