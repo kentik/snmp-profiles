@@ -132,6 +132,51 @@ metrics:
         column:
           OID: 1.3.6.1.4.1.318.1.1.12.5.6.1.2
           name: rPDUStatusOutletNumber
+
+  - MIB: PowerNet-MIB_PDU
+    table:
+      OID: 1.3.6.1.4.1.318.1.1.26.10.2.2
+      name: rPDU2SensorTempHumidityStatusTable
+    symbols:
+      - OID: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.7
+        name: rPDU2SensorTempHumidityStatusTempF
+      - OID: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.8
+        name: rPDU2SensorTempHumidityStatusTempC
+      - OID: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.9
+        name: rPDU2SensorTempHumidityStatusTempStatus
+        enum:
+          notPresent: 1
+          belowMin: 2
+          belowLow: 3
+          normal: 4
+          aboveHigh: 5
+          aboveMax: 6
+      - OID: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.10
+        name: rPDU2SensorTempHumidityStatusRelativeHumidity
+      - OID: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.11
+        name: rPDU2SensorTempHumidityStatusHumidityStatus
+        enum:
+          notPresent: 1
+          belowMin: 2
+          belowLow: 3
+          normal: 4
+          aboveHigh: 5
+          aboveMax: 6
+    metric_tags:
+      - tag: humidity_sensor_name
+        column:
+          OID: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.3
+          name: rPDU2SensorTempHumidityStatusName
+      - tag: humidity_sensor_type
+        column:
+          OID: 1.3.6.1.4.1.318.1.1.26.10.2.2.1.5
+          name: rPDU2SensorTempHumidityStatusType
+          enum:
+            temperatureOnly: 1
+            temperatureHumidity: 2
+            commsLost: 3
+            notInstalled: 4
+          
 metric_tags:
   - column:
       OID: 1.3.6.1.4.1.318.1.1.12.1.1.0
