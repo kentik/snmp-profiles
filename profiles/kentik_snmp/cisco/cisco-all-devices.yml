@@ -592,6 +592,10 @@ metrics:
           OID: 1.3.6.1.2.1.47.1.1.1.1.13
           name: entPhysicalModelName
         tag: entity_model
+      - column:
+          OID: 1.3.6.1.4.1.9.9.13.1.2.1.2
+          name: ciscoEnvMonVoltageStatusValue
+        tag: voltage_descr
   - MIB: CISCO-ENVMON-MIB
     table:
       OID: 1.3.6.1.4.1.9.9.13
@@ -701,6 +705,10 @@ metrics:
           OID: 1.3.6.1.2.1.47.1.1.1.1.13
           name: entPhysicalModelName
         tag: entity_model
+      - column:
+          OID: 1.3.6.1.4.1.9.9.13.1.4.1.2
+          name: ciscoEnvMonFanStatusDescr
+        tag: fan_descr
   - MIB: CISCO-ENVMON-MIB
     table:
       OID: 1.3.6.1.4.1.9.9.13
