@@ -34,10 +34,6 @@ metrics:
         name: hpLocalMemFreeBytes
         poll_time_sec: 60
         tag: MemoryFree
-    metric_tags:
-      - column:
-          OID: 1.3.6.1.4.1.11.2.14.11.5.1.1.2.1.1.1.1
-          name: hpLocalMemSlotIndex
   - MIB: POWER-ETHERNET-MIB
     table:
       OID: 1.3.6.1.2.1.105.1.3
