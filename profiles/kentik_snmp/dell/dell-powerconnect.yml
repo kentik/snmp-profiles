@@ -1,5 +1,7 @@
 # https://mibs.observium.org/mib/RADLAN-MIB/
 # Memory Utilization not available on the 3548 device
+# https://mibs.observium.org/mib/Dell-Vendor-MIB/
+# https://mibs.observium.org/mib/DNOS-SWITCHING-MIB/
 ---
 extends:
   - system-mib.yml
@@ -8,12 +10,116 @@ extends:
 provider: kentik-switch
 
 sysobjectid:
+  - 1.3.6.1.4.1.674.10895.3010    # PowerConnect 6224
+  - 1.3.6.1.4.1.674.10895.3011    # PowerConnect 6248
+  - 1.3.6.1.4.1.674.10895.3013    # PowerConnect 6248P
   - 1.3.6.1.4.1.674.10895.3017    # PowerConnect 3548
+  - 1.3.6.1.4.1.674.10895.3024    # PowerConnect 8024F
+  - 1.3.6.1.4.1.674.10895.3044    # PowerConnect N4032F
+  - 1.3.6.1.4.1.674.10895.3053    # PowerConnect N2024
 
 metrics:
+  # This OID is for CPU on the PowerConnect 3548
   - MIB: RADLAN-MIB
     symbol:
-      OID: 1.3.6.1.4.1.89.1.8.0
       name: rlCpuUtilDuringLastMinute
+      OID: 1.3.6.1.4.1.89.1.8.0
       poll_time_sec: 60
       tag: CPU
+  # Total CPU utilization
+  - MIB: DNOS-SWITCHING-MIB
+    symbol:
+      name: agentSwitchCpuProcessPercentageUtilization
+      OID: 1.3.6.1.4.1.674.10895.5000.2.6132.1.1.1.1.4.9.0
+      poll_time_sec: 60
+      tag: CPU
+      conversion: "regexp:60 Secs.*?(\\d+)"
+  # The total memory free for utilization in KBytes.
+  - MIB: DNOS-SWITCHING-MIB
+    symbol:
+      name: agentSwitchCpuProcessMemFree
+      OID: 1.3.6.1.4.1.674.10895.5000.2.6132.1.1.1.1.4.1.0
+      poll_time_sec: 60
+      tag: MemoryFree
+  # The total memory available in KBytes.
+  - MIB: DNOS-SWITCHING-MIB
+    symbol:
+      name: agentSwitchCpuProcessMemAvailable
+      OID: 1.3.6.1.4.1.674.10895.5000.2.6132.1.1.1.1.4.2.0
+      poll_time_sec: 60
+      tag: MemoryTotal
+  # Current status of the product. This is a rollup for the entire product.
+  - MIB: DELL-VENDOR-MIB
+    symbol:
+      name: productStatusGlobalStatus
+      OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.1.0
+      enum:
+        ok: 3
+        non-critical: 4
+        critical: 5
+  # The table of fan status maintained by the environmental monitor.
+  - MIB: DELL-VENDOR-MIB
+    table:
+      name: envMonFanStatusTable
+      OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.1
+    symbols:
+      # The mandatory state of the fan being instrumented.
+      - name: envMonFanState
+        OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.1.1.3
+        enum:
+          normal: 1
+          warning: 2
+          critical: 3
+          shutdown: 4
+          notPresent: 5
+          notFunctioning: 6
+      # Speed of the fan being instrumented.
+      - name: envMonFanSpeed
+        OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.1.1.4
+    metric_tags:
+      # Textual description of the fan being instrumented.
+      - column:
+          name: envMonFanStatusDescr
+          OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.1.1.2
+  # The table of power supply status maintained by the environmental monitor card.
+  - MIB: DELL-VENDOR-MIB
+    table:
+      name: envMonSupplyStatusTable
+      OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.2
+    symbols:
+      # The mandatory state of the power supply being instrumented.
+      - name: envMonSupplyState
+        OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.2.1.3
+        enum:
+          normal: 1
+          warning: 2
+          critical: 3
+          shutdown: 4
+          notPresent: 5
+          notFunctioning: 6
+      # The power supply source.
+      - name: envMonSupplySource
+        OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.2.1.4
+        enum:
+          unknown: 1
+          ac: 2
+          dc: 3
+          externalPowerSupply: 4
+          internalRedundant: 5
+      # Current power consumption of the power supply being instrumented.
+      - name: envMonSupplyCurrentPower
+        OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.2.1.5
+      # Average power consumption of the power supply being instrumented.
+      - name: envMonSupplyAveragePower
+        OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.2.1.6
+    metric_tags:
+      # Textual description of the power supply being instrumented.
+      - column:
+          name: envMonSupplyDescr
+          OID: 1.3.6.1.4.1.674.10895.3000.1.2.110.7.2.1.2
+
+metric_tags:
+  # The version of this product.
+  - column:
+      name: productIdentificationVersion
+      OID: 1.3.6.1.4.1.674.10895.3000.1.2.100.4.0
