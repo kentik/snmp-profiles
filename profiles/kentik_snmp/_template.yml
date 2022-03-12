@@ -67,7 +67,7 @@ metrics:
         # OPTIONAL: You can also add a 'tag' function here, see the scalar OID section above for an example
 
     # OPTIONAL: There is also a supported 'conversion' function for edge cases where an OID returns a non-string/non-numeric value
-    # ex: conversion: powerset_status | hwaddr | hextoint:<current>:<desired> | hextoip
+    # ex: conversion: powerset_status | hwaddr | hextoint:<current>:<desired> | hextoip | regexp | to_one
     # powerset_status == used for enumeration of the 'upsBasicStateOutputState' OID in the POWERNET-MIB
     # hwaddr == used to convert physical MAC addresses into human-readable form
     # hextoint == used to convert hexadecimal into integer format
@@ -79,5 +79,6 @@ metrics:
     #    Example Conversion:
     #      conversion: "regexp:60 Secs.*?(\\d+)"
     #    Results: 62
+    # to_one == used to create a gauge metric with the value of '1' in order to poll non-numeric metrics outside of the metric_tags
     
 #OPTIONAL: You can also create an additional 'metric_tags' section here to provide OID's to decorate all the scalar OIDs in this profile.  Note that tags applied at this level do no get decorated to data inside of table stanzas.
