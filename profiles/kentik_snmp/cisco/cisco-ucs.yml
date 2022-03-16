@@ -768,7 +768,7 @@ metrics:
     symbols:
       # Cisco UCS equipment:HealthLed:color managed object property
       - name: cucsEquipmentHealthLed
-        OID: 1.3.6.1.4.1.9.9.719.1.15.114.1.4 = INTEGER: 1
+        OID: 1.3.6.1.4.1.9.9.719.1.15.114.1.4
         enum:
           unknown: 0
           green: 1
@@ -777,14 +777,14 @@ metrics:
           blue: 4
       # Cisco UCS equipment:HealthLed:healthLedState managed object property
       - name: cucsEquipmentHealthLed
-        OID: 1.3.6.1.4.1.9.9.719.1.15.114.1.5 = INTEGER: 0
+        OID: 1.3.6.1.4.1.9.9.719.1.15.114.1.5
         enum:
           normal: 0
           minor: 1
           critical: 2
       # Cisco UCS equipment:HealthLed:operState managed object property
       - name: cucsEquipmentHealthLed
-        OID: 1.3.6.1.4.1.9.9.719.1.15.114.1.9 = INTEGER: 1
+        OID: 1.3.6.1.4.1.9.9.719.1.15.114.1.9
         enum:
           unknown: 0
           on: 1
@@ -797,7 +797,7 @@ metrics:
       # Cisco UCS equipment:HealthLed distinguished name
       - column:
           name: cucsEquipmentHealthLed
-          OID: 1.3.6.1.4.1.9.9.719.1.15.114.1.2 = STRING: "sys/rack-unit-1/board/led-4"
+          OID: 1.3.6.1.4.1.9.9.719.1.15.114.1.2
 
   # Cisco UCS memory:Unit managed object table
   - MIB: CISCO-UNIFIED-COMPUTING-MEMORY-MIB
@@ -807,10 +807,10 @@ metrics:
     symbols:
       # Cisco UCS memory:Unit:capacity managed object property
       - name: cucsMemoryUnitCapacity
-        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.6 = Gauge32: 16384
+        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.6
       # Cisco UCS memory:Unit:operState managed object property
       - name: cucsMemoryUnitOperState
-        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.13 = INTEGER: 1
+        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.13
         enum:
           unknown: 0
           operable: 1
@@ -846,7 +846,7 @@ metrics:
           linkActivateBlocked: 108
       # Cisco UCS memory:Unit:operability managed object property
       - name: cucsMemoryUnitOperability
-        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.14 = INTEGER: 1
+        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.14
         enum:
           unknown: 0
           operable: 1
@@ -882,7 +882,7 @@ metrics:
           linkActivateBlocked: 108
       # Cisco UCS memory:Unit:perf managed object property
       - name: cucsMemoryUnitPerf
-        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.15 = INTEGER: 0
+        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.15
         enum:
           unknown: 0
           ok: 1
@@ -895,7 +895,7 @@ metrics:
           notSupported: 100
       # Cisco UCS memory:Unit:power managed object property
       - name: cucsMemoryUnitPower
-        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.16 = INTEGER: 0
+        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.16
         enum:
           unknown: 0
           on: 1
@@ -912,7 +912,7 @@ metrics:
           notSupported: 100
       # Cisco UCS memory:Unit:presence managed object property
       - name: cucsMemoryUnitPresence
-        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.17 = INTEGER: 10
+        OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.17
         enum:
           unknown: 0
           empty: 1
@@ -938,15 +938,15 @@ metrics:
       # Cisco UCS memory:Unit distinguished name
       - column:
           name: cucsMemoryUnitDn
-          OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.2 = STRING: "sys/rack-unit-1/board/memarray-1/mem-1"
+          OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.2
       # Cisco UCS memory:Unit:location managed object property
       - column:
           name: cucsMemoryUnitLocation
-          OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.11 = STRING: "CPU 1 CHANNEL 0 DIMM 1"
+          OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.11
       # Cisco UCS memory:Unit:type managed object property
       - column:
           name: cucsMemoryUnitType
-          OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.23 = INTEGER: 24
+          OID: 1.3.6.1.4.1.9.9.719.1.30.11.1.23
           enum:
             undiscovered: 0
             other: 1
@@ -981,12 +981,12 @@ metrics:
     symbols:
       # 
       - name: cucsMemoryUnitEnvStatsTemperature
-        OID: 1.3.6.1.4.1.9.9.719.1.30.12.1.6 = INTEGER: 35
+        OID: 1.3.6.1.4.1.9.9.719.1.30.12.1.6
     metric_tags:
       # 
       - column:
           name: cucsMemoryUnitEnvStatsDn
-          OID: 1.3.6.1.4.1.9.9.719.1.30.12.1.2 = STRING: "sys/rack-unit-1/memarray-1/mem-1/dimm-env-stats"
+          OID: 1.3.6.1.4.1.9.9.719.1.30.12.1.2
 
   # Cisco UCS processor:EnvStats managed object table
   - MIB: CISCO-UNIFIED-COMPUTING-PROCESSOR-MIB
@@ -996,12 +996,12 @@ metrics:
     symbols:
       # Cisco UCS processor:EnvStats:temperature managed object property
       - name: cucsProcessorEnvStatsTemperature
-        OID: 1.3.6.1.4.1.9.9.719.1.41.2.1.10 = INTEGER: 43
+        OID: 1.3.6.1.4.1.9.9.719.1.41.2.1.10
     metric_tags:
       # Cisco UCS processor:EnvStats distinguished name
       - column:
           name: cucsProcessorEnvStatsDn
-          OID: 1.3.6.1.4.1.9.9.719.1.41.2.1.2 = STRING: "sys/rack-unit-1/board/cpu-1/env-stats"
+          OID: 1.3.6.1.4.1.9.9.719.1.41.2.1.2
 
   # Cisco UCS processor:Unit managed object table
   - MIB: CISCO-UNIFIED-COMPUTING-PROCESSOR-MIB
@@ -1139,11 +1139,11 @@ metrics:
       # Cisco UCS processor:Unit:dn managed object property
       - column:
           name: cucsProcessorUnitDn
-          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.2 = STRING: "sys/rack-unit-1/board/cpu-1"
+          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.2
       # Cisco UCS processor:Unit:arch managed object property
       - column:
           name: cucsProcessorUnitArch
-          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.4 = INTEGER: 179
+          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.4
           enum:
             any: 0
             intelP4C: 1
@@ -1156,23 +1156,23 @@ metrics:
       # Cisco UCS processor:Unit:cores managed object property
       - column:
           name: cucsProcessorUnitCores
-          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.5 = Gauge32: 6
+          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.5
       # Cisco UCS processor:Unit:coresEnabled managed object property
       - column:
           name: cucsProcessorUnitCoresEnabled
-          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.6 = Gauge32: 6
+          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.6
       # Cisco UCS processor:Unit:model managed object property
       - column:
           name: cucsProcessorUnitModel
-          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.8 = STRING: "Intel(R) Xeon(R) CPU E5-2630L v2 @ 2.40GHz"
+          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.8
       # Cisco UCS processor:Unit:threads managed object property
       - column:
           name: cucsProcessorUnitThreads
-          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.20 = Gauge32: 12
+          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.20
       # Cisco UCS processor:Unit:vendor managed object property
       - column:
           name: cucsProcessorUnitVendor
-          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.21 = STRING: "Intel(R) Corporation"
+          OID: 1.3.6.1.4.1.9.9.719.1.41.9.1.21
 
 
   # Cisco UCS storage:FlexFlashCard managed object table
