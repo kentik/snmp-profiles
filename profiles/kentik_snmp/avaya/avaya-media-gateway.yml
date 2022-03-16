@@ -190,13 +190,13 @@ metrics:
     symbols:
       # Total channels available to this DSP core.
       - name: cmgVoipDSPCoretotalChannels
-        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.2 = INTEGER: 30
+        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.2
       # Number of channels in use at this DSP core.
       - name: cmgVoipDSPCoreChannelsInUse
-        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.3 = INTEGER: 1
+        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.3
       # Maintenance busy-out state of this DSP core.
       - name: cmgVoipDSPCoreAdminState
-        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.4 = INTEGER: 2
+        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.4
         enum:
           busy_out: 1
           release: 2
@@ -204,14 +204,14 @@ metrics:
           unknown: 255
       # Status of the DSP Core.
       - name: cmgVoipDSPCoreStatus
-        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.5 = INTEGER: 2
+        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.5
         enum:
           idle: 1
           inUse: 2
           fault: 3
       # Result of the on demand test for the DSP Core.
       - name: cmgVoipDSPCoreDemandTestResult
-        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.7 = INTEGER: 255
+        OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.7
         enum:
           errorCode1: 1
           errorCode2: 2
