@@ -25,7 +25,6 @@ metrics:
       name: cseSysCPUUtilization              # The target scalar OID name
       poll_time_sec: 60                       # You can force a faster polling interval for specific OID's, especially for Golden Metrics
       tag: CPU                                # OPTIONAL: Used to rename the metric key sent to New Relic
-      allow_duplicate: true                   # OPTIONAL: Used to allow multiple metrics with the same tag in a single profile; ktranslate will only ship the one that responds
       # OPTIONAL: You can also add an 'enum' function here, see the tabular OID section below for an example
 
   # Tabular OIDs work under a common 'MIB' element to combine multiple OIDs together
