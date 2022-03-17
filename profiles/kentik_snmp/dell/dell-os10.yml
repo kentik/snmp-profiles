@@ -2,7 +2,8 @@
 ---
 extends:
   - system-mib.yml
-  - if-mib.yml
+  # Using the 32-bit counter IF-MIB profile here
+  - if32-mib.yml
   - host-resources-mib.yml
   - ucd-mib.yml
 
