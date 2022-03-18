@@ -22,7 +22,7 @@ matches:
   "^uap-ac-inwall": unifi-access-point.yml
   "root@sensey": opnsense-protectli.yml
   "poweriq": power-iq.yml
-  "#1 SMP": sonicwall-sma.yml
+  "#1 smp": sonicwall-sma.yml
 
 sysobjectid:
   - 1.3.6.1.4.1.8072.*
