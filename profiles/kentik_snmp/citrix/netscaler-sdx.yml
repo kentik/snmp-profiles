@@ -153,19 +153,19 @@ metrics:
     symbols:
       # IPMI Sensor Name
       - name: hmName
-        OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.1 = STRING: "5V"
+        OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.1
       # IPMI Sensor Status - OK/ERROR/NA
       - name: hmStatus
-        OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.4 = STRING: "ok"
+        OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.4
         conversion: to_one
       # Current Value of the IPMI Sensor
       - name: hmCurrentValue
-        OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.7 = STRING: "4.992"
+        OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.7
       metric_tags:
       # Measurement Unit
       - column:
           name: hmUnit
-          OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.6 = STRING: "Volts"
+          OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.6
 
   # The SDX XenServer Table
   - MIB: SDX-ROOT-MIB
