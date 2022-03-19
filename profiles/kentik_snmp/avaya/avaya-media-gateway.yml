@@ -151,7 +151,7 @@ metrics:
       - name: cmgVoipChannelsInUse
         OID: 1.3.6.1.4.1.6889.2.9.1.4.5.1.7
       # 5-minute average occupancy of this VoIP engine.
-      - name: cmgVoipaverageOccupancy
+      - name: cmgVoipAverageOccupancy
         OID: 1.3.6.1.4.1.6889.2.9.1.4.5.1.8
       # Indicates whether hyperactivity has been detected by this VoIP engine.
       - name: cmgVoipHyperactivity
@@ -189,7 +189,7 @@ metrics:
       OID: 1.3.6.1.4.1.6889.2.9.1.4.6
     symbols:
       # Total channels available to this DSP core.
-      - name: cmgVoipDSPCoretotalChannels
+      - name: cmgVoipDSPCoreTotalChannels
         OID: 1.3.6.1.4.1.6889.2.9.1.4.6.1.2
       # Number of channels in use at this DSP core.
       - name: cmgVoipDSPCoreChannelsInUse
