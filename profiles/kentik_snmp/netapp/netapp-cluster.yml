@@ -1219,3 +1219,36 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.789.1.2.2.36.1.3
           name: cDOTMiscGlobalStatusMessage
+  # Table of all nodes in the cluster.
+  - MIB: NETAPP-MIB
+    table:
+      name: nodeTable
+      OID: 1.3.6.1.4.1.789.1.25.2
+    symbols:
+      # Node Uptime. Same as sysUpTime for a specific node.
+      - name: nodeUptime
+        OID: 1.3.6.1.4.1.789.1.25.2.1.7
+      # Whether or not the node can communicate with the cluster.
+      - name: nodeHealth
+        OID: 1.3.6.1.4.1.789.1.25.2.1.11
+        enum:
+          false: 0
+          true: 1
+      # The time (in hundredths of a second) that the CPU has been up since the last boot.
+      - name: nodeCpuUptime
+        OID: 1.3.6.1.4.1.789.1.25.2.1.15
+      # Count of the number of chassis fans which are not operating within the recommended RPM range.
+      - name: nodeEnvFailedFanCount
+        OID: 1.3.6.1.4.1.789.1.25.2.1.19
+      # Count of the number of power supplies which are in degraded mode.
+      - name: nodeEnvFailedPowerSupplyCount
+        OID: 1.3.6.1.4.1.789.1.25.2.1.21
+      # Text message describing the state of any power supplies which are currently degraded.
+      - name: nodeEnvFailedPowerSupplyMessage
+        OID: 1.3.6.1.4.1.789.1.25.2.1.22
+        conversion: to_one
+    metric_tags:
+      # Node Product Version. Similar to productVersion for a specific node.
+      - column:
+          name: nodeProductVersion
+          OID: 1.3.6.1.4.1.789.1.25.2.1.23
