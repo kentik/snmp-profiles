@@ -6,7 +6,7 @@
 extends:
   - system-mib.yml
   - if-mib.yml
-  - ospf.yml
+  - ospf-mib.yml
   - entity-sensor-mib.yml
 
 provider: kentik-avaya-gateway
