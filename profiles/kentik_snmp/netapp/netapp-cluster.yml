@@ -1,5 +1,5 @@
 # http://oid-info.com/get/1.3.6.1.4.1.789.2.5
-# https://mibs.observium.org/mib/NETAPP-MIB/#
+# https://mibs.observium.org/mib/NETAPP-MIB/
 ---
 extends:
   - system-mib.yml
@@ -1237,9 +1237,32 @@ metrics:
       # The time (in hundredths of a second) that the CPU has been up since the last boot.
       - name: nodeCpuUptime
         OID: 1.3.6.1.4.1.789.1.25.2.1.15
+      # An indication of the current status of the NVRAM battery or batteries.
+      - name: nodeNvramBatteryStatus
+        OID: 1.3.6.1.4.1.789.1.25.2.1.17
+        enum:
+          ok: 1
+          partiallyDischarged: 2
+          fullyDischarged: 3
+          notPresent: 4
+          nearEndOfLife: 5
+          atEndOfLife: 6
+          unknown: 7
+          overCharged: 8
+          fullyCharged: 9
+      # An indication of whether the hardware is currently operating outside of its recommended temperature range.
+      - name: nodeEnvOverTemperature
+        OID: 1.3.6.1.4.1.789.1.25.2.1.18
+        enum:
+          no: 1
+          yes: 2
       # Count of the number of chassis fans which are not operating within the recommended RPM range.
       - name: nodeEnvFailedFanCount
         OID: 1.3.6.1.4.1.789.1.25.2.1.19
+      # Text message describing the current condition of chassis fans.
+      - name: nodeEnvFailedFanMessage
+        OID: 1.3.6.1.4.1.789.1.25.2.1.20
+        conversion: to_one
       # Count of the number of power supplies which are in degraded mode.
       - name: nodeEnvFailedPowerSupplyCount
         OID: 1.3.6.1.4.1.789.1.25.2.1.21
@@ -1252,3 +1275,62 @@ metrics:
       - column:
           name: nodeProductVersion
           OID: 1.3.6.1.4.1.789.1.25.2.1.23
+  # Table with list of SnapMirror Status
+  - MIB: NETAPP-MIB
+    table:
+      name: snapmirrorRelStatusTable
+      OID: 1.3.6.1.4.1.789.1.29.1
+    symbols:
+      # Current transfer status of this relationship.
+      - name: snapmirrorRelStatus
+        OID: 1.3.6.1.4.1.789.1.29.1.1.5
+        enum:
+          idle: 0
+          transferring: 1
+          restoring: 2
+          checking: 3
+          quiescing: 4
+          quiesced: 5
+          queued: 6
+          preparing: 7
+          waiting: 8
+          finalizing: 9
+          resyncing: 10
+          aborting: 11
+          breaking: 12
+      # Current state of this relationship.
+      - name: snapmirrorRelState
+        OID: 1.3.6.1.4.1.789.1.29.1.1.6
+        enum:
+          uninitialized: 0
+          snapmirrored: 1
+          brokenOff: 2
+      # Indicates whether this relationship is healthy or not.
+      - name: snapmirrorRelHealthy
+        OID: 1.3.6.1.4.1.789.1.29.1.1.16
+        enum:
+          fale: 0
+          true: 1
+      # Indicates the specific reason due to which this relationship is not healthy.
+      - name: snapmirrorRelUnHealthyReason
+        OID: 1.3.6.1.4.1.789.1.29.1.1.17
+        conversion: to_one
+    metric_tags:
+      # Source path of this relationship.
+      - column:
+          name: snapmirrorRelSrcPath
+          OID: 1.3.6.1.4.1.789.1.29.1.1.2
+      # Destination path of this relationship.
+      - column:
+          name: snapmirrorRelDestPath
+          OID: 1.3.6.1.4.1.789.1.29.1.1.3
+      # Relationship type of this relationship.
+      - column:
+          name: snapmirrorRelType
+          OID: 1.3.6.1.4.1.789.1.29.1.1.4
+          enum:
+            dp: 0
+            ls: 1
+            xdp: 2
+            rst: 3
+            tdp: 4
