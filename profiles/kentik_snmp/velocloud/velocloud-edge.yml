@@ -4,6 +4,7 @@
 extends:
   - system-mib.yml
   - if-mib.yml
+  - host-resources-mib
 
 provider: kentik-switch
 
