@@ -1,158 +1,155 @@
 # Profile is intended to be used in an extends block
 # Alternative MIB for host-resources-mib used on some devices
-# http://oid-info.com/get/1.3.6.1.4.1.2021
+# https://mibs.observium.org/mib/UCD-SNMP-MIB/
+# https://mibs.observium.org/mib/UCD-DISKIO-MIB/
+---
 
 metrics:
+  # The 1 minute load averages as an integer. This is computed by taking the floating point loadaverage value and multiplying by 100, then converting the value to an integer.
+  # Polled at 60s to support anomaly detection
   - MIB: UCD-SNMP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.2021.4.3.0
-      name: memTotalSwap
+      name: laLoadInt1Min
+      OID: 1.3.6.1.4.1.2021.10.1.5.1
+      poll_time_sec: 60
+      tag: CPU
+
+  # The total amount of real/physical memory installed on this host.
+  # Polled at 60s to support anomaly detection
   - MIB: UCD-SNMP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.2021.4.4.0
-      name: memAvailSwap
-  # Total available memory
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.4.5.0
       name: memTotalReal
+      OID: 1.3.6.1.4.1.2021.4.5.0
       poll_time_sec: 60
       tag: MemoryTotal
+
+  # The amount of real/physical memory currently unused or available.
+  # Polled at 60s to support anomaly detection
   - MIB: UCD-SNMP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.2021.4.6.0
       name: memAvailReal
-  # Free memory
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.4.11.0
-      name: memTotalFree
+      OID: 1.3.6.1.4.1.2021.4.6.0
       poll_time_sec: 60
       tag: MemoryFree
+
+  # The total amount of swap space configured for this host.
   - MIB: UCD-SNMP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.2021.4.12.0
+      name: memTotalSwap
+      OID: 1.3.6.1.4.1.2021.4.3.0
+
+  # The amount of swap space currently unused or available.
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      name: memAvailSwap
+      OID: 1.3.6.1.4.1.2021.4.4.0
+
+  # The total amount of memory free or available for use on this host. This value typically covers both real memory and swap space or virtual memory.
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      name: memTotalFree
+      OID: 1.3.6.1.4.1.2021.4.11.0
+
+  # The minimum amount of swap space expected to be kept free or available during normal operation of this host.
+  - MIB: UCD-SNMP-MIB
+    symbol:
       name: memMinimumSwap
+      OID: 1.3.6.1.4.1.2021.4.12.0
+
+  # The total amount of real or virtual memory currently allocated for use as shared memory.
   - MIB: UCD-SNMP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.2021.4.13.0
       name: memShared
+      OID: 1.3.6.1.4.1.2021.4.13.0
+
+  # The total amount of real or virtual memory currently allocated for use as memory buffers.
   - MIB: UCD-SNMP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.2021.4.14.0
       name: memBuffer
+      OID: 1.3.6.1.4.1.2021.4.14.0
+
+  # The total amount of real or virtual memory currently allocated for use as cached memory.
   - MIB: UCD-SNMP-MIB
     symbol:
-      OID: 1.3.6.1.4.1.2021.4.15.0
       name: memCached
+      OID: 1.3.6.1.4.1.2021.4.15.0
+
+  # Disk watching information. Partions to be watched are configured by the snmpd.conf file of the agent.
   - MIB: UCD-SNMP-MIB
     table:
       OID: 1.3.6.1.4.1.2021.9
       name: dskTable
     symbols:
-      - OID: 1.3.6.1.4.1.2021.9.1.6
-        name: dskTotal
-      - OID: 1.3.6.1.4.1.2021.9.1.7
-        name: dskAvail
-      - OID: 1.3.6.1.4.1.2021.9.1.8
-        name: dskUsed
-      - OID: 1.3.6.1.4.1.2021.9.1.9
-        name: dskPercent
-      - OID: 1.3.6.1.4.1.2021.9.1.10
-        name: dskPercentNode
+      # Total size of the disk/partion (kBytes). For large disks (>2Tb), this value will latch at INT32_MAX (2147483647).
+      - name: dskTotal
+        OID: 1.3.6.1.4.1.2021.9.1.6
+      # Available space on the disk. For large lightly-used disks (>2Tb), this value will latch at INT32_MAX (2147483647).
+      - name: dskAvail
+        OID: 1.3.6.1.4.1.2021.9.1.7
+      # Used space on the disk. For large heavily-used disks (>2Tb), this value will latch at INT32_MAX (2147483647).
+      - name: dskUsed
+        OID: 1.3.6.1.4.1.2021.9.1.8
+      # Percentage of space used on disk.
+      - name: dskPercent
+        OID: 1.3.6.1.4.1.2021.9.1.9
+      # Percentage of inodes used on disk.
+      - name: dskPercentNode
+        OID: 1.3.6.1.4.1.2021.9.1.10
     metric_tags:
-      - tag: dsk_index
-        column:
-          OID: 1.3.6.1.4.1.2021.9.1.1
-          name: dskIndex
+      # Path where the disk is mounted.
       - tag: dsk_path
         column:
           OID: 1.3.6.1.4.1.2021.9.1.2
           name: dskPath
+      # Path of the device for the partition
       - tag: dsk_device
         column:
           OID: 1.3.6.1.4.1.2021.9.1.3
           name: dskDevice
+      # Error flag signaling that the disk or partition is under the minimum required space configured for it.
       - tag: dsk_error_flag
         column:
           OID: 1.3.6.1.4.1.2021.9.1.100
           name: dskErrorFlag
+          enum:
+            noError: 0
+            error: 1
+      # A text description providing a warning and the space left on the disk.
       - tag: dsk_error_msg
         column:
           OID: 1.3.6.1.4.1.2021.9.1.101
           name: dskErrorMsg
-  # CPU metric
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.10.1.5.1
-      name: laLoadInt1Min
-      poll_time_sec: 60
-      tag: CPU
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.11.3.0
-      name: ssSwapIn
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.11.4.0
-      name: ssSwapOut
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.11.5.0
-      name: ssIOSent
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.11.6.0
-      name: ssIOReceive
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.11.7.0
-      name: ssSysInterrupts
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.11.8.0
-      name: ssSysContext
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.11.9.0
-      name: ssCpuUser
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.11.10.0
-      name: ssCpuSystem
-  - MIB: UCD-SNMP-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.2021.11.11.0
-      name: ssCpuIdle
+
+  # Table of IO devices and how much data they have read/written.
   - MIB: UCD-DISKIO-MIB
     table:
       OID: 1.3.6.1.4.1.2021.13.15.1.1
       name: diskIOTable
     symbols:
-      - OID: 1.3.6.1.4.1.2021.13.15.1.1.3
-        name: diskIONRead
-      - OID: 1.3.6.1.4.1.2021.13.15.1.1.4
-        name: diskIONWritten
-      - OID: 1.3.6.1.4.1.2021.13.15.1.1.5
-        name: diskIOReads
-      - OID: 1.3.6.1.4.1.2021.13.15.1.1.6
-        name: diskIOWrites
-      - OID: 1.3.6.1.4.1.2021.13.15.1.1.9
-        name: diskIOLA1
-      - OID: 1.3.6.1.4.1.2021.13.15.1.1.10
-        name: diskIOLA5
-      - OID: 1.3.6.1.4.1.2021.13.15.1.1.11
-        name: diskIOLA15
-      - OID: 1.3.6.1.4.1.2021.13.15.1.1.12
-        name: diskIONReadX
-      - OID: 1.3.6.1.4.1.2021.13.15.1.1.13
-        name: diskIONWrittenX
+      # The number of read accesses from this device since boot.
+      - name: diskIOReads
+        OID: 1.3.6.1.4.1.2021.13.15.1.1.5
+      # The number of write accesses to this device since boot.
+      - name: diskIOWrites
+        OID: 1.3.6.1.4.1.2021.13.15.1.1.6
+      # The 1 minute average load of disk (%)
+      - name: diskIOLA1
+        OID: 1.3.6.1.4.1.2021.13.15.1.1.9
+      # The 5 minute average load of disk (%)
+      - name: diskIOLA5
+        OID: 1.3.6.1.4.1.2021.13.15.1.1.10
+      # The 15 minute average load of disk (%)
+      - name: diskIOLA15
+        OID: 1.3.6.1.4.1.2021.13.15.1.1.11
+      # The number of bytes read from this device since boot. (64-bit counter)
+      - name: diskIONReadX
+        OID: 1.3.6.1.4.1.2021.13.15.1.1.12
+      # The number of bytes written to this device since boot. (64-bit counter)
+      - name: diskIONWrittenX
+        OID: 1.3.6.1.4.1.2021.13.15.1.1.13
     metric_tags:
-      - tag: diskIO_index
-        column:
-          OID: 1.3.6.1.4.1.2021.13.15.1.1.1
-          name: diskIOIndex
+      # The name of the device we are counting/checking.
       - tag: diskIO_device
         column:
-          OID: 1.3.6.1.4.1.2021.13.15.1.1.2
           name: diskIODevice
+          OID: 1.3.6.1.4.1.2021.13.15.1.1.2
