@@ -524,7 +524,7 @@ metrics:
           eraseDone: 6
           eraseQueued: 7
           ssdWearOut: 8
-          notAuthenticated: 9)
+          notAuthenticated: 9
       # Reference Time in hours. This shows the total number of hours that a physical drive has been in operation since the drive was stamped. The drive will have either been stamped when it left the factory or when you ran diagnostics on your new drive.
       - name: cpqDaPhyDrvRefHours
         OID: 1.3.6.1.4.1.232.3.2.5.1.1.9
