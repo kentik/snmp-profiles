@@ -161,7 +161,7 @@ metrics:
       # Current Value of the IPMI Sensor
       - name: hmCurrentValue
         OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.7
-      metric_tags:
+    metric_tags:
       # Measurement Unit
       - column:
           name: hmUnit
