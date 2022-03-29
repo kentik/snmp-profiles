@@ -1271,6 +1271,10 @@ metrics:
         OID: 1.3.6.1.4.1.789.1.25.2.1.22
         conversion: to_one
     metric_tags:
+      # Node name. Same as sysName for a specific node.
+      - column:
+          name: nodeName
+          OID: 1.3.6.1.4.1.789.1.25.2.1.1
       # Node Product Version. Similar to productVersion for a specific node.
       - column:
           name: nodeProductVersion
