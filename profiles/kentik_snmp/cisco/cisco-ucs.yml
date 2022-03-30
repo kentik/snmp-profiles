@@ -398,7 +398,7 @@ metrics:
       # Cisco UCS compute:RackUnit:totalMemory managed object property
       - name: cucsComputeRackUnitTotalMemory
         OID: 1.3.6.1.4.1.9.9.719.1.9.35.1.49
-        tab: MemoryTotal
+        tag: MemoryTotal
     metric_tags:
       # Cisco UCS compute:RackUnit distinguished name
       - column:
