@@ -6,8 +6,7 @@ extends:
   - system-mib.yml
   - if-mib.yml
 
-provider:
-  - kentik-cisco-ap
+provider: kentik-cisco-ap
 
 sysobjectid:
   - 1.3.6.1.4.1.9.1.1660    # AIR-SAP1602E-C-K9
