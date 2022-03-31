@@ -258,6 +258,7 @@ metrics:
           disabled: 2
           reset: 3
           outOfServiceAdmin: 4
+          unsupported: 0
       - OID: 1.3.6.1.4.1.9.9.117.1.2.1.1.2
         name: cefcModuleOperStatus
         enum:
