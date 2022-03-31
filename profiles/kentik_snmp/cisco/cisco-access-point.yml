@@ -1,0 +1,93 @@
+# http://www.circitor.fr/Mibs/Html/C/CISCO-PROCESS-MIB.php
+# http://www.circitor.fr/Mibs/Html/C/CISCO-MEMORY-POOL-MIB.php
+# http://www.circitor.fr/Mibs/Html/C/CISCO-DOT11-ASSOCIATION-MIB.php
+---
+extends:
+  - system-mib.yml
+  - if-mib.yml
+
+provider: kentik-cisco-ap
+
+sysobjectid:
+  - 1.3.6.1.4.1.9.1.1660    # AIR-SAP1602E-C-K9
+
+metrics:
+  # The overall CPU busy percentage in the last 1 minute period. This object deprecates the object cpmCPUTotal1min and increases the value range to (0..100).
+  # Polled at 60s to support anomaly detection.
+  - MIB: CISCO-PROCESS-MIB
+    symbol:
+      name: cpmCPUTotal1minRev
+      OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.7.1
+      poll_time_sec: 60
+      tag: CPU
+
+  # Indicates the number of bytes from the memory pool that are currently in use by applications on the managed device.
+  # Polled at 60s to support anomaly detection.
+  - MIB: CISCO-MEMORY-POOL-MIB
+    symbol:
+      name: ciscoMemoryPoolUsed
+      OID: 1.3.6.1.4.1.9.9.48.1.1.1.5.1
+      poll_time_sec: 60
+      tag: MemoryUsed
+
+  # Indicates the number of bytes from the memory pool that are currently unused on the managed device. Note that the sum of ciscoMemoryPoolUsed and ciscoMemoryPoolFree is the total amount of memory in the pool
+  # Polled at 60s to support anomaly detection.
+  - MIB: CISCO-MEMORY-POOL-MIB
+    symbol:
+      name: ciscoMemoryPoolFree
+      OID: 1.3.6.1.4.1.9.9.48.1.1.1.6.1
+      poll_time_sec: 60
+      tag: MemoryFree
+
+  # This table contains the list of active devices currently associated with this device on each of the IEEE 802.11 interfaces.
+  - MIB: CISCO-DOT11-ASSOCIATION-MIB
+    table:
+      name: cDot11ActiveDevicesTable
+      OID: 1.3.6.1.4.1.9.9.273.1.1.2
+    symbols:
+      # This is the number of wireless clients currently associating with this device on this interface.
+      - name: cDot11ActiveWirelessClients
+        OID: 1.3.6.1.4.1.9.9.273.1.1.2.1.1
+      # This is the number of bridges currently associating with this device on this interface.
+      - name: cDot11ActiveBridges
+        OID: 1.3.6.1.4.1.9.9.273.1.1.2.1.2
+      # This is the number of repeaters currently associating with this device on this interface.
+      - name: cDot11ActiveRepeaters
+        OID: 1.3.6.1.4.1.9.9.273.1.1.2.1.3
+    metric_tags:
+      # Interface name from the ifTable
+      - tag: if_interface_name
+        column:
+          name: ifName
+          OID: 1.3.6.1.2.1.31.1.1.1.1
+
+  # This table contains statistics for various devices associated with this device on each of the IEEE 802.11 interfaces since it was last re-started. These devices include: wireless clients, repeaters, and bridges.
+  - MIB: CISCO-DOT11-ASSOCIATION-MIB
+    table:
+      name: cDot11AssociationStatsTable
+      OID: 1.3.6.1.4.1.9.9.273.1.1.3
+    symbols:
+      # This object counts the number of stations associated with this device on this interface since device re-started.
+      - name: cDot11AssStatsAssociated
+        OID: 1.3.6.1.4.1.9.9.273.1.1.3.1.1
+      # This object counts the number of stations authenticated with this device on this interface since device re-started.
+      - name: cDot11AssStatsAuthenticated
+        OID: 1.3.6.1.4.1.9.9.273.1.1.3.1.2
+      # This object counts the number of stations roamed from another device to this device on this interface since device re-started.
+      - name: cDot11AssStatsRoamedIn
+        OID: 1.3.6.1.4.1.9.9.273.1.1.3.1.3
+      # This object counts the number of stations roamed away from this device on this interface since device re-started.
+      - name: cDot11AssStatsRoamedAway
+        OID: 1.3.6.1.4.1.9.9.273.1.1.3.1.4
+      # This object counts the number of stations deauthenticated with this device on this interface since device re-started.
+      - name: cDot11AssStatsDeauthenticated
+        OID: 1.3.6.1.4.1.9.9.273.1.1.3.1.5
+      # This object counts the number of stations disassociated with this device on this interface since device re-started.
+      - name: cDot11AssStatsDisassociated
+        OID: 1.3.6.1.4.1.9.9.273.1.1.3.1.6
+    metric_tags:
+      # Interface name from the ifTable
+      - tag: if_interface_name
+        column:
+          name: ifName
+          OID: 1.3.6.1.2.1.31.1.1.1.1
