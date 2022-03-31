@@ -1289,6 +1289,11 @@ metrics:
       - column:
           name: cucsStorageFlexFlashCardMode
           OID: 1.3.6.1.4.1.9.9.719.1.45.34.1.6
+          enum:
+            ffPhyDriveUnpairedPrimary: 0
+            ffPhyDrivePrimary: 1
+            ffPhyDriveSecondaryAct: 2
+            ffPhyDriveSecondaryUnhealthy: 3
       # Cisco UCS storage:FlexFlashCard:cardType managed object property
       - column:
           name: cucsStorageFlexFlashCardType
@@ -1297,6 +1302,11 @@ metrics:
       - column:
           name: cucsStorageFlexFlashCardConnectionProtocol
           OID: 1.3.6.1.4.1.9.9.719.1.45.34.1.8
+          enum:
+            unspecified: 0
+            sas: 1
+            sata: 2
+            nvme: 3
       # Cisco UCS storage:FlexFlashCard:revision managed object property
       - column:
           name: cucsStorageFlexFlashCardRevision
