@@ -4,7 +4,6 @@
 extends:
   - system-mib.yml
   - if-mib.yml
-  - ip-mib.yml
 
 provider: kentik-nas
 

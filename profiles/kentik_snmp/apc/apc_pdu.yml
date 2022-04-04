@@ -2,8 +2,6 @@
 ---
 extends:
   - system-mib.yml
-  - tcp-mib.yml
-  - udp-mib.yml
 
 provider: kentik-pdu
 
