@@ -1,5 +1,5 @@
 # https://mibs.observium.org/mib/MELLANOX-PRODUCTS-MIB/
---
+---
 extends:
   - system-mib.yml
   - if-mib.yml
