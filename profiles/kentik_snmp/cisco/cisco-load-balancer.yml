@@ -8,7 +8,7 @@ extends:
 provider: kentik-load-balancer
 
 sysobjectid:
-  - 1.3.6.1.4.1.9.1.824
+  - 1.3.6.1.4.1.9.1.824    # Cisco ACE 4710
 
 metrics:
   - MIB: CISCO-SLB-MIB
