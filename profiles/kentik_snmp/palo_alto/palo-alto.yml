@@ -5,9 +5,6 @@ extends:
   - if-mib.yml
   - host-resources-mib.yml
   - ospf-mib.yml
-  - tcp-mib.yml
-  - udp-mib.yml
-  - ip-mib.yml
   - entity-sensor-mib.yml
 
 provider: kentik-firewall
