@@ -9,6 +9,7 @@ extends:
 provider: kentik-cisco-ap
 
 sysobjectid:
+  - 1.3.6.1.4.1.9.1.525     # Cisco AIR AP 1210
   - 1.3.6.1.4.1.9.1.1660    # AIR-SAP1602E-C-K9
 
 metrics:
