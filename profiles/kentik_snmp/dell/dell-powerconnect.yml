@@ -1,5 +1,5 @@
 # https://mibs.observium.org/mib/RADLAN-MIB/
-# Memory Utilization not available on the 3548 device
+# Memory Utilization not available on the 3548 and 3548P devices
 # https://mibs.observium.org/mib/Dell-Vendor-MIB/
 # https://mibs.observium.org/mib/DNOS-SWITCHING-MIB/
 ---
@@ -14,12 +14,17 @@ sysobjectid:
   - 1.3.6.1.4.1.674.10895.3011    # PowerConnect 6248
   - 1.3.6.1.4.1.674.10895.3013    # PowerConnect 6248P
   - 1.3.6.1.4.1.674.10895.3017    # PowerConnect 3548
+  - 1.3.6.1.4.1.674.10895.3019    # PowerConnect 3548P
   - 1.3.6.1.4.1.674.10895.3024    # PowerConnect 8024F
   - 1.3.6.1.4.1.674.10895.3044    # PowerConnect N4032F
   - 1.3.6.1.4.1.674.10895.3053    # PowerConnect N2024
+  - 1.3.6.1.4.1.674.10895.3063    # PowerConnect N1524
+  - 1.3.6.1.4.1.674.10895.3064    # PowerConnect N1524P
+  - 1.3.6.1.4.1.674.10895.3065    # PowerConnect N1548
+  - 1.3.6.1.4.1.674.10895.3066    # PowerConnect N1548P
 
 metrics:
-  # This OID is for CPU on the PowerConnect 3548
+  # This OID is for CPU on the PowerConnect 3548 and 3548P
   - MIB: RADLAN-MIB
     symbol:
       name: rlCpuUtilDuringLastMinute

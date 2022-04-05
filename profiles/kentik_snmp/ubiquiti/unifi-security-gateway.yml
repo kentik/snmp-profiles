@@ -1,7 +1,6 @@
 ---
 extends: 
   - if-mib.yml
-  - ip-mib.yml
   - system-mib.yml
   - ucd-mib.yml
 
