@@ -69,7 +69,7 @@ metrics:
   - MIB: HOST-RESOURCES-MIB
     symbol:
       name: hrProcessorLoadCombined
-      OID: 1.3.6.1.2.1.25.3.3.1.2.  ### Needs index value here
+      OID: 1.3.6.1.2.1.25.3.3.1.2.196608
       poll_time_sec: 60
       tag: CPU
   # Memory Utilization
@@ -77,31 +77,12 @@ metrics:
   - MIB: HOST-RESOURCES-MIB
     symbol:
       name: hrStorageSizeRAM
-      OID: 1.3.6.1.2.1.25.2.3.1.5.  ### Needs index value here
+      OID: 1.3.6.1.2.1.25.2.3.1.5.1
       poll_time_sec: 60
       tag: MemoryTotal
   - MIB: HOST-RESOURCES-MIB
     symbol:
       name: hrStorageUsedRAM
-      OID: 1.3.6.1.2.1.25.2.3.1.6.  ### Needs index value here
+      OID: 1.3.6.1.2.1.25.2.3.1.6.1
       poll_time_sec: 60
       tag: MemoryUsed
-  # 
-  - MIB: 
-    symbol:
-      name: 
-      OID: 
-  # 
-  - MIB: 
-    table:
-      name: 
-      OID: 
-    symbols:
-      # 
-      - name: 
-        OID: 
-    metric_tags:
-      # 
-      - column:
-          name: 
-          OID:
