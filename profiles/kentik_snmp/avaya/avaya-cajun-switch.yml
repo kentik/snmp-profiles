@@ -83,7 +83,7 @@ metrics:
             genActiveTokenRing: 18
             tenBaseFB: 19
             eth10BaseT: 20
-            fiber: 21),
+            fiber: 21
             wan: 22
             star: 23
             activeRI: 24
@@ -405,7 +405,7 @@ metrics:
             fullDupluxNoPause: 2
             fullDuplexProprietaryFC: 3
             fullDuplexISL: 4
-            fullDuplexFlowControlISL: 5           
+            fullDuplexFlowControlISL: 5
             fullDuplexAsymTxPause: 6
             fullDuplexSymPause: 7
             fullDuplexAsymRxPause: 8
