@@ -8,7 +8,7 @@ extends:
   - if-mib.yml
   - system-mib.yml
 
-provider: kentik-access-point
+provider: kentik-wap
 
 sysobjectid:
   - 1.3.6.1.4.1.41112  # Ubiquiti Networks, Inc.
