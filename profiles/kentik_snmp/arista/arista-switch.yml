@@ -12,11 +12,8 @@ extends:
   - system-mib.yml
   - entity-sensor-mib.yml
   - if-mib.yml
-  - ip-mib.yml
   - ospf-mib.yml
   - bgp4-mib.yml
-  - tcp-mib.yml
-  - udp-mib.yml
   - lldp-mib.yml
 
 sysobjectid: 

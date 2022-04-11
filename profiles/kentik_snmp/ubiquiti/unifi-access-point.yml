@@ -8,7 +8,7 @@ extends:
   - if-mib.yml
   - system-mib.yml
 
-provider: kentik-access-point
+provider: kentik-wap
 
 sysobjectid:
   - 1.3.6.1.4.1.41112  # Ubiquiti Networks, Inc.
@@ -17,15 +17,15 @@ metrics:
   - MIB: FROGFOOT-RESOURCES-MIB
     symbol:
       OID: 1.3.6.1.4.1.10002.1.1.1.1.1.0
-      name: memFree
-      poll_time_sec: 60
-      tag: MemoryFree
-  - MIB: FROGFOOT-RESOURCES-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.10002.1.1.1.1.2.0
       name: memTotal
       poll_time_sec: 60
       tag: MemoryTotal
+  - MIB: FROGFOOT-RESOURCES-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.10002.1.1.1.1.2.0
+      name: memFree
+      poll_time_sec: 60
+      tag: MemoryFree
   - MIB: FROGFOOT-RESOURCES-MIB
     table:
       OID: 1.3.6.1.4.1.10002.1.1.1.4.2

@@ -9,6 +9,7 @@ extends:
 provider: kentik-switch
 
 sysobjectid:
+  - 1.3.6.1.4.1.1916.2.89     # Summit X250e
   - 1.3.6.1.4.1.1916.2.343    # ExtremeSwitching X435
 
 metrics:
