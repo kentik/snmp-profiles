@@ -28,11 +28,12 @@ metrics:
     symbol:
       name: agentPowerControl
       OID: 1.3.6.1.4.1.7244.1.2.1.1.5.0
-      unsupported: 0
-      off: 1
-      on: 2
-      reset: 3
-      cycle: 4
+      enum:
+        unsupported: 0
+        off: 1
+        on: 2
+        reset: 3
+        cycle: 4
 
   # Voltage Status Overall
   - MIB: QUANTA-RACK-MIB
@@ -88,24 +89,26 @@ metrics:
     symbol:
       name: powerSupply0Status
       OID: 1.3.6.1.4.1.7244.1.2.1.2.8.0
-      isPresent: 1
-      failDetect: 2
-      predictiveFail: 4
-      inputLost: 8
-      lostOrOutOfRange: 16
-      outOfRange: 32
+      enum:
+        isPresent: 1
+        failDetect: 2
+        predictiveFail: 4
+        inputLost: 8
+        lostOrOutOfRange: 16
+        outOfRange: 32
 
   # Power Supply 1 Status
   - MIB: QUANTA-RACK-MIB
     symbol:
       name: powerSupply1Status
       OID: 1.3.6.1.4.1.7244.1.2.1.2.9.0
-      isPresent: 1
-      failDetect: 2
-      predictiveFail: 4
-      inputLost: 8
-      lostOrOutOfRange: 16
-      outOfRange: 32
+      enum:
+        isPresent: 1
+        failDetect: 2
+        predictiveFail: 4
+        inputLost: 8
+        lostOrOutOfRange: 16
+        outOfRange: 32
 
   # Processor Device Info Table
   - MIB: QUANTA-RACK-MIB
