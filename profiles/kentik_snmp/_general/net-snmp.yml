@@ -22,6 +22,7 @@ matches:
   "root@sensey": opnsense-protectli.yml
   "poweriq": power-iq.yml
   "#1 smp": sonicwall-sma.yml
+  "^linux ubnt": unifi-switch.yml    # this may need to be removed later for being too generic
 
 sysobjectid:
   - 1.3.6.1.4.1.8072.*
