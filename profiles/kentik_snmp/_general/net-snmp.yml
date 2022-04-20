@@ -21,6 +21,7 @@ matches:
   "^uap-ac-inwall": unifi-access-point.yml
   "root@sensey": opnsense-protectli.yml
   "poweriq": power-iq.yml
+  "solidfire": netapp-hci.yml
   "#1 smp": sonicwall-sma.yml
   "^linux ubnt": unifi-switch.yml    # this may need to be removed later for being too generic
 
