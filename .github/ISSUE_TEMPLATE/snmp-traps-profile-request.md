@@ -13,7 +13,7 @@ Device Vendor:
 
 Device Model: 
 
-**Please provide a [public gist](https://gist.github.com/) with BOTH a sanitized** *(sensitive information removed)* **PCAP capture of SNMP Trap samples for the device and the MIB file(s) that define the Traps this device will support.**
+**Please attach BOTH a sanitized** *(sensitive information removed)* **PCAP capture of SNMP Trap samples for the device and the MIB file(s) that define the Traps this device will support. Note that the PCAP file will not work as a Gist, it needs to be attached as a file to this issue.**
 
 **The MIB file will give us the enumerated names of the metrics you wish to collect, while the output of the packet capture shows the "true story" of what a device will ship via SNMP Traps and is used to ensure that our profiles are efficient and accurate for your devices.**
 
