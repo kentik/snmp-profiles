@@ -18,6 +18,7 @@ sysobjectid:
   - 1.3.6.1.4.1.674.10895.3024    # PowerConnect 8024F
   - 1.3.6.1.4.1.674.10895.3044    # PowerConnect N4032F
   - 1.3.6.1.4.1.674.10895.3053    # PowerConnect N2024
+  - 1.3.6.1.4.1.674.10895.3058    # PowerConnect N3048
   - 1.3.6.1.4.1.674.10895.3063    # PowerConnect N1524
   - 1.3.6.1.4.1.674.10895.3064    # PowerConnect N1524P
   - 1.3.6.1.4.1.674.10895.3065    # PowerConnect N1548
