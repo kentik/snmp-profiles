@@ -41,43 +41,6 @@ metrics:
           name: softwareResourceName
           OID: 1.3.6.1.4.1.5951.6.2.1000.2.1.1
 
-  # The SDK disktable
-  - MIB: SDX-ROOT-MIB
-    table:
-      name: diskTable
-      OID: 1.3.6.1.4.1.5951.6.2.1000.3
-    symbols:
-      # Transactions per second
-      - name: diskTransactionRate
-        OID: 1.3.6.1.4.1.5951.6.2.1000.3.1.4
-      # Blocks read per second
-      - name: diskBlockReadRate
-        OID: 1.3.6.1.4.1.5951.6.2.1000.3.1.5
-      # Blocks written per second
-      - name: diskBlockWriteRate
-        OID: 1.3.6.1.4.1.5951.6.2.1000.3.1.6
-      # Total blocks read
-      - name: diskTotalBlocksRead
-        OID: 1.3.6.1.4.1.5951.6.2.1000.3.1.7
-      # Total blocks written
-      - name: diskTotalBlocksWritten
-        OID: 1.3.6.1.4.1.5951.6.2.1000.3.1.8
-      # Utilization of the disk (bytes)
-      - name: diskUtilized
-        OID: 1.3.6.1.4.1.5951.6.2.1000.3.1.9
-      # Size of the disk (bytes)
-      - name: diskSize
-        OID: 1.3.6.1.4.1.5951.6.2.1000.3.1.10
-    metric_tags:
-      # Name of the disk
-      - column:
-          name: diskName
-          OID: 1.3.6.1.4.1.5951.6.2.1000.3.1.1
-      # Bay number
-      - column:
-          name: diskBayNumber
-          OID: 1.3.6.1.4.1.5951.6.2.1000.3.1.11
-
   # The SDX Storage Repository table
   - MIB: SDX-ROOT-MIB
     table:
@@ -151,9 +114,6 @@ metrics:
       name: healthMonitoringTable
       OID: 1.3.6.1.4.1.5951.6.2.1000.6
     symbols:
-      # IPMI Sensor Name
-      - name: hmName
-        OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.1
       # IPMI Sensor Status - OK/ERROR/NA
       - name: hmStatus
         OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.4
@@ -162,6 +122,10 @@ metrics:
       - name: hmCurrentValue
         OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.7
     metric_tags:
+      # IPMI Sensor Name
+      - column:
+          name: hmName
+          OID: 1.3.6.1.4.1.5951.6.2.1000.6.1.1
       # Measurement Unit
       - column:
           name: hmUnit
