@@ -60,7 +60,7 @@ metrics:
       - name: ifOperStatus
         OID: 1.3.6.1.2.1.2.2.1.8
         poll_time_sec: 60
-        tag: ifOperStatusMetric
+        tag: if_OperStatus
         enum:
           up: 1
           down: 2
@@ -324,19 +324,6 @@ metrics:
             up: 1
             down: 2
             testing: 3
-      # The current operational state of the interface.
-      - tag: if_OperStatus
-        column:
-          name: ifOperStatus
-          OID: 1.3.6.1.2.1.2.2.1.8
-          enum:
-            up: 1
-            down: 2
-            testing: 3
-            unknown: 4
-            dormant: 5
-            notPresent: 6
-            lowerLayerDown: 7
       # The textual name of the interface.
       - tag: if_interface_name
         column:
