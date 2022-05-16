@@ -1,3 +1,4 @@
+# This profile needs to be manually applied in the device config.
 # https://mibs.observium.org/mib/SNWL-COMMON-MIB/
 # https://mibs.observium.org/mib/SONICWALL-SMA-APPLIANCE-SYSTEM-HEALTH-MIB/
 # https://mibs.observium.org/mib/SONICWALL-SMA-APPLIANCE-SERVICE-HEALTH-MIB/
