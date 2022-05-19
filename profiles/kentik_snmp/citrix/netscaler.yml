@@ -144,7 +144,56 @@ metrics:
     symbol:
       name: totSpilloverCount
       OID: 1.3.6.1.4.1.5951.4.1.3.5.6.0
+  # Number of active SSL sessions
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: sslCurSessions
+      OID: 1.3.6.1.4.1.5951.4.1.1.47.296.0
+  # SSL sessions/second between client and NetScaler
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: sslSessionsPerSec
+      OID: 1.3.6.1.4.1.5951.4.1.1.47.3.0
+  # Current client connections in the Established state, which indicates that data transfer can occur between the NetScaler and the client.
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: tcpCurClientEstablished
+      OID: 1.3.6.1.4.1.5951.4.1.1.46.12.0
+  # Port allocations that have failed on a mapped IP address because the maximum limit of 65536 has been exceeded.
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: tcpErrAnyPortFail
+      OID: 1.3.6.1.4.1.5951.4.1.1.46.69.0
+  # Port allocations that have failed on a subnet IP address or vserver IP address because the maximum limit of 65536 has been exceeded.
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: tcpErrIpPortFail
+      OID: 1.3.6.1.4.1.5951.4.1.1.46.70.0
+  # TCP packets retransmitted. The NetScaler attempts to retransmit the packet up to seven times, after which it resets the other half of the TCP connection.
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: tcpErrRetransmit
+      OID: 1.3.6.1.4.1.5951.4.1.1.46.59.0
+  # TCP packets received.
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: tcpTotRxPkts
+      OID: 1.3.6.1.4.1.5951.4.1.1.46.61.0
+  # TCP packets received.
+  - MIB: NS-ROOT-MIB
+    symbol:
+      name: tcpTotTxPkts
+      OID: 1.3.6.1.4.1.5951.4.1.1.46.63.0
   # This table contains information about the disk space of the NetScaler
+  - MIB: NS-ROOT-MIB
+    table:
+      name: vserverTable
+      OID: 1.3.6.1.4.1.5951.4.1.3.1
+    symbols:
+      # Number of current client connections.
+      - name: vsvrCurClntConnections
+        OID: 1.3.6.1.4.1.5951.4.1.3.1.1.7
+  # This table contains information about the vServer statistics.
   - MIB: NS-ROOT-MIB
     table:
       name: nsSysHealthDiskTable
@@ -185,6 +234,14 @@ metrics:
       - name: ifThroughput
         OID: 1.3.6.1.4.1.5951.4.1.1.54.1.48
         tag: if_Speed
+      # The total data, in megabits, received by an interface since the NetScaler appliance was started or the interface statistics were cleared.
+      - name: ifTotRxMbits
+        OID: 1.3.6.1.4.1.5951.4.1.1.54.1.19
+        tag: if_InRxMbits
+      # The total data, in megabits, transmitted by an interface since the NetScaler appliance was started or the interface statistics were cleared.
+      - name: ifTotTxMbits
+        OID: 1.3.6.1.4.1.5951.4.1.1.54.1.20
+        tag: if_InTxMbits
     metric_tags:
       # The name of the interface
       - column:
