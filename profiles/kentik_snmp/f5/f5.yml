@@ -9,7 +9,7 @@ extends:
 provider: kentik-load-balancer
 
 sysobjectid:
-  # We could theoretically use a wildcard here, but we need more SNMP walks to validate first
+  - 1.3.6.1.4.1.3375.2.1.2.4.*
   - 1.3.6.1.4.1.3375.2.1.3.4.43    # BIG-IP Virtual Edition
   - 1.3.6.1.4.1.3375.2.1.3.4.111   # BIG-IP
   - 1.3.6.1.4.1.3375.2.1.3.4.113   # BIG-IP i10800
