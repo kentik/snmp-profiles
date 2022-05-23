@@ -198,16 +198,6 @@ metrics:
     symbol:
       name: axAppGlobalTotalL4Session
       OID: 1.3.6.1.4.1.22610.2.4.3.1.2.10.0
-  # Total current connections
-  - MIB: A10-AX-MIB
-    symbol:
-      name: axAppGlobalTotalCurrentConnectionsInteger
-      OID: 1.3.6.1.4.1.22610.2.4.3.1.2.11.0
-  # Total number of L4 sessions
-  - MIB: A10-AX-MIB
-    symbol:
-      name: axAppGlobalTotalL4SessionInteger
-      OID: 1.3.6.1.4.1.22610.2.4.3.1.2.12.0
   # Total throughput (bytes) of all the interfaces
   - MIB: A10-AX-MIB
     symbol:
@@ -259,6 +249,10 @@ metrics:
       # The server status.
       - name: axServerStatServerStatus
         OID: 1.3.6.1.4.1.22610.2.4.3.2.2.2.1.10
+        enum:
+          disabled: 0
+          up: 1
+          down: 2
       # The number of current L7 requests if applicable.
       - name: axServerStatServerTotalCurrL7Reqs
         OID: 1.3.6.1.4.1.22610.2.4.3.2.2.2.1.12
@@ -348,6 +342,9 @@ metrics:
       - name: axVirtualServerStatPortStatus
         OID: 1.3.6.1.4.1.22610.2.4.3.4.4.1.1.5
         enum:
+          up: 1
+          down: 2
+          disabled: 3
       # Current connections from client side.
       - name: axVirtualServerPortStatCurConns
         OID: 1.3.6.1.4.1.22610.2.4.3.4.4.1.1.12
@@ -412,10 +409,6 @@ metrics:
     symbol:
       name: axConnReuseStatTotalTerminated
       OID: 1.3.6.1.4.1.22610.2.4.3.5.4.0
-
-
-
-
   # The count of TCP established.
   - MIB: A10-AX-MIB
     symbol:
