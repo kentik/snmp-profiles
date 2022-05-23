@@ -1,0 +1,215 @@
+# https://mibs.observium.org/mib/ASYNCOS-MAIL-MIB/
+---
+extends:
+  - if-mib.yml
+  - system-mib.yml
+
+sysobjectid:
+  - 1.3.6.1.4.1.15497.1.1    # IronPort Email Security Appliance
+
+provider: kentik-ironport-email-appliance
+
+metrics:
+  # This object provides a general idea of how much memory is being consumed by the appliance software.
+  # Polled at 60s to support anomaly detection
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: perCentMemoryUtilization
+      OID: 1.3.6.1.4.1.15497.1.1.1.1.0
+      poll_time_sec: 60
+      tag: MemoryUtilization
+  # This object provides a general idea of how busy the CPU is according to the appliance software, within the last 5 seconds of utilization.
+  # Polled at 60s to support anomaly detection
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: perCentCPUUtilization
+      OID: 1.3.6.1.4.1.15497.1.1.1.2.0
+      poll_time_sec: 60
+      tag: CPU
+  # The number of seconds the oldest message has been in queue.
+  # Polled at 60s to support anomaly detection
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: oldestMessageAge
+      OID: 1.3.6.1.4.1.15497.1.1.1.14.0
+      poll_time_sec: 60
+  # This object provides a general idea of how much disk I/O has been generated within the last 5-15 seconds.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: perCentDiskIOUtilization
+      OID: 1.3.6.1.4.1.15497.1.1.1.3.0
+  # Percent of total queue capacity used.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: perCentQueueUtilization
+      OID: 1.3.6.1.4.1.15497.1.1.1.4.0
+  # Queue space status: enough space, queue near full or queue full.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: queueAvailabilityStatus
+      OID: 1.3.6.1.4.1.15497.1.1.1.5.0
+      enum:
+        queueSpaceAvailable: 1
+        queueSpaceShortage: 2
+        queueFull: 3
+  # Reason system is in Resource Conservation Mode.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: resourceConservationReason
+      OID: 1.3.6.1.4.1.15497.1.1.1.6.0
+      enum:
+        noResourceConservation: 1
+        memoryShortage: 2
+        queueSpaceShortage: 3
+        queueFull: 4
+  # Mail Transfer process's memory availability status.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: memoryAvailabilityStatus
+      OID: 1.3.6.1.4.1.15497.1.1.1.7.0
+      enum:
+        memoryAvailable: 1
+        memoryShortage: 2
+        memoryFull: 3
+  # Table of power supply status
+  - MIB: ASYNCOS-MAIL-MIB
+    table:
+      name: powerSupplyTable
+      OID: 1.3.6.1.4.1.15497.1.1.1.8
+    symbols:
+      # Represents the status of a power supply.
+      - name: powerSupplyStatus
+        OID: 1.3.6.1.4.1.15497.1.1.1.8.1.2
+        enum:
+          powerSupplyNotInstalled: 1
+          powerSupplyHealthy: 2
+          powerSupplyNoAC: 3
+          powerSupplyFaulty: 4
+      # Represents the status of a collection of one or more power supplies.
+      - name: powerSupplyRedundancy
+        OID: 1.3.6.1.4.1.15497.1.1.1.8.1.3
+        enum:
+          powerSupplyRedundancyOK: 1
+          powerSupplyRedundancyLost: 2
+    metric_tags:
+      # A textual name for a power supply. 
+      - column:
+          name: powerSupplyName
+          OID: 1.3.6.1.4.1.15497.1.1.1.8.1.4
+  # A table of chassis temperature sensor states.
+  - MIB: ASYNCOS-MAIL-MIB
+    table:
+      name: temperatureTable
+      OID: 1.3.6.1.4.1.15497.1.1.1.9
+    symbols:
+      # Temperature reading for the sensor being instrumented in Centrigrade units.
+      - name: degreesCelsius
+        OID: 1.3.6.1.4.1.15497.1.1.1.9.1.2
+    metric_tags:
+      # Textual description for sensor being instrumented.
+      - column:
+          name: temperatureName
+          OID: 1.3.6.1.4.1.15497.1.1.1.9.1.3
+  # A table of chassis fan entries.
+  - MIB: ASYNCOS-MAIL-MIB
+    table:
+      name: fanTable
+      OID: 1.3.6.1.4.1.15497.1.1.1.10
+    symbols:
+      # Speed in RPMs of a chassis fan being instrumented. When fanRPMs reports 0 RPMs the respective fan has failed.
+      - name: fanRPMs
+        OID: 1.3.6.1.4.1.15497.1.1.1.10.1.2
+    metric_tags:
+      # A textual name of the chassis fan being instrumented.
+      - column:
+          name: fanName
+          OID: 1.3.6.1.4.1.15497.1.1.1.10.1.3
+  # Number of messages in the work queue.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: workQueueMessages
+      OID: 1.3.6.1.4.1.15497.1.1.1.11.0
+  # A table of Feature Key expiration entries.
+  - MIB: ASYNCOS-MAIL-MIB
+    table:
+      name: keyExpirationTable
+      OID: 1.3.6.1.4.1.15497.1.1.1.12
+    symbols:
+      # Boolean value represented by True if Feature Key is perpetual, or False if the Feature Key is normal or expired.
+      - name: keyIsPerpetual
+        OID: 1.3.6.1.4.1.15497.1.1.1.12.1.3
+        enum:
+          true: 1
+          false: 2
+      # Seconds until the valid Feature Key expires. Only applies to non-perpetual Feature Keys, and is 0 when the Feature Key has expired.
+      - name: keySecondsUntilExpire
+        OID: 1.3.6.1.4.1.15497.1.1.1.12.1.4
+    metric_tags:
+      # Textual description for a Feature Key applicable to the appliance.
+      - column:
+          name: keyDescription
+          OID: 1.3.6.1.4.1.15497.1.1.1.12.1.2
+  # Table containing a name and number of successful and failed updates for a service
+  - MIB: ASYNCOS-MAIL-MIB
+    table:
+      name: updateTable
+      OID: 1.3.6.1.4.1.15497.1.1.1.13
+    symbols:
+      # The number of successful attempts that have occurred when updating a service.
+      - name: updates
+        OID: 1.3.6.1.4.1.15497.1.1.1.13.1.3
+      # The number of failed attempts that have occurred when updating a service.
+      - name: updateFailures
+        OID: 1.3.6.1.4.1.15497.1.1.1.13.1.4
+    metric_tags:
+      # A textual name for an update entry.
+      - column:
+          name: updateServiceName
+          OID: 1.3.6.1.4.1.15497.1.1.1.13.1.2
+  # Number of DNS requests that have been sent but for which no reply has been received.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: outstandingDNSRequests
+      OID: 1.3.6.1.4.1.15497.1.1.1.15.0
+  # Number of DNS requests waiting to be sent.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: pendingDNSRequests
+      OID: 1.3.6.1.4.1.15497.1.1.1.16.0
+  # The total number of RAID events that have occurred since the last appliance power on event.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: raidEvents
+      OID: 1.3.6.1.4.1.15497.1.1.1.17.0
+  # RAID table representing the status of a drive attached to a RAID controller in the appliance.
+  - MIB: ASYNCOS-MAIL-MIB
+    table:
+      name: raidTable
+      OID: 1.3.6.1.4.1.15497.1.1.1.18
+    symbols:
+      # Represents the status of a a drive attached to a RAID controller in the appliance.
+      - name: raidStatus
+        OID: 1.3.6.1.4.1.15497.1.1.1.18.1.2
+        enum:
+          driveHealthy: 1
+          driveFailure: 2
+          driveRebuild: 3
+      # The textual description of the last error message reported by the RAID controller or corresponding driver if one has occurred.
+      - name: raidLastError
+        OID: 1.3.6.1.4.1.15497.1.1.1.18.1.4
+        conversion: to_one
+    metric_tags:
+      # A textual name for a drive attached to a RAID controller in the appliance.
+      - column:
+          name: raidID
+          OID: 1.3.6.1.4.1.15497.1.1.1.18.1.3
+  # This object notes how many files or sockets are open on the appliance.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: openFilesOrSockets
+      OID: 1.3.6.1.4.1.15497.1.1.1.19.0
+  # Number of threads that perform some task related to transferring mail.
+  - MIB: ASYNCOS-MAIL-MIB
+    symbol:
+      name: mailTransferThreads
+      OID: 1.3.6.1.4.1.15497.1.1.1.20.0
