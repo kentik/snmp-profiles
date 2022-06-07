@@ -464,6 +464,12 @@ metrics:
       OID: 1.3.6.1.4.1.789.1.5.8
       name: volTable
     symbols:
+      # State of the volume, such as 'online' or 'offline'.
+      - OID: 1.3.6.1.4.1.789.1.5.8.1.5
+        name: volState
+      # Status of the volume, such as 'normal' or 'reconstructing'. May include several values separated by comma and space.
+      - OID: 1.3.6.1.4.1.789.1.5.8.1.6
+        name: volStatus
       # Type of this volume, older volumes are traditional while newer volumes contained in aggregates are flexible.
       - OID: 1.3.6.1.4.1.789.1.5.8.1.10
         name: volType
@@ -488,14 +494,6 @@ metrics:
       - column: 
           OID: 1.3.6.1.4.1.789.1.5.8.1.3
           name: volFSID
-      # State of the volume, such as 'online' or 'offline'.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.5.8.1.5
-          name: volState
-      # Status of the volume, such as 'normal' or 'reconstructing'. May include several values separated by comma and space.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.5.8.1.6
-          name: volStatus
       # Options associated with the volume, such as 'root' and 'nosnapdir=off'. May include several values separated by comma.
       - column: 
           OID: 1.3.6.1.4.1.789.1.5.8.1.7
@@ -557,6 +555,12 @@ metrics:
       OID: 1.3.6.1.4.1.789.1.5.11
       name: aggrTable
     symbols:
+      # State of the aggregate, such as 'online' or 'offline'.
+      - OID: 1.3.6.1.4.1.789.1.5.11.1.5
+        name: aggrState
+      # Status of the aggregate, such as 'normal' or 'reconstructing'. May include several values separated by comma and space.
+      - OID: 1.3.6.1.4.1.789.1.5.11.1.6
+        name: aggrStatus
       # Type of this container, containers containing flexible volumes are aggregate.
       - OID: 1.3.6.1.4.1.789.1.5.11.1.10
         name: aggrType
@@ -574,14 +578,6 @@ metrics:
       - column: 
           OID: 1.3.6.1.4.1.789.1.5.11.1.3
           name: aggrFSID
-      # State of the aggregate, such as 'online' or 'offline'.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.5.11.1.5
-          name: aggrState
-      # Status of the aggregate, such as 'normal' or 'reconstructing'. May include several values separated by comma and space.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.5.11.1.6
-          name: aggrStatus
       # Options associated with the aggregate.
       - column: 
           OID: 1.3.6.1.4.1.789.1.5.11.1.7
@@ -994,6 +990,57 @@ metrics:
           inactive: 4
           reconfiguring: 5
           nonexistent: 6
+      # The list of failed power supplies in this enclosure, numbered as in enclPowerSuppliesPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.15
+        name: enclPowerSuppliesFailed
+      # The list of failed fans or fan modules in this enclosure. Fans are numbered as described in enclFansPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.18
+        name: enclFansFailed
+      # The list of temperature sensors reporting overtemperature failure in this enclosure. Sensors are numbered as in TempSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.21
+        name: enclTempSensorsOverTempFail
+      # The list of temperature sensors reporting overtemperature warning in this enclosure. Sensors are numbered as in TempSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.22
+        name: enclTempSensorsOverTempWarn
+      # The list of temperature sensors reporting undertemperature failure in this enclosure. Sensors are numbered as in TempSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.23
+        name: enclTempSensorsUnderTempFail
+      # The list of temperature sensors reporting undertemperature warning in this enclosure. Sensors are numbered as in TempSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.24
+        name: enclTempSensorsUnderTempWarn
+      # The list of temperatures reported by all temperature sensors in the enclosure, including the ambient temperature. Sensors are numbered as in TempSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.25
+        name: enclTempSensorsCurrentTemp
+      # The list of failed electronics elements. Valid only if enclElectronicsPresent shows that some are present.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.33
+        name: enclElectronicsFailed
+      # The list of voltage sensors reporting overvoltage failure in this enclosure. Sensors are numbered as in VoltSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.36
+        name: enclVoltSensorsOverVoltFail
+      # The list of voltage sensors reporting overvoltage warning in this enclosure. Sensors are numbered as in VoltSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.37
+        name: enclVoltSensorsOverVoltWarn
+      # The list of voltage sensors reporting undervoltage failure in this enclosure. Sensors are numbered as in VoltSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.38
+        name: enclVoltSensorsUnderVoltFail
+      # The list of voltage sensors reporting undervoltage warning in this enclosure. Sensors are numbered as in VoltSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.39
+        name: enclVoltSensorsUnderVoltWarn
+      # The list of voltages reported by all voltage sensors in the enclosure, Sensors are numbered as in VoltSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.40
+        name: enclVoltSensorsCurrentVolt
+      # The list of current sensors reporting overcurrent failure in this enclosure. Sensors are numbered as in CurSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.47
+        name: enclCurSensorsOverCurFail
+      # The list of current sensors reporting overcurrent warning in this enclosure. Sensors are numbered as in CurSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.48
+        name: enclCurSensorsOverCurWarn
+      # The list of currents reported by all current sensors in the enclosure, Sensors are numbered as in CurSensorsPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.49
+        name: enclCurSensorsCurrentCur
+      # The list of fan speeds in revolutons per minute (RPM) for fans or fan modules present and for which speed status is known in this enclosure. Not all enclosure types report fan speeds. Fans are numbered as described in enclFansPresent.
+      - OID: 1.3.6.1.4.1.789.1.21.1.2.1.62
+        name: enclFansSpeed
     metric_tags:
       # The adapter number or switch name and the port number (together, called the channel), and shelf ID of this enclosure. Examples are 8a.1 and switch:5.1.
       - column: 
@@ -1031,74 +1078,6 @@ metrics:
       - column: 
           OID: 1.3.6.1.4.1.789.1.21.1.2.1.11
           name: enclDisksPresent
-      # The list of failed power supplies in this enclosure, numbered as in enclPowerSuppliesPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.15
-          name: enclPowerSuppliesFailed
-      # The list of failed fans or fan modules in this enclosure. Fans are numbered as described in enclFansPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.18
-          name: enclFansFailed
-      # The list of temperature sensors reporting overtemperature failure in this enclosure. Sensors are numbered as in TempSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.21
-          name: enclTempSensorsOverTempFail
-      # The list of temperature sensors reporting overtemperature warning in this enclosure. Sensors are numbered as in TempSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.22
-          name: enclTempSensorsOverTempWarn
-      # The list of temperature sensors reporting undertemperature failure in this enclosure. Sensors are numbered as in TempSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.23
-          name: enclTempSensorsUnderTempFail
-      # The list of temperature sensors reporting undertemperature warning in this enclosure. Sensors are numbered as in TempSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.24
-          name: enclTempSensorsUnderTempWarn
-      # The list of temperatures reported by all temperature sensors in the enclosure, including the ambient temperature. Sensors are numbered as in TempSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.25
-          name: enclTempSensorsCurrentTemp
-      # The list of failed electronics elements. Valid only if enclElectronicsPresent shows that some are present.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.33
-          name: enclElectronicsFailed
-      # The list of voltage sensors reporting overvoltage failure in this enclosure. Sensors are numbered as in VoltSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.36
-          name: enclVoltSensorsOverVoltFail
-      # The list of voltage sensors reporting overvoltage warning in this enclosure. Sensors are numbered as in VoltSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.37
-          name: enclVoltSensorsOverVoltWarn
-      # The list of voltage sensors reporting undervoltage failure in this enclosure. Sensors are numbered as in VoltSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.38
-          name: enclVoltSensorsUnderVoltFail
-      # The list of voltage sensors reporting undervoltage warning in this enclosure. Sensors are numbered as in VoltSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.39
-          name: enclVoltSensorsUnderVoltWarn
-      # The list of voltages reported by all voltage sensors in the enclosure, Sensors are numbered as in VoltSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.40
-          name: enclVoltSensorsCurrentVolt
-      # The list of current sensors reporting overcurrent failure in this enclosure. Sensors are numbered as in CurSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.47
-          name: enclCurSensorsOverCurFail
-      # The list of current sensors reporting overcurrent warning in this enclosure. Sensors are numbered as in CurSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.48
-          name: enclCurSensorsOverCurWarn
-      # The list of currents reported by all current sensors in the enclosure, Sensors are numbered as in CurSensorsPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.49
-          name: enclCurSensorsCurrentCur
-      # The list of fan speeds in revolutons per minute (RPM) for fans or fan modules present and for which speed status is known in this enclosure. Not all enclosure types report fan speeds. Fans are numbered as described in enclFansPresent.
-      - column: 
-          OID: 1.3.6.1.4.1.789.1.21.1.2.1.62
-          name: enclFansSpeed
       # Node to which this enclosure belongs.
       - column: 
           OID: 1.3.6.1.4.1.789.1.21.1.2.1.65
