@@ -539,6 +539,14 @@ metrics:
       # This variable reports the most recent measurement seen by the sensor. 
       - name: entSensorValue
         OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.4
+      # This variable indicates the present operational status of the sensor.
+      - name: entSensorStatus
+        OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.5
+        tag: entity_sensor_status
+        enum:
+          ok: 1
+          unavailable: 2
+          nonoperational: 3
     metric_tags:
       # This variable indicates the type of data reported by the entSensorValue.
       - tag: entity_sensor_type
@@ -589,15 +597,6 @@ metrics:
         column:
           OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.3
           name: entSensorPrecision
-      # This variable indicates the present operational status of the sensor.
-      - tag: entity_sensor_status
-        column:
-          OID: 1.3.6.1.4.1.9.9.91.1.1.1.1.5
-          name: entSensorStatus
-          enum:
-            ok: 1
-            unavailable: 2
-            nonoperational: 3
       # A textual description of physical entity.
       - tag: entity_description
         column:
@@ -922,6 +921,87 @@ metrics:
       # Otherwise, the unit of this object will be millisecond.
       - name: rttMonLatestRttOperCompletionTime
         OID: 1.3.6.1.4.1.9.9.42.1.2.10.1.1
+      # The status of the conceptual RTT control row.
+      - name: rttMonCtrlAdminStatus
+        OID: 1.3.6.1.4.1.9.9.42.1.2.1.1.9
+        tag: rtt_operation_admin_status
+        enum:
+          active: 1
+          notInService: 2
+          notReady: 3
+          createAndGo: 4
+          createAndWait: 5
+          destroy: 6
+      # This object is set to true when an operation times out, and set to false when an operation completes under rttMonCtrlAdminTimeout.
+      - name: rttMonCtrlOperTimeoutOccurred
+        OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.6
+        tag: rtt_operation_timed_out
+        enum:
+          true: 1
+          false: 2
+      # This object is changed by operation completion times over threshold, as defined by rttMonReactAdminThresholdType.
+      - name: rttMonCtrlOperOverThresholdOccurred
+        OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.7
+        tag: rtt_operation_threshold_violated
+        enum:
+          true: 1
+          false: 2
+      # The RttMonOperStatus object is used to manage the 'state' of the probe that is implementing conceptual RTT control row. 
+      - tag: rtt_operation_oper_state
+        name: rttMonCtrlOperState
+        OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.10
+        enum:
+          reset: 1
+          orderlyStop: 2
+          immediateStop: 3
+          pending: 4
+          inactive: 5
+          active: 6
+          restart: 7
+      # A sense code for the completion status of the latest RTT operation.
+      - name: rttMonLatestRttOperSense
+        OID: 1.3.6.1.4.1.9.9.42.1.2.10.1.2
+        tag: rtt_operation_sense
+        enum:
+          other: 0
+          ok: 1
+          disconnected: 2
+          overThreshold: 3
+          timeout: 4
+          busy: 5
+          notConnected: 6
+          dropped: 7
+          sequenceError: 8
+          verifyError: 9
+          applicationSpecific: 10
+          dnsServerTimeout: 11
+          tcpConnectTimeout: 12
+          httpTransactionTimeout: 13
+          dnsQueryError: 14
+          httpError: 15
+          error: 16
+          mplsLspEchoTxError: 17
+          mplsLspUnreachable: 18
+          mplsLspMalformedReq: 19
+          mplsLspReachButNotFEC: 20
+          enableOk: 21
+          enableNoConnect: 22
+          enableVersionFail: 23
+          enableInternalError: 24
+          enableAbort: 25
+          enableFail: 26
+          enableAuthFail: 27
+          enableFormatError: 28
+          enablePortInUse: 29
+          statsRetrieveOk: 30
+          statsRetrieveNoConnect: 31
+          statsRetrieveVersionFail: 32
+          statsRetrieveInternalError: 33
+          statsRetrieveAbort: 34
+          statsRetrieveFail: 35
+          statsRetrieveAuthFail: 36
+          statsRetrieveFormatError: 37
+          statsRetrievePortInUse: 38
     metric_tags:
       # A string which is used by a managing application to identify the RTT target.
       - tag: rtt_operation_tag
@@ -966,18 +1046,6 @@ metrics:
             y1731Loss: 24
             mcastJitter: 25
             fabricPathEcho: 26
-      # The status of the conceptual RTT control row.
-      - tag: rtt_operation_admin_status
-        column:
-          name: rttMonCtrlAdminStatus
-          OID: 1.3.6.1.4.1.9.9.42.1.2.1.1.9
-          enum:
-            active: 1
-            notInService: 2
-            notReady: 3
-            createAndGo: 4
-            createAndWait: 5
-            destroy: 6
       # A string which specifies the address of the target.
       - tag: rtt_echo_target_ip
         column:
@@ -1010,77 +1078,3 @@ metrics:
         column:
           name: rttMonEchoAdminURL 
           OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.15
-      # This object is set to true when an operation times out, and set to false when an operation completes under rttMonCtrlAdminTimeout.
-      - tag: rtt_operation_timed_out
-        column:
-          name: rttMonCtrlOperTimeoutOccurred
-          OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.6
-          enum:
-            true: 1
-            false: 2
-      # This object is changed by operation completion times over threshold, as defined by rttMonReactAdminThresholdType.
-      - tag: rtt_operation_threshold_violated
-        column:
-          name: rttMonCtrlOperOverThresholdOccurred
-          OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.7
-          enum:
-            true: 1
-            false: 2
-      # The RttMonOperStatus object is used to manage the 'state' of the probe that is implementing conceptual RTT control row. 
-      - tag: rtt_operation_oper_state
-        column:
-          name: rttMonCtrlOperState
-          OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.10
-          enum:
-            reset: 1
-            orderlyStop: 2
-            immediateStop: 3
-            pending: 4
-            inactive: 5
-            active: 6
-            restart: 7
-      # A sense code for the completion status of the latest RTT operation.
-      - tag: rtt_operation_sense
-        column:
-          name: rttMonLatestRttOperSense
-          OID: 1.3.6.1.4.1.9.9.42.1.2.10.1.2
-          enum:
-            other: 0
-            ok: 1
-            disconnected: 2
-            overThreshold: 3
-            timeout: 4
-            busy: 5
-            notConnected: 6
-            dropped: 7
-            sequenceError: 8
-            verifyError: 9
-            applicationSpecific: 10
-            dnsServerTimeout: 11
-            tcpConnectTimeout: 12
-            httpTransactionTimeout: 13
-            dnsQueryError: 14
-            httpError: 15
-            error: 16
-            mplsLspEchoTxError: 17
-            mplsLspUnreachable: 18
-            mplsLspMalformedReq: 19
-            mplsLspReachButNotFEC: 20
-            enableOk: 21
-            enableNoConnect: 22
-            enableVersionFail: 23
-            enableInternalError: 24
-            enableAbort: 25
-            enableFail: 26
-            enableAuthFail: 27
-            enableFormatError: 28
-            enablePortInUse: 29
-            statsRetrieveOk: 30
-            statsRetrieveNoConnect: 31
-            statsRetrieveVersionFail: 32
-            statsRetrieveInternalError: 33
-            statsRetrieveAbort: 34
-            statsRetrieveFail: 35
-            statsRetrieveAuthFail: 36
-            statsRetrieveFormatError: 37
-            statsRetrievePortInUse: 38
