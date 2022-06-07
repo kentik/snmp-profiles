@@ -95,6 +95,17 @@ metrics:
       # Percentage of inodes used on disk.
       - name: dskPercentNode
         OID: 1.3.6.1.4.1.2021.9.1.10
+      # Error flag signaling that the disk or partition is under the minimum required space configured for it.
+      - name: dskErrorFlag
+        OID: 1.3.6.1.4.1.2021.9.1.100
+        tag: dsk_error_flag
+        enum:
+          noError: 0
+          error: 1
+      # A text description providing a warning and the space left on the disk.
+      - name: dskErrorMsg
+        OID: 1.3.6.1.4.1.2021.9.1.101
+        tag: dsk_error_msg
     metric_tags:
       # Path where the disk is mounted.
       - tag: dsk_path
@@ -106,19 +117,6 @@ metrics:
         column:
           OID: 1.3.6.1.4.1.2021.9.1.3
           name: dskDevice
-      # Error flag signaling that the disk or partition is under the minimum required space configured for it.
-      - tag: dsk_error_flag
-        column:
-          OID: 1.3.6.1.4.1.2021.9.1.100
-          name: dskErrorFlag
-          enum:
-            noError: 0
-            error: 1
-      # A text description providing a warning and the space left on the disk.
-      - tag: dsk_error_msg
-        column:
-          OID: 1.3.6.1.4.1.2021.9.1.101
-          name: dskErrorMsg
 
   # Table of IO devices and how much data they have read/written.
   - MIB: UCD-DISKIO-MIB
