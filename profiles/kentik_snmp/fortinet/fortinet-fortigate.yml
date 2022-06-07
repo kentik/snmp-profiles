@@ -27,11 +27,7 @@ metrics:
         name: fgProcessorPktTxCount
       - OID: 1.3.6.1.4.1.12356.101.4.4.2.1.8
         name: fgProcessorPktDroppedCount
-    metric_tags:
-      - tag: processor_index
-        column:
-          OID: 1.3.6.1.4.1.12356.101.4.4.2.1.1
-          name: fgProcessorEntIndex
+
   - MIB: FORTINET-FORTIGATE-MIB
     table:
       OID: 1.3.6.1.4.1.12356.101.4.4.2
@@ -41,11 +37,7 @@ metrics:
         name: fgProcessorUsage
       - OID: 1.3.6.1.4.1.12356.101.4.4.2.1.10
         name: fgProcessorSysUsage
-    metric_tags:
-      - tag: processor_index
-        column:
-          OID: 1.3.6.1.4.1.12356.101.4.4.2.1.1
-          name: fgProcessorEntIndex
+
   - MIB: FORTINET-FORTIGATE-MIB
     symbol:
       OID: 1.3.6.1.4.1.12356.101.4.1.4.0
@@ -95,10 +87,6 @@ metrics:
       - OID: 1.3.6.1.4.1.12356.101.3.2.1.1.8
         name: fgVdEntSesRate
     metric_tags:
-      - tag: virtual_domain_index
-        column:
-          OID: 1.3.6.1.4.1.12356.101.3.2.1.1.1
-          name: fgVdEntIndex
       - tag: virtual_domain_name
         column:
           OID: 1.3.6.1.4.1.12356.101.3.2.1.1.2
