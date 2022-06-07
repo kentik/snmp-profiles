@@ -163,6 +163,12 @@ metrics:
       # The number of alerts the modem has triggered
       - name: ogCellModemCounter
         OID: 1.3.6.1.4.1.25049.17.17.1.16
+      # The connected state of the modem
+      - name: ogCellModemConnected
+        OID: 1.3.6.1.4.1.25049.17.17.1.5
+        enum:
+          connected: 1
+          disconnected: 2
     metric_tags:
       # The enabled state of the modem
       - column:
@@ -171,10 +177,3 @@ metrics:
           enum:
             enabled: 1
             disabled: 2
-      # The connected state of the modem
-      - column:
-          name: ogCellModemConnected
-          OID: 1.3.6.1.4.1.25049.17.17.1.5
-          enum:
-            connected: 1
-            disconnected: 2
