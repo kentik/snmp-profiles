@@ -66,7 +66,15 @@ metrics:
       - name: ifOutBroadcastPkts
         OID: 1.3.6.1.2.1.31.1.1.1.5
         tag: ifHCOutBroadcastPkts
-      # The current operational state of the interface. Note this is both a metric and tag.
+      # The desired state of the interface.
+      - name: ifAdminStatus
+        OID: 1.3.6.1.2.1.2.2.1.7
+        tag: if_AdminStatus
+        enum:
+          up: 1
+          down: 2
+          testing: 3
+      # The current operational state of the interface.
       - name: ifOperStatus
         OID: 1.3.6.1.2.1.2.2.1.8
         poll_time_sec: 60
@@ -326,15 +334,6 @@ metrics:
             macSecUncontrolledIF: 232
             aviciOpticalEther: 233
             atmbond: 234
-      # The desired state of the interface.
-      - tag: if_AdminStatus
-        column:
-          name: ifAdminStatus
-          OID: 1.3.6.1.2.1.2.2.1.7
-          enum:
-            up: 1
-            down: 2
-            testing: 3
       # The textual name of the interface.
       - tag: if_interface_name
         column:
