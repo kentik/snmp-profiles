@@ -62,6 +62,71 @@ metrics:
     symbols:
       - OID: 1.3.6.1.4.1.9.9.42.1.2.10.1.1
         name: rttMonLatestRttOperCompletionTime
+      - OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.6
+        name: rttMonCtrlOperTimeoutOccurred
+        enum:
+          true: 1
+          false: 2
+        tag: rtt_operation_timed_out
+      - OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.7
+        name: rttMonCtrlOperOverThresholdOccurred
+        enum:
+          true: 1
+          false: 2
+        tag: rtt_operation_threshold_violated
+      - OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.10
+        name: rttMonCtrlOperState
+        enum:
+          reset: 1
+          orderlyStop: 2
+          immediateStop: 3
+          pending: 4
+          inactive: 5
+          active: 6
+          restart: 7
+      - OID: 1.3.6.1.4.1.9.9.42.1.2.10.1.2
+        name: rttMonLatestRttOperSense
+        enum:
+          other: 0
+          ok: 1
+          disconnected: 2
+          overThreshold: 3
+          timeout: 4
+          busy: 5
+          notConnected: 6
+          dropped: 7
+          sequenceError: 8
+          verifyError: 9
+          applicationSpecific: 10
+          dnsServerTimeout: 11
+          tcpConnectTimeout: 12
+          httpTransactionTimeout: 13
+          dnsQueryError: 14
+          httpError: 15
+          error: 16
+          mplsLspEchoTxError: 17
+          mplsLspUnreachable: 18
+          mplsLspMalformedReq: 19
+          mplsLspReachButNotFEC: 20
+          enableOk: 21
+          enableNoConnect: 22
+          enableVersionFail: 23
+          enableInternalError: 24
+          enableAbort: 25
+          enableFail: 26
+          enableAuthFail: 27
+          enableFormatError: 28
+          enablePortInUse: 29
+          statsRetrieveOk: 30
+          statsRetrieveNoConnect: 31
+          statsRetrieveVersionFail: 32
+          statsRetrieveInternalError: 33
+          statsRetrieveAbort: 34
+          statsRetrieveFail: 35
+          statsRetrieveAuthFail: 36
+          statsRetrieveFormatError: 37
+          statsRetrievePortInUse: 38
+        tag: rtt_operation_sense
     metric_tags:
       - column:
           OID: 1.3.6.1.4.1.9.9.42.1.2.1.1.3
@@ -135,72 +200,3 @@ metrics:
           OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.15
           name: rttMonEchoAdminURL 
         tag: rtt_echo_url
-      - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.6
-          name: rttMonCtrlOperTimeoutOccurred
-          enum:
-            true: 1
-            false: 2
-        tag: rtt_operation_timed_out
-      - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.7
-          name: rttMonCtrlOperOverThresholdOccurred
-          enum:
-            true: 1
-            false: 2
-        tag: rtt_operation_threshold_violated
-      - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.9.1.10
-          name: rttMonCtrlOperState
-          enum:
-            reset: 1
-            orderlyStop: 2
-            immediateStop: 3
-            pending: 4
-            inactive: 5
-            active: 6
-            restart: 7
-      - column:
-          OID: 1.3.6.1.4.1.9.9.42.1.2.10.1.2
-          name: rttMonLatestRttOperSense
-          enum:
-            other: 0
-            ok: 1
-            disconnected: 2
-            overThreshold: 3
-            timeout: 4
-            busy: 5
-            notConnected: 6
-            dropped: 7
-            sequenceError: 8
-            verifyError: 9
-            applicationSpecific: 10
-            dnsServerTimeout: 11
-            tcpConnectTimeout: 12
-            httpTransactionTimeout: 13
-            dnsQueryError: 14
-            httpError: 15
-            error: 16
-            mplsLspEchoTxError: 17
-            mplsLspUnreachable: 18
-            mplsLspMalformedReq: 19
-            mplsLspReachButNotFEC: 20
-            enableOk: 21
-            enableNoConnect: 22
-            enableVersionFail: 23
-            enableInternalError: 24
-            enableAbort: 25
-            enableFail: 26
-            enableAuthFail: 27
-            enableFormatError: 28
-            enablePortInUse: 29
-            statsRetrieveOk: 30
-            statsRetrieveNoConnect: 31
-            statsRetrieveVersionFail: 32
-            statsRetrieveInternalError: 33
-            statsRetrieveAbort: 34
-            statsRetrieveFail: 35
-            statsRetrieveAuthFail: 36
-            statsRetrieveFormatError: 37
-            statsRetrievePortInUse: 38
-        tag: rtt_operation_sense
