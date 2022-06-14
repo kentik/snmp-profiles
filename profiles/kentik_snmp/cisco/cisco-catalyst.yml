@@ -336,6 +336,7 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.1880    #  Catalyst C385012S
   - 1.3.6.1.4.1.9.1.1881    #  Catalyst C365048PQ
   - 1.3.6.1.4.1.9.1.1882    #  Catalyst C365048TQ
+  - 1.3.6.1.4.1.9.1.1934    #  Catalyst C68xxVirtualSwitch
   - 1.3.6.1.4.1.9.1.1936    #  Catalyst C6880x
   - 1.3.6.1.4.1.9.1.2026    #  Catalyst 5700 Series Wireless Controller
   - 1.3.6.1.4.1.9.1.2066    #  Catalyst 36xxstack
