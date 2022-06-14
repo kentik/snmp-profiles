@@ -8,15 +8,16 @@ extends:
 provider: kentik-wireless-controller
 
 sysobjectid:
-  - 1.3.6.1.4.1.9.1.828  # Cisco Air WLC 2106
-  - 1.3.6.1.4.1.9.1.1069 # Cisco 5500 WLC
-  - 1.3.6.1.4.1.9.1.1295 # Cisco 7500 WLC
-  - 1.3.6.1.4.1.9.1.1615 # Cisco 8500 WLC
-  - 1.3.6.1.4.1.9.1.1631 # Cisco Virtual WLC
-  - 1.3.6.1.4.1.9.1.1645 # Cisco 5760 WLC
-  - 1.3.6.1.4.1.9.1.2170 # Cisco 5520 WLC
-  - 1.3.6.1.4.1.9.1.2171 # Cisco 8520 WLC
-  - 1.3.6.1.4.1.9.1.2530 # Cisco C980040K9 WLC
+  - 1.3.6.1.4.1.9.1.828     # Cisco Air WLC 2106
+  - 1.3.6.1.4.1.9.1.1069    # Cisco 5500 WLC
+  - 1.3.6.1.4.1.9.1.1295    # Cisco 7500 WLC
+  - 1.3.6.1.4.1.9.1.1615    # Cisco 8500 WLC
+  - 1.3.6.1.4.1.9.1.1631    # Cisco Virtual WLC
+  - 1.3.6.1.4.1.9.1.1645    # Cisco 5760 WLC
+  - 1.3.6.1.4.1.9.1.2170    # Cisco 5520 WLC
+  - 1.3.6.1.4.1.9.1.2171    # Cisco 8520 WLC
+  - 1.3.6.1.4.1.9.1.2427    # Cisco Aironet 3800 WLC
+  - 1.3.6.1.4.1.9.1.2530    # Cisco C980040K9 WLC
 
 metrics:
   - MIB: CISCO-RF-MIB
