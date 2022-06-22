@@ -6,6 +6,8 @@
 extends:
   - if-mib.yml
   - system-mib.yml
+  - host-resources-mib.yml
+  - ucd-mib.yml
 
 provider: kentik-ipam
 
