@@ -1,7 +1,7 @@
 # https://mibs.observium.org/mib/HUAWEI-STACK-MIB/
 ---
 extends:
-  - huawia-all-devices.yml
+  - huawei-all-devices.yml
 
 sysobjectid:
   - 1.3.6.1.4.1.2011.2.23.343    # S6720-54C-EI-48S-AC
