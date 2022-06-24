@@ -21,15 +21,15 @@ metrics:
     symbols:
       # The version negotiated with the remote BGP peer.
       - name: hwBgpPeerNegotiatedVersion
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.1 = GAUGE32: 4
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.1
         tag: bgpPeerNegotiatedVersion
       # The AS number of the remote BGP peer.
       - name: hwBgpPeerRemoteAs
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.2 = GAUGE32: 64518
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.2
         tag: bgpPeerRemoteAs
       # The status of the remote BGP peer.
       - name: hwBgpPeerState
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.5 = INTEGER: 6
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.5
         enum:
           idle: 1
           connect: 2
@@ -40,15 +40,15 @@ metrics:
         tag: bgpPeerState
       # The Counter That Records the Times the Remote BGP Peer Is Correctly Connected The counter is increased by one if the remote BGP peer is correctly connected once. The counter could be set to zero.
       - name: hwBgpPeerFsmEstablishedCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.6 = GAUGE32: 12
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.6
         tag: bgpPeerFsmEstablishedTransitions
       # The counter that records the times the remote BGP peer is correctly connected.
       - name: hwBgpPeerFsmEstablishedTime
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.7 = GAUGE32: 29581182
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.7
         tag: bgpPeerFsmEstablishedTime
       # Bgp peer down reason
       - name: hwBgpPeerUnAvaiReason
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.10 = GAUGE32: 0
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.10
         enum:
           configurationLeadPeerDown: 1
           receiveNotification: 2
@@ -61,11 +61,11 @@ metrics:
       # The name of the VPN instance.
       - column:
           name: hwBgpPeerVrfName
-          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.1.1.6 = STRING: "DSVPN"
+          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.1.1.6
       # The IP address of the remote BGP peer.
       - column:
           name: hwBgpPeerRemoteAddr
-          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.4 = STRING: "10.12.0.103"
+          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.4
           tag: neighbor_ip
           conversion: hextoip
   # BGP metrics are tagged to match the bgp4-mib.yml values
@@ -77,22 +77,22 @@ metrics:
     symbols:
       # The number of prefixes received from the remote BGP peer.
       - name: hwBgpPeerPrefixRcvCounter
-       OID: 1.3.6.1.4.1.2011.5.25.177.1.1.3.1.1 = COUNTER32: 29
+       OID: 1.3.6.1.4.1.2011.5.25.177.1.1.3.1.1
       # The number of active prefixes received from the remote BGP peer.
       - name: hwBgpPeerPrefixActiveCounter
-       OID: 1.3.6.1.4.1.2011.5.25.177.1.1.3.1.2 = COUNTER32: 27
+       OID: 1.3.6.1.4.1.2011.5.25.177.1.1.3.1.2
       # The number of prefixes sent to the remote BGP peer.
       - name: hwBgpPeerPrefixAdvCounter
-       OID: 1.3.6.1.4.1.2011.5.25.177.1.1.3.1.3 = COUNTER32: 3
+       OID: 1.3.6.1.4.1.2011.5.25.177.1.1.3.1.3
     metric_tags:
       # The name of the VPN instance.
       - column:
           name: hwBgpPeerVrfName
-          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.1.1.6 = STRING: "DSVPN"
+          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.1.1.6
       # The IP address of the remote BGP peer.
       - column:
           name: hwBgpPeerRemoteAddr
-          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.4 = STRING: "10.12.0.103"
+          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.4
           tag: neighbor_ip
           conversion: hextoip
   # BGP metrics are tagged to match the bgp4-mib.yml values
@@ -104,53 +104,53 @@ metrics:
     symbols:
       # The total number of protocol packets received from the remote BGP peer.
       - name: hwBgpPeerInTotalMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.1 = COUNTER32: 2954871
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.1
         tag: bgpPeerInTotalMessages
       # The total number of protocol packets sent to the remote BGP peer.
       - name: hwBgpPeerOutTotalMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.2 = COUNTER32: 2956932
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.2
         tag: bgpPeerOutTotalMessages
       # The total number of Open packets received from the remote BGP peer.
       - name: hwBgpPeerInOpenMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.3 = COUNTER32: 1
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.3
       # The total number of Update packets received from the remote BGP peer.
       - name: hwBgpPeerInUpdateMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.4 = COUNTER32: 23
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.4
         tag: bgpPeerInUpdates
       # The total number of Notification packets received from the remote BGP peer.
       - name: hwBgpPeerInNotificationMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.5 = COUNTER32: 0
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.5
       # The total number of Keepalive packets received from the remote BGP peer.
       - name: hwBgpPeerInKeepAliveMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.6 = COUNTER32: 2954847
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.6
       # The total number of Route-Refresh packets received from the remote BGP peer.
       - name: hwBgpPeerInRouteFreshMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.7 = COUNTER32: 0
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.7
       # The total number of Open packets sent to the remote BGP peer.
       - name: hwBgpPeerOutOpenMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.8 = COUNTER32: 1
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.8
       # The total number of Update packets sent to the remote BGP peer.
       - name: hwBgpPeerOutUpdateMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.9 = COUNTER32: 7
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.9
         tag: bgpPeerOutUpdates
       # The total number of Notification packets sent to the remote BGP peer.
       - name: hwBgpPeerOutNotificationMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.10 = COUNTER32: 0
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.10
       # The total number of Keepalive packets sent to the remote BGP peer.
       - name: hwBgpPeerOutKeepAliveMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.11 = COUNTER32: 2956924
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.11
       # The total number of Route-Refresh packets sent to the remote BGP peer.
       - name: hwBgpPeerOutRouteFreshMsgCounter
-        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.12 = COUNTER32: 0
+        OID: 1.3.6.1.4.1.2011.5.25.177.1.1.4.1.12
     metric_tags:
       # The name of the VPN instance.
       - column:
           name: hwBgpPeerVrfName
-          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.1.1.6 = STRING: "DSVPN"
+          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.1.1.6
       # The IP address of the remote BGP peer.
       - column:
           name: hwBgpPeerRemoteAddr
-          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.4 = STRING: "10.12.0.103"
+          OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.4
           tag: neighbor_ip
           conversion: hextoip
   # This table is a list of domain names mapped to IPv4 addresses.
@@ -161,21 +161,21 @@ metrics:
     symbols:
       # DnsTtl indicates the TTL of a mapping entry, which is a 32-bit integer,in seconds.
       - name: hwDnsTtl
-        OID: 1.3.6.1.4.1.2011.5.25.194.1.1.1.3 = INTEGER: 1113
+        OID: 1.3.6.1.4.1.2011.5.25.194.1.1.1.3
     metric_tags:
       # DnsDomainName indicates a domain name.
       - column:
           name: hwDnsDomainName
-          OID: 1.3.6.1.4.1.2011.5.25.194.1.1.1.1 = STRING: "time1.google.com"
+          OID: 1.3.6.1.4.1.2011.5.25.194.1.1.1.1
       # DnsIpAddress indicates an IP address mapped to a domain name.
       - column:
           name: hwDnsIpAddress
-          OID: 1.3.6.1.4.1.2011.5.25.194.1.1.1.2 = IPADDRESS: 216.239.35.0
+          OID: 1.3.6.1.4.1.2011.5.25.194.1.1.1.2
           conversion: hextoip
       # DnsAlias indicates a domain name alias.
       - column:
           name: hwDnsAlias
-          OID: 1.3.6.1.4.1.2011.5.25.194.1.1.1.4 = STRING: ""
+          OID: 1.3.6.1.4.1.2011.5.25.194.1.1.1.4
   # This table is a list of server addresses.
   - MIB: HUAWEI-DNS-MIB
     table:
@@ -184,7 +184,7 @@ metrics:
     symbols:
       # hwServerStatus indicates the status of server address.
       - name: hwServerStatus
-        OID: 1.3.6.1.4.1.2011.5.25.194.1.4.1.2 = INTEGER: 1
+        OID: 1.3.6.1.4.1.2011.5.25.194.1.4.1.2
         enum:
           static: 1
           dynamic: 2
@@ -192,7 +192,7 @@ metrics:
       # hwServerAddr indicates a server address.
       - column:
           name: hwServerAddr
-          OID: 1.3.6.1.4.1.2011.5.25.194.1.4.1.1 = IPADDRESS: 8.8.4.4
+          OID: 1.3.6.1.4.1.2011.5.25.194.1.4.1.1
           conversion: hextoip
   # Table of detailed data for network events. The agent may choose to delete the instances of hwFwBasicEventsEntry as required because of lack of memory.
   - MIB: HUAWEI-FIREWALL-MIB
@@ -202,31 +202,31 @@ metrics:
     symbols:
       # The interface index most closely associated with this event.
       - name: hwFwNetEventInterface
-        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.2 = INTEGER: 3
+        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.2
         conversion: to_one
       # This object indicates the VRF's name.
       - name: hwFwNetEventSrcVrfName
-        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.3 = STRING: "DSVPN"
+        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.3
         conversion: to_one
       # Source IP address in the IP packet that caused the event.
       - name: hwFwNetEventSrcIpAddress
-        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.4 = IPADDRESS: 203.97.2.78
+        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.4
         conversion: hextoip
       # Destination IP address in the IP packet that caused the event.
       - name: hwFwNetEventDstIpAddress
-        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.7 = IPADDRESS: 45.155.205.43
+        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.7
         conversion: hextoip
       # Source UDP/TCP port in the IP packet that caused the event. 
       - name: hwFwNetEventSrcIpPort
-        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.9 = INTEGER: 0
+        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.9
         conversion: to_one
       # Destination UDP/TCP port in the IP packet that caused the event. 
       - name: hwFwNetEventDstIpPort
-        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.11 = INTEGER: 0
+        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.11
         conversion: to_one
       # A detailed description of the event.
       - name: hwFwNetEventDescription
-        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.16 = STRING: "trace-route attack"
+        OID: 1.3.6.1.4.1.2011.5.25.222.1.1.2.4.1.16
         conversion: to_one
   # Table of firewall statistic instances.
   - MIB: HUAWEI-FIREWALL-MIB
@@ -236,12 +236,12 @@ metrics:
     symbols:
       # This is an integer that contains the value of the resource statistic.
       - name: hwFwConnectionStatCount
-        OID: 1.3.6.1.4.1.2011.5.25.222.1.2.2.2.1.4 = COUNTER32: 3247489
+        OID: 1.3.6.1.4.1.2011.5.25.222.1.2.2.2.1.4
     metric_tags:
       # A detailed textual description of this statistic.
       - column:
           name: hwFwConnectionStatDescription
-          OID: 1.3.6.1.4.1.2011.5.25.222.1.2.2.2.1.3 = STRING: " Icmp totalOpen"
+          OID: 1.3.6.1.4.1.2011.5.25.222.1.2.2.2.1.3
   # Table of NAT address pool instances.
   - MIB: HUAWEI-NAT-EXT-MIB
     table:
@@ -250,22 +250,22 @@ metrics:
     symbols:
       # Number of times the NAT address pool is referenced.
       - name: hwNatAddrPoolRefTimes
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.3.2.1.4 = GAUGE32: 0
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.3.2.1.4
     metric_tags:
       # Start IP address of the NAT address pool.
       - column:
           name: hwNatAddrPoolStartAddr
-          OID: 1.3.6.1.4.1.2011.5.25.226.2.3.2.1.2 = IPADDRESS: 203.97.2.78
+          OID: 1.3.6.1.4.1.2011.5.25.226.2.3.2.1.2
           conversion: hextoip
       # End IP address of the NAT address pool.
       - column:
           name: hwNatAddrPoolEndAddr
-          OID: 1.3.6.1.4.1.2011.5.25.226.2.3.2.1.3 = IPADDRESS: 203.97.2.78
+          OID: 1.3.6.1.4.1.2011.5.25.226.2.3.2.1.3
           conversion: hextoip
       # Mode of referencing the NAT address pool,
       - column:
           name: hwNatAddrPoolRefType
-          OID: 1.3.6.1.4.1.2011.5.25.226.2.3.2.1.5 = INTEGER: 0
+          OID: 1.3.6.1.4.1.2011.5.25.226.2.3.2.1.5
           enum:
             none: 0
             pat: 1
@@ -278,21 +278,21 @@ metrics:
     symbols:
       # The local source ip of the nat session table.
       - name: hwNatSessionSrcLocalAddr
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.1 = IPADDRESS: 10.12.0.61
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.1
         conversion: hextoip
       # The local destination ip of the nat session table.
       - name: hwNatSessionDstLocalAddr
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.2 = IPADDRESS: 52.98.8.34
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.2
         conversion: hextoip
       # The local source port of the nat session table.
       - name: hwNatSessionSrcLocalPort
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.3 = INTEGER: 51784
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.3
       # The local destination port of the nat session table.
       - name: hwNatSessionDstLocalPort
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.4 = INTEGER: 443
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.4
       # The protocol of the nat session.
       - name: hwNatSessionProtocol
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.5 = INTEGER: 4
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.5
         enum:
           other: 1
           icmp: 2
@@ -300,29 +300,29 @@ metrics:
           tcp: 4
       # The global source ip of the nat session table.
       - name: hwNatSessionSrcGlobalAddr
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.6 = IPADDRESS: 203.97.2.78
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.6
         conversion: hextoip
       # The global destination ip of the nat session table.
       - name: hwNatSessionDstGlobalAddr
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.7 = IPADDRESS: 0.0.0.0
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.7
         conversion: hextoip
       # The global source port of the nat session table.
       - name: hwNatSessionSrcGlobalPort
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.8 = INTEGER: 15583
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.8
       # The global destination port of the nat session table.
       - name: hwNatSessionDstGlobalPort
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.9 = INTEGER: 0
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.9
       # The source VPN instance name of the nat session table.
       - name: hwNatSessionSrcVPN
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.10 = STRING: " "
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.10
         conversion: to_one
       # The destination VPN instance name of the nat session table.
       - name: hwNatSessionDstVPN
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.11 = STRING: "      "
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.11
         conversion: to_one
       # The NAT session table row status.
       - name: hwNatSessionStatus
-        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.12 = INTEGER: 1
+        OID: 1.3.6.1.4.1.2011.5.25.226.2.14.2.1.12
         enum:
           active: 1
           notInService: 2
