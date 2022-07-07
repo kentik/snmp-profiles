@@ -13,4 +13,8 @@ metric_tags:
   - column:
       OID: 1.3.6.1.2.1.1.5.0
       name: sysName
-    tag: snmp_sysname
+    tag: snmp_sysName
+  - column:
+      OID: 1.3.6.1.2.1.1.6.0
+      name: sysLocation
+    tag: snmp_sysLocation
