@@ -18,6 +18,7 @@ no_use_bulkwalkall: true
 matches:
   "^pfsense": pf_sense.yml
   "barracuda email security gateway": barracuda-email-gateway.yml
+  "barracuda web application firewall": barracuda-waf.yml
   "^uap-ac-inwall": unifi-access-point.yml
   "root@sensey": opnsense-protectli.yml
   "poweriq": power-iq.yml
