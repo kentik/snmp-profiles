@@ -3,10 +3,6 @@
 # https://www.circitor.fr/Mibs/Html/C/CISCO-PRODUCT-MIB.php
 ---
 extends:
-  - bgp4-mib.yml
-  - if-mib.yml
-  - ospf-mib.yml
-  - system-mib.yml
   - cisco-all-devices.yml
 
 provider: kentik-router

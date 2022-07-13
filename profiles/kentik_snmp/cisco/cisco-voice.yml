@@ -5,7 +5,6 @@
 # http://www.circitor.fr/Mibs/Html/D/DIAL-CONTROL-MIB.php
 ---
 extends:
-  - system-mib.yml
   - cisco-all-devices.yml
 
 sysobjectid:

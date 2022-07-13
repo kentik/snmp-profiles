@@ -2,7 +2,6 @@
 ---
 extends:
   - cisco-all-devices.yml
-  - system-mib.yml
 
 provider: kentik-switch
 

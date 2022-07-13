@@ -13,6 +13,7 @@ extends:
   - bgp4-mib.yml
   - if-mib.yml
   - ospf-mib.yml
+  - system-mib.yml
 
 metrics:
   # A table of overall CPU statistics.
