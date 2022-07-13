@@ -22,6 +22,7 @@ matches:
   "root@sensey": opnsense-protectli.yml
   "poweriq": power-iq.yml
   "solidfire": netapp-hci.yml
+  "avamar": dell-avamar.yml
   # "#1 smp": sonicwall-sma.yml      # This match proved to be too generic for most purposes
   "^linux ubnt": unifi-switch.yml    # This may need to be removed later for being too generic
 
