@@ -1,4 +1,5 @@
 # http://oidref.com/1.3.6.1.4.1.476.1.42.3.4
+# https://mibs.observium.org/mib/AIRESPACE-WIRELESS-MIB/
 ---
 extends:
   - cisco-all-devices.yml
@@ -118,3 +119,143 @@ metrics:
           OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.4
           name: cLWlanSsid
         tag: wlan_ssid
+  # The listing the Statistics of RADIUS authentication servers.
+  - MIB: AIRESPACE-WIRELESS-MIB
+    table:
+      name: bsnRadiusAuthServerStatsTable
+      OID: 1.3.6.1.4.1.14179.2.5.3
+    symbols:
+      # The time interval (in hundredths of a second) between the most recent Access-Reply/Access-Challenge and the Access-Request that matched it from this RADIUS authentication server.
+      - name: bsnRadiusAuthClientRoundTripTime
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.6
+      # The number of RADIUS Access-Request packets retransmitted to this RADIUS authentication server.
+      - name: bsnRadiusAuthClientAccessRetransmissions
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.8
+      # The number of authentication timeouts to this server. After a timeout the client may retry to the same server, send to a different server, or give up. A retry to the same server is counted as a retransmit as well as a timeout. A send to a different server is counted as a Request as well as a timeout.
+      - name: bsnRadiusAuthClientTimeouts
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.15
+    metric_tags:
+      # The IP address of the RADIUS authentication server referred to in this table entry.
+      - column:
+          name: bsnRadiusAuthServerAddress
+          OID: 1.3.6.1.4.1.14179.2.5.1.1.2
+  # Table of Airespace APs managed by this Airespace Switch.
+  - MIB: AIRESPACE-WIRELESS-MIB
+    table:
+      name: bsnAPTable
+      OID: 1.3.6.1.4.1.14179.2.2.1
+    symbols:
+      # Operation State of the AP. When AP associates with the Airespace Switch its state will be associated. When Airespace AP is disassociated from the Switch, its state will be disassociating. The state is downloading when the AP is downloading its firmware.
+      - name: bsnAPOperationStatus
+        OID: 1.3.6.1.4.1.14179.2.2.1.1.6
+        enum:
+          associated: 1
+          disassociating: 2
+          downloading: 3
+    metric_tags:
+      # The MAC address of an AP.
+      - column:
+          name: bsnAPDot3MacAddress
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.1
+          conversion: hwaddr
+      # Name assigned to this AP. If an AP is not configured its factory default name will be ap: eg. ap:af:12:be
+      - column:
+          name: bsnAPName
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.3
+      # AP Model
+      - column:
+          name: bsnAPModel
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.16
+      # AP Serial Number.
+      - column:
+          name: bsnAPSerialNumber
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.17
+      # IP address of the AP. This will not be available when the switch is operating in the Layer2 mode. In this case, the attribute will return 0 as value.
+      - column:
+          name: bsnApIpAddress
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.19
+          conversion: hextoip
+  # An entry in bsnDot11EssTable
+  - MIB: AIRESPACE-WIRELESS-MIB
+    table:
+      name: bsnDot11EssTable
+      OID: 1.3.6.1.4.1.14179.2.1.1.1
+    symbols:
+      # Administrative Status of ESS(WLAN). By disabling an ESS the corresponding SSID is no longer broadcasted in AP beacons.
+      - name: bsnDot11EssAdminStatus
+        OID: 1.3.6.1.4.1.14179.2.1.1.1.6
+        enum:
+          disable: 0
+          enable: 1
+      # Radio Policy for a WLAN.
+      - name: bsnDot11EssRadioPolicy
+        OID: 1.3.6.1.4.1.14179.2.1.1.1.30
+        enum:
+          all: 0
+          dot11bOnly: 1
+          dot11aOnly: 2
+          dot11gOnly: 3
+          dot11bgOnly: 4
+          dot11agOnly: 5
+          dot11abOnly: 6
+      # Quality of Service for a WLAN.Services such as VoIP should be set to Gold while non-discriminating services such as messaging can be set to Bronze.
+      - name: bsnDot11EssQualityOfService
+        OID: 1.3.6.1.4.1.14179.2.1.1.1.31
+        enum:
+          bronze: 0
+          silver: 1
+          gold: 2
+          platinum: 3
+      # No of Mobile Stations currently associated with the WLAN.
+      - name: bsnDot11EssNumberOfMobileStations
+        OID: 1.3.6.1.4.1.14179.2.1.1.1.38
+      # This attribute when enabled allows the switch to broadcast this SSID.
+      - name: bsnDot11EssBroadcastSsid
+        OID: 1.3.6.1.4.1.14179.2.1.1.1.51
+        enum:
+          enable: 1
+          disable: 0
+    metric_tags:
+      # SSID assigned to ESS(WLAN)
+      - column:
+          name: bsnDot11EssSsid
+          OID: 1.3.6.1.4.1.14179.2.1.1.1.2
+  # Each entry represents an 802.11 interface in an Airespace AP.
+  - MIB: AIRESPACE-WIRELESS-MIB
+    table:
+      name: bsnAPIfTable
+      OID: 1.3.6.1.4.1.14179.2.2.2
+    symbols:
+      # The TxPowerLevel currently being used to transmit data. Some PHYs also use this value to determine the receiver sensitivity requirements for CCA.
+      - name: bsnAPIfPhyTxPowerLevel
+        OID: 1.3.6.1.4.1.14179.2.2.2.1.6
+      # Operational status of the interface.
+      - name: bsnAPIfOperStatus
+        OID: 1.3.6.1.4.1.14179.2.2.2.1.12  
+        enum:
+          down: 1
+          up: 2
+  # These are RRM performance related read only parameters per Airespace AP
+  - MIB: AIRESPACE-WIRELESS-MIB
+    table:
+      name: bsnAPIfLoadParametersTable
+      OID: 1.3.6.1.4.1.14179.2.2.13
+    symbols:
+      # Channel Utilization
+      - name: bsnAPIfLoadChannelUtilization
+        OID: 1.3.6.1.4.1.14179.2.2.13.1.3
+      # This is the number of clients attached to this Airespace AP at the last measurement interval(This comes from APF).
+      - name: bsnAPIfLoadNumOfClients
+        OID: 1.3.6.1.4.1.14179.2.2.13.1.4
+      # This is the number of clients with poor SNR attached to this Airespace AP at the last measurement interval ( This comes from APF ).
+      - name: bsnAPIfPoorSNRClients
+        OID: 1.3.6.1.4.1.14179.2.2.13.1.24
+  # This is a table of channel information like interference and noise from other 802.11 networks on each channel.
+  - MIB: AIRESPACE-WIRELESS-MIB
+    table:
+      name: bsnAPIfChannelInterferenceInfoTable
+      OID: 1.3.6.1.4.1.14179.2.2.14
+    symbols:
+      # Interference from other 802.11 networks on this channel.
+      - name: bsnAPIfInterferenceUtilization
+        OID: 1.3.6.1.4.1.14179.2.2.14.1.22
