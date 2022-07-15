@@ -3,7 +3,6 @@
 
 extends: 
   - host-resources-mib.yml
-  - system-mib.yml
   - cisco-all-devices.yml
   
 provider: kentik-call-manager

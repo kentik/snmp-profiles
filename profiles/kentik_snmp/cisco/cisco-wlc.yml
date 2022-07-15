@@ -3,7 +3,6 @@
 ---
 extends:
   - cisco-all-devices.yml
-  - system-mib.yml
   - host-resources-mib.yml
 
 provider: kentik-wireless-controller
