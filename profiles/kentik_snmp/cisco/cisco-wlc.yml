@@ -1,4 +1,5 @@
-# http://oidref.com/1.3.6.1.4.1.476.1.42.3.4
+# https://mibs.observium.org/mib/CISCO-RF-MIB/
+# https://mibs.observium.org/mib/CISCO-LWAPP-WLAN-MIB/
 # https://mibs.observium.org/mib/AIRESPACE-WIRELESS-MIB/
 ---
 extends:
@@ -14,16 +15,19 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.1615    # Cisco 8500 WLC
   - 1.3.6.1.4.1.9.1.1631    # Cisco Virtual WLC
   - 1.3.6.1.4.1.9.1.1645    # Cisco 5760 WLC
+  - 1.3.6.1.4.1.9.1.1926    # Cisco CT5508K9 WLC
+  - 1.3.6.1.4.1.9.1.1927    # Cisco CT2504K9 WLC
   - 1.3.6.1.4.1.9.1.2170    # Cisco 5520 WLC
   - 1.3.6.1.4.1.9.1.2171    # Cisco 8520 WLC
   - 1.3.6.1.4.1.9.1.2427    # Cisco Aironet 3800 WLC
   - 1.3.6.1.4.1.9.1.2530    # Cisco C980040K9 WLC
 
 metrics:
+  # The current state of RF on this unit.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.2.0
       name: cRFStatusUnitState
+      OID: 1.3.6.1.4.1.9.9.176.1.1.2.0
       enum:
         notKnown: 1
         disabled: 2
@@ -41,14 +45,16 @@ metrics:
         active: 14
         activeExtraload: 15
         activeHandback: 16
+  # A unique identifier for the redundant peer unit.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.3.0
       name: cRFStatusPeerUnitId
+      OID: 1.3.6.1.4.1.9.9.176.1.1.3.0
+  # The current state of RF on the peer unit.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.4.0
       name: cRFStatusPeerUnitState
+      OID: 1.3.6.1.4.1.9.9.176.1.1.4.0
       enum:
         notKnown: 1
         disabled: 2
@@ -66,10 +72,11 @@ metrics:
         active: 14
         activeExtraload: 15
         activeHandback: 16
+  # The reason for the last switch of activity.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.8.0
       name: cRFStatusLastSwactReasonCode
+      OID: 1.3.6.1.4.1.9.9.176.1.1.8.0
       enum:
         unsupported: 1
         none: 2
@@ -78,14 +85,16 @@ metrics:
         userForced: 5
         activeUnitFailed: 6
         activeUnitRemoved: 7
+  # The value of sysUpTime when the primary redundant unit took over as active. The value of this object will be 0 till the first switchover.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.9.0
       name: cRFStatusFailoverTime
+      OID: 1.3.6.1.4.1.9.9.176.1.1.9.0
+  # Indicate the operational redundancy mode of the device.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.2.16.0
       name: cRFCfgRedundancyOperMode
+      OID: 1.3.6.1.4.1.9.9.176.1.2.16.0
       enum: 
         nonRedundant: 1
         staticLoadShareNonRedundant: 2
@@ -95,13 +104,15 @@ metrics:
         coldStandbyRedundant: 6
         warmStandbyRedundant: 7
         hotStandbyRedundant: 8
-  - MIB: CISCO-VPC-MIB
+  # This table represents the WLAN configuration sent by the controller to the LWAPP APs for their operation.
+  - MIB: CISCO-LWAPP-WLAN-MIB
     table:
-      OID: 1.3.6.1.4.1.9.9.512.1.1.1
       name: cLWlanConfigTable
+      OID: 1.3.6.1.4.1.9.9.512.1.1.1
     symbols:
-      - OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.2
-        name: cLWlanRowStatus
+      # This is the status column for this row and used to create, modify and delete specific instances of rows in this table.
+      - name: cLWlanRowStatus
+        OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.2
         enum:
             active: 1
             notInService: 2
@@ -110,13 +121,15 @@ metrics:
             createAndWait: 5
             destroy: 6
     metric_tags:
+      # This object represents the profile name assigned to this WLAN.
       - column:
-          OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.3
           name: cLWlanProfileName
+          OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.3
         tag: wlan_profile_name
+      # This object represents the SSID assigned to this WLAN.
       - column:
-          OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.4
           name: cLWlanSsid
+          OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.4
         tag: wlan_ssid
   # The listing the Statistics of RADIUS authentication servers.
   - MIB: AIRESPACE-WIRELESS-MIB
@@ -151,6 +164,12 @@ metrics:
           associated: 1
           disassociating: 2
           downloading: 3
+      # Admin State of the AP
+      - name: bsnAPAdminStatus
+        OID: 1.3.6.1.4.1.14179.2.2.1.1.37
+        enum:
+          enable: 1
+          disable: 2
     metric_tags:
       # The MAC address of an AP.
       - column:
@@ -161,6 +180,38 @@ metrics:
       - column:
           name: bsnAPName
           OID: 1.3.6.1.4.1.14179.2.2.1.1.3
+      # User specified location of this AP.
+      - column:
+          name: bsnAPLocation
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.4
+      # Monitor Only Mode Setting.
+      - column:
+          name: bsnAPMonitorOnlyMode
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.5
+          enum:
+            local: 0
+            monitor: 1
+            remote: 2
+            rogueDetector: 3
+            sniffer: 4
+            bridge: 5
+            seConnect: 6
+      # Major Minor Software Version of AP
+      - column:
+          name: bsnAPSoftwareVersion
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.8
+      # Major Minor Boot Version of AP
+      - column:
+          name: bsnAPBootVersion
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.9
+      # sysName of the Airespace Switch which is suppose to be the Primary MWAR(switch) of the AP with which AP should associate.
+      - column:
+          name: bsnAPPrimaryMwarName
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.10
+      # Port on the Switch on which this APs traffic is coming through.
+      - column:
+          name: bsnAPPortNumber
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.13
       # AP Model
       - column:
           name: bsnAPModel
@@ -174,6 +225,124 @@ metrics:
           name: bsnApIpAddress
           OID: 1.3.6.1.4.1.14179.2.2.1.1.19
           conversion: hextoip
+      # This is the model of the AP in enumeration.
+      - column:
+          name: bsnAPType
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.22
+          enum:
+            ap1000: 1
+            ap1030: 2
+            mimo: 3
+            unknown: 4
+            ap1100: 5
+            ap1130: 6
+            ap1240: 7
+            ap1200: 8
+            ap1310: 9
+            ap1500: 10
+            ap1250: 11
+            ap1505: 12
+            ap3201: 13
+            ap1520: 14
+            ap800: 15
+            ap1140: 16
+            ap800agn: 17
+            ap3500i: 18
+            ap3500e: 19
+            ap1260: 20
+            ap1040: 21
+            ap1550: 22
+            ap602i: 23
+            ap3500p: 24
+            ap802gn: 25
+            ap802agn: 26
+            ap3600i: 27
+            ap3600e: 28
+            ap2600i: 29
+            ap2600e: 30
+            ap802hagn: 31
+            ap1600i: 32
+            ap1600e: 33
+            ap702e: 34
+            ap702i: 35
+            ap3600p: 36
+            ap1530i: 37
+            ap1530e: 38
+            ap3700e: 39
+            ap3700i: 40
+            ap3700p: 41
+            ap2700e: 42
+            ap2700i: 43
+            ap702w: 44
+            wap2600i: 45
+            wap2600e: 46
+            wap1600i: 47
+            wap1600e: 48
+            wap702i: 49
+            wap702e: 50
+            ap1700i: 51
+            ap1700e: 52
+            ap1570e: 53
+            ap1570i: 54
+      # sysName of the Airespace Switch which is suppose to be the Secondary MWAR(switch) of the AP with which AP should associate if Primary Switch(configured through bsnAPPrimaryMwarName) is not available.
+      - column:
+          name: bsnAPSecondaryMwarName
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.23
+      # sysName of the Airespace Switch which is suppose to be the Tertiary MWAR(switch) of the AP with which AP should associate. If primary,secondary and tertiary switch are not available then it will associate with Master Switch.
+      - column:
+          name: bsnAPTertiaryMwarName
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.24
+      # This flag when disabled implies that AP will use DHCP to get the IP address.
+      - column:
+          name: bsnAPIsStaticIP
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.25
+          enum:
+            disable: 0
+            enable: 1
+      # The Netmask of the IP address of the AP.
+      - column:
+          name: bsnAPNetmask
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.26
+          conversion: hextoip
+      # The Gateway for the AP.
+      - column:
+          name: bsnAPGateway
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.27
+          conversion: hextoip
+      # The Static IP-Address configuration for the AP.
+      - column:
+          name: bsnAPStaticIPAddress
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.28
+          conversion: hextoip
+      # This specifies if this AP is a Bridging AP.
+      - column:
+          name: bsnAPBridgingSupport
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.29
+          enum:
+            disable: 0
+            enable: 1
+      # The AP Group to which this AP has been associated with. If it is empty, then no AP Group overriding has been set.
+      - column:
+          name: bsnAPGroupVlanName
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.30
+      # IOS Version of IOS Cisco AP. Zero length string will be returned for other APs
+      - column:
+          name: bsnAPIOSVersion
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.31
+      # Enum values denoting AP Certificate Type.
+      - column:
+          name: bsnAPCertificateType
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.32
+          enum:
+            unknown: 0
+            manufactureInstalled: 1
+            selfSigned: 2
+            localSignificance: 3
+      # The Ethernet MAC address of the AP.
+      - column:
+          name: bsnAPEthernetMacAddress
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.33
+          conversion: hwaddr
   # An entry in bsnDot11EssTable
   - MIB: AIRESPACE-WIRELESS-MIB
     table:
