@@ -21,10 +21,11 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.2530    # Cisco C980040K9 WLC
 
 metrics:
+  # The current state of RF on this unit.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.2.0
       name: cRFStatusUnitState
+      OID: 1.3.6.1.4.1.9.9.176.1.1.2.0
       enum:
         notKnown: 1
         disabled: 2
@@ -42,14 +43,16 @@ metrics:
         active: 14
         activeExtraload: 15
         activeHandback: 16
+  # A unique identifier for the redundant peer unit.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.3.0
       name: cRFStatusPeerUnitId
+      OID: 1.3.6.1.4.1.9.9.176.1.1.3.0
+  # The current state of RF on the peer unit.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.4.0
       name: cRFStatusPeerUnitState
+      OID: 1.3.6.1.4.1.9.9.176.1.1.4.0
       enum:
         notKnown: 1
         disabled: 2
@@ -67,10 +70,11 @@ metrics:
         active: 14
         activeExtraload: 15
         activeHandback: 16
+  # The reason for the last switch of activity.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.8.0
       name: cRFStatusLastSwactReasonCode
+      OID: 1.3.6.1.4.1.9.9.176.1.1.8.0
       enum:
         unsupported: 1
         none: 2
@@ -79,14 +83,16 @@ metrics:
         userForced: 5
         activeUnitFailed: 6
         activeUnitRemoved: 7
+  # The value of sysUpTime when the primary redundant unit took over as active. The value of this object will be 0 till the first switchover.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.1.9.0
       name: cRFStatusFailoverTime
+      OID: 1.3.6.1.4.1.9.9.176.1.1.9.0
+  # Indicate the operational redundancy mode of the device.
   - MIB: CISCO-RF-MIB
     symbol:
-      OID: 1.3.6.1.4.1.9.9.176.1.2.16.0
       name: cRFCfgRedundancyOperMode
+      OID: 1.3.6.1.4.1.9.9.176.1.2.16.0
       enum: 
         nonRedundant: 1
         staticLoadShareNonRedundant: 2
