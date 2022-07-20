@@ -151,6 +151,12 @@ metrics:
           associated: 1
           disassociating: 2
           downloading: 3
+      # Admin State of the AP
+      - name: bsnAPAdminStatus
+        OID: 1.3.6.1.4.1.14179.2.2.1.1.37
+        enum:
+          enable: 1
+          disable: 2
     metric_tags:
       # The MAC address of an AP.
       - column:
@@ -161,6 +167,38 @@ metrics:
       - column:
           name: bsnAPName
           OID: 1.3.6.1.4.1.14179.2.2.1.1.3
+      # User specified location of this AP.
+      - column:
+          name: bsnAPLocation
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.4
+      # Monitor Only Mode Setting.
+      - column:
+          name: bsnAPMonitorOnlyMode
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.5
+          enum:
+            local: 0
+            monitor: 1
+            remote: 2
+            rogueDetector: 3
+            sniffer: 4
+            bridge: 5
+            seConnect: 6
+      # Major Minor Software Version of AP
+      - column:
+          name: bsnAPSoftwareVersion
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.8
+      # Major Minor Boot Version of AP
+      - column:
+          name: bsnAPBootVersion
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.9
+      # sysName of the Airespace Switch which is suppose to be the Primary MWAR(switch) of the AP with which AP should associate.
+      - column:
+          name: bsnAPPrimaryMwarName
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.10
+      # Port on the Switch on which this APs traffic is coming through.
+      - column:
+          name: bsnAPPortNumber
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.13
       # AP Model
       - column:
           name: bsnAPModel
@@ -174,6 +212,90 @@ metrics:
           name: bsnApIpAddress
           OID: 1.3.6.1.4.1.14179.2.2.1.1.19
           conversion: hextoip
+      # This is the model of the AP in enumeration.
+      - column:
+          name: bsnAPType
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.22
+          enum:
+            ap1000: 1
+            ap1030: 2
+            mimo: 3
+            unknown: 4
+            ap1100: 5
+            ap1130: 6
+            ap1240: 7
+            ap1200: 8
+            ap1310: 9
+            ap1500: 10
+            ap1250: 11
+            ap1505: 12
+            ap3201: 13
+            ap1520: 14
+            ap800: 15
+            ap1140: 16
+            ap800agn: 17
+            ap3500i: 18
+            ap3500e: 19
+            ap1260: 20
+      # sysName of the Airespace Switch which is suppose to be the Secondary MWAR(switch) of the AP with which AP should associate if Primary Switch(configured through bsnAPPrimaryMwarName) is not available.
+      - column:
+          name: bsnAPSecondaryMwarName
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.23
+      # sysName of the Airespace Switch which is suppose to be the Tertiary MWAR(switch) of the AP with which AP should associate. If primary,secondary and tertiary switch are not available then it will associate with Master Switch.
+      - column:
+          name: bsnAPTertiaryMwarName
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.24
+      # This flag when disabled implies that AP will use DHCP to get the IP address.
+      - column:
+          name: bsnAPIsStaticIP
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.25
+          enum:
+            disable: 0
+            enable: 1
+      # The Netmask of the IP address of the AP.
+      - column:
+          name: bsnAPNetmask
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.26
+          conversion: hextoip
+      # The Gateway for the AP.
+      - column:
+          name: bsnAPGateway
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.27
+          conversion: hextoip
+      # The Static IP-Address configuration for the AP.
+      - column:
+          name: bsnAPStaticIPAddress
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.28
+          conversion: hextoip
+      # This specifies if this AP is a Bridging AP.
+      - column:
+          name: bsnAPBridgingSupport
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.29
+          enum:
+            disable: 0
+            enable: 1
+      # The AP Group to which this AP has been associated with. If it is empty, then no AP Group overriding has been set.
+      - column:
+          name: bsnAPGroupVlanName
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.30
+      # IOS Version of IOS Cisco AP. Zero length string will be returned for other APs
+      - column:
+          name: bsnAPIOSVersion
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.31
+      # Enum values denoting AP Certificate Type.
+      - column:
+          name: bsnAPCertificateType
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.32
+          enum:
+            unknown: 0
+            manufactureInstalled: 1
+            selfSigned: 2
+            localSignificance: 3
+      # The Ethernet MAC address of the AP.
+      - column:
+          name: bsnAPEthernetMacAddress
+          OID: 1.3.6.1.4.1.14179.2.2.1.1.33
+          conversion: hwaddr
   # An entry in bsnDot11EssTable
   - MIB: AIRESPACE-WIRELESS-MIB
     table:
