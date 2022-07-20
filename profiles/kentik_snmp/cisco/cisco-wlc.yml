@@ -250,6 +250,40 @@ metrics:
             ap3500i: 18
             ap3500e: 19
             ap1260: 20
+            ap1040: 21
+            ap1550: 22
+            ap602i: 23
+            ap3500p: 24
+            ap802gn: 25
+            ap802agn: 26
+            ap3600i: 27
+            ap3600e: 28
+            ap2600i: 29
+            ap2600e: 30
+            ap802hagn: 31
+            ap1600i: 32
+            ap1600e: 33
+            ap702e: 34
+            ap702i: 35
+            ap3600p: 36
+            ap1530i: 37
+            ap1530e: 38
+            ap3700e: 39
+            ap3700i: 40
+            ap3700p: 41
+            ap2700e: 42
+            ap2700i: 43
+            ap702w: 44
+            wap2600i: 45
+            wap2600e: 46
+            wap1600i: 47
+            wap1600e: 48
+            wap702i: 49
+            wap702e: 50
+            ap1700i: 51
+            ap1700e: 52
+            ap1570e: 53
+            ap1570i: 54
       # sysName of the Airespace Switch which is suppose to be the Secondary MWAR(switch) of the AP with which AP should associate if Primary Switch(configured through bsnAPPrimaryMwarName) is not available.
       - column:
           name: bsnAPSecondaryMwarName
