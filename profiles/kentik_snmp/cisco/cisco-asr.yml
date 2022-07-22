@@ -56,6 +56,7 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.1726  # Cisco 901TenGigDC ASR
   - 1.3.6.1.4.1.9.1.1727  # Cisco 901TenGigAC ASR
   - 1.3.6.1.4.1.9.1.1762  # Cisco 9904 ASR
+  - 1.3.6.1.4.1.9.1.1769  # Cisco VG310
   - 1.3.6.1.4.1.9.1.1859  # Cisco C891FW-A-K9 ISR
   - 1.3.6.1.4.1.9.1.1860  # Cisco C891FW-E-K9 ISR
   - 1.3.6.1.4.1.9.1.1861  # Cisco 1001X ASR
