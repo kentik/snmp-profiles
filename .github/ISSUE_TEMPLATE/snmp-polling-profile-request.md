@@ -22,6 +22,8 @@ List of critical metrics that you expect in the profile (does not need to be all
  - 
  -
  -
+ 
+If there is a New Relic technical support case related to this request, please provide the case number:
 
 **Please provide a [public gist](https://gist.github.com/) with a sanitized** *(sensitive information removed)* **SNMP walk of the device. Providing MIB files is not a substitute for an SNMP walk and failure to provide one here will result in delays for closing this issue. The output of these commands shows the "true story" of what a device will respond to in SNMP and is used to ensure that our profiles are efficient and accurate for your devices.**
 
