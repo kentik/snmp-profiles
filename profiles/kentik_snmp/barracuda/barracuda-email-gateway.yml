@@ -1,7 +1,6 @@
 # https://campus.barracuda.com/product/emailsecuritygateway/doc/16680139/barracuda-email-security-gateway-snmp-mib/
 # https://campus.barracuda.com/product/websecuritygateway/doc/77401430/snmp-oid-s-for-cpu-memory-and-disk-statistics-on-linux/
-# This profile is linked from the generic Linux SysOID to cover "In Wall" access points
-# https://oidref.com/1.3.6.1.4.1.8072.3.2.10
+# Scalar OIDs in this profile omit the traditional trailing '.0' based on multiple rounds of testing and SNMP walks
 ---
 extends:
   - if-mib.yml
@@ -14,6 +13,13 @@ sysobjectid:
   - 1.3.6.1.4.1.8072.3.2.10.barracuda
 
 metrics:
+  # CPU Utilization - polled at 60s to support anomaly detection
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      name: ssCpuIdle
+      OID: 1.3.6.1.4.1.2021.11.11.0
+      poll_time_sec: 60
+      tag: CPU
   # Spam in queue size
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
@@ -34,7 +40,7 @@ metrics:
     symbol:
       OID: 1.3.6.1.4.1.20632.2.5
       name: avgEmailLatency
-  # Spam out queue size
+  # Spam notify queue size
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
       OID: 1.3.6.1.4.1.20632.2.8

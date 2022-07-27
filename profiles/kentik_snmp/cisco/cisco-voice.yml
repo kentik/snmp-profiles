@@ -5,12 +5,10 @@
 # http://www.circitor.fr/Mibs/Html/D/DIAL-CONTROL-MIB.php
 ---
 extends:
-  - system-mib.yml
   - cisco-all-devices.yml
 
 sysobjectid:
   - 1.3.6.1.4.1.9.1.693   # Cisco Intelligent Contact Management
-  - 1.3.6.1.4.1.9.1.1935  # Cisco 4431 ISR
 
 metrics:
   - MIB: HOST-RESOURCES-MIB
@@ -82,22 +80,22 @@ metrics:
   - MIB: CISCO-VOICE-DIAL-CONTROL-MIB
     symbol:
       name: cvCallRateMonitorEnable
-      OID: 1.3.6.1.4.1.9.9.63.1.3.11.1
+      OID: 1.3.6.1.4.1.9.9.63.1.3.11.1.0
       enum:
         true: 1
         false: 2
   - MIB: CISCO-VOICE-DIAL-CONTROL-MIB
     symbol:
       name: cvCallRateMonitorTime
-      OID: 1.3.6.1.4.1.9.9.63.1.3.11.2
+      OID: 1.3.6.1.4.1.9.9.63.1.3.11.2.0
   - MIB: CISCO-VOICE-DIAL-CONTROL-MIB
     symbol:
       name: cvCallRate
-      OID: 1.3.6.1.4.1.9.9.63.1.3.11.3
+      OID: 1.3.6.1.4.1.9.9.63.1.3.11.3.0
   - MIB: CISCO-VOICE-DIAL-CONTROL-MIB
     symbol:
       name: cvCallRateHiWaterMark
-      OID: 1.3.6.1.4.1.9.9.63.1.3.11.4
+      OID: 1.3.6.1.4.1.9.9.63.1.3.11.4.0
   - MIB: CISCO-VOICE-DIAL-CONTROL-MIB
     table:
       name: cvCallVolIfTable

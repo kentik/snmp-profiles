@@ -2,8 +2,6 @@
 ---
 extends:
   - system-mib.yml
-  - tcp-mib.yml
-  - udp-mib.yml
 
 provider: kentik-ups
 
@@ -61,6 +59,8 @@ metrics:
         deepMomentarySag: 6
         smallMomentarySpike: 7
         largeMomentarySpike: 8
+        selfTest: 9
+        rateOfVoltageChange: 10
   - MIB: PowerNet-MIB_UPS
     symbol:
       OID: 1.3.6.1.4.1.318.1.1.1.4.2.3.0

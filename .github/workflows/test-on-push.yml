@@ -1,0 +1,36 @@
+name: Test on Push
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Profiles
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Get ktrans
+        uses: actions/checkout@v2
+        with:
+          repository: kentik/ktranslate
+          path: ./ktranslate
+
+      - name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.18.3'
+
+      - name: Install dependencies
+        run: sudo apt-get install make libpcap-dev
+
+      - name: Run build
+        run: |
+          cd ktranslate && make
+
+      - name: Run verify
+        run: |
+          ./ktranslate/bin/ktranslate --snmp_validate --snmp ./test/snmp.yaml

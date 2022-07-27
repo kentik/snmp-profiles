@@ -3,9 +3,6 @@
 extends:
   - system-mib.yml
   - if-mib.yml
-  - tcp-mib.yml
-  - udp-mib.yml
-  - ip-mib.yml
 
 provider: kentik-firewall
 
@@ -99,6 +96,10 @@ metrics:
         name: fanSpeedSensorValue
       - OID: 1.3.6.1.4.1.2620.1.6.7.8.2.1.6
         name: fanSpeedSensorStatus
+        enum:
+          TRUE: 1
+          FALSE: 0
+          READING ERROR: 2
     table:
       OID: 1.3.6.1.4.1.2620.1.6.7.8.2
       name: fanSpeedSensorTable

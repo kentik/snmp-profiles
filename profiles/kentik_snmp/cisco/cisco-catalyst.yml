@@ -2,7 +2,6 @@
 # http://oid-info.com/get/1.3.6.1.4.1.9.9.276.1.1.1
 ---
 extends:
-  - system-mib.yml
   - cisco-all-devices.yml
 
 provider: kentik-switch
@@ -298,6 +297,15 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.1713    #  Catalyst 3750x24U
   - 1.3.6.1.4.1.9.1.1732    #  Catalyst 4xxxVirtualSwitch
   - 1.3.6.1.4.1.9.1.1745    #  Catalyst 38xx Stack
+  - 1.3.6.1.4.1.9.1.1748    #  Catalyst 2960-Plus
+  - 1.3.6.1.4.1.9.1.1750    #  Catalyst C2960P24LcL
+  - 1.3.6.1.4.1.9.1.1751    #  Catalyst C2960P48TcL
+  - 1.3.6.1.4.1.9.1.1752    #  Catalyst C2960P24TcL
+  - 1.3.6.1.4.1.9.1.1753    #  Catalyst C2960P48PstS
+  - 1.3.6.1.4.1.9.1.1754    #  Catalyst C2960P24PcS
+  - 1.3.6.1.4.1.9.1.1755    #  Catalyst C2960P24LcS
+  - 1.3.6.1.4.1.9.1.1756    #  Catalyst C2960P48TcS
+  - 1.3.6.1.4.1.9.1.1757    #  Catalyst C2960P24TcS
   - 1.3.6.1.4.1.9.1.1765    #  Catalyst C6807xl
   - 1.3.6.1.4.1.9.1.1767    #  Catalyst 385024U
   - 1.3.6.1.4.1.9.1.1768    #  Catalyst 385048U
@@ -327,6 +335,7 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.1880    #  Catalyst C385012S
   - 1.3.6.1.4.1.9.1.1881    #  Catalyst C365048PQ
   - 1.3.6.1.4.1.9.1.1882    #  Catalyst C365048TQ
+  - 1.3.6.1.4.1.9.1.1934    #  Catalyst C68xxVirtualSwitch
   - 1.3.6.1.4.1.9.1.1936    #  Catalyst C6880x
   - 1.3.6.1.4.1.9.1.2026    #  Catalyst 5700 Series Wireless Controller
   - 1.3.6.1.4.1.9.1.2066    #  Catalyst 36xxstack
@@ -360,18 +369,21 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.2398    #  Catalyst CDB8U
   - 1.3.6.1.4.1.9.1.2399    #  Catalyst CDB8P
   - 1.3.6.1.4.1.9.1.2491    #  Catalyst WSC365048TSE
-  - 1.3.6.1.4.1.9.1.2494    #  Catalyst WSC2960L24TQLL
-  - 1.3.6.1.4.1.9.1.2495    #  Catalyst WSC2960L48TQLL
-  - 1.3.6.1.4.1.9.1.2496    #  Catalyst WSC2960L24PQLL
-  - 1.3.6.1.4.1.9.1.2497    #  Catalyst WSC2960L48PQLL
-  - 1.3.6.1.4.1.9.1.2498    #  Catalyst 2509 Router
+  - 1.3.6.1.4.1.9.1.2494    #  Catalyst 9300
+  - 1.3.6.1.4.1.9.1.2495    #  Catalyst WSC2960L24TQLL
+  - 1.3.6.1.4.1.9.1.2496    #  Catalyst WSC2960L48TQLL
+  - 1.3.6.1.4.1.9.1.2497    #  Catalyst WSC2960L24PQLL
+  - 1.3.6.1.4.1.9.1.2498    #  Catalyst WSC2960L48PQLL
+  - 1.3.6.1.4.1.9.1.2499    #  Catalyst 9404R
   - 1.3.6.1.4.1.9.1.2500    #  Catalyst 9400 Series 7 Slot
   - 1.3.6.1.4.1.9.1.2501    #  Catalyst 9400 Series 10 Slot
   - 1.3.6.1.4.1.9.1.2593    #  Catalyst 9500
   - 1.3.6.1.4.1.9.1.2688    #  Catalyst 9500 Virtual
   - 1.3.6.1.4.1.9.1.2694    #  Catalyst 9200
   - 1.3.6.1.4.1.9.1.2695    #  Catalyst 9200R
+  - 1.3.6.1.4.1.9.1.3074    #  Catalyst 8200L-1N-4T
   - 1.3.6.1.4.1.9.6.1.83.10.1    # SG300-10 Managed Switch
+  - 1.3.6.1.4.1.9.6.1.83.52.2    # SG300-52P Managed Switch
 
 metrics:
   - MIB: CISCO-IF-EXTENSION-MIB

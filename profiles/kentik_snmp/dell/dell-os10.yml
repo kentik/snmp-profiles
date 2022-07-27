@@ -1,0 +1,103 @@
+# https://mibs.observium.org/mib/DELLEMC-OS10-CHASSIS-MIB/
+---
+extends:
+  - system-mib.yml
+  # Using the 32-bit counter IF-MIB profile here
+  - if32-mib.yml
+  - host-resources-mib.yml
+  - ucd-mib.yml
+
+provider: kentik-switch
+
+sysobjectid:
+  - 1.3.6.1.4.1.674.11000.5000.100.2.*     # OS10 family
+  - 1.3.6.1.4.1.674.11000.5000.100.2.1.1   # s6000on
+  - 1.3.6.1.4.1.674.11000.5000.100.2.1.9   # s4128Ton
+
+metrics:
+  - MIB: HOST-RESOURCES-MIB
+    table:
+      OID: 1.3.6.1.2.1.25.3.3
+      name: hrProcessorTable
+    symbols:
+      - OID: 1.3.6.1.2.1.25.3.3.1.2
+        name: hrProcessorLoad
+        poll_time_sec: 60
+        tag: CPU
+  - MIB: HOST-RESOURCES-MIB
+    symbol:
+      name: hrStorageSizeRAM
+      OID: 1.3.6.1.2.1.25.2.3.1.5.1
+      poll_time_sec: 60
+      tag: MemoryTotal
+  - MIB: HOST-RESOURCES-MIB
+    symbol:
+      name: hrStorageUsedRAM
+      OID: 1.3.6.1.2.1.25.2.3.1.6.1
+      poll_time_sec: 60
+      tag: MemoryUsed
+  - MIB: HOST-RESOURCES-MIB
+    symbol:
+      name: os10ChassisTemp
+      OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.1.3.1.11
+  
+  - MIB: DELLEMC-OS10-CHASSIS-MIB
+    table:
+      OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.1.4
+      name: os10CardTable
+    symbols:
+      - OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.1.4.1.4
+        name: os10CardStatus
+        enum:
+          normal: 1
+          abnormal: 2
+      - OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.1.4.1.5
+        name: os10CardTemp
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.1.4.1.3
+          name: os10CardDescription
+      - column:
+          OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.1.4.1.9
+          name: os10CardServiceTag
+
+  - MIB: DELLEMC-OS10-CHASSIS-MIB
+    table:
+      OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.2.1
+      name: os10PowerSupplyTable
+    symbols:
+      - OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.2.1.1.4
+        name: os10PowerSupplyOperStatus
+        enum:
+          normal: 1
+          abnormal: 2
+
+  - MIB: DELLEMC-OS10-CHASSIS-MIB
+    table:
+      OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.2.2
+      name: os10FanTrayTable 
+    symbols:
+      - OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.2.2.1.4
+        name: os10FanTrayOperStatus
+        enum:
+          normal: 1
+          abnormal: 2
+
+  - MIB: DELLEMC-OS10-CHASSIS-MIB
+    table:
+      OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.2.3
+      name: os10FanTable
+    symbols:
+      - OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.2.3.1.7
+        name: os10FanOperStatus
+
+metric_tags:
+  - column:
+      OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.1.3.1.6
+      name: os10ChassisHwRev
+  - column:
+      OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.1.3.1.7
+      name: os10ChassisServiceTag
+  - column:
+      OID: 1.3.6.1.4.1.674.11000.5000.100.4.1.1.3.1.8
+      name: os10ChassisExpServiceCode
