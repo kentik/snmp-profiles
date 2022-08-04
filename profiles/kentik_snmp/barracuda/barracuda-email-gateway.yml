@@ -19,7 +19,7 @@ metrics:
       name: ssCpuIdle
       OID: 1.3.6.1.4.1.2021.11.11.0
       poll_time_sec: 60
-      tag: CPU
+      tag: CPUIdle
   # Spam in queue size
   - MIB: BARRACUDA-SPAM-MIB
     symbol:
