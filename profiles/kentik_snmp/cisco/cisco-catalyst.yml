@@ -153,6 +153,7 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.798     #  Catalyst 29608TC
   - 1.3.6.1.4.1.9.1.799     #  Catalyst 2960G8TC
   - 1.3.6.1.4.1.9.1.832     #  Catalyst WSC6509ve
+  - 1.3.6.1.4.1.9.12.3.1.3.843 #  MDS 9148 Multilayer Fabric Switch
   - 1.3.6.1.4.1.9.1.874     #  Catalyst 4503e
   - 1.3.6.1.4.1.9.1.875     #  Catalyst 4506e
   - 1.3.6.1.4.1.9.1.876     #  Catalyst 4507re
