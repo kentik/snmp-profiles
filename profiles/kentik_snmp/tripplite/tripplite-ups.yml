@@ -2,6 +2,7 @@
 ---
 extends:
   - system-mib.yml
+  - ups-mib.yml
 
 provider: kentik-ups
 
