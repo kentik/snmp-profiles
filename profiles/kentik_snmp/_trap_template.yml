@@ -11,7 +11,7 @@ traps:
     events:                                # These are the varbinds we expect to see within the trap payload
       - name: vmwVpxdOldStatus             # Field name, taken from the MIB definition
         OID: 1.3.6.1.4.1.6876.4.3.304.0    # OID number 
-        tag: old_status                    # Tags allow you rename the field to something more friendly
+        tag: old_status                    # <Optional> Tags allow you rename the field to something more friendly
       - name: vmwVpxdNewStatus
         OID: 1.3.6.1.4.1.6876.4.3.305.0
         tag: new_status
@@ -23,7 +23,7 @@ traps:
         tag: object_name
       - name: vmwVpxdTargetObjType
         OID: 1.3.6.1.4.1.6876.4.3.308.0
-        enum:                              # Enumeration translates values from integers into more human friendly strings
+        enum:                              # <Optional> Enumeration translates values from integers into more human friendly strings
           unknown: 1
           host: 2
           vm: 3
