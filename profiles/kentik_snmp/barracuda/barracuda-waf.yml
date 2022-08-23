@@ -68,6 +68,14 @@ metrics:
       # Current number of connections.
       - name: sslProxyCurrentConn
         OID: 1.3.6.1.4.1.20632.8.50.2.1.20
+    metric_tags:
+      - column:
+          name: sslProxyAddress
+          OID: 1.3.6.1.4.1.20632.8.50.2.1.2
+      - column:
+          name: sslProxyPort
+          OID: 1.3.6.1.4.1.20632.8.50.2.1.3
+
   # A table of SSL server stats.
   - MIB: BWS-MIB
     table:
@@ -143,6 +151,20 @@ metrics:
       # Total OUT bytes.
       - name: sslSrvrOutBytes
         OID: 1.3.6.1.4.1.20632.8.50.6.1.28
+    metric_tags:
+      - column:
+          name: sslSrvrSrvcAddress
+          OID: 1.3.6.1.4.1.20632.8.50.6.1.2
+      - column:
+          name: sslSrvrSrvcPort
+          OID: 1.3.6.1.4.1.20632.8.50.6.1.3
+      - column:
+          name: sslSrvrAddress
+          OID: 1.3.6.1.4.1.20632.8.50.6.1.5
+      - column:
+          name: sslSrvrPort
+          OID: 1.3.6.1.4.1.20632.8.50.6.1.6
+
   # A table of IPS request service stats.
   - MIB: BWS-MIB
     table:
@@ -158,7 +180,15 @@ metrics:
       # Total number of profile violations.
       - name: ipsReqSrvcTotProfViol
         OID: 1.3.6.1.4.1.20632.8.50.7.1.6
-  # A table of IPS request service stats.
+    metric_tags:
+      - column:
+          name: ipsReqSrvcAddress
+          OID: 1.3.6.1.4.1.20632.8.50.7.1.2
+      - column:
+          name: ipsReqSrvcPort
+          OID: 1.3.6.1.4.1.20632.8.50.7.1.3
+
+# A table of IPS request service stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsLrnSrvcStatsTable
@@ -188,7 +218,15 @@ metrics:
       # Time at which profile was locked.
       - name: ipsLrnSrvcTimeLocked
         OID: 1.3.6.1.4.1.20632.8.50.8.1.11
-  # A table of IPS request limit stats.
+    metric_tags:
+      - column:
+          name:  ipsLrnSrvcAddress
+          OID: 1.3.6.1.4.1.20632.8.50.8.1.2
+      - column:
+          name: ipsLrnSrvcPort
+          OID: 1.3.6.1.4.1.20632.8.50.8.1.3
+
+# A table of IPS request limit stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsReqLimitStatsTable
@@ -218,7 +256,15 @@ metrics:
       # Number of blocked method error.
       - name: ipsReqLimitBlkdMethodErr
         OID: 1.3.6.1.4.1.20632.8.50.9.1.11
-  # A table of IPS URL normalization stats.
+    metric_tags:
+      - column:
+          name:  ipsReqLimitAddress
+          OID: 1.3.6.1.4.1.20632.8.50.9.1.2
+      - column:
+          name: ipsReqLimitPort
+          OID: 1.3.6.1.4.1.20632.8.50.9.1.3
+
+# A table of IPS URL normalization stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsUrlNormStatsTable
@@ -236,7 +282,15 @@ metrics:
       # Number of character set encoding error.
       - name: ipsUrlNormCharSetEncodingErr
         OID: 1.3.6.1.4.1.20632.8.50.10.1.7
-  # A table of IPS cookie security stats.
+    metric_tags:
+      - column:
+          name: ipsUrlNormAddress
+          OID: 1.3.6.1.4.1.20632.8.50.10.1.2
+      - column:
+          name: ipsUrlNormPort
+          OID: 1.3.6.1.4.1.20632.8.50.10.1.3
+
+# A table of IPS cookie security stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsCookieSecStatsTable
@@ -263,7 +317,15 @@ metrics:
       # Number of cookie decrypted.
       - name: ipsCookieSecCookieDecrypted
         OID: 1.3.6.1.4.1.20632.8.50.11.1.10
-  # A table of IPS URL ACL stats.
+    metric_tags:
+      - column:
+          name: ipsCookieSecAddress
+          OID: 1.3.6.1.4.1.20632.8.50.11.1.2
+      - column:
+          name: ipsCookieSecPort
+          OID: 1.3.6.1.4.1.20632.8.50.11.1.3
+
+# A table of IPS URL ACL stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsUrlAclStatsTable
@@ -281,7 +343,15 @@ metrics:
       # Number of ACL policy allows.
       - name: ipsUrlAclAllowAclHits
         OID: 1.3.6.1.4.1.20632.8.50.12.1.8
-  # A table of IPS header ACL stats.
+    metric_tags:
+      - column:
+          name: ipsUrlAclAddress
+          OID: 1.3.6.1.4.1.20632.8.50.12.1.2
+      - column:
+          name: ipsUrlAclPort
+          OID: 1.3.6.1.4.1.20632.8.50.12.1.3
+
+# A table of IPS header ACL stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsHdrAclStatsTable
@@ -293,7 +363,15 @@ metrics:
       # Time stamp at which this entry was last modified.
       - name: ipsHdrAclTimeStamp
         OID: 1.3.6.1.4.1.20632.8.50.13.1.5
-  # A table of IPS URL translation stats.
+    metric_tags:
+      - column:
+          name: ipsHdrAclAddress
+          OID: 1.3.6.1.4.1.20632.8.50.13.1.2
+      - column:
+          name: ipsHdrAclPort
+          OID: 1.3.6.1.4.1.20632.8.50.13.1.3
+
+# A table of IPS URL translation stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsWebAddrTransStatsTable
@@ -320,7 +398,15 @@ metrics:
       # Time stamp at which this entry was last modified.
       - name: ipsWebAddrTransTimeStamp
         OID: 1.3.6.1.4.1.20632.8.50.14.1.10
-  # A table of IPS access control stats.
+    metric_tags:
+      - column:
+          name: ipsWebAddrTransAddress
+          OID: 1.3.6.1.4.1.20632.8.50.14.1.2
+      - column:
+          name: ipsWebAddrTransPort
+          OID: 1.3.6.1.4.1.20632.8.50.14.1.3
+
+# A table of IPS access control stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsAccessCtrlStatsTable
@@ -365,7 +451,15 @@ metrics:
       # Time stamp at which this entry was last modified.
       - name: ipsAccessCtrlTimeStamp
         OID: 1.3.6.1.4.1.20632.8.50.15.1.16
-  # A table of IPS rate control stats.
+    metric_tags:
+      - column:
+          name: ipsAccessCtrlAddress
+          OID: 1.3.6.1.4.1.20632.8.50.15.1.2
+      - column:
+          name: ipsAccessCtrlPort
+          OID: 1.3.6.1.4.1.20632.8.50.15.1.3
+
+# A table of IPS rate control stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsRCStatsTable
@@ -386,7 +480,15 @@ metrics:
       # Time stamp at which this entry was last modified.
       - name: ipsRCTimeStamp
         OID: 1.3.6.1.4.1.20632.8.50.16.1.8
-  # A table of IPS UrlPolicy stats.
+    metric_tags:
+      - column:
+          name: ipsRCAddress
+          OID: 1.3.6.1.4.1.20632.8.50.16.1.2
+      - column:
+          name: ipsRCPort
+          OID: 1.3.6.1.4.1.20632.8.50.16.1.3
+
+# A table of IPS UrlPolicy stats.
   - MIB: BWS-MIB
     table:
       name: bwsIpsUrlPolicyStatsTable
@@ -410,6 +512,13 @@ metrics:
       # Time stamp at which this entry was last modified.
       - name: ipsUrlPolicyTimeStamp
         OID: 1.3.6.1.4.1.20632.8.50.17.1.9
+    metric_tags:
+      - column:
+          name: ipsUrlPolicyAddress
+          OID: 1.3.6.1.4.1.20632.8.50.17.1.2
+      - column:
+          name: ipsUrlPolicyPort
+          OID: 1.3.6.1.4.1.20632.8.50.17.1.3
 
 metric_tags:
   # Current firmware version running in the system (WAF)
@@ -424,4 +533,4 @@ metric_tags:
   - column:
       name: systemSerialNumber
       OID: 1.3.6.1.4.1.20632.8.28.0
-      tag: entity_serial
+      tag: serial_number
