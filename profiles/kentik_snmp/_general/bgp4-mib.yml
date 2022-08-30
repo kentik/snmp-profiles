@@ -55,11 +55,12 @@ metrics:
         column:
           name: bgpPeerRemoteAddr
           OID: 1.3.6.1.2.1.15.3.1.7
+          allow_duplicate: true
       # The remote autonomous system number.
       - tag: remote_as
         column:
           name: bgpPeerRemoteAs
-          OID: 1.3.6.1.2.1.15.3.1.9 
+          OID: 1.3.6.1.2.1.15.3.1.9
       # Time interval in seconds for the ConnectRetry timer.
       - tag: retry_interval
         column:
