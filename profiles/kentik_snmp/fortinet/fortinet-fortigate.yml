@@ -3,6 +3,7 @@
 extends:
   - system-mib.yml
   - if-mib.yml
+  - bgp-mib.yml
 
 provider: kentik-firewall
 
