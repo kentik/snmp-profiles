@@ -211,7 +211,6 @@ traps:
   - trap_oid: 1.3.6.1.4.1.9.9.117.2.0.3
     trap_name: cefcFRUInserted
     drop_undefined: false
-    events:
   # The cefcFRURemoved notification indicates that a FRU was removed.
   # need to see an example of this one to build the events/varbinds
   - trap_oid: 1.3.6.1.4.1.9.9.117.2.0.4
