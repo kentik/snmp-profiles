@@ -163,3 +163,79 @@ traps:
           slip: 9
           xremote: 10
           rshell: 11
+
+  # https://circitor.fr/Mibs/Html/C/CISCO-ENTITY-FRU-CONTROL-MIB.php
+  # This notification is generated when the value of cefcModuleOperStatus changes.
+  # need to see an example of this one to build the events/varbinds
+  - trap_oid: 1.3.6.1.4.1.9.9.117.2.0.1
+    trap_name: cefcModuleStatusChange
+    drop_undefined: false
+  # The cefcFRUPowerStatusChange notification indicates that the power status of a FRU has changed.
+  - trap_oid: 1.3.6.1.4.1.9.9.117.2.0.2
+    trap_name: cefcPowerStatusChange
+    drop_undefined: false
+    events:
+      # Administratively desired FRU power state.
+      - name: cefcFRUPowerAdminStatus
+        OID: 1.3.6.1.4.1.9.9.117.1.1.2.1.1.*
+        enum:
+          on: 1
+          off: 2
+          inlineAuto: 3
+          inlineOn: 4
+          powerCycle: 5
+      # Operational FRU power state.
+      - name: cefcFRUPowerOperStatus
+        OID: 1.3.6.1.4.1.9.9.117.1.1.2.1.2.*
+        enum:
+          offEnvOther: 1
+          on: 2
+          offAdmin: 3
+          offDenied: 4
+          offEnvPower: 5
+          offEnvTemp: 6
+          offEnvFan: 7
+          failed: 8
+          onButFanFail: 9
+          offCooling: 10
+          offConnectorRating: 11
+          onButInlinePowerFail: 12
+      # A textual description of physical entity.
+      - name: entPhysicalDescr
+        OID: 1.3.6.1.2.1.47.1.1.1.1.2.*
+      # The textual name of the physical entity.
+      - name: entPhysicalName
+        OID: 1.3.6.1.2.1.47.1.1.1.1.7.*
+  # The cecfFRUInserted notification indicates that a FRU was inserted.
+  # need to see an example of this one to build the events/varbinds
+  - trap_oid: 1.3.6.1.4.1.9.9.117.2.0.3
+    trap_name: cefcFRUInserted
+    drop_undefined: false
+  # The cefcFRURemoved notification indicates that a FRU was removed.
+  # need to see an example of this one to build the events/varbinds
+  - trap_oid: 1.3.6.1.4.1.9.9.117.2.0.4
+    trap_name: cefcFRURemoved
+    drop_undefined: false
+  # The cefcUnrecognizedFRU notification indicates that a FRU was inserted whose product ID is not supported.
+  # need to see an example of this one to build the events/varbinds
+  - trap_oid: 1.3.6.1.4.1.9.9.117.2.0.5
+    trap_name: cefcUnrecognizedFRU
+    drop_undefined: false
+  # This notification is generated when the value of cefcFanTrayOperStatus changes.
+  - trap_oid: 1.3.6.1.4.1.9.9.117.2.0.6
+    trap_name: cefcFanTrayStatusChange
+    drop_undefined: false
+    events:
+      # 
+      - name: cefcFanTrayOperStatus
+        OID: 1.3.6.1.4.1.9.9.117.1.4.1.1.1.*
+        enum:
+          unknown: 1
+          up: 2
+          down: 3
+          warning: 4
+  # The notification indicates that the power supply's output capacity has changed.
+  # need to see an example of this one to build the events/varbinds
+  - trap_oid: 1.3.6.1.4.1.9.9.117.2.0.7
+    trap_name: cefcPowerSupplyOutputChange
+    drop_undefined: false
