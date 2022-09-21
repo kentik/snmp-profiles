@@ -20,13 +20,13 @@ metrics:
         name: haConfigMode
         enum:
           standalone: 0
-				  activeActive: 1
+          activeActive: 1
       # The role this device is to play in HA mode
       - OID: 1.3.6.1.4.1.23022.100.10.1.3.0
         name: haConfigRole
         enum: 
           primary: 1
-				  secondary: 2
+          secondary: 2
       # This object reports the current state of the device HA traffic state synchronization process
       - OID: 1.3.6.1.4.1.23022.100.10.2.1.0
         name: haState
