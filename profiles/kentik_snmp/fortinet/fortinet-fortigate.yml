@@ -15,8 +15,10 @@ metrics:
       OID: 1.3.6.1.4.1.12356.101.4.1
       name: fgSystemInfo
     symbols:
+      # CPU Utilization - polled at 60s to support anomaly detection
       - OID: 1.3.6.1.4.1.12356.101.4.1.3.0
         name: fgSysCpuUsage
+        poll_time_sec: 60
   - MIB: FORTINET-FORTIGATE-MIB
     table:
       OID: 1.3.6.1.4.1.12356.101.4.4.2
@@ -38,15 +40,20 @@ metrics:
         name: fgProcessorUsage
       - OID: 1.3.6.1.4.1.12356.101.4.4.2.1.10
         name: fgProcessorSysUsage
-
+  # Memory Utilization - polled at 60s to support anomaly detection
   - MIB: FORTINET-FORTIGATE-MIB
     symbol:
       OID: 1.3.6.1.4.1.12356.101.4.1.4.0
       name: fgSysMemUsage
+      poll_time_sec: 60
+      tag: MemoryUsed
+  # Memory Utilization - polled at 60s to support anomaly detection
   - MIB: FORTINET-FORTIGATE-MIB
     symbol:
       OID: 1.3.6.1.4.1.12356.101.4.1.5.0
       name: fgSysMemCapacity
+      poll_time_sec: 60
+      tag: MemoryTotal
   - MIB: FORTINET-FORTIGATE-MIB
     symbol:
       OID: 1.3.6.1.4.1.12356.101.4.1.9.0
@@ -118,18 +125,22 @@ metrics:
           name: ifName
         table: ifXTable
         tag: if_interface_name
+  # Sessions Total - polled at 60s to support anomaly detection
   - MIB: FORTINET-FORTIGATE-MIB
     symbol:
       OID: 1.3.6.1.4.1.12356.101.4.1.8.0
       name: fgSysSesCount
+      poll_time_sec: 60
   - MIB: FORTINET-FORTIGATE-MIB
     symbol:
       OID: 1.3.6.1.4.1.12356.101.4.1.11.0
       name: fgSysSesRate1
+  # Sessions Total - polled at 60s to support anomaly detection
   - MIB: FORTINET-FORTIGATE-MIB
     symbol:
       OID: 1.3.6.1.4.1.12356.101.4.1.15.0
       name: fgSysSes6Count
+      poll_time_sec: 60
   - MIB: FORTINET-FORTIGATE-MIB
     symbol:
       OID: 1.3.6.1.4.1.12356.101.4.1.16.0

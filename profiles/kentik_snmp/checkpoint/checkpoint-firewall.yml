@@ -22,8 +22,10 @@ metrics:
         name: multiProcSystemTime
       - OID: 1.3.6.1.4.1.2620.1.6.7.5.1.4
         name: multiProcIdleTime
+      # CPU Utilization - polled at 60s to support anomaly detection
       - OID: 1.3.6.1.4.1.2620.1.6.7.5.1.5
         name: multiProcUsage
+        poll_time_sec: 60
     table:
       OID: 1.3.6.1.4.1.2620.1.6.7.5
       name: multiProcTable
@@ -31,6 +33,7 @@ metrics:
     symbol:
       OID: 1.3.6.1.4.1.2620.1.6.7.2.7.0
       name: procNum
+  # Memory Utilization - polled at 60s to support anomaly detection
   - MIB: CHECKPOINT-MIB
     symbol:
       OID: 1.3.6.1.4.1.2620.1.6.7.4.3.0
@@ -41,6 +44,7 @@ metrics:
     symbol:
       OID: 1.3.6.1.4.1.2620.1.6.7.4.4.0
       name: memActiveReal64
+  # Memory Utilization - polled at 60s to support anomaly detection
   - MIB: CHECKPOINT-MIB
     symbol:
       OID: 1.3.6.1.4.1.2620.1.6.7.4.5.0
@@ -137,10 +141,12 @@ metrics:
     symbol:
       OID: 1.3.6.1.4.1.2620.1.1.5.0
       name: fwRejected
+  # Sessions Total - polled at 60s to support anomaly detection
   - MIB: CHECKPOINT-MIB
     symbol:
       OID: 1.3.6.1.4.1.2620.1.1.25.3.0
       name: fwNumConn
+      poll_time_sec: 60
   - MIB: CHECKPOINT-MIB
     symbol:
       OID: 1.3.6.1.4.1.2620.1.1.25.4.0
