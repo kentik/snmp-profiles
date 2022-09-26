@@ -3,7 +3,6 @@
 extends:
   - system-mib.yml
   - if-mib.yml
-  - host-resources-mib.yml
   - ospf-mib.yml
   - entity-sensor-mib.yml
 
@@ -12,14 +11,92 @@ provider: kentik-firewall
 sysobjectid: 1.3.6.1.4.1.25461.2.3.*
 
 metrics:
+  # Memory Utilization - polled at 60s to support anomaly detection
+  - MIB: HOST-RESOURCES-MIB
+    symbol:
+      name: hrStorageSizeRAM
+      OID: 1.3.6.1.2.1.25.2.3.1.5.1
+      poll_time_sec: 60
+      tag: MemoryTotal
+  # Memory Utilization - polled at 60s to support anomaly detection
+  - MIB: HOST-RESOURCES-MIB
+    symbol:
+      name: hrStorageUsedRAM
+      OID: 1.3.6.1.2.1.25.2.3.1.6.100
+      poll_time_sec: 60
+      tag: MemoryUsed
+
+  - MIB: HOST-RESOURCES-MIB
+    table:
+      OID: 1.3.6.1.2.1.25.3.3
+      name: hrProcessorTable
+    symbols:
+      # CPU Utilization - polled at 60s to support anomaly detection
+      - OID: 1.3.6.1.2.1.25.3.3.1.2
+        name: hrProcessorLoad
+        poll_time_sec: 60
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.2.1.25.3.2.1.3
+          name: hrDeviceDescr
+        tag: processor_description
+
+  # All other metrics from host-resources-mib
+  - MIB: HOST-RESOURCES-MIB
+    symbols:
+      - OID: 1.3.6.1.2.1.25.1.1.0
+        name: hrSystemUptime
+      - OID: 1.3.6.1.2.1.25.1.5.0
+        name: hrSystemNumUsers
+      - OID: 1.3.6.1.2.1.25.1.6.0
+        name: hrSystemProcesses
+      - OID: 1.3.6.1.2.1.25.1.7.0
+        name: hrSystemMaxProcesses
+  - MIB: HOST-RESOURCES-MIB
+    table:
+      OID: 1.3.6.1.2.1.25.2.3
+      name: hrStorageTable
+    symbols:
+      - OID: 1.3.6.1.2.1.25.2.3.1.4
+        name: hrStorageAllocationUnits
+      - OID: 1.3.6.1.2.1.25.2.3.1.5
+        name: hrStorageSize
+      - OID: 1.3.6.1.2.1.25.2.3.1.6
+        name: hrStorageUsed
+      - OID: 1.3.6.1.2.1.25.2.3.1.7
+        name: hrStorageAllocationFailures
+    metric_tags:
+      - tag: storage_description
+        column:
+          OID: 1.3.6.1.2.1.25.2.3.1.3
+          name: hrStorageDescr
+      - tag: storage_type
+        column:
+          OID: 1.3.6.1.2.1.25.2.3.1.2
+          name: hrStorageType
+          enum:
+            Other: 1
+            Ram: 2
+            VirtualMemory: 3
+            FixedDisk: 4
+            RemovableDisk: 5
+            FloppyDisk: 6
+            CompactDisc: 7
+            RamDisk: 8
+            FlashMemory: 9
+            NetworkDisk: 10
+
+  # MIB for the common MIB objects implemented by all Palo Alto devices.
   - MIB: PAN-COMMON-MIB
     symbols:
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.1.0
         name: panSessionUtilization
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.2.0
         name: panSessionMax
+      # Sessions Total - polled at 60s to support anomaly detection
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.3.0
         name: panSessionActive
+        poll_time_sec: 60
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.4.0
         name: panSessionActiveTcp
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.5.0
