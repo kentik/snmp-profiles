@@ -29,3 +29,50 @@ metrics:
         column:
           OID: 1.3.6.1.4.1.2636.3.1.13.1.18
           name: jnxOperatingChassisDescr
+
+  - MIB: JUNIPER-MIB
+    table:
+      OID: 1.3.6.1.4.1.2636.3.1.15
+      name: jnxFruTable
+    symbols:
+      - OID: 1.3.6.1.4.1.2636.3.1.15.1.8
+        name: jnxFruState
+        enum:
+          unknown: 1
+          empty: 2
+          present: 3
+          ready: 4
+          announceOnline: 5
+          online: 6
+          anounceOffline: 7
+          offline: 8
+          diagnostic: 9
+          standby: 10
+      - OID: 1.3.6.1.4.1.2636.3.1.15.1.9
+        name: jnxFruTemp
+    metric_tags:
+      - column:
+          OID: 	1.3.6.1.4.1.2636.3.1.15.1.5
+          name: jnxFruName
+      - column:
+          OID: 	1.3.6.1.4.1.2636.3.1.15.1.6
+          name: jnxFruType
+          enum:
+            other: 1
+            clockGenerator: 2
+            flexiblePicConcentrator: 3
+            switchingAndForwardingModule: 4
+            controlBoard: 5
+            routingEngine: 6
+            powerEntryModule: 7
+            frontPanelModule: 8
+            switchInterfaceBoard: 9
+            processorMezzanineBoardForSIB: 10
+            portInterfaceCard: 11
+            craftInterfacePanel: 12
+            fan: 13
+            lineCardChassis: 14
+            forwardingEngineBoard: 15
+      - column:
+          OID: 	1.3.6.1.4.1.2636.3.1.15.1.15
+          name: jnxFruChassisDescr
