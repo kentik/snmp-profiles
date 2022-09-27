@@ -51,9 +51,6 @@ metrics:
       # Total transmitted retry packets of wireless interfaces
       - name: ruckusUnleashedSystemStatsWLANTotalTxRetry
         OID: 1.3.6.1.4.1.25053.1.15.1.1.1.15.12.0
-      # Number of registered AP
-      - name: ruckusUnleashedSystemStatsNumRegisteredAP
-        OID: 1.3.6.1.4.1.25053.1.15.1.1.1.15.15.0
       # Total number of failed station associations
       - name: ruckusUnleashedSystemStatsWLANTotalAssocFail
         OID: 1.3.6.1.4.1.25053.1.15.1.1.1.15.16.0
@@ -65,10 +62,10 @@ metric_tags:
   # Model
   - name: 1.3.6.1.4.1.25053.1.15.1.1.1.1.9.0
     OID: ruckusUnleashedSystemModel
-    tag: serial_number
   # Licensed APs
   - name: ruckusUnleashedSystemLicensedAPs
     OID: 1.3.6.1.4.1.25053.1.15.1.1.1.1.12.0
   # Serial number
   - name: ruckusUnleashedSystemSerialNumber
     OID: 1.3.6.1.4.1.25053.1.15.1.1.1.1.15.0
+    tag: serial_number
