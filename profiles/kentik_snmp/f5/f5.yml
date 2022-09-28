@@ -17,7 +17,7 @@ sysobjectid:
 
 metrics:
 # System-wide metrics
-  # This is average usage ratio of CPU for the system in the last one minute (needs to be multiplied by 100 in the NR UI to express percentage)
+  # This is average usage ratio of CPU for the system in the last one minute
   - MIB: F5-BIGIP-SYSTEM-MIB
     symbol:
       OID: 1.3.6.1.4.1.3375.2.1.1.2.20.29.0
