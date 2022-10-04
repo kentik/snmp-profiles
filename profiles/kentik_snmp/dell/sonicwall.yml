@@ -12,7 +12,7 @@ provider: kentik-firewall
 
 metrics:
   # Instantaneous CPU Utilization in percent
-  # Polled at 60s to support anomaly detection
+  # CPU Utilization - polled at 60s to support anomaly detection
   - MIB: SONICWALL-FIREWALL-IP-STATISTICS-MIB
     symbol:
       name: sonicCurrentCPUUtil
@@ -20,7 +20,7 @@ metrics:
       poll_time_sec: 60
       tag: CPU
   # Instantaneous RAM Utilization in percent
-  # Polled at 60s to support anomaly detection
+  # Memory Utilization - polled at 60s to support anomaly detection
   - MIB: SONICWALL-FIREWALL-IP-STATISTICS-MIB
     symbol:
       name: sonicCurrentRAMUtil
