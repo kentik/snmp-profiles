@@ -281,7 +281,7 @@ metrics:
           OID: 1.3.6.1.4.1.534.6.6.7.6.1.1.3
           name: outletName
 
-- MIB: EATON-EPDU-MIB
+  - MIB: EATON-EPDU-MIB
     table:
       name: outletCurrentTable
       OID: 1.3.6.1.4.1.534.6.6.7.6.4
@@ -306,7 +306,7 @@ metrics:
           OID: 1.3.6.1.4.1.534.6.6.7.6.1.1.3
           name: outletName
 
- - MIB: EATON-EPDU-MIB
+  - MIB: EATON-EPDU-MIB
     table:
       name: outletPowerTable
       OID: 1.3.6.1.4.1.534.6.6.7.6.5
@@ -331,7 +331,7 @@ metrics:
           OID: 1.3.6.1.4.1.534.6.6.7.6.1.1.3
           name: outletName           
 
- - MIB: EATON-EPDU-MIB
+  - MIB: EATON-EPDU-MIB
     table:
       name: temperatureTable
       OID: 1.3.6.1.4.1.534.6.6.7.7.1
@@ -360,7 +360,7 @@ metrics:
           OID: 1.3.6.1.4.1.534.6.6.7.7.1.1.2
           name: temperatureName
 
- - MIB: EATON-EPDU-MIB
+  - MIB: EATON-EPDU-MIB
     table:
       name: humidityTable
       OID: 1.3.6.1.4.1.534.6.6.7.7.2
@@ -389,7 +389,7 @@ metrics:
           OID: 1.3.6.1.4.1.534.6.6.7.7.2.1.2
           name: humidityName
 
- - MIB: EATON-EPDU-MIB
+  - MIB: EATON-EPDU-MIB
     table:
       name: contactTable
       OID: 1.3.6.1.4.1.534.6.6.7.7.3
