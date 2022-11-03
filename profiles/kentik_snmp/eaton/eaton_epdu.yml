@@ -17,7 +17,7 @@ metrics:
           good: 0
           communicationLost: 1
       # Status of the internal failure inside the PDU.
-      - name: communicationStatus
+      - name: internalStatus
         OID: 1.3.6.1.4.1.534.6.6.7.1.2.1.31.0
         enum:
           good: 0
