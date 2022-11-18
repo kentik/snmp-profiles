@@ -9,6 +9,7 @@ extends:
 provider: kentik-hp-ilo
 
 sysobjectid:
+  - 1.3.6.1.4.1.232.9.4.*     # HP ILO
   - 1.3.6.1.4.1.232.9.4.10    # ILO4
   - 1.3.6.1.4.1.232.9.4.11    # ILO5
 
