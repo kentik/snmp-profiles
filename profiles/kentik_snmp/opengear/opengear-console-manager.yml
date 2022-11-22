@@ -10,7 +10,9 @@ extends:
 provider: kentik-switch
 
 sysobjectid:
+  - 1.3.6.1.4.1.25049.1.*     # Open Gear Console Managers
   - 1.3.6.1.4.1.25049.1.10    # CM41xx series Console Managers
+  - 1.3.6.1.4.1.25049.1.11    # CM71xx series Console Managers
 
 metrics:
   # The 1 minute load average as an integer. This is computed by taking the floating point loadaverage value and multiplying by 100, then converting the value to an integer.
