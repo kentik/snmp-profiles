@@ -229,6 +229,7 @@ metric_tags:
   - column:
       name: ibSerialNumber
       OID: 1.3.6.1.4.1.7779.3.1.1.2.1.6.0
+    tag: serial_number
   # Infoblox One NIOS version
   - column:
       name: ibNiosVersion
