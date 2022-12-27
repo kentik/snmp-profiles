@@ -6,6 +6,7 @@ provider: kentik-esx
 extends:
   - system-mib.yml
   - if-mib.yml
+  - host-resources-mib.yml
 
 sysobjectid: 
   - 1.3.6.1.4.1.6876.4.1     # VMWare ESX
