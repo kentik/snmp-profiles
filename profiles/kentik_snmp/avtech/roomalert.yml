@@ -24,7 +24,7 @@ metrics:
       # If this sensor is a Temperature, Temp/Humidity, Temp/Analog, Temp/Active Power, or Digital Extreme Temperature sensor, this value represents the current temperature in Fahrenheit.
       - OID: 1.3.6.1.4.1.20916.1.13.1.2.1.2.0
         name: digital-sen1-2
-      # If this sensor is a Temperature, Temp/Humidity, Temp/Analog, Temp/Active Power, or Digital Extreme Temperature sensor, this value represents the current temperature in Celsius.
+      # If this sensor is a Temp/Humidity sensor, this value represents the current relative humidity in % Relative Humidity. If this sensor is a Temp/Analog sensor, this value represents the current Voltage reading. If this is a Temp/Active Power sensor, this value represents the current power state (1=Power Detected, 0=No Power Detected). If this is a Digital Extreme Temperature sensor, this value represents the current temperature from the thermocouple in Celsius.
       - OID: 1.3.6.1.4.1.20916.1.13.1.2.1.3.0
         name: digital-sen1-3
       # If this sensor is a Temp/Humidity sensor, this value represents the current heat index in Fahrenheit. If this sensor is a Temp/Analog sensor, this value represents the current custom reading. If this is a Digital Extreme Temperature sensor, this value represents the current temperature from the thermocouple in Fahrenheit.
