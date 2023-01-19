@@ -11,18 +11,18 @@ sysobjectid:
 provider: kentik-nas
 
 metrics:
-  # Volume information table
   - MIB: NIMBLE-MIB
     table:
       name: volTable
       OID: 1.3.6.1.4.1.37447.1.2
+      # Volume information table
     symbols:
-      # Volume Index
       - name: volOnline
         OID: 1.3.6.1.4.1.37447.1.2.1.10
         enum:
           false: 0
           true: 1
+      # Volume Online (true or false).
       - name: volSizeLow
         OID: 1.3.6.1.4.1.37447.1.2.1.4
       # Maximum defined size of a volume in bytes - low order bytes.
