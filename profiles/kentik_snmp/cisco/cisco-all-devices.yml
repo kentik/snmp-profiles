@@ -28,6 +28,7 @@ metrics:
         OID: 1.3.6.1.4.1.9.9.109.1.1.1.1.7
         poll_time_sec: 60
         tag: CPU
+        allow_duplicate: true
 
   # A table of memory pool monitoring entries.
   # Polled at 60s to support anomaly detection.
