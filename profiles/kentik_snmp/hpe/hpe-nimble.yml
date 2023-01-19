@@ -11,50 +11,47 @@ sysobjectid:
 provider: kentik-nas
 
 metrics:
-  # Volume information table
+  
   - MIB: NIMBLE-MIB
     table:
       name: volTable
       OID: 1.3.6.1.4.1.37447.1.2
+      # Volume information table
     symbols:
-      # Volume Online (true or false).
       - name: volOnline
         OID: 1.3.6.1.4.1.37447.1.2.1.10
         enum:
           false: 0
           true: 1
-      # Maximum defined size of a volume in bytes - low order bytes.
+      # Volume Online (true or false).
       - name: volSizeLow
         OID: 1.3.6.1.4.1.37447.1.2.1.4
-      # Maximum defined size of a volume in bytes - high order bytes.
+      # Maximum defined size of a volume in bytes - low order bytes.
       - name: volSizeHigh
         OID: 1.3.6.1.4.1.37447.1.2.1.5
-      # Current number of bytes a volume is using - low order bytes.
+      # Maximum defined size of a volume in bytes - high order bytes.
       - name: volUsageLow
         OID: 1.3.6.1.4.1.37447.1.2.1.6
-      # Current number of bytes a volume is using - high order bytes.     
+      # Current number of bytes a volume is using - low order bytes.
       - name: volUsageHigh
         OID: 1.3.6.1.4.1.37447.1.2.1.7
-      # Number of bytes reserved for a volume - low order bytes.
+      # Current number of bytes a volume is using - high order bytes.     
       - name: volReserveLow
         OID: 1.3.6.1.4.1.37447.1.2.1.8
-      # Number of bytes reserved for a volume - high order bytes.
+      # Number of bytes reserved for a volume - low order bytes.
       - name: volReserveHigh
         OID: 1.3.6.1.4.1.37447.1.2.1.9
-      # Total cumulative number of Read I/Os (sequential and random).
+      # Number of bytes reserved for a volume - high order bytes.
       - name: volIoReads
         OID: 1.3.6.1.4.1.37447.1.2.1.13
-      # Total cumulative number of Write I/Os.
+      # Total cumulative number of Read I/Os (sequential and random).
       - name: volIoWrites
         OID: 1.3.6.1.4.1.37447.1.2.1.34
-      # Total cumulative number of Read I/O bytes (sequential and random).
-      - name: ioReadBytes
-        OID: 1.3.6.1.4.1.37447.1.3.8
-      # Total cumulative number of Write I/O bytes (sequential and random).
-      - name: ioWriteBytes
-        OID: 1.3.6.1.4.1.37447.1.3.10
+      # Total cumulative number of Write I/Os.
   metric_tags:
     - column:
+        OID: 1.3.6.1.4.1.37447.1.2.1.2
+        name: volID
         OID: 1.3.6.1.4.1.37447.1.2.1.3
         name: volName
 - MIB: NIMBLE-MIB
