@@ -60,12 +60,15 @@ metrics:
 
 metric_tags:
   # Model
-  - name: 1.3.6.1.4.1.25053.1.15.1.1.1.1.9.0
-    OID: ruckusUnleashedSystemModel
+  - column:
+      name: 1.3.6.1.4.1.25053.1.15.1.1.1.1.9.0
+      OID: ruckusUnleashedSystemModel
   # Licensed APs
-  - name: ruckusUnleashedSystemLicensedAPs
-    OID: 1.3.6.1.4.1.25053.1.15.1.1.1.1.12.0
+  - column:
+      name: ruckusUnleashedSystemLicensedAPs
+      OID: 1.3.6.1.4.1.25053.1.15.1.1.1.1.12.0
   # Serial number
-  - name: ruckusUnleashedSystemSerialNumber
-    OID: 1.3.6.1.4.1.25053.1.15.1.1.1.1.15.0
+  - column:
+      name: ruckusUnleashedSystemSerialNumber
+      OID: 1.3.6.1.4.1.25053.1.15.1.1.1.1.15.0
     tag: serial_number
