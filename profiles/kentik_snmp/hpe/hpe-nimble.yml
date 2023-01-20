@@ -47,7 +47,6 @@ metrics:
       # Total cumulative number of Read I/Os (sequential and random).
       - name: volIoWrites
         OID: 1.3.6.1.4.1.37447.1.2.1.34
-      # Total cumulative number of Write I/Os.
   metric_tags:
     - column:
         OID: 1.3.6.1.4.1.37447.1.2.1.2
