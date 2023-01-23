@@ -53,8 +53,7 @@ metrics:
       - name: ioWriteBytes
         OID: 1.3.6.1.4.1.37447.1.3.10
     metric_tags:
-      - tag: 
-        column:
+      - column:
           OID: 1.3.6.1.4.1.37447.1.2.1.3
           name: volName
   - MIB: NIMBLE-MIB
