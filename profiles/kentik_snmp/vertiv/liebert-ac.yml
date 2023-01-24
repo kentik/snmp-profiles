@@ -8,6 +8,12 @@ provider: kentik-air-conditioner
 sysobjectid:
   - 1.3.6.1.4.1.476.1.42 # Liebert Global
 
+# This sysoid is the same for a variety of Liebert/Vertic product lines
+# If the sysDesc matches this regex, use the corresponding profile.
+# Regex is run on _lower case_ version of the sysDesc string.
+matches:
+  "ups": vertiv_ups.yml
+
 metrics:
   - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
     table:
