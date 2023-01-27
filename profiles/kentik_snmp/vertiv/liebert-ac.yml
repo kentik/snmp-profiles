@@ -12,7 +12,7 @@ sysobjectid:
 # If the sysDesc matches this regex, use the corresponding profile.
 # Regex is run on _lower case_ version of the sysDesc string.
 matches:
-  "ups": vertiv_ups.yml
+  "ups": vertiv-ups.yml
 
 metrics:
   - MIB: LIEBERT-GP-ENVIRONMENTAL-MIB
