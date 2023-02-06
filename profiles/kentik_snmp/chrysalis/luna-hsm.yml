@@ -2,6 +2,8 @@
 ---
 extends:
   - system-mib.yml
+  - ucd-mib.yml
+  - tcp-mib.yml
 
 provider: kentik-hardware-security-module
 
