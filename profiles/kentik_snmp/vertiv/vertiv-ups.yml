@@ -5,6 +5,9 @@ extends:
   - system-mib.yml
   - ups-mib.yml
 
+sysobjectid:
+  - 1.3.6.1.4.1.476.1.42.ups # Liebert UPS
+
 provider: kentik-ups
 
 metrics:
