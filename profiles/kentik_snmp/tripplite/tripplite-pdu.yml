@@ -9,7 +9,7 @@ sysobjectid:
  - 1.3.6.1.4.1.850.1.1.1     # Tripp Lite PDU
 
 metrics:
-  - MIB: 
+  - MIB: TRIPPLITE-PRODUCTS
     table:
       OID: 1.3.6.1.4.1.850.1.1.1.2
       name: tlpDeviceTable
@@ -42,7 +42,7 @@ metrics:
           OID: 1.3.6.1.4.1.850.1.1.1.2.1.9
           name: tlpDeviceRegion
 
-  - MIB: 
+  - MIB: TRIPPLITE-PRODUCTS
     table:
       OID: 1.3.6.1.4.1.850.1.1.2.1
       name: tlpDeviceIdentTable
@@ -55,7 +55,7 @@ metrics:
           OID: 1.3.6.1.4.1.850.1.1.2.1.1.5
           name: tlpDeviceIdentSerialNum
 
-  - MIB: 
+  - MIB: TRIPPLITE-PRODUCTS
     table:
       OID: 1.3.6.1.4.1.850.1.1.3.2.2.1
       name: tlpPduDeviceTable
@@ -83,7 +83,7 @@ metrics:
             tenths: 1
             hundredths: 2
 
-  - MIB: 
+  - MIB: TRIPPLITE-PRODUCTS
     table:
       OID: 1.3.6.1.4.1.850.1.1.3.2.3.2.1
       name: tlpPduOutputTable 
@@ -111,7 +111,7 @@ metrics:
             phaseToNeutral: 0
             phaseToPhase: 1
 
-  - MIB: 
+  - MIB: TRIPPLITE-PRODUCTS
     table:
       OID: 1.3.6.1.4.1.850.1.1.3.2.3.3.1
       name: tlpPduOutletTable
@@ -132,7 +132,7 @@ metrics:
           OID: 1.3.6.1.4.1.850.1.1.3.2.3.3.1.1.3
           name: tlpPduOutletDescription
 
-  - MIB: 
+  - MIB: TRIPPLITE-PRODUCTS
     table:
       OID: 1.3.6.1.4.1.850.1.1.3.2.3.5.1
       name: tlpPduBreakerTable
@@ -144,12 +144,12 @@ metrics:
           closed: 1
           notInstalled: 2
 
-  - MIB: 
+  - MIB: TRIPPLITE-PRODUCTS
     symbols:
       - OID: 1.3.6.1.4.1.850.1.3.1.0
         name: tlpAlarmsPresent
 
-  - MIB: 
+  - MIB: TRIPPLITE-PRODUCTS
     table:
       OID: 1.3.6.1.4.1.850.1.3.2
       name: tlpAlarmTable
