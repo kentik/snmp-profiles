@@ -8,6 +8,7 @@ extends:
   - host-resources-mib.yml
   - if-mib.yml
   - system-mib.yml
+  - ucd-mib.yml
 
 provider: kentik-ibm-wga
 
