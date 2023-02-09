@@ -8,8 +8,8 @@ extends:
 provider: kentik-switch
 
 sysobjectid:
-  - 1.3.6.1.4.1.11863.1.*         # TP-Link
-  - 1.3.6.1.4.1.11863.6.*         # TP-Link
+  - 1.3.6.1.4.1.11863.1.*         # TP-Link Switch
+  - 1.3.6.1.4.1.11863.5.*         # TP-Link
 
 metrics:
   - MIB: TPLINK-SYSMONITOR-MIB
