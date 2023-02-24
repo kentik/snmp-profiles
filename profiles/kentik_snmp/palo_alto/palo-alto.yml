@@ -1,4 +1,3 @@
-# https://oidref.com/1.3.6.1.4.1.25461.2.3
 ---
 extends:
   - system-mib.yml
@@ -6,11 +5,8 @@ extends:
   - host-resources-mib.yml
   - ospf-mib.yml
   - entity-sensor-mib.yml
-
 provider: kentik-firewall
-
 sysobjectid: 1.3.6.1.4.1.25461.2.3.*
-
 metrics:
   - MIB: PAN-COMMON-MIB
     symbols:
@@ -18,7 +14,6 @@ metrics:
         name: panSessionUtilization
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.2.0
         name: panSessionMax
-      # Sessions Total - polled at 60s to support anomaly detection
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.3.0
         name: panSessionActive
         poll_time_sec: 60
@@ -38,3 +33,62 @@ metrics:
         name: panGPGWUtilizationMaxTunnels
       - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.3.0
         name: panGPGWUtilizationActiveTunnels
+      - OID: 1.3.6.1.4.1.25461.2.1.2.1.11.0
+        name: panSysHAState
+        conversion: to_one
+      - OID: 1.3.6.1.4.1.25461.2.1.2.1.12.0
+        name: panSysHAPeerState
+        conversion: to_one
+      - OID: 1.3.6.1.4.1.25461.2.1.2.1.13.0
+        name: panSysHAMode
+        conversion: to_one
+      - OID: 1.3.6.1.4.1.25461.2.1.2.4.1.0
+        name: panMgmtPanoramaConnected
+        conversion: to_one
+      - OID: 1.3.6.1.4.1.25461.2.1.2.4.2.0
+        name: panMgmtPanorama2Connected
+      - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.0
+        name: panGPGatewayUtilization
+      - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.1.0
+        name: panGPGWUtilizationPct
+      - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.3.0
+        name: panGPGWUtilizationActiveTunnels
+metric_tags:
+  - column:
+      name: panSysSwVersion
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.1.0
+  - column:
+      name: panSysHwVersion
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.2.0
+  - column:
+      name: panSysSerialNumber
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.3.0
+    tag: serial_number
+  - column:
+      name: panSysVpnClientVersion
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.6.0
+  - column:
+      name: panSysAppVersion
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.7.0
+  - column:
+      name: panSysAvVersion
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.8.0
+  - column:
+      name: panSysThreatVersion
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.9.0
+  - column:
+      name: panSysUrlFilteringVersion
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.10.0
+  - column:
+      name: panSysUrlFilteringDatabase
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.14.0
+  - column:
+      name: panSysGlobalProtectClientVersion
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.15.0
+  - column:
+      name: panSysOpswatDatafileVersion
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.16.0
+  - column:
+      name: panChassisType
+      OID: 1.3.6.1.4.1.25461.2.1.2.2.1.0
+    tag: model
