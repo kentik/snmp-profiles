@@ -64,10 +64,6 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.37086.5.1.1.1.2
           name: eventName
-      # Status information about the live event. Formatted in XML.
-      - column:
-          OID: 1.3.6.1.4.1.37086.5.1.1.1.5
-          name: eventStatus
       # The numerical ID of the node that the event is running on.
       - column:
           OID: 1.3.6.1.4.1.37086.5.1.1.1.6
