@@ -1,4 +1,3 @@
-# https://oidref.com/1.3.6.1.4.1.25461.2.3
 ---
 extends:
   - system-mib.yml
@@ -6,125 +5,90 @@ extends:
   - host-resources-mib.yml
   - ospf-mib.yml
   - entity-sensor-mib.yml
-
 provider: kentik-firewall
-
 sysobjectid: 1.3.6.1.4.1.25461.2.3.*
-
 metrics:
   - MIB: PAN-COMMON-MIB
     symbols:
-      # Session table utilization percentage. Values should be between 0 and 100.
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.1.0
         name: panSessionUtilization
-      # Total number of sessions supported.
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.2.0
         name: panSessionMax
-      # Total number of active sessions. - polled at 60s to support anomaly detection
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.3.0
         name: panSessionActive
         poll_time_sec: 60
-      # Total number of active TCP sessions.
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.4.0
         name: panSessionActiveTcp
-      # Total number of active UDP sessions.
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.5.0
         name: panSessionActiveUdp
-      # Total number of active ICMP sessions.
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.6.0
         name: panSessionActiveICMP
-      # Total number of active SSL proxy sessions.
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.7.0
         name: panSessionActiveSslProxy
-      # SSL proxy Session utilization percentage. Values should be between 0 and 100.
       - OID: 1.3.6.1.4.1.25461.2.1.2.3.8.0
         name: panSessionSslProxyUtilization
-      # GlobalProtect Gateway utilization percentage
       - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.1.0
         name: panGPGWUtilizationPct
-      # Max tunnels allowed
       - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.2.0
         name: panGPGWUtilizationMaxTunnels
-      # Number of active tunnels
       - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.3.0
         name: panGPGWUtilizationActiveTunnels
-      # Current high-availability state.
       - OID: 1.3.6.1.4.1.25461.2.1.2.1.11.0
         name: panSysHAState
         conversion: to_one
-      # Current peer high-availability state.
       - OID: 1.3.6.1.4.1.25461.2.1.2.1.12.0
         name: panSysHAPeerState
         conversion: to_one
-      # Current high-availability mode (disabled, active-passive, or active-active).
       - OID: 1.3.6.1.4.1.25461.2.1.2.1.13.0
         name: panSysHAMode
         conversion: to_one
-      # Current Connection status to Panorama Server (connected, not-connected)
-      - OID: 1.3.6.1.4.1.25461.2.1.2.4.1
+      - OID: 1.3.6.1.4.1.25461.2.1.2.4.1.0
         name: panMgmtPanoramaConnected
         conversion: to_one
-      # Current Connection status to Panorama2 Server (connected, not-connected)
-      - OID: 1.3.6.1.4.1.25461.2.1.2.4.2
+      - OID: 1.3.6.1.4.1.25461.2.1.2.4.2.0
         name: panMgmtPanorama2Connected
-      # GlobalProtect gateway utilization
-      - OID: 1.3.6.1.4.1.25461.2.1.2.5.1
+      - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.0
         name: panGPGatewayUtilization
-      # GlobalProtect Gateway utilization percentage
-      - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.1
+      - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.1.0
         name: panGPGWUtilizationPct
-      # Number of active tunnels
-      - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.3
+      - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.3.0
         name: panGPGWUtilizationActiveTunnels
-
 metric_tags:
-  # Full software version. The first two components of the full version are the major and minor versions. The third component indicates the maintenance release number and the fourth, the build number.
   - column:
       name: panSysSwVersion
       OID: 1.3.6.1.4.1.25461.2.1.2.1.1.0
-  # Hardware version of the unit.
   - column:
       name: panSysHwVersion
       OID: 1.3.6.1.4.1.25461.2.1.2.1.2.0
-  # The serial number of the unit. If not available, an empty string is returned.
   - column:
-    tag: serial_number
       name: panSysSerialNumber
       OID: 1.3.6.1.4.1.25461.2.1.2.1.3.0
-  # Currently installed VPN client package version. If package is not installed, 0.0.0 is returned.
+    tag: serial_number
   - column:
       name: panSysVpnClientVersion
       OID: 1.3.6.1.4.1.25461.2.1.2.1.6.0
-  # Currently installed application definition version. If no application definition is found, 0 is returned.
   - column:
       name: panSysAppVersion
-      OID: 1.3.6.1.4.1.25461.2.1.2.1.7
-  # Currently installed antivirus version. If no antivirus is found, 0 is returned.
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.7.0
   - column:
       name: panSysAvVersion
-      OID: 1.3.6.1.4.1.25461.2.1.2.1.8
-  # Currently installed threat definition version. If no threat definition is found, 0 is returned.
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.8.0
   - column:
       name: panSysThreatVersion
-      OID: 1.3.6.1.4.1.25461.2.1.2.1.9
-  # Currently installed URL filtering version. If no URL filtering is installed, 0 is returned.
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.9.0
   - column:
       name: panSysUrlFilteringVersion
-      OID: 1.3.6.1.4.1.25461.2.1.2.1.10
-  # Current installed URL filtering database (surfcontrol, brightcloud, etc)
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.10.0
   - column:
       name: panSysUrlFilteringDatabase
-      OID: 1.3.6.1.4.1.25461.2.1.2.1.14
-  # Currently installed global-protect client package version. If package is not installed, 0.0.0 is returned.
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.14.0
   - column:
       name: panSysGlobalProtectClientVersion
-      OID: 1.3.6.1.4.1.25461.2.1.2.1.15
-  # Currently installed opswat database version. If package is not installed, 0 is returned.
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.15.0
   - column:
       name: panSysOpswatDatafileVersion
-      OID: 1.3.6.1.4.1.25461.2.1.2.1.16
-  # Chassis type for this Palo Alto device.
+      OID: 1.3.6.1.4.1.25461.2.1.2.1.16.0
   - column:
-    tag: model
       name: panChassisType
-      OID: 1.3.6.1.4.1.25461.2.1.2.2.1
+      OID: 1.3.6.1.4.1.25461.2.1.2.2.1.0
+    tag: model
