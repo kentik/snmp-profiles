@@ -16,6 +16,8 @@ metrics:
       # It represents the rate of HSM (Hardware Security Modules) operations requested.
       - OID: 1.3.6.1.4.1.12383.3.1.1.1.0
         name: hsmOperationRequests
+        poll_time_sec: 60
+        tag: requests
       # It represents the HSM operations requested, which have resulted in errors.
       - OID: 1.3.6.1.4.1.12383.3.1.1.2.0
         name: hsmOperationErrors
@@ -35,13 +37,15 @@ metrics:
       # It indicates the current number of connected clients of the NTLS. 
       - OID: 1.3.6.1.4.1.12383.3.1.2.2.0
         name: ntlsConnectedClients
+        poll_time_sec: 60
+        tag: currentClients
       # It represents the current number of links of the NTLS. 
       - OID: 1.3.6.1.4.1.12383.3.1.2.3.0
         name: ntlsLinks
-      # 	Number of successful client connections of the NTLS.
+      # Number of successful client connections of the NTLS.
       - OID: 1.3.6.1.4.1.12383.3.1.2.4.0
         name: ntlsSuccessfulClientConnections
-      # 	Number of unsuccessful client connections of the NTLS. 
+      # Number of unsuccessful client connections of the NTLS. 
       - OID: 1.3.6.1.4.1.12383.3.1.2.5.0
         name: ntlsFailedClientConnections
 
