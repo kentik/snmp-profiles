@@ -36,16 +36,16 @@ metrics:
           OID: 1.3.6.1.2.1.25.2.3.1.2
           name: hrStorageType
           enum: 
-            Other: 1
-            Ram: 2
-            VirtualMemory: 3
-            FixedDisk: 4
-            RemovableDisk: 5
-            FloppyDisk: 6
-            CompactDisc: 7
-            RamDisk: 8
-            FlashMemory: 9
-            NetworkDisk: 10
+            Other: .1.3.6.1.2.1.25.2.1.1
+            Ram: .1.3.6.1.2.1.25.2.1.2
+            VirtualMemory: .1.3.6.1.2.1.25.2.1.3
+            FixedDisk: .1.3.6.1.2.1.25.2.1.4
+            RemovableDisk: .1.3.6.1.2.1.25.2.1.5
+            FloppyDisk: .1.3.6.1.2.1.25.2.1.6
+            CompactDisc: .1.3.6.1.2.1.25.2.1.7
+            RamDisk: .1.3.6.1.2.1.25.2.1.8
+            FlashMemory: .1.3.6.1.2.1.25.2.1.9
+            NetworkDisk: .1.3.6.1.2.1.25.2.1.10
             
   - MIB: HOST-RESOURCES-MIB
     table:
