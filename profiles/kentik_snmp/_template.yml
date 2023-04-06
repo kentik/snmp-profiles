@@ -15,6 +15,16 @@ provider: kentik-default
 sysobjectid:
   - 1.2.3.4.5.6.7.8.9                         # Matches the exact sysOID
   - 1.2.3.4.5.6.7.8.*                         # Matches all sysOIDs under the '.8' root
+  
+# OPTIONAL: For cases where a vendor does not differentiate models by sysOIDs you can add a match rule to redirect to a
+# different profile by using the below example syntax
+# If the sysDesc matches these regexes, use the corresponding profile.
+# Regex is run on _lower case_ version of the sysDesc string.
+matches:
+  "^pfsense": pf_sense.yml
+  "barracuda email security gateway": barracuda-email-gateway.yml
+  "barracuda web application firewall": barracuda-waf.yml
+  
 
 # The 'metrics' section accepts a list of scalar and tabular OIDs for collection
 metrics:
