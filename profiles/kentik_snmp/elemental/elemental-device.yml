@@ -14,6 +14,9 @@ provider: kentik-aws-elemental
 sysobjectid:
   - 1.3.6.1.4.1.8072.3.2.10.aws-elemental    # AWS Elemental Live Device
 
+# disable the SNMP bulk walk operation for these devices
+no_use_bulkwalkall: true
+
 metrics:
   - MIB: ELEMENTAL-MIB
     symbols:
