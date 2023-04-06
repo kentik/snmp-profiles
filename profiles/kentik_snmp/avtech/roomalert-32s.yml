@@ -1,4 +1,5 @@
-# MIB Provided by customer
+# MIB Provided by customers
+# Based on customer provided data AVtech uses the same sysoid for multiple models with mutually incompatible OID lists
 ---
 extends:
   - system-mib.yml
@@ -7,6 +8,12 @@ provider: kentik-envir-sensor
 
 sysobjectid:
   - 1.3.6.1.4.1.20916   # Avtech Room Alert
+
+# This sysoid is the same for a variety of AVtech product lines
+# If the sysDesc matches this regex, use the corresponding profile.
+# Regex is run on _lower case_ version of the sysDesc string.
+matches:
+  "roomalert 3s": roomalert-3s.yml
 
 metrics:
   - MIB: ROOMALERT32S-MIB
