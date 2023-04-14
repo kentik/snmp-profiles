@@ -39,6 +39,18 @@ metrics:
       name: sysStatMemoryUsed
       poll_time_sec: 60
       tag: MemoryUsed
+  # The total other non-TMM memory in Kilobytes for the specified host.
+  - MIB: F5-BIGIP-SYSTEM-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.13
+      name: sysMultiHostOtherMemoryTotalKb
+      tag: OtherMemoryTotalKb	
+  # The Used other non-TMM memory in Kilobytes for the specified host.
+  - MIB: F5-BIGIP-SYSTEM-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.14
+      name: sysMultiHostOtherMemoryUsedKb
+      tag: OtherMemoryUsedKb
   # Chassis Serial Number
   - MIB: F5-BIGIP-SYSTEM-MIB
     symbol:
