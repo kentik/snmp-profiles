@@ -10,6 +10,7 @@ provider: kentik-ucs
 sysobjectid:
   - 1.3.6.1.4.1.9.1.1683           # UCS C240
   - 1.3.6.1.4.1.9.12.3.1.3.1062    # UCS 6248UP
+  - 1.3.6.1.4.1.9.1.2492           # UCS C220 M5
 
 metrics:
   # Cisco UCS compute:Board managed object table
