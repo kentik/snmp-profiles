@@ -39,18 +39,6 @@ metrics:
       name: sysStatMemoryUsed
       poll_time_sec: 60
       tag: MemoryUsed
-  # The total other non-TMM memory in Kilobytes for the specified host.
-  - MIB: F5-BIGIP-SYSTEM-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.13
-      name: sysMultiHostOtherMemoryTotalKb
-      tag: OtherMemoryTotalKb	
-  # The Used other non-TMM memory in Kilobytes for the specified host.
-  - MIB: F5-BIGIP-SYSTEM-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.14
-      name: sysMultiHostOtherMemoryUsedKb
-      tag: OtherMemoryUsedKb
   # Chassis Serial Number
   - MIB: F5-BIGIP-SYSTEM-MIB
     symbol:
@@ -105,6 +93,57 @@ metrics:
       OID: 1.3.6.1.4.1.3375.2.1.1.2.9.7.0
       name: sysClientsslStatCurCompatConns
       tag: current_compat_connections
+
+  - MIB: F5-BIGIP-LOCAL-MIB
+    # A table containing system statistics information of the host, such as memory usage, cpu type, etc.
+    table:
+      OID: 1.3.6.1.4.1.3375.2.1.7.4.2
+      name: sysMultiHostTable
+    symbols:
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.2
+        name: sysMultiHostTotal
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.3
+        name: sysMultiHostUsed
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.6
+        name: sysMultiHostActiveCpuCount
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.7
+        name: sysMultiHostOtherMemoryTotal
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.8
+        name: sysMultiHostOtherMemoryUsed
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.9
+        name: sysMultiHostSwapTotal
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.10
+        name: sysMultiHostSwapUsed
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.11
+        name: sysMultiHostTotalKb
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.12
+        name: sysMultiHostUsedKb
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.13
+        name: sysMultiHostOtherMemoryTotalKb
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.14
+        name: sysMultiHostOtherMemoryUsedKb
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.15
+        name: sysMultiHostSwapTotalKb
+      # 
+      - OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.16
+        name: sysMultiHostSwapUsedKb
+    metric_tags:
+      # 
+      - column:
+          OID: 1.3.6.1.4.1.3375.2.1.7.4.2.1.5
+          name: sysMultiHostCpuCount
 
 # Node metrics
   - MIB: F5-BIGIP-LOCAL-MIB
