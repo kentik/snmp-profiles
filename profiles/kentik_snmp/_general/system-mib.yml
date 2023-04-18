@@ -4,16 +4,17 @@
 metric_tags:
   - column:
       OID: 1.3.6.1.2.1.1.1.0
-      name: sysDescr
+      name: SysDescr
   - column:
       OID: 1.3.6.1.2.1.1.2.0
-      name: sysObjectID
+      name: SysObjectID
+  # Not currently collected due to hard coded settings in ktranslate
   - column:
       OID: 1.3.6.1.2.1.1.4.0
-      name: sysContact
+      name: SysContact
   - column:
       OID: 1.3.6.1.2.1.1.5.0
-      name: sysName
+      name: SysName
   - column:
       OID: 1.3.6.1.2.1.1.6.0
-      name: sysLocation
+      name: SysLocation
