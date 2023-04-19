@@ -3,7 +3,7 @@ extends:
   - if-mib.yml
   - system-mib.yml
 
-provider: kentik-gigamon
+provider: kentik-switch
 
 sysobjectid:
   - 1.3.6.1.4.1.26866.3.6 # GigaVUE-HC2
