@@ -7,7 +7,7 @@ extends:
   - system-mib.yml
   - ucd-mib.yml
 
-provider: kentik-cisco-ise
+provider: kentik-appliance
 
 sysobjectid:
   - 1.3.6.1.4.1.9.1.2785    # Cisco SNS 3615 K9
