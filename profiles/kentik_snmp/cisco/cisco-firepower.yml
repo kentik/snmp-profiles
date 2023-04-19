@@ -51,7 +51,7 @@ metrics:
         name: cfprSmMonitorDataDiskTotal
     metric_tags:
       # The name of the security module.
-      - tag: module
+      - tag: security_module
         column:
           OID: 1.3.6.1.4.1.9.9.826.1.71.20.1.2
           name: cfprSmMonitorDn
@@ -96,7 +96,7 @@ metrics:
           linkActivateBlocked: 108
     metric_tags:
       # The name of the fan module.
-      - tag: module
+      - tag: fan_module
         column:
           OID: 1.3.6.1.4.1.9.9.826.1.20.34.1.2
           name: cfprEquipmentFanDn
@@ -126,7 +126,7 @@ metrics:
           notSupported: 100
     metric_tags:
       # The name of the PSU module.
-      - tag: module
+      - tag: psu_module
         column:
           OID: 1.3.6.1.4.1.9.9.826.1.20.109.1.2
           name: cfprEquipmentPsuDn
