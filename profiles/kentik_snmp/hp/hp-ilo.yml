@@ -5,6 +5,7 @@
 ---
 extends:
   - system-mib.yml
+  - if-mib.yml
 
 provider: kentik-hp-ilo
 
