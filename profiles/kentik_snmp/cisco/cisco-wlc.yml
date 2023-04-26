@@ -23,6 +23,7 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.2427    # Cisco Aironet 3800 WLC
   - 1.3.6.1.4.1.9.1.2530    # Cisco C980040K9 WLC
   - 1.3.6.1.4.1.9.1.2861    # Cisco C9800-L-C-K9
+  - 1.3.6.1.4.1.9.1.1279    # Cisco AirCt2504K9
 
 metrics:
   # Current CPU Load of the switch in percentage.
