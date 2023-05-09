@@ -6,7 +6,7 @@ extends:
 
 provider: kentik-wireless-controller
 
-sysobjectids:
+sysobjectid:
   - 1.3.6.1.4.1.6486.800.1.1.2.2.2.*           # Alcatel Lucent Omni Access Wireless Controller
   - 1.3.6.1.4.1.6486.800.1.1.2.2.2.1.1.21      # Alcatel Lucent OAW-4750XM
 
