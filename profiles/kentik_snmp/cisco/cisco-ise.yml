@@ -11,7 +11,7 @@ provider: kentik-appliance
 
 sysobjectid:
   - 1.3.6.1.4.1.9.1.2785    # Cisco SNS 3615 K9
-
+  - 1.3.6.1.4.1.9.1.1426    # Cisco ISE VM K9
 metrics:
   # Memory Utilization
   # Polled at 60s to support anomaly detection
