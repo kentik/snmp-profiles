@@ -188,82 +188,82 @@ metrics:
   # Total number of HTTP requests received with the GET method.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTotGets 
+      name: httpTotGets
       OID: 1.3.6.1.4.1.5951.4.1.1.48.45.0
   # Total number of HTTP requests received with the POST method.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTotPosts 
+      name: httpTotPosts
       OID: 1.3.6.1.4.1.5951.4.1.1.48.46.0
   # Total number of HTTP requests received with methods other than GET and POST. Some of the other well-defined HTTP methods are HEAD, PUT, DELETE, OPTIONS, and TRACE. User-defined methods are also allowed.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTotOthers 
+      name: httpTotOthers
       OID: 1.3.6.1.4.1.5951.4.1.1.48.47.0
   # Total number of bytes of HTTP request data received.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTotRxRequestBytes 
+      name: httpTotRxRequestBytes
       OID: 1.3.6.1.4.1.5951.4.1.1.48.48.0
   # Total number of bytes of HTTP response data received.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTotRxResponseBytes 
+      name: httpTotRxResponseBytes
       OID: 1.3.6.1.4.1.5951.4.1.1.48.49.0
   # Total number of bytes of HTTP request data transmitted.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTotTxRequestBytes 
+      name: httpTotTxRequestBytes
       OID: 1.3.6.1.4.1.5951.4.1.1.48.50.0
   # Total number of bytes of HTTP response data transmitted.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTotTxResponseBytes 
+      name: httpTotTxResponseBytes
       OID: 1.3.6.1.4.1.5951.4.1.1.48.51.0
   # Total number of HTTP/1.0 requests received.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTot10Requests 
+      name: httpTot10Requests
       OID: 1.3.6.1.4.1.5951.4.1.1.48.52.0
   # Total number of HTTP responses sent.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTotResponses 
+      name: httpTotResponses
       OID: 1.3.6.1.4.1.5951.4.1.1.48.53.0
   # Total number of HTTP/1.0 responses sent.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpTot10Responses 
+      name: httpTot10Responses
       OID: 1.3.6.1.4.1.5951.4.1.1.48.54.0
   # Total number of HTTP requests received in which the header spans more than one packet.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpErrIncompleteRequests 
+      name: httpErrIncompleteRequests
       OID: 1.3.6.1.4.1.5951.4.1.1.48.57.0
   # Total number of HTTP responses received in which the header spans more than one packet.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpErrIncompleteResponses 
+      name: httpErrIncompleteResponses
       OID: 1.3.6.1.4.1.5951.4.1.1.48.58.0
   # Total number of HTTP requests and responses received in which the HTTP header spans more than one packet.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpErrIncompleteHeaders 
+      name: httpErrIncompleteHeaders
       OID: 1.3.6.1.4.1.5951.4.1.1.48.60.0
   # Total number of HTTP error responses received.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: httpErrServerBusy 
+      name: httpErrServerBusy
       OID: 1.3.6.1.4.1.5951.4.1.1.48.61.0
   # Total number of established client connections.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: svcTotalClients 
+      name: svcTotalClients
       OID: 1.3.6.1.4.1.5951.4.1.2.1.1.48.0
   # Total number of established server connections.
   - MIB: NS-ROOT-MIB
     symbol:
-      name: svcTotalServers 
+      name: svcTotalServers
       OID: 1.3.6.1.4.1.5951.4.1.2.1.1.49.0
   # This table contains information about the vServer statistics.
   - MIB: NS-ROOT-MIB
@@ -349,7 +349,7 @@ metrics:
             diameter: 73
             sslDiameter: 74
             tftp: 75
-            tftp: 90
+            tftpx: 90
             pptp: 91
             gre: 92
             fix: 95
@@ -609,7 +609,7 @@ metrics:
             diameter: 73
             sslDiameter: 74
             tftp: 75
-            tftp: 90
+            tftpx: 90
             pptp: 91
             gre: 92
             fix: 95
@@ -824,7 +824,7 @@ metrics:
             diameter: 73
             sslDiameter: 74
             tftp: 75
-            tftp: 90
+            tftpx: 90
             pptp: 91
             gre: 92
             fix: 95
