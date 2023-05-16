@@ -477,6 +477,55 @@ metrics:
       - name: bsnAPIfInterferenceUtilization
         OID: 1.3.6.1.4.1.14179.2.2.14.1.22
 
+  - MIB: AIRESPACE-WIRELESS-MIB
+    # The listing the Statistics of RADIUS authentication servers.
+    table:
+      name: bsnRadiusAuthServerStatsTable
+      OID: 1.3.6.1.4.1.14179.2.5.3
+    symbols:
+      # The time interval (in hundredths of a second) between the most recent Access-Reply/Access-Challenge and the Access-Request that matched it from this RADIUS authentication server.
+      - name: bsnRadiusAuthClientRoundTripTime
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.6
+      # The number of RADIUS Access-Request packets sent to this server. This does not include retransmissions.
+      - name: bsnRadiusAuthClientAccessRequests
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.7
+      # The number of RADIUS Access-Request packets retransmitted to this RADIUS authentication server.
+      - name: bsnRadiusAuthClientAccessRetransmissions
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.8
+      # The number of RADIUS Access-Accept packets (valid or invalid) received from this server.
+      - name: bsnRadiusAuthClientAccessAccepts
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.9
+      # The number of RADIUS Access-Reject packets (valid or invalid) received from this server.
+      - name: bsnRadiusAuthClientAccessRejects
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.10
+      # The number of RADIUS Access-Challenge packets (valid or invalid) received from this server.
+      - name: bsnRadiusAuthClientAccessChallenges
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.11
+      # The number of malformed RADIUS Access-Response packets received from this server. Malformed packets include packets with an invalid length. Bad authenticators or Signature attributes or unknown types are not included as malformed access responses.
+      - name: bsnRadiusAuthClientMalformedAccessResponses
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.12
+      # The number of RADIUS Access-Response packets containing invalid authenticators or Signature attributes received from this server.
+      - name: bsnRadiusAuthClientBadAuthenticators
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.13
+      # The number of RADIUS Access-Request packets destined for this server that have not yet timed out or received a response. This variable is incremented when an Access-Request is sent and decremented due to receipt of an Acess-Accept, Access-Reject or Access-Challenge, a timeout or retransmission.
+      - name: bsnRadiusAuthClientPendingRequests
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.14
+      # The number of authentication timeouts to this server. After a timeout the client may retry to the same server, send to a different server, or give up. A retry to the same server is counted as a retransmit as well as a timeout. A send to a different server is counted as a Request as well as a timeout.
+      - name: bsnRadiusAuthClientTimeouts
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.15
+      # The number of RADIUS packets of unknown type which were received from this server on the authentication port.
+      - name: bsnRadiusAuthClientUnknownTypes
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.16
+      # The number of RADIUS packets of which were received from this server on the authentication port and dropped for some other reason.
+      - name: bsnRadiusAuthClientPacketsDropped
+        OID: 1.3.6.1.4.1.14179.2.5.3.1.36
+    metric_tags:
+      # The IP address of the RADIUS authentication server referred to in this table entry.
+      - column:
+          name: bsnRadiusAuthServerAddress
+          OID: 1.3.6.1.4.1.14179.2.5.1.1.2
+          conversion: hextoip
+
 metric_tags:
   # Serial number of the switch.
   - column:
