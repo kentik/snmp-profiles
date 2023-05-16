@@ -199,7 +199,7 @@ metrics:
             ipv4: 1
             ipv6: 2
             ipv4z: 3
-            ipv6: 6
+            ipv6z: 6
             dns: 16
       # IP Address for this managed device
       - column:
@@ -223,7 +223,7 @@ metrics:
             ipv4: 1
             ipv6: 2
             ipv4z: 3
-            ipv6: 6
+            ipv6z: 6
             dns: 16
       # Netmask of managed device
       - column:
@@ -239,7 +239,7 @@ metrics:
             ipv4: 1
             ipv6: 2
             ipv4z: 3
-            ipv6: 6
+            ipv6z: 6
             dns: 16
       # Default gateway of managed device
       - column:
@@ -275,7 +275,7 @@ metrics:
             ipv4: 1
             ipv6: 2
             ipv4z: 3
-            ipv6: 6
+            ipv6z: 6
             dns: 16
       # Peer IP Address
       - column:
