@@ -525,7 +525,19 @@ metrics:
           name: bsnRadiusAuthServerAddress
           OID: 1.3.6.1.4.1.14179.2.5.1.1.2
           conversion: hextoip
-
+          
+  - MIB: CISCO-LICENSE-MGMT-MIB
+    table:
+      name: clmgmtLicenseInfoTable
+      OID: 1.3.6.1.4.1.9.9.543.1.2.3
+    symbols:
+      # Maximum number of entities that can use a license.
+      - OID: 1.3.6.1.4.1.9.9.543.1.2.3.1.10
+        name: clmgmtLicenseMaxUsageCount
+      # Remaining number of entities that can still use a license  
+      - OID: 1.3.6.1.4.1.9.9.543.1.2.3.1.11
+        name: clmgmtLicenseUsageCountRemaining
+        
 metric_tags:
   # Serial number of the switch.
   - column:
@@ -539,4 +551,5 @@ metric_tags:
   # Version of the product.
   - column:
       name: agentInventoryProductVersion
-      OID: 1.3.6.1.4.1.14179.1.1.1.14.0
+      OID: 1.3.6.1.4.1.14179.1.1.1.14.0      
+      
