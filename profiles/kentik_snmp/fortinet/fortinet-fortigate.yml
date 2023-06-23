@@ -8,6 +8,7 @@ extends:
 provider: kentik-firewall
 
 sysobjectid: 
+  - 1.3.6.1.4.1.12356.101.*         #Fortigate Base
   - 1.3.6.1.4.1.12356.101.1.*       # Fortigate
   - 1.3.6.1.4.1.12356.101.1.10      # fgtONE
   - 1.3.6.1.4.1.12356.101.1.20      # fgtVM
@@ -167,7 +168,7 @@ metrics:
       # The maximum number of virtual domains allowed on the device as allowed by hardware and/or licensing
       - OID: 1.3.6.1.4.1.12356.101.3.1.2.0
         name: fgVdMaxVdoms
-
+        
   - MIB: FORTINET-FORTIGATE-MIB
     table:
       OID: 1.3.6.1.4.1.12356.101.4.3.2
@@ -186,7 +187,28 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.12356.101.4.3.2.1.2
           name: fgHwSensorEntName
-
+          
+  - MIB: FORTINET-FORTIGATE-MIB
+    table:
+      OID: 1.3.6.1.4.1.12356.101.4.9.2.1
+      name: fgSLATable
+    symbols:
+       # FG Link Name fgVWLHealthCheckLinkName.
+    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.2
+      name: fgVWLHealthCheckLinkName
+    # FG VM HealthCheck Link State
+    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.4
+      name: fgVWLHealthCheckLinkState
+    # FG HealthCheck Link latency
+    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.5
+      name: fgVWLHealthCheckLinkLatency
+    # FG HealthCheck Link jitter
+    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.6
+      name: fgVWLHealthCheckLinkJitter
+    # fgVWLHealthCheckLinkPacketLoss
+    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.9
+      name: fgVWLHealthCheckLinkPacketLoss
+      
   - MIB: FORTINET-FORTIGATE-MIB
     table:
       OID: 1.3.6.1.4.1.12356.101.4.4.2
