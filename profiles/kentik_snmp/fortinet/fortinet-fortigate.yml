@@ -205,7 +205,10 @@ metrics:
     # FG HealthCheck Link jitter
     - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.6
       name: fgVWLHealthCheckLinkJitter
-
+    # fgVWLHealthCheckLinkPacketLoss
+    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.9
+      name: fgVWLHealthCheckLinkPacketLoss
+      
   - MIB: FORTINET-FORTIGATE-MIB
     table:
       OID: 1.3.6.1.4.1.12356.101.4.4.2
