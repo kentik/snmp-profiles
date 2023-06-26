@@ -190,24 +190,26 @@ metrics:
           
   - MIB: FORTINET-FORTIGATE-MIB
     table:
-      OID: 1.3.6.1.4.1.12356.101.4.9.2.1
-      name: fgSLATable
+     OID: 1.3.6.1.4.1.12356.101.4.9.2.1
+     name: fgSLATable
     symbols:
-       # FG Link Name fgVWLHealthCheckLinkName.
-    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.2
-      name: fgVWLHealthCheckLinkName
-    # FG VM HealthCheck Link State
+   # FG VM HealthCheck Link State
     - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.4
       name: fgVWLHealthCheckLinkState
-    # FG HealthCheck Link latency
+   # FG HealthCheck Link latency
     - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.5
       name: fgVWLHealthCheckLinkLatency
-    # FG HealthCheck Link jitter
+   # FG HealthCheck Link jitter
     - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.6
       name: fgVWLHealthCheckLinkJitter
-    # fgVWLHealthCheckLinkPacketLoss
+   # fgVWLHealthCheckLinkPacketLoss
     - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.9
       name: fgVWLHealthCheckLinkPacketLoss
+      metric_tags:
+        - tag: service_link_name
+          column:
+            OID: 1.3.6.1.4.1.12356.101.4.9.2.1.2
+            name: fgVWLHealthCheckLinkName
       
   - MIB: FORTINET-FORTIGATE-MIB
     table:
