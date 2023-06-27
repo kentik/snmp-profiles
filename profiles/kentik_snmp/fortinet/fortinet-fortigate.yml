@@ -190,24 +190,52 @@ metrics:
           
   - MIB: FORTINET-FORTIGATE-MIB
     table:
-      OID: 1.3.6.1.4.1.12356.101.4.9.2.1
-      name: fgSLATable
+      OID: 1.3.6.1.4.1.12356.101.4.9.2
+      name: fgVWLHealthCheckLinkTable
     symbols:
-       # FG Link Name fgVWLHealthCheckLinkName.
-    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.2
-      name: fgVWLHealthCheckLinkName
-    # FG VM HealthCheck Link State
-    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.4
-      name: fgVWLHealthCheckLinkState
-    # FG HealthCheck Link latency
-    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.5
-      name: fgVWLHealthCheckLinkLatency
-    # FG HealthCheck Link jitter
-    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.6
-      name: fgVWLHealthCheckLinkJitter
-    # fgVWLHealthCheckLinkPacketLoss
-    - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.9
-      name: fgVWLHealthCheckLinkPacketLoss
+      # Virtual-wan-link member link sequence.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.3
+        name: fgVWLHealthCheckLinkSeq
+      # Heatlth check state on a specific member link.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.4
+        name: fgVWLHealthCheckLinkState
+        enum:
+          alive: 0
+          dead: 1
+      # The average latency of a health check on a specific member link in float number within last 30 probes.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.5
+        name: fgVWLHealthCheckLinkLatency
+      # The average jitter of a health check on a specific member link in float number within last 30 probes.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.6
+        name: fgVWLHealthCheckLinkJitter
+      # The total number of packets sent by a health check on a specific member link.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.7
+        name: fgVWLHealthCheckLinkPacketSend
+      # The total number of packets received by a health check on a specific member link.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.8
+        name: fgVWLHealthCheckLinkPacketRecv
+      # The packet loss percentage of a health check on a specific member link in float number within last 30 probes.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.9
+        name: fgVWLHealthCheckLinkPacketLoss
+      # Virtual domain the link monitor entry exists in. This name corresponds to the fgVdEntName used in fgVdTable.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.10
+        name: fgVWLHealthCheckLinkVdom
+      # The available bandwidth in Mbps of incoming traffic detected by a health-check on a specific member link.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.11
+        name: fgVWLHealthCheckLinkBandwidthIn
+      # The available bandwidth in Mbps of outgoing traffic detected by a health-check on a specific member link.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.12
+        name: fgVWLHealthCheckLinkBandwidthOut
+      # The available bandwidth in Mbps of bi-direction traffic detected by a health-check on a specific member link.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.13
+        name: fgVWLHealthCheckLinkBandwidthBi
+      # Virtual-wan-link member interface name.
+      - OID: 1.3.6.1.4.1.12356.101.4.9.2.1.14
+        name: fgVWLHealthCheckLinkIfName
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.12356.101.4.9.2.1.2
+          name: fgVWLHealthCheckLinkName
       
   - MIB: FORTINET-FORTIGATE-MIB
     table:
