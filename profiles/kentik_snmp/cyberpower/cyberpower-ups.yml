@@ -1,0 +1,11 @@
+---
+extends:
+  - system-mib.yml
+  - if-mib.yml
+  - ups-mib.yml
+
+provider: kentik-ups
+
+sysobjectid: 
+  - 1.3.6.1.4.1.3808.1.1.1
+
