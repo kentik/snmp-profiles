@@ -215,8 +215,8 @@ metrics:
           name: ePDU2DeviceStatusName
       # Get this oid shows the role the PDU played on Daisy Chain Group. The PDU as a Host can access whole ePDU2 content, and the PDU be standalong or a Slave can access itself instead.
       - column:
-          OID:
-          name: ePDU2DeviceStatusRoleType	1.3.6.1.4.1.3808.1.1.6.3.4.1.17
+          OID: 1.3.6.1.4.1.3808.1.1.6.3.4.1.17
+          name: ePDU2DeviceStatusRoleType	
           enum:
             standalone: 1
             host: 2
@@ -299,6 +299,7 @@ metric_tags:
   - column:
       OID: 1.3.6.1.4.1.3808.1.1.3.1.1.0
       name: ePDUIdentName
+    tag: pdu_name
   # A 10-character string identifying the model number of the Rack PDU. This value is set at the factory.
   - column:
       OID: 1.3.6.1.4.1.3808.1.1.3.1.5.0
