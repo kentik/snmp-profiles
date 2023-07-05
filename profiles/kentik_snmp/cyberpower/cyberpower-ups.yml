@@ -16,11 +16,11 @@ metrics:
       name: upsIdent
   - MIB: CPS-MIB_UPS
     symbol:
-      OID: 1.3.6.1.4.1.3808.1.1.1.2.2
+      OID: 1.3.6.1.4.1.3808.1.1.1.2.2.4.0
       name: upsAdvBatteryRunTimeRemaining
   - MIB: CPS-MIB_UPS
     symbol:
-      OID:     1.3.6.1.4.1.3808.1.1.1.2.2.3
+      OID: 1.3.6.1.4.1.3808.1.1.1.2.2.3
       name: upsAdvanceBatteryTemperature
   - MIB: CPS-MIB_UPS
     symbol:
@@ -38,6 +38,13 @@ metrics:
         unknown: 1
         batteryNormal: 2
         batteryLow: 3
+  - MIB: CPS-MIB_UPS
+    symbol:
+      OID: 1.3.6.1.4.1.3808.1.1.1.2.2.5
+      name: upsAdvanceBatteryReplaceIndicator
+      enum:
+        noBatteryNeedsReplacing: 1
+        batteryNeedsReplacing: 2
   - MIB: CPS-MIB_UPS
     symbol:
       OID: 1.3.6.1.4.1.3808.1.1.1.3.2.5
