@@ -4,7 +4,7 @@ extends:
   - if-mib.yml
   - system-mib.yml
 
-provider: kentik-firepower-asa
+provider: kentik-firewall
 
 sysobjectid:
   - 1.3.6.1.4.1.9.1.1902           # Cisco VASA (Cisco Firepower Threat Defense, Version 6.7.0.2)
