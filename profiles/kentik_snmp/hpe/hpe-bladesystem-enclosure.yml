@@ -194,8 +194,8 @@ metrics:
       OID: 1.3.6.1.4.1.232.22.2.3.3.1
     symbols:
       # This indicates current condition of the power enclosure. other(1) The power enclosure condition could not be determined. ok(2) The power enclosure is operating normally. degraded(3) The power enclosure is in a degraded state. The power subsystem may not be load balanced or may have lost redundancy.
-      - name: 1.3.6.1.4.1.232.22.2.3.3.1.1.9
-        OID: cpqRackPowerEnclosureCondition
+      - OID: 1.3.6.1.4.1.232.22.2.3.3.1.1.9
+        name: cpqRackPowerEnclosureCondition
         enum:
           other: 1
           ok: 2
