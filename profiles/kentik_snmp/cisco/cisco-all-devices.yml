@@ -1080,3 +1080,36 @@ metrics:
         column:
           name: rttMonEchoAdminURL 
           OID: 1.3.6.1.4.1.9.9.42.1.2.2.1.15
+
+  # A table containing information on each HSRP group for each interface.
+  - MIB: CISCO-HSRP-MIB
+    table:
+      name: cHsrpGrpTable
+      OID: 1.3.6.1.4.1.9.9.106.1.2.1
+    symbols:
+      # The current HSRP state of this group on this interface.
+      - name: cHsrpGrpStandbyState
+        OID: 1.3.6.1.4.1.9.9.106.1.2.1.1.15
+        enum:
+          initial: 1
+          learn: 2
+          listen: 3
+          speak: 4
+          standby: 5
+          active: 6
+    metric_tags:
+      # This is the primary virtual IP address used by this group. If this address is configured (i.e a non zero ip address), this value is used. Otherwise, the agent will attempt to discover the virtual address through a discovery process (which scans the hello messages).
+      - column:
+          name: cHsrpGrpVirtualIpAddr
+          OID: 1.3.6.1.4.1.9.9.106.1.2.1.1.11
+          conversion: hextoip
+      # Ip Address of the currently active router for this group.
+      - column:
+          name: cHsrpGrpActiveRouter
+          OID: 1.3.6.1.4.1.9.9.106.1.2.1.1.13
+          conversion: hextoip
+      # Ip Address of the currently standby router for this group.
+      - column:
+          name: cHsrpGrpStandbyRouter
+          OID: 1.3.6.1.4.1.9.9.106.1.2.1.1.14
+          conversion: hextoip
