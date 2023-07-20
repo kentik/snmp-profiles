@@ -5,7 +5,11 @@ extends:
 
 provider: kentik-pdu
 
-sysobjectid: 1.3.6.1.4.1.3808.1.1.*
+sysobjectid:
+  - 1.3.6.1.4.1.3808.1.1.3      # Cyberpower ePDU
+  - 1.3.6.1.4.1.3808.1.1.3.*    # Cyberpower ePDU
+  - 1.3.6.1.4.1.3808.1.1.6      # Cyberpower ePDU2
+  - 1.3.6.1.4.1.3808.1.1.6.*    # Cyberpower ePDU2
 
 metrics:
   - MIB: CPS-MIB
