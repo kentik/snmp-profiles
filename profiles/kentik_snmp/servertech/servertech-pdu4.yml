@@ -17,7 +17,7 @@ metrics:
     symbols:
       # The status of the unit.
       - name: st4UnitStatus
-        OID: 1.3.6.1.4.1.1718.4.1.2.3.1.1.1
+        OID: 1.3.6.1.4.1.1718.4.1.2.3.1.1
         enum:
           normal: 0
           disabled: 1
@@ -42,10 +42,6 @@ metrics:
           profileError: 22
           conflict: 23
     metric_tags:
-      # The internal ID of the unit.
-      - column:
-          name: st4UnitID
-          OID: 1.3.6.1.4.1.1718.4.1.2.2.1.2
       # The name of the unit.
       - column:
           name: st4UnitName
@@ -58,10 +54,6 @@ metrics:
       - column:
           name: st4UnitModel
           OID: 1.3.6.1.4.1.1718.4.1.2.2.1.5
-      # The asset tag of the unit.
-      - column:
-          name: st4UnitAssetTag
-          OID: 1.3.6.1.4.1.1718.4.1.2.2.1.6
       # The type of the unit.
       - column:
           name: st4UnitType
@@ -861,3 +853,13 @@ metrics:
       - column:
           name: st4HumidSensorName
           OID: 1.3.6.1.4.1.1718.4.1.10.2.1.3
+
+metric_tags:
+  # The location of the system.
+  - column:
+      name: st4SystemLocation
+      OID: 1.3.6.1.4.1.1718.4.1.1.1.2.0
+  # The firmware version.
+  - column:
+      name: st4SystemFirmwareVersion
+      OID: 1.3.6.1.4.1.1718.4.1.1.1.3.0
