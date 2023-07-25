@@ -9,7 +9,7 @@ sysobjectid:
 provider: kentik-pdu
 
 metrics:
-  # Objects to monitor for a particular unit.
+  # Unit monitor table.
   - MIB: Sentry4-MIB
     table:
       name: st4UnitMonitorTable
@@ -54,19 +54,24 @@ metrics:
       - column:
           name: st4UnitModel
           OID: 1.3.6.1.4.1.1718.4.1.2.2.1.5
+      # The asset tag of the unit.
+      - column:
+          name: st4UnitAssetTag
+          OID: 1.3.6.1.4.1.1718.4.1.2.2.1.6
       # The type of the unit.
       - column:
           name: st4UnitType
           OID: 1.3.6.1.4.1.1718.4.1.2.2.1.7
-          enum:
-            primary: 0
-            link: 1
+          enum: 
+            masterPdu: 0
+            linkPdu: 1
             controller: 2
             emcu: 3
-      # The product manufacture date of the unit.
+      # The product manufacture date in YYYY-MM-DD (ISO 8601 format).
       - column:
           name: st4UnitProductMfrDate
           OID: 1.3.6.1.4.1.1718.4.1.2.2.1.9
+
   # Objects to monitor for a particular input cord.
   - MIB: Sentry4-MIB
     table:
