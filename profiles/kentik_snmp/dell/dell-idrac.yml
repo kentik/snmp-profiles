@@ -9,63 +9,55 @@ provider: kentik-idrac
 sysobjectid:
   - 1.3.6.1.4.1.674.10892.*   # Dell iDRAC
 
-
 metrics:
   - MIB: DELL-RAC-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.674.10892.2.2.1.0
-      name: drsGlobalSystemStatus
-    enum:
-      other: 1
-      unknown: 2
-      ok: 3
-      nonCritical: 4
-      critical: 5
-      nonRecoverable: 6
-  - MIB: DELL-RAC-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.674.10892.2.3.1.1.0
-      name: drsGlobalCurrStatus
-    enum:
-      other: 1
-      unknown: 2
-      ok: 3
-      nonCritical: 4
-      critical: 5
-      nonRecoverable: 6
-  - MIB: DELL-RAC-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.674.10892.2.3.1.4.0
-      name: drsRedCurrStatus
-    enum:
-      other: 1
-      unknown: 2
-      ok: 3
-      nonCritical: 4
-      critical: 5
-      nonRecoverable: 6
-  - MIB: DELL-RAC-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.674.10892.2.3.1.5.0
-      name: drsPowerCurrStatus
-    enum:
-      other: 1
-      unknown: 2
-      ok: 3
-      nonCritical: 4
-      critical: 5
-      nonRecoverable: 6
-  - MIB: DELL-RAC-MIB
-    symbol:
-      OID: 1.3.6.1.4.1.674.10892.2.3.1.9.0
-      name: drsCMCCurrStatus
-    enum:
-      other: 1
-      unknown: 2
-      ok: 3
-      nonCritical: 4
-      critical: 5
-      nonRecoverable: 6
+    symbols:
+      - OID: 1.3.6.1.4.1.674.10892.2.2.1.0
+        name: drsGlobalSystemStatus
+        enum: 
+          other: 1
+          unknown: 2
+          ok: 3
+          nonCritical: 4
+          critical: 5
+          nonRecoverable: 6
+      - OID: 1.3.6.1.4.1.674.10892.2.3.1.1.0
+        name: drsGlobalCurrStatus
+        enum:
+          other: 1
+          unknown: 2
+          ok: 3
+          nonCritical: 4
+          critical: 5
+          nonRecoverable: 6
+      - OID: 1.3.6.1.4.1.674.10892.2.3.1.4.0
+        name: drsRedCurrStatus
+        enum:
+          other: 1
+          unknown: 2
+          ok: 3
+          nonCritical: 4
+          critical: 5
+          nonRecoverable: 6
+      - OID: 1.3.6.1.4.1.674.10892.2.3.1.5.0
+        name: drsPowerCurrStatus
+        enum:
+          other: 1
+          unknown: 2
+          ok: 3
+          nonCritical: 4
+          critical: 5
+          nonRecoverable: 6
+      - OID: 1.3.6.1.4.1.674.10892.2.3.1.9.0
+        name: drsCMCCurrStatus
+        enum:
+          other: 1
+          unknown: 2
+          ok: 3
+          nonCritical: 4
+          critical: 5
+          nonRecoverable: 6
+  
   - MIB: IDRAC-MIB
     # systemStateTable
     table:
@@ -364,6 +356,7 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.674.10892.5.4.1100.80.1.9
           name: pCIDeviceDescriptionName
+
   - MIB: IDRAC-MIB
     # networkDeviceTable
     table:
@@ -387,6 +380,7 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.674.10892.5.4.100.90.1.30
           name: networkDeviceFQDD
+
   - MIB: IDRAC-MIB
     # systemSlotTable
     table:
@@ -406,6 +400,7 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.674.10892.5.4.1200.10.1.8
           name: systemSlotSlotExternalSlotName
+
   - MIB: IDRAC-MIB
     # controllerTable
     table:
@@ -425,6 +420,7 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.674.10892.5.5.1.20.130.1.1.2
           name: controllerName
+
   - MIB: IDRAC-MIB
     # physicalDiskTable
     table:
@@ -454,6 +450,7 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.674.10892.5.5.1.20.130.4.1.2
           name: physicalDiskName
+
   - MIB: IDRAC-MIB
     # enclosurePowerSupplyTable
     table:
@@ -472,6 +469,7 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.674.10892.5.5.1.20.130.9.1.2
           name: enclosurePowerSupplyName
+
   - MIB: IDRAC-MIB
     # batteryTable
     table:
