@@ -745,6 +745,7 @@ metric_tags:
   - column:
       name: st4UnitModel
       OID: 1.3.6.1.4.1.1718.4.1.2.2.1.5.1
+    tag: model_number
   # The asset tag of the unit.
   - column:
       name: st4UnitAssetTag
