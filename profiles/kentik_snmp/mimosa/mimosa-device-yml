@@ -1,15 +1,16 @@
 ---
 extends:
   - system-mib.yml
+  - - if-mib.yml
 
-provider: kentik-envir-sensor
+provider: kentik-mimosa-radio
 
 sysobjectid:
-  - 1.3.6.1.4.1.20916.1.13.*   # Avtech Room Alert 3S
+  - 1.3.6.1.4.1.43356.*   # Mimosa
 
 metrics:
   # Table of internal sensors for units
-  - MIB: ROOMALERT3S-MIB_SENSORS
+  - MIB: MIMOSA-NETWORKS-BASE-MIB
     symbols:
       # The internal temperature reading in Fahrenheit
       - OID: 1.3.6.1.4.1.20916.1.13.1.1.1.1.0
