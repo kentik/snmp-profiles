@@ -1,71 +1,83 @@
 ---
 extends:
   - system-mib.yml
-  - - if-mib.yml
+  - if-mib.yml
 
-provider: kentik-mimosa-radio
+provider: kentik-mimosa-device
 
 sysobjectid:
   - 1.3.6.1.4.1.43356.*   # Mimosa
 
 metrics:
-  # Table of internal sensors for units
-  - MIB: MIMOSA-NETWORKS-BASE-MIB
-    symbols:
-      # The internal temperature reading in Fahrenheit
-      - OID: 1.3.6.1.4.1.20916.1.13.1.1.1.1.0
-        name: internal-tempf
-      # The internal temperature reading in Celsius
-      - OID: 1.3.6.1.4.1.20916.1.13.1.1.1.2.0
-        name: internal-tempc
-      # If this sensor is a Temperature, Temp/Humidity, Temp/Analog, Temp/Active Power, or Digital Extreme Temperature sensor, this value represents the current temperature in Celsius.
-      - OID: 1.3.6.1.4.1.20916.1.13.1.2.1.1.0
-        name: digital-sen1-1
-      # If this sensor is a Temperature, Temp/Humidity, Temp/Analog, Temp/Active Power, or Digital Extreme Temperature sensor, this value represents the current temperature in Fahrenheit.
-      - OID: 1.3.6.1.4.1.20916.1.13.1.2.1.2.0
-        name: digital-sen1-2
-      # If this sensor is a Temp/Humidity sensor, this value represents the current relative humidity in % Relative Humidity. If this sensor is a Temp/Analog sensor, this value represents the current Voltage reading. If this is a Temp/Active Power sensor, this value represents the current power state (1=Power Detected, 0=No Power Detected). If this is a Digital Extreme Temperature sensor, this value represents the current temperature from the thermocouple in Celsius.
-      - OID: 1.3.6.1.4.1.20916.1.13.1.2.1.3.0
-        name: digital-sen1-3
-      # If this sensor is a Temp/Humidity sensor, this value represents the current heat index in Fahrenheit. If this sensor is a Temp/Analog sensor, this value represents the current custom reading. If this is a Digital Extreme Temperature sensor, this value represents the current temperature from the thermocouple in Fahrenheit.
-      - OID: 1.3.6.1.4.1.20916.1.13.1.2.1.4.0
-        name: digital-sen1-4
-      # If this sensor is a Temp/Humidity sensor, this value represents the current heat index in Celsius. If this is a Digital Extreme Temperature Sensor, this value is a fault code. 0 = no fault.
-      - OID: 1.3.6.1.4.1.20916.1.13.1.2.1.5.0
-        name: digital-sen1-5
-      # If this sensor is a Temp/Humidity sensor, this value represents the current dew point in Celsius.
-      - OID: 1.3.6.1.4.1.20916.1.13.1.2.1.6.0
-        name: digital-sen1-6
-      # If this sensor is a Temp/Humidity sensor, this value represents the current dew point in Fahrenheit.
-      - OID: 1.3.6.1.4.1.20916.1.13.1.2.1.7.0
-        name: digital-sen1-7
-      # The reading for switch sensor 1 (0 = OPEN, 1 = CLOSED).
-      - OID: 1.3.6.1.4.1.20916.1.13.1.3.1.0
-        name: switch-sen1
-        enum:
-          open: 0
-          closed: 1
-      # The status of the first element on external relay 1
-      - OID: 1.3.6.1.4.1.20916.1.13.3.1.1.0
-        name: externalrelay1-element-one
-      # The status of the second element on external relay 1
-      - OID: 1.3.6.1.4.1.20916.1.13.3.1.2.0
-        name: externalrelay1-element-two
-      # The status of the third element on external relay 1
-      - OID: 1.3.6.1.4.1.20916.1.13.3.1.3.0
-        name: externalrelay1-element-three
-      # The status of the fourth element on external relay 1
-      - OID: 1.3.6.1.4.1.20916.1.13.3.1.4.0
-        name: externalrelay1-element-four
-      # The status of the fifth element on external relay 1
-      - OID: 1.3.6.1.4.1.20916.1.13.3.1.5.0
-        name: externalrelay1-element-five
-      # The status of the sixth element on external relay 1
-      - OID: 1.3.6.1.4.1.20916.1.13.3.1.6.0
-        name: externalrelay1-element-six
-      # The status of the seventh element on external relay 1
-      - OID: 1.3.6.1.4.1.20916.1.13.3.1.7.0
-        name: externalrelay1-element-seven
-      # The status of the eighth element on external relay 1
-      - OID: 1.3.6.1.4.1.20916.1.13.3.1.8.0
-        name: externalrelay1-element-eight
+  - MIB: MIMOSA-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.43356.2.1.2.3.2.0
+      name: mimosaWanMac
+  - MIB: MIMOSA-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.43356.2.1.2.2.5.0
+      name: mimosaSatelliteStrength
+      enum:
+        good: 1
+        bad: 0
+  - MIB: MIMOSA-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.43356.2.1.2.3.3.0
+      name: mimosaWanStatus
+      enum:
+        connected: 1
+        disconnected: 0        
+  - MIB: MIMOSA-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.43356.2.1.2.3.4.0
+      name: mimosaWanUpTime
+  - MIB: MIMOSA-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.43356.2.1.2.3.1.0
+      name: mimosaWanSsid
+  - MIB: MIMOSA-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.43356.2.1.2.7.1.0
+      name: mimosaPhyTxRate
+  - MIB: MIMOSA-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.43356.2.1.2.7.2.0
+      name:mimosaPhyRxRate
+  - MIB: MIMOSA-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.43356.2.1.2.7.3.0
+      name: mimosaPerTxRate
+  - MIB: MIMOSA-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.43356.2.1.2.7.4.0
+      name: mimosaPerRxRate
+      
+metric_tags:
+  - column:
+      OID: 1.3.6.1.4.1.43356.2.1.2.1.1.0
+      name: mimosaDeviceName
+    tag: mimosa_devicename
+  - column:
+      OID: 1.3.6.1.4.1.43356.2.1.2.1.2.0
+      name: mimosaSerialNumber
+    tag: serial_number
+  - column:
+      OID: 1.3.6.1.4.1.43356.2.1.2.1.3.0
+      name: mimosaFirmwareVersion
+    tag: firmware_version
+  - column:
+      OID: 1.3.6.1.4.1.43356.2.1.2.1.4.0
+      name: mimosaFirmwareBuildDate
+    tag: firmware_build
+      - column:
+      OID: 1.3.6.1.4.1.43356.2.1.2.1.2.0
+      name: mimosaSerialNumber
+    tag: serial_number
+  - column:
+      OID: 1.3.6.1.4.1.43356.2.1.2.1.5.0
+      name: mimosaLastRebootTime
+    tag: mimosa_reboot_time
+  - column:
+      OID: 1.3.6.1.4.1.43356.2.1.2.1.8.0
+      name: mimosaInternalTemp
+    tag: mimosa_cpu_temp
