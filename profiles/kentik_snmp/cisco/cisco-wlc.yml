@@ -26,27 +26,15 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.2861    # Cisco C9800-L-C-K9
 
 metrics:
-  # Current CPU Load of the switch in percentage.
-  # Polled at 60s to support anomaly detection.
+  # CPU and Hardware Health
   - MIB: AIRESPACE-SWITCHING-MIB
     symbols:
       # Current CPU Load of the switch in percentage.
-      - OID: 1.3.6.1.4.1.14179.1.1.5.1.0
-        name: agentCurrentCPUUtilization
+      # Polled at 60s to support anomaly detection.
+      - name: agentCurrentCPUUtilization
+        OID: 1.3.6.1.4.1.14179.1.1.5.1.0
         poll_time_sec: 60
         tag: CPU
-      # Total RAM of the switch in Kbytes.
-      # Polled at 60s to support anomaly detection.
-      - name: agentTotalMemory
-        OID: 1.3.6.1.4.1.14179.1.1.5.2.0
-        poll_time_sec: 60
-        tag: MemoryTotal
-      # Free RAM of the switch in Kbytes.
-      # Polled at 60s to support anomaly detection.
-      - name: agentFreeMemory
-        OID: 1.3.6.1.4.1.14179.1.1.5.3.0
-        poll_time_sec: 60
-        tag: MemoryFree
       # This is to indicate if the switch has Power Supply 1 present on it. This is applicable to the 4200 series and will always return true for the earlier device versions.
       - name: agentSwitchInfoPowerSupply1Present
         OID: 1.3.6.1.4.1.14179.1.1.3.2.0
@@ -71,10 +59,30 @@ metrics:
         enum:
           false: 0
           true: 1
-      # Current Internal Temperature of the unit in Centigrade.
-      - name: bsnSensorTemperature
-        OID: 1.3.6.1.4.1.14179.2.3.1.13
 
+  # Memory and detailed AP and Client counts
+  - MIB: CISCO-LWAPP-SYS-MIB
+    symbols:
+      # This object specifies the count of AP's that are connected with WLC
+      - name: clsSysApConnectCount
+        OID: 1.3.6.1.4.1.9.9.618.1.8.4.0
+      # This object specifies the current percent usage of system memory.
+      # Polled at 60s to support anomaly detection.
+      - name: clsSysCurrentMemoryUsage
+        OID: 1.3.6.1.4.1.9.9.618.1.8.6.0
+        poll_time_sec: 60
+        tag: MemoryUtilization
+      # This object represents the maximum clients present on the controller.
+      - name: clsMaxClientsCount
+        OID: 1.3.6.1.4.1.9.9.618.1.8.12.0
+
+  # Current Internal Temperature of the unit in Centigrade.
+  - MIB: AIRESPACE-WIRELESS-MIB
+    symbols:
+      - name: bsnSensorTemperature
+        OID: 1.3.6.1.4.1.14179.2.3.1.13.0
+
+  # Status information for the Redundancy Framework (RF)
   - MIB: CISCO-RF-MIB
     symbols:
       # The current state of RF on this unit.
@@ -393,7 +401,7 @@ metrics:
   - MIB: AIRESPACE-WIRELESS-MIB
     table:
       name: bsnDot11EssTable
-      OID: 1.3.6.1.4.1.14179.2.1.1.1
+      OID: 1.3.6.1.4.1.14179.2.1.1
     symbols:
       # Administrative Status of ESS(WLAN). By disabling an ESS the corresponding SSID is no longer broadcasted in AP beacons.
       - name: bsnDot11EssAdminStatus
@@ -482,8 +490,8 @@ metrics:
       - name: bsnAPIfInterferenceUtilization
         OID: 1.3.6.1.4.1.14179.2.2.14.1.22
 
+  # The listing the Statistics of RADIUS authentication servers.
   - MIB: AIRESPACE-WIRELESS-MIB
-    # The listing the Statistics of RADIUS authentication servers.
     table:
       name: bsnRadiusAuthServerStatsTable
       OID: 1.3.6.1.4.1.14179.2.5.3
@@ -530,7 +538,8 @@ metrics:
           name: bsnRadiusAuthServerAddress
           OID: 1.3.6.1.4.1.14179.2.5.1.1.2
           conversion: hextoip
-          
+
+  # This table contains information about all the licenses installed on the device.
   - MIB: CISCO-LICENSE-MGMT-MIB
     table:
       name: clmgmtLicenseInfoTable
@@ -542,7 +551,7 @@ metrics:
       # Remaining number of entities that can still use a license  
       - OID: 1.3.6.1.4.1.9.9.543.1.2.3.1.11
         name: clmgmtLicenseUsageCountRemaining
-        
+
 metric_tags:
   # Serial number of the switch.
   - column:
