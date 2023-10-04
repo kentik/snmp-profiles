@@ -26,6 +26,16 @@ metrics:
           name: fanNumber
   - MIB: ISILON-MIB
     symbol:
+      OID: 1.3.6.1.4.1.12124.1.2.3.5
+      name: clusterCPUIdlePct
+      script: |
+        def main(n):
+          cpuim = n["clusterCPUIdlePct"]
+          if cpuim <= 1000:
+            n["CPU"] = (1000 - cpuim) * 0.1
+          return None
+  - MIB: ISILON-MIB
+    symbol:
       OID: 1.3.6.1.4.1.12124.1.1.2.0
       name: clusterHealth
   - MIB: ISILON-MIB
