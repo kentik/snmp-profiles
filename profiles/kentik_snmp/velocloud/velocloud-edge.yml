@@ -33,28 +33,40 @@ metrics:
       poll_time_sec: 60
       tag: CPU
   # VCE Link Name
-  - MIB: VELOCLOUD-MIB-EDGE             # The name of the target MIB
+  - MIB: VELOCLOUD-EDGE-MIB             # The name of the target MIB
     # The 'table' section is where you announce the target MIB table
     table:
       name: vceLink                         # The name of the target table
       OID: 1.3.6.1.4.1.45346.1.1.2.2.2.3    # The root OID of the target table
     symbols:
-      - name: VCE RxJitter
+      - name: vceLinkRxJitter
         OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.21
-      - name: VCE Link TxLatency
+      - name: vceLinkTxLatency
         OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.22  
-      - name: VCE Link RxLatency
+      - name: vceLinkRxLatency
         OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.23  
-      - name: VCE TxLostPkt
+      - name: vceLinkTxLostPkt
         OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.24
-      - name: VCE RxLostPkt
+      - name: vceLinkRxLostPkt
         OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.25
-      - name: VEC Link State
+      - name: vceLinkState
         OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.34
+        enum:
+          initial: 1
+          dead: 2
+          unusable: 3
+          quiet: 4
+          standby: 5
+          unstable: 6
+          stable: 7
+          unknown: 8
     metric_tags:
-      - name: Velocloud Edge Link Name
-        OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.3
-      - name: VCE Path Peer Name
-        OID: 1.3.6.1.4.1.45346.1.1.2.4.2.2.1.6
-      - name: VCE Link Itf
-        OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.33
+      - column:   
+          name: vceLinkName
+          OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.3
+      - column:     
+          name: vcePathPeerName
+          OID: 1.3.6.1.4.1.45346.1.1.2.4.2.2.1.6
+      - column:    
+          name: vceLinkItf
+          OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.33
