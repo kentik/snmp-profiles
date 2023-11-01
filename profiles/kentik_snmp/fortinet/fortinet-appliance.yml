@@ -8,8 +8,8 @@ extends:
 provider: kentik-appliance
 
 sysobjectid:
-  - .3.6.1.4.1.12356.103.1.*          # Fortinet FortiManager
-  - .3.6.1.4.1.12356.103.1.64         # Fortinet fmgvm
+  - 1.3.6.1.4.1.12356.103.1.*          # Fortinet FortiManager
+  - 1.3.6.1.4.1.12356.103.1.64         # Fortinet fmgvm
   - 1.3.6.1.4.1.12356.103.1.1000      # Fortinet fmg100
   - 1.3.6.1.4.1.12356.103.1.1001      # Fortinet fmgvm
   - 1.3.6.1.4.1.12356.103.1.1003      # Fortinet fmg100C
