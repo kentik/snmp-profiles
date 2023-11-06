@@ -3,6 +3,8 @@
 extends:
   - if-mib.yml
   - system-mib.yml
+  - cisco-all-devices.yml
+  - cisco-firepower-asa.yml
 
 provider: kentik-firepower
 
