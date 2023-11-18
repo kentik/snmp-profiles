@@ -8,7 +8,6 @@ provider: kentik-nas
 
 sysobjectid: 
   - 1.3.6.1.4.1.12124.*
-  - 1.3.6.1.4.1.12325.*
 
 metrics:
   # CPU and Memory
