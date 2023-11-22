@@ -112,6 +112,9 @@ metrics:
       poll_time_sec: 60
       tag: MemoryUtilization
   - MIB: CISCO-BGP4-MIB
+    table:
+      name: cbgpPeer3Table
+      OID: 1.3.6.1.4.1.9.9.187.1.2.9
   symbols:
     - name: cbgpPeer3State
       OID: 1.3.6.1.4.1.9.9.187.1.2.9.1.5
@@ -134,5 +137,6 @@ metrics:
     - column:
       - name: cbgpPeer3VrfName
         OID: 1.3.6.1.4.1.9.9.187.1.2.9.1.4
+    - column:
       - name: cbgpPeer3Type
         OID: 1.3.6.1.4.1.9.9.187.1.2.9.1.2
