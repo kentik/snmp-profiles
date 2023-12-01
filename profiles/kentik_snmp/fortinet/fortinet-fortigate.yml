@@ -4,6 +4,7 @@ extends:
   - system-mib.yml
   - if-mib.yml
   - bgp4-mib.yml
+  - ospf-mib.yml
 
 provider: kentik-firewall
 
