@@ -57,18 +57,18 @@ metrics:
           name: hwBgpPeerVrfName
           OID: 1.3.6.1.4.1.2011.5.25.177.1.1.1.1.6
       # The version negotiated with the remote BGP peer.
-      - column:
-          tag: negotiated_version
+      - tag: negotiated_version
+        column:
           name: hwBgpPeerNegotiatedVersion
           OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.1
       # The AS number of the remote BGP peer.
-      - column:
-          tag: remote_as
+      - tag: remote_as
+        column:
           name: hwBgpPeerRemoteAs
           OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.2
       # The IP address of the remote BGP peer.
-      - column:
-          tag: neighbor_ip
+      - tag: neighbor_ip
+        column:
           name: hwBgpPeerRemoteAddr
           OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.4
           conversion: hextoip
@@ -95,8 +95,8 @@ metrics:
           name: hwBgpPeerVrfName
           OID: 1.3.6.1.4.1.2011.5.25.177.1.1.1.1.6
       # The IP address of the remote BGP peer.
-      - column:
-          tag: neighbor_ip
+      - tag: neighbor_ip
+        column:
           name: hwBgpPeerRemoteAddr
           OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.4
           conversion: hextoip
@@ -154,10 +154,10 @@ metrics:
           name: hwBgpPeerVrfName
           OID: 1.3.6.1.4.1.2011.5.25.177.1.1.1.1.6
       # The IP address of the remote BGP peer.
-      - column:
+      - tag: neighbor_ip
+        column:
           name: hwBgpPeerRemoteAddr
           OID: 1.3.6.1.4.1.2011.5.25.177.1.1.2.1.4
-          tag: neighbor_ip
           conversion: hextoip
 
   # This table is a list of domain names mapped to IPv4 addresses.
