@@ -485,10 +485,6 @@ metrics:
       name: axHAGroupStatusTable
       OID: 1.3.6.1.4.1.22610.2.4.3.17.2.2
     symbols:
-      - name: axHAGroupStatusEntry
-        OID: 1.3.6.1.4.1.22610.2.4.3.17.2.2.1
-      - name: axHAGroupID
-        OID: 1.3.6.1.4.1.22610.2.4.3.17.2.2.1.1
       - name: axHAGroupLocalStatus
         OID: 1.3.6.1.4.1.22610.2.4.3.17.2.2.1.2
         enum:
@@ -519,3 +515,6 @@ metric_tags:
   - column:
       name: axSysAFleXEngineVersion
       OID: 1.3.6.1.4.1.22610.2.4.1.6.4.0
+  - column:
+      name: axHAGroupID
+      OID: 1.3.6.1.4.1.22610.2.4.3.17.2.2.1.1
