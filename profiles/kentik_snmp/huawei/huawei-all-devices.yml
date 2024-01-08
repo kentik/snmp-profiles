@@ -2,8 +2,6 @@
 # https://mibs.observium.org/mib/HUAWEI-OSPFV2-MIB/
 # https://mibs.observium.org/mib/HUAWEI-DEVICE-MIB/
 # Note, CPU and Memory metrics are stored in the hwEntityStateTable under ambiguous index values
-# There is a FR in place to provide functionality to pull only the active member of the stack and display these values more directly
-# ref: https://github.com/kentik/ktranslate/issues/342
 ---
 extends:
   - if-mib.yml
@@ -203,34 +201,34 @@ metrics:
         tag: neighbor_gr_status
     metric_tags:
       # This object indicates the 32-bit integer that uniquely identifies the router in the Autonomous System. It is the router ID of itself.
-      - column:
+      - tag: self_router_id
+        column:
           name: hwOspfv2SelfRouterId
           OID: 1.3.6.1.4.1.2011.5.25.155.6.1.3
           conversion: hextoip
-          tag: self_router_id
       # This object indicates the IP address of the OSPF interface associated with this neighbor.
-      - column:
+      - tag: self_if_ip_address
+        column:
           name: hwOspfv2SelfIfIpAddress
           OID: 1.3.6.1.4.1.2011.5.25.155.6.1.4
           conversion: hextoip
-          tag: self_if_ip_address
       # The name of the OSPF interface associated with this neighbor.
-      - column:
+      - tag: self_if_name
+        column:
           name: hwOspfv2SelfIfName
           OID: 1.3.6.1.4.1.2011.5.25.155.6.1.5
-          tag: self_if_name
       # This object indicates the IP address of the designated router that is obtained from the DD packets from this neighbor.
-      - column:
+      - tag: designated_router
+        column:
           name: hwOspfv2NbrIfDesignatedRouter
           OID: 1.3.6.1.4.1.2011.5.25.155.6.1.6
           conversion: hextoip
-          tag: designated_router
       # This object indicates the IP address of the backup designated router which is obtained from the DD packets from this neighbor.
-      - column:
+      - tag: backup_designated_router
+        column:
           name: hwOspfv2NbrIfBackupDesignatedRouter
           OID: 1.3.6.1.4.1.2011.5.25.155.6.1.7
           conversion: hextoip
-          tag: backup_designated_router
   # A table of CPU statistics.
   - MIB: HUAWEI-DEVICE-MIB
     table:
