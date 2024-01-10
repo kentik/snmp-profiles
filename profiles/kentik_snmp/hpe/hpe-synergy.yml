@@ -15,45 +15,42 @@ provider: kentik-server-chassis
 metrics:
   - MIB: HPE-SYNERGY-MIB
     symbols:
-      - name:  syn100GhpeSwitchMaxCPUThreshold
+      - name: syn100GhpeSwitchMaxCPUThreshold
         OID: 1.3.6.1.4.1.11.5.7.5.9.1.4130.1.1
-        tag: MAX_CPU
         poll_time_sec: 60
-      - name:  syn100GhpeSwitchMinCPUThreshold
+      - name: syn100GhpeSwitchMinCPUThreshold
         OID: 1.3.6.1.4.1.11.5.7.5.9.1.4130.1.2
-        tag: MIN_CPU
         poll_time_sec: 60
-      - name:  syn100GhpeSwitchAverageCPUUtilization  
+      - name: syn100GhpeSwitchAverageCPUUtilization  
         OID: 1.3.6.1.4.1.11.5.7.5.9.1.4130.2.1
-        tag: AVG_CPU
+        tag: CPU
         poll_time_sec: 60
   - MIB: HPE-SYNERGY-MIB
     table:
       name: syn100GhpeNLPServerPortTable
-      OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.5
-      
+      OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.5      
     symbols:
-      - name: syn100GhpeNLPServerPortEntry
-        OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.5.1
-      - name: syn100GhpeNLPServerPortNumber
-        OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.5.1.1 
       - name: syn100GhpeNLPServerPortResetLoopDetection 
         OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.5.1.2
         enum:
           true: 1
           false: 2
+    metric_tags:
+      - column:
+          name: syn100GhpeNLPServerPortNumber
+          OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.5.1.1 
   - MIB: HPE-SYNERGY-MIB
     table:
       name: syn100GhpeNLPServerPortStatsTable
-      OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.6
-      
+      OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.6      
     symbols:
-      - name: syn100GhpeNLPServerPortStatsEntry 
-        OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.6.1
       - name: syn100GhpeNLPStatsPortNumber
         OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.6.1.1 
       - name: syn100GhpeNLPLoopDetectedStatus 
         OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.6.1.2
+        enum:
+          true: 1
+          false: 2
       - name: syn100GhpeNLPLoopDetectedCount 
         OID: 1.3.6.1.4.1.11.5.7.5.9.1.4060.6.1.3
       - name: syn100GhpeNLPLastLoopDetectTimeStamp  
