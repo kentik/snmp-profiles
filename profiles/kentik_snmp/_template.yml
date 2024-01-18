@@ -54,10 +54,11 @@ metrics:
           minor: 10
           major: 20
           critical: 30
-      - name: entSensorThresholdValue        # The target tabular OID name
-        OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.4    # The target tabular OID value
-      - name: entSensorThresholdEvaluation   # The target tabular OID name
-        OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.5    # The target tabular OID value
+      - name: entSensorThresholdValue               # The target tabular OID name
+        OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.4           # The target tabular OID value
+        condition: entSensorThresholdSeverity=30    # OPTIONAL: you can filter the polled entries in a table by providing a condition to evaluate against in the same table
+      - name: entSensorThresholdEvaluation          # The target tabular OID name
+        OID: 1.3.6.1.4.1.9.9.91.1.2.1.1.5           # The target tabular OID value
         enum:
           true: 1
           false: 2
