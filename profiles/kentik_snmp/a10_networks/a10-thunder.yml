@@ -361,7 +361,63 @@ metrics:
       - column:
           name: axVirtualServerHAGroup
           OID: 1.3.6.1.4.1.22610.2.4.3.4.1.2.1.4
-
+  # A table containing statistic information of virtual servers.
+  - MIB: A10-AX-MIB
+    table:
+      name: axVirtualServerNameStatTable
+      OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1
+    symbols: 
+      # The number of packets received from client to server.
+      - name: axVirtualServerNameStatPktsIn	
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.2
+      # The number of bytes received from client to server.
+      - name: axVirtualServerNameStatBytesIn
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.3
+      # The number of packets sent from server to client.
+      - name: axVirtualServerNameStatPktsOut
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.4
+      # The number of bytes sent from server to client.
+      - name: axVirtualServerNameStatBytesOut	
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.5
+      # The persistent connections from client side.
+      - name: axVirtualServerNameStatPersistConns	
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.6
+      # The total connections from client side.
+      - name: axVirtualServerNameStatTotConns	
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.7
+      # The current connections from client side.
+      - name: axVirtualServerNameStatCurConns	
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.8
+      # The current virtual server status.
+      - name: axVirtualServerNameStatStatus	
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.9
+        enum:
+          up: 1
+          down: 2
+          disabled: 3
+      # The display status of this virtual server
+      - name: axVirtualServerNameStatDisplayStatus
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.10
+        enum:
+          disabled: 0
+          allUp: 1
+          functionalUp: 2
+          partialUp: 3
+          stopped: 4
+      # The total number of L7 requests if applicable
+      - name: axVirtualServerNameStatTotalL7Reqs	
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.11
+      # The number of current L7 requests if applicable
+      - name: axVirtualServerNameStatTotalCurrL7Reqs	
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.12
+      # The number of successful L7 requests if applicable
+      - name: axVirtualServerNameStatTotalSuccL7Reqs	
+        OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.13
+    metric_tags:
+      # The name of this virtual server.
+      - column:
+          name: axVirtualServerStatDisplayName
+          OID: 1.3.6.1.4.1.22610.2.4.3.4.5.1.1.1
   # A table containing statistic information of virtual servers.
   - MIB: A10-AX-MIB
     table:
