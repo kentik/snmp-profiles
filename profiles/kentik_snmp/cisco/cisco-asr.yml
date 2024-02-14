@@ -111,7 +111,7 @@ sysobjectid:
   - 1.3.6.1.4.1.9.6.1.23.3.13.0.4  # Cisco RV340 Dual WAN Gigabit VPN Router
 
 metrics:
-  # Outbound active media calls
+  # Inbound active media calls
   - MIB: CISCO-VOICE-DIAL-CONTROL-MIB
     symbol:
       name: cvCallVolMediaIncomingCalls
