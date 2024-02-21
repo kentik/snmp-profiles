@@ -51,15 +51,6 @@ metrics:
         OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.25
       - name: vceLinkState
         OID: 1.3.6.1.4.1.45346.1.1.2.3.2.2.1.34
-        enum:
-          initial: 1
-          dead: 2
-          unusable: 3
-          quiet: 4
-          standby: 5
-          unstable: 6
-          stable: 7
-          unknown: 8
     metric_tags:
       - column:   
           name: vceLinkName
