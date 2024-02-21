@@ -1135,7 +1135,7 @@ metrics:
           OID: 1.3.6.1.4.1.9.9.106.1.2.1.1.14
           conversion: hextoip
       
- # POE stats
+  # POE stats
   - MIB: CISCO-POWER-ETHERNET-EXT-MIB
     metric_tags:
       #  This object indicates used power expressed in miliwatts    
