@@ -336,3 +336,17 @@ metrics:
         column:
           OID: 1.3.6.1.4.1.12356.101.5.1.2.2.1.1
           name: fgFwPol6ID
+
+  - MIB: FORTINET-FORTIGATE-MIB
+    symbols:
+      # Number of configured DHCP servers on the FORTIGATE.
+      - OID: 1.3.6.1.4.1.12356.101.23.1.1
+        name: fgDhcpServerNumber
+  - MIB: FORTINET-FORTIGATE-MIB
+    table:
+      OID: 1.3.6.1.4.1.12356.101.23.2.1
+      name: fgDhcpTable
+      symbols:
+      #Lease Usage of the DHCP server.
+      - OID: 1.3.6.1.4.1.12356.101.23.2.1.1.2
+        name: fgDhcpLeaseUsage
