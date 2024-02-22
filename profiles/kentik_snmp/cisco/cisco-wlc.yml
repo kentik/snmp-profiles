@@ -182,17 +182,7 @@ metrics:
           name: cLWlanSsid
           OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.4
         tag: wlan_ssid
-      # This object represents average value of peer controller reachable latency in micro seconds
-      - column:
-          name:  cLHaAvgPeerReachLatency
-          OID: 1.3.6.1.4.1.9.9.843.1.5.1
-        tag: Ha_avg_peer_reach_latency
-      #  This object represents current status of bulk sync
-      - column:
-          name:  cLHaBulkSyncStatus
-          OID: 1.3.6.1.4.1.9.9.843.1.5.3
-        tag:  Ha_bulk_sync_status
-
+    
 
   # The listing the Statistics of RADIUS authentication servers.
   - MIB: AIRESPACE-WIRELESS-MIB
