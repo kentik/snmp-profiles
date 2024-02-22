@@ -8,7 +8,7 @@
 # https://mibs.observium.org/mib/CISCO-ENTITY-SENSOR-MIB/
 # https://mibs.observium.org/mib/CISCO-ENVMON-MIB/
 # https://mibs.observium.org/mib/CISCO-RTTMON-MIB/
-# https://snmp.cloudapps.cisco.com/Support/SNMP/do/BrowseMIB.do?local=en&step=2&mibName=CISCO-POWER-ETHERNET-EXT-MIB
+# https://mibs.observium.org/mib/CISCO-POWER-ETHERNET-EXT-MIB/
 ---
 extends:
   - bgp4-mib.yml
@@ -914,6 +914,19 @@ metrics:
         column:
           name: entPhysicalModelName
           OID: 1.3.6.1.2.1.47.1.1.1.1.13
+  
+  # POE usage statistics
+  - MIB: CISCO-POWER-ETHERNET-EXT-MIB
+    table:
+      name: cpeExtMainPseTable
+      OID: 1.3.6.1.4.1.9.9.402.1.3
+    symbols:  
+      - name: cpeExtMainPseUsedPower #  This object indicates used power expressed in miliwatts 
+        OID: 1.3.6.1.4.1.9.9.402.1.3.1.4
+        conversion: milliwatts to watts
+      - name: cpeExtMainPseRemainingPower #  This object indicates remaining power expressed in miliwatts, this parameter is calculated as pethMainPsePower minus cpeExtMainPseUsedPower 
+        OID: 1.3.6.1.4.1.9.9.402.1.3.1.5
+        conversion: milliwatts to watts
 
   # Cisco IP SLA functions
   # A table of which contains the status of latest RTT operation.
@@ -1135,16 +1148,4 @@ metrics:
           OID: 1.3.6.1.4.1.9.9.106.1.2.1.1.14
           conversion: hextoip
       
-  # POE stats
-  - MIB: CISCO-POWER-ETHERNET-EXT-MIB
-    metric_tags:
-      #  This object indicates used power expressed in miliwatts    
-      - column:
-          name: cpeExtMainPseUsedPower
-          OID: 1.3.6.1.4.1.9.9.402.1.3.1.4
-          conversion: milliwatts to watts
-      #  This object indicates remaining power expressed in miliwatts, this parameter is calculated as pethMainPsePower minus cpeExtMainPseUsedPower 
-      - column:
-          name: cpeExtMainPseRemainingPower
-          OID: 1.3.6.1.4.1.9.9.402.1.3.1.5
-          conversion: milliwatts to watts
+  
