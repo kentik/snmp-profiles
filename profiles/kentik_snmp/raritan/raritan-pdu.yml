@@ -10,52 +10,19 @@ sysobjectid:
 
 metrics:
   - MIB: RARITAN-PX2-PDU2-MIB
-table:
-    OID: 1.3.6.1.4.1.13742.6.3.5.4.1
-    name: outletSensorConfigurationTable
-  symbols:
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.1
-      name: outletSensorTolerance
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.2
-      name: outletSensorMaximum
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.3
-      name: outletSensorMinimum
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.4
-      name: outletSensorHysteresis
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.6
-      name: outletSensorUnits
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.7
-      name: outletSensorDecimalDigits
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.8
-      name: outletSensorAccuracy
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.9
-      name: outletSensorResolution
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.14
-      name: outletSensorStateChangeDelay
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.21
-      name: outletSensorLowerCriticalThreshold
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.22
-      name: outletSensorLowerWarningThreshold
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.23
-      name: outletSensorUpperCriticalThreshold
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.24
-      name: outletSensorUpperWarningThreshold
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.25
-      name: outletSensorEnabledThresholds
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.26
-      name: outletSensorSignedMaximum
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.27
-      name: outletSensorSignedMinimum
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.28
-      name: outletSensorSignedLowerCriticalThreshold
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.29
-      name: outletSensorSignedLowerWarningThreshold
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.30
-      name: outletSensorSignedUpperCriticalThreshold
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.31
-      name: outletSensorSignedUpperWarningThreshold
-    - OID: 1.3.6.1.4.1.13742.6.3.5.4.1.4
-      name: outletSensorLogAvailable
+    table:
+      OID: 1.3.6.1.4.1.13742.6.3.5.3
+      name: outletConfigurationTable
+    symbols:
+      - OID: 1.3.6.1.4.1.13742.6.3.5.3.1.3
+        name: outletName
+metric_tags:
+    column:
+      OID: 1.3.6.1.4.1.13742.6.3.5.3.1.6
+      name: outletRatedVoltage
+    column:
+      OID: 1.3.6.1.4.1.13742.6.3.5.3.1.7
+      name: outletRatedCurrent
 
 metric_tags:
   - column:
@@ -65,11 +32,8 @@ metric_tags:
   - column:
       OID: 1.3.6.1.4.1.13742.6.3.2.1.1.3
       name: pduModel
-    tag: model
+    tag: model_number
   - column:
       OID: 1.3.6.1.4.1.13742.6.3.2.1.1.4
       name: pduSerialNumber
     tag: serial_number
-  - column:
-      OID: 1.3.6.1.4.1.13742.6.3.5.3.1.3
-      name: outletName
