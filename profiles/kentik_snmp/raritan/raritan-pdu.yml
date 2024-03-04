@@ -18,11 +18,11 @@ metrics:
         name: outletName
 metric_tags:
     column:
-      OID: 1.3.6.1.4.1.13742.6.3.5.3.1.6
-      name: outletRatedVoltage
+        OID: 1.3.6.1.4.1.13742.6.3.5.3.1.6
+        name: outletRatedVoltage
     column:
-      OID: 1.3.6.1.4.1.13742.6.3.5.3.1.7
-      name: outletRatedCurrent
+        OID: 1.3.6.1.4.1.13742.6.3.5.3.1.7
+        name: outletRatedCurrent
 
 metric_tags:
   - column:
