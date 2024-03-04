@@ -109,4 +109,19 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.2746  # Cisco C1121X-8PLTEP ISR
   - 1.3.6.1.4.1.9.1.2961  # Cisco C8200-1N-4T Edge Router
   - 1.3.6.1.4.1.9.6.1.23.3.13.0.4  # Cisco RV340 Dual WAN Gigabit VPN Router
-  
+
+metrics:
+  - MIB: CISCO-VOICE-DIAL-CONTROL-MIB
+    table:
+      name: cvCallVolIfTable
+      OID: 1.3.6.1.4.1.9.9.63.1.3.8.5
+    symbols:
+      - name: cvCallVolMediaIncomingCalls
+        OID: 1.3.6.1.4.1.9.9.63.1.3.8.5.1.1
+      - name: cvCallVolMediaOutgoingCalls
+        OID: 1.3.6.1.4.1.9.9.63.1.3.8.5.1.2
+    metric_tags:
+      - tag: if_Type
+        column:
+          OID: 1.3.6.1.2.1.2.2.1.3
+          name: ifType
