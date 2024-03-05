@@ -82,7 +82,6 @@ sysobjectid:
   - 1.3.6.1.4.1.9.12.3.1.3.1627    # Nexus 9372TX
   - 1.3.6.1.4.1.9.12.3.1.3.1646    # Nexus 1000VSG
   - 1.3.6.1.4.1.9.12.3.1.3.1648    # Nexus 7702
-  - 1.3.6.1.4.1.9.12.3.1.3.1660    # MDS 9396S
   - 1.3.6.1.4.1.9.12.3.1.3.1666    # Nexus 3548-X
   - 1.3.6.1.4.1.9.12.3.1.3.1675    # Nexus 93120TX
   - 1.3.6.1.4.1.9.12.3.1.3.1683    # MDS 9718
@@ -166,7 +165,7 @@ metrics:
     metric_tags:
       # ID of the vrf that peer is configured in
       - column:
-        name: cbgpPeer3VrfId	
+        name: cbgpPeer3VrfId
         OID: 1.3.6.1.4.1.9.9.187.1.2.9.1.1
       # Represents the type of Peer address stored in cbgpPeer3Entry
       - column:
