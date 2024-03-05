@@ -11,20 +11,29 @@ extends:
 provider: kentik-wireless-controller
 
 sysobjectid:
-  - 1.3.6.1.4.1.9.1.828     # Cisco Air WLC 2106
-  - 1.3.6.1.4.1.9.1.1069    # Cisco 5500 WLC
-  - 1.3.6.1.4.1.9.1.1279    # Cisco AirCt2504K9
-  - 1.3.6.1.4.1.9.1.1295    # Cisco 7500 WLC
-  - 1.3.6.1.4.1.9.1.1615    # Cisco 8500 WLC
-  - 1.3.6.1.4.1.9.1.1631    # Cisco Virtual WLC
-  - 1.3.6.1.4.1.9.1.1645    # Cisco 5760 WLC
-  - 1.3.6.1.4.1.9.1.1926    # Cisco CT5508K9 WLC
-  - 1.3.6.1.4.1.9.1.1927    # Cisco CT2504K9 WLC
-  - 1.3.6.1.4.1.9.1.2170    # Cisco 5520 WLC
-  - 1.3.6.1.4.1.9.1.2171    # Cisco 8520 WLC
-  - 1.3.6.1.4.1.9.1.2427    # Cisco Aironet 3800 WLC
-  - 1.3.6.1.4.1.9.1.2530    # Cisco C980040K9 WLC
-  - 1.3.6.1.4.1.9.1.2861    # Cisco C9800-L-C-K9
+  - 1.3.6.1.4.1.9.1.828    # 2106 Wireless Controller
+  - 1.3.6.1.4.1.9.1.1069    # 5508 Wireless Controller
+  - 1.3.6.1.4.1.9.1.1279    # 2504 Wireless Controller
+  - 1.3.6.1.4.1.9.1.1293    # WiSM2
+  - 1.3.6.1.4.1.9.1.1295    # Flex 7510
+  - 1.3.6.1.4.1.9.1.1615    # 8500 Wireless Controller
+  - 1.3.6.1.4.1.9.1.1631    # Virtual Wireless Controller
+  - 1.3.6.1.4.1.9.1.1645    # 5760 Wireless Controller
+  - 1.3.6.1.4.1.9.1.1926    # CT5508K9 Wireless Controller
+  - 1.3.6.1.4.1.9.1.1927    # CT2504K9 Wireless Controller
+  - 1.3.6.1.4.1.9.1.2067    # 5760 Wireless Controller
+  - 1.3.6.1.4.1.9.1.2170    # 5520 Wireless Controller
+  - 1.3.6.1.4.1.9.1.2171    # 8540 Wireless Controller
+  - 1.3.6.1.4.1.9.1.2371    # Aironet 1830
+  - 1.3.6.1.4.1.9.1.2373    # Aironet 3800
+  - 1.3.6.1.4.1.9.1.2391    # 9800 Wireless Controller
+  - 1.3.6.1.4.1.9.1.2427    # 3504 Wireless Controller
+  - 1.3.6.1.4.1.9.1.2530    # 9800 Wireless Controller
+  - 1.3.6.1.4.1.9.1.2860    # 9800-L Wireless Controller
+  - 1.3.6.1.4.1.9.1.2861    # 9800-L Wireless Controller
+  - 1.3.6.1.4.1.14179    # 4100 Wireless Controller
+  - 1.3.6.1.4.1.14179.1.1.4.3    # 4400 Wireless Controller
+  - 1.3.6.1.4.1.14179.1.1.4.4    # WiSM 6500-7600
 
 metrics:
   # CPU and Hardware Health
