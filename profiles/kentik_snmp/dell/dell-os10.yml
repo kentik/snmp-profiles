@@ -6,7 +6,6 @@ extends:
   # Using the 32-bit counter IF-MIB profile here
   - if32-mib.yml
   - host-resources-mib.yml
-  - ucd-mib.yml
 
 provider: kentik-switch
 
