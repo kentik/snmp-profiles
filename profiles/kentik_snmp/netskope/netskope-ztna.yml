@@ -1,0 +1,70 @@
+# https://mibs.observium.org/mib/UCD-SNMP-MIB/
+ 
+extends:
+  - system-mib.yml
+  - if32-mib.yml
+ 
+provider: kentik-switch
+ 
+# This needs to be the SysOID of the device you want to use. You can get it with the `snmpwalk` command found here:
+# https://docs.newrelic.com/docs/network-performance-monitoring/troubleshooting/snmp-walk/#snmp-v2c-example
+# If the SysOID is `1.3.6.1.4.1.8072.3.2.10`, you will need to append `.<manufacturer>` to it and then manually match the device to the profile:
+# https://docs.newrelic.com/docs/network-performance-monitoring/troubleshooting/snmp-discovery-unexpected-profile/#net-snmp
+sysobjectid: 1.3.6.1.4.1.8072.3.2.10.netskope-ztna
+ 
+metrics:
+  - MIB: UCD-SNMP-MIB
+    table:
+      name: dskTable
+      OID: 1.3.6.1.4.1.2021.9
+    symbols:
+      - name: dskPath
+        OID: 1.3.6.1.4.1.2021.9.1.2
+      - name: dskDevice 
+        OID: 1.3.6.1.4.1.2021.9.1.3
+      - name: dskTotal
+        OID: 1.3.6.1.4.1.2021.9.1.6
+      - name: dskAvail
+        OID: 1.3.6.1.4.1.2021.9.1.7
+      - name: dskUsed
+        OID: 1.3.6.1.4.1.2021.9.1.8
+      - name: dskPercent
+        OID: 1.3.6.1.4.1.2021.9.1.9
+      - name: dskPercentNode
+        OID: 1.3.6.1.4.1.2021.9.1.10
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.2021.11.9
+      name: ssCpuUser
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.2021.11.50
+      name: ssCpuRawUser
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.2021.11.10
+      name: ssCpuSystem
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.2021.11.52
+      name: ssCpuRawSystem
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.2021.11.11
+      name: ssCpuIdle
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.2021.11.53
+      name: ssCpuRawIdle
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.2021.4.5
+      name: memTotalReal
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.2021.4.6
+      name: memAvailReal
+  - MIB: UCD-SNMP-MIB
+    symbol:
+      OID: 1.3.6.1.4.1.2021.4.11
+      name: memTotalFree
