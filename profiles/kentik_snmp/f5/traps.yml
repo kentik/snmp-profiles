@@ -85,10 +85,10 @@ traps:
         OID: 1.3.6.1.4.1.3375.2.4.1.1
         tag: message
       - name: bigipNotifyObjNode
-        OID: 1.3.6.1.4.1.3375.2.4.1.1
+        OID: 1.3.6.1.4.1.3375.2.4.1.2
         tag: node_name
       - name: bigipNotifyObjPort
-        OID: 1.3.6.1.4.1.3375.2.4.1.1
+        OID: 1.3.6.1.4.1.3375.2.4.1.3
         tag: service_port
   # A service is detected UP.
   - trap_name: bigipServiceUp
@@ -99,10 +99,10 @@ traps:
         OID: 1.3.6.1.4.1.3375.2.4.1.1
         tag: message
       - name: bigipNotifyObjNode
-        OID: 1.3.6.1.4.1.3375.2.4.1.1
+        OID: 1.3.6.1.4.1.3375.2.4.1.2
         tag: node_name
       - name: bigipNotifyObjPort
-        OID: 1.3.6.1.4.1.3375.2.4.1.1
+        OID: 1.3.6.1.4.1.3375.2.4.1.3
         tag: service_port
   # A node is detected DOWN.
   - trap_name: bigipNodeDown
@@ -113,7 +113,7 @@ traps:
         OID: 1.3.6.1.4.1.3375.2.4.1.1
         tag: message
       - name: bigipNotifyObjNode
-        OID: 1.3.6.1.4.1.3375.2.4.1.1
+        OID: 1.3.6.1.4.1.3375.2.4.1.2
         tag: node_name
   # A node is detected UP.
   - trap_name: bigipNodeUp
@@ -124,7 +124,7 @@ traps:
         OID: 1.3.6.1.4.1.3375.2.4.1.1
         tag: message
       - name: bigipNotifyObjNode
-        OID: 1.3.6.1.4.1.3375.2.4.1.1
+        OID: 1.3.6.1.4.1.3375.2.4.1.2
         tag: node_name
   # The system is going into standby mode.
   - trap_name: bigipStandby
