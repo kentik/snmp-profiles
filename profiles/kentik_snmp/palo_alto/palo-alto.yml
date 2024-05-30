@@ -53,6 +53,27 @@ metrics:
         name: panGPGWUtilizationPct
       - OID: 1.3.6.1.4.1.25461.2.1.2.5.1.3.0
         name: panGPGWUtilizationActiveTunnels
+  - MIB: PAN-COMMON-MIB
+    table:
+      name: panVsysTable
+      OID: 1.3.6.1.4.1.25461.2.1.2.3.9
+    symbols:
+      - name: panVsysSessionUtilizationPct
+        OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.3
+      - name: panVsysActiveSessions
+        OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.4
+      - name: panVsysMaxSessions
+        OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.5
+    metric_tags:
+      - tag: vsys_id
+        column:
+          OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.1
+          name: panVsysId
+      - tag: vsys_name  
+        column:
+          OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.2
+          name: panVsysName
+
 metric_tags:
   - column:
       name: panSysSwVersion
