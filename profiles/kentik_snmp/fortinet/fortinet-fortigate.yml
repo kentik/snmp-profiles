@@ -75,6 +75,7 @@ sysobjectid:
   - 1.3.6.1.4.1.12356.101.1.2004    # fgt200BPOE
   - 1.3.6.1.4.1.12356.101.1.2005    # fgt200D
   - 1.3.6.1.4.1.12356.101.1.2006    # fgt240D
+  - 1.3.6.1.4.1.12356.101.1.2011    # fgt200F
   - 1.3.6.1.4.1.12356.101.1.2013    # fgt280D
   - 1.3.6.1.4.1.12356.101.1.3000    # fgt300
   - 1.3.6.1.4.1.12356.101.1.3001    # fgt300A
@@ -99,6 +100,7 @@ sysobjectid:
   - 1.3.6.1.4.1.12356.101.1.10002   # fgt1000AFA2
   - 1.3.6.1.4.1.12356.101.1.10003   # fgt1000ALENC
   - 1.3.6.1.4.1.12356.101.1.10004   # fgt1000C
+  - 1.3.6.1.4.1.12356.101.1.10006   # fgt1100E
   - 1.3.6.1.4.1.12356.101.1.12400   # fgt1240B
   - 1.3.6.1.4.1.12356.101.1.30000   # fgt3000
   - 1.3.6.1.4.1.12356.101.1.30160   # fgt3016B
@@ -348,3 +350,28 @@ metrics:
       #Lease Usage of the DHCP server.
       - OID: 1.3.6.1.4.1.12356.101.23.2.1.1.2
         name: fgDhcpLeaseUsage
+
+  - MIB: FORTINET-FORTIGATE-MIB
+    table:
+      name: fgHaStatsTable
+      OID: 1.3.6.1.4.1.12356.101.13.2.1
+    symbols:
+      # Current HA Sync status
+      - name: fgHaStatsSyncStatus 
+        OID: 1.3.6.1.4.1.12356.101.13.2.1.1.12
+        enum:
+          unsynchronized: 0
+          synchronized: 1
+      # Serial number of primary during the last sync attempt (successful or not)
+      - name: fgHaStatsPrimarySerial
+        OID: 1.3.6.1.4.1.12356.101.13.2.1.1.16
+        conversion: to_one
+    metric_tags:
+      # Serial number of the HA cluster member for this row
+      - column:
+          name: fgHaStatsSerial
+          OID: 1.3.6.1.4.1.12356.101.13.2.1.1.2
+      # Host name of the specified cluster member
+      - column:
+          name: fgHaStatsHostname
+          OID: 1.3.6.1.4.1.12356.101.13.2.1.1.11
