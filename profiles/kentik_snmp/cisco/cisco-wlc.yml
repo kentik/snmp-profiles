@@ -465,7 +465,16 @@ metrics:
       - column:
           name: bsnDot11EssSsid
           OID: 1.3.6.1.4.1.14179.2.1.1.1.2
-
+# This object represents the profile name assigned to this WLAN.
+      - column:
+          name: cLWlanProfileName
+          OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.3
+        tag: wlan_profile_name
+      # This object represents the SSID assigned to this WLAN.
+      - column:
+          name: cLWlanSsid
+          OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.4
+        tag: wlan_ssid
    # Each entry represents an 802.11 interface in an Airespace AP.
   - MIB: AIRESPACE-WIRELESS-MIB
     table:
