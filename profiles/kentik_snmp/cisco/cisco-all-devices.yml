@@ -9,6 +9,7 @@
 # https://mibs.observium.org/mib/CISCO-ENVMON-MIB/
 # https://mibs.observium.org/mib/CISCO-RTTMON-MIB/
 # https://mibs.observium.org/mib/CISCO-POWER-ETHERNET-EXT-MIB/
+# https://mibs.observium.org/mib/CISCO-AUTH-FRAMEWORK-MIB/
 ---
 extends:
   - bgp4-mib.yml
@@ -189,6 +190,7 @@ metrics:
         column:
           name: cefcPowerUnits
           OID: 1.3.6.1.4.1.9.9.117.1.1.1.1.2
+      #
       # A textual description of physical entity.
       - tag: entity_description
         column:
@@ -1146,5 +1148,25 @@ metrics:
           name: cHsrpGrpStandbyRouter
           OID: 1.3.6.1.4.1.9.9.106.1.2.1.1.14
           conversion: hextoip
+  - MIB: CISCO-AUTH-FRAMEWORK-MIB 
+    # The table contains a list of authentication session  
+    table:
+      OID: 1.3.6.1.4.1.9.9.656.1.4.1
+      name: cafSessionTable
+    symbols:
+        # Indicates the session timeout used by Authentication Framework in the authentication session    
+      - OID: 1.3.6.1.4.1.9.9.656.1.4.1.1.15
+        name: cafSessionTimeout
+    # A list of port entries. An entry will exist for each interface which support Authentication Framework feature."       
+    table:
+      OID: 1.3.6.1.4.1.9.9.656.1.2.1
+      name: cafPortConfigTable
+    symbols: 
+        # Specifies if reauthentication is enabled for this port.
+      - OID: 1.3.6.1.4.1.9.9.656.1.2.1.1.6
+        name: cafPortReauthEnabled
+        # Specifies the reauthentication interval, after which the port will be reauthenticated if value of the corresponding instanceof cafPortReauthEnabled is 'true'
+      - OID: 1.3.6.1.4.1.9.9.656.1.2.1.1.7
+        name: cafPortReauthInterval
       
   
