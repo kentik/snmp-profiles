@@ -1156,6 +1156,9 @@ metrics:
         # Specifies if reauthentication is enabled for this port.
       - name: cafPortReauthEnabled      
         OID: 1.3.6.1.4.1.9.9.656.1.2.1.1.6
+        enum:
+          true: 1
+          false: 2
         # Specifies the reauthentication interval, after which the port will be reauthenticated if value of the corresponding instanceof cafPortReauthEnabled is 'true'
       - name: cafPortReauthInterval
         OID: 1.3.6.1.4.1.9.9.656.1.2.1.1.7
