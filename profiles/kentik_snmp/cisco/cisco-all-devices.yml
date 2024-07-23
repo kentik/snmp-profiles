@@ -1168,3 +1168,7 @@ metrics:
         column:
           name: cafSessionTimeout
           OID: 1.3.6.1.4.1.9.9.656.1.4.1.1.15
+      - tag: ifDescr
+        column: 
+          name: ifDescr
+          OID: 1.3.6.1.2.1.2.2.1.2
