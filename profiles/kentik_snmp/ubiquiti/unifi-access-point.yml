@@ -71,3 +71,17 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.41112.1.6.1.1.1.3
           name: unifiRadioRadio
+  - MIB: UBNT-UniFi-MIB
+    table:
+      OID: 1.3.6.1.4.1.41112.1.6.1.2.1
+      name: unifiVapTable
+    symbols:
+      - OID: 1.3.6.1.4.1.41112.1.6.1.2.1.8
+        name: unifiVapNumStations
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.41112.1.6.1.2.1.6
+          name: unifiVapEssId
+      - column:
+          OID: 1.3.6.1.4.1.41112.1.6.1.2.1.7
+          name: unifiVapName
