@@ -1164,12 +1164,10 @@ metrics:
         OID: 1.3.6.1.4.1.9.9.656.1.2.1.1.7
     metric_tags:
       # Indicates the session timeout used by Authentication Framework in the authentication session
-      - tag: cafSessionTimeout
-        column:
+      - column:
           name: cafSessionTimeout
           OID: 1.3.6.1.4.1.9.9.656.1.4.1.1.15
-      - tag: ifDescr
-        column: 
+      - column: 
           name: ifDescr
           OID: 1.3.6.1.2.1.2.2.1.2
   - MIB: CISCO-NTP-MIB
