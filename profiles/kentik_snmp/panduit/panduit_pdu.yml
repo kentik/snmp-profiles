@@ -114,6 +114,7 @@ metrics:
       - OID: 1.3.6.1.4.1.19536.10.1.3.1.1.26
         name:  pdug5GroupBreakerStatus
         enum:
+          notApplicable: 0
           notApplicable: 1
           breakerOn: 2
           breakerOff: 3
