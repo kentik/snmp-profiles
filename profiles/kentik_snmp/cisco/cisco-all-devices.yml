@@ -1147,29 +1147,6 @@ metrics:
           OID: 1.3.6.1.4.1.9.9.106.1.2.1.1.14
           conversion: hextoip
 
-  # A table of port entries. An entry will exist for each interface which support Authentication Framework feature.
-  - MIB: CISCO-AUTH-FRAMEWORK-MIB
-    table:
-      name: cafPortConfigTable
-      OID: 1.3.6.1.4.1.9.9.656.1.2.1
-    symbols:
-        # Specifies if reauthentication is enabled for this port.
-      - name: cafPortReauthEnabled
-        OID: 1.3.6.1.4.1.9.9.656.1.2.1.1.6
-        enum:
-          true: 1
-          false: 2
-        # Specifies the reauthentication interval, after which the port will be reauthenticated if value of the corresponding instance of cafPortReauthEnabled is 'true'
-      - name: cafPortReauthInterval
-        OID: 1.3.6.1.4.1.9.9.656.1.2.1.1.7
-    metric_tags:
-      # Indicates the session timeout used by Authentication Framework in the authentication session
-      - column:
-          name: cafSessionTimeout
-          OID: 1.3.6.1.4.1.9.9.656.1.4.1.1.15
-      - column: 
-          name: ifDescr
-          OID: 1.3.6.1.2.1.2.2.1.2
   - MIB: CISCO-NTP-MIB
     table:
       name: cntpPeersVarTable
