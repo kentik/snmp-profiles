@@ -9,7 +9,6 @@
 # https://mibs.observium.org/mib/CISCO-ENVMON-MIB/
 # https://mibs.observium.org/mib/CISCO-RTTMON-MIB/
 # https://mibs.observium.org/mib/CISCO-POWER-ETHERNET-EXT-MIB/
-# https://mibs.observium.org/mib/CISCO-AUTH-FRAMEWORK-MIB/
 ---
 extends:
   - bgp4-mib.yml
