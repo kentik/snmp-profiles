@@ -17,21 +17,21 @@ metrics:
       - OID: 1.3.6.1.4.1.13742.6.3.5.3.1.3
         name: outletName
     metric_tags:
-      - column:
-          OID: 1.3.6.1.4.1.13742.6.3.5.3.1.6
-          name: outletRatedVoltage
+      - tag: serial_number
+        column:
+          OID: 1.3.6.1.4.1.13742.6.3.2.1.1.4
+          name: pduSerialNumber
+      - tag: model_number
+        column:
+          OID: 1.3.6.1.4.1.13742.6.3.2.1.1.3
+          name: pduModel
+      - tag: pdu_name
+        column:
+          OID: 1.3.6.1.4.1.13742.6.3.2.2.1.13
+          name: pduName
       - column:
           OID: 1.3.6.1.4.1.13742.6.3.5.3.1.7
           name: outletRatedCurrent
       - column:
-         OID: 1.3.6.1.4.1.13742.6.3.2.2.1.13
-         name: pduName
-         tag: pdu_name
-     - column:
-        OID: 1.3.6.1.4.1.13742.6.3.2.1.1.3
-        name: pduModel
-        tag: model_number
-     - column:
-        OID: 1.3.6.1.4.1.13742.6.3.2.1.1.4
-        name: pduSerialNumber
-        tag: serial_number
+          OID: 1.3.6.1.4.1.13742.6.3.5.3.1.6
+          name: outletRatedVoltage
