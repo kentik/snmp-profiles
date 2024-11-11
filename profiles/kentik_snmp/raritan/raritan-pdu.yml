@@ -27,11 +27,11 @@ metrics:
          OID: 1.3.6.1.4.1.13742.6.3.2.2.1.13
          name: pduName
          tag: pdu_name
-     - column:
+      - column:
         OID: 1.3.6.1.4.1.13742.6.3.2.1.1.3
         name: pduModel
         tag: model_number
-     - column:
+      - column:
         OID: 1.3.6.1.4.1.13742.6.3.2.1.1.4
         name: pduSerialNumber
         tag: serial_number
