@@ -5,6 +5,7 @@ extends:
 provider: kentik-firewall
 
 sysobjectid:
+
   - 1.3.6.1.4.1.9.1.227    # PIX Firewall
   - 1.3.6.1.4.1.9.1.389    # PIX 506
   - 1.3.6.1.4.1.9.1.390    # PIX 515
@@ -116,6 +117,9 @@ sysobjectid:
   - 1.3.6.1.4.1.9.1.1614    # ASA 1000V
   - 1.3.6.1.4.1.9.1.1617    # ASA 5585 NM8x10GE
   - 1.3.6.1.4.1.9.1.1618    # ASA 5585 NM4x10GE
+  - 1.3.6.1.4.1.9.1.1902    # Cisco VASA (Cisco Firepower Threat Defense, Version 6.7.0.2)
+  - 1.3.6.1.4.1.9.1.1903    # Cisco VASA System Context
+  - 1.3.6.1.4.1.9.1.1904    # Cisco VASA Security Context
   - 1.3.6.1.4.1.9.1.2114    # ASA 5506-X
   - 1.3.6.1.4.1.9.1.2115    # ASA 5506 SC
   - 1.3.6.1.4.1.9.1.2116    # ASA 5506 SY
