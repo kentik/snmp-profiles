@@ -476,6 +476,11 @@ metrics:
           name: cLWlanSsid
           OID: 1.3.6.1.4.1.9.9.512.1.1.1.1.4
         tag: wlan_ssid
+      # This object specifies the AP's interface admin status.
+      - column:
+          name: cLApDot11IfAdminStatus
+          OID: 1.3.6.1.4.1.9.9.513.1.2.1.1.14
+
    # Each entry represents an 802.11 interface in an Airespace AP.
   - MIB: AIRESPACE-WIRELESS-MIB
     table:
