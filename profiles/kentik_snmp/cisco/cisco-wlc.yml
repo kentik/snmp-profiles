@@ -38,6 +38,7 @@ sysobjectid:
 metrics:
   # CPU and Hardware Health
   - MIB: AIRESPACE-SWITCHING-MIB
+  
     symbols:
       # Current CPU Load of the switch in percentage.
       # Polled at 60s to support anomaly detection.
