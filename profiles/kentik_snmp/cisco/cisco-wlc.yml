@@ -590,6 +590,16 @@ metrics:
       - OID: 1.3.6.1.4.1.9.9.543.1.2.3.1.11
         name: clmgmtLicenseUsageCountRemaining
 
+  # This table represents the information about the basic functional parameters corresponding to the dot11 interfaces of the APs that have joined the controller.
+  - MIB: CISCO-LWAPP-AP-MIB
+    table:
+      name: cLApDot11IfTable
+      OID: 1.3.6.1.4.1.9.9.513.1.2.1
+    symbols:
+      # This object specifies the AP's interface admin status.
+      - name: cLApDot11IfAdminStatus
+        OID: 1.3.6.1.4.1.9.9.513.1.2.1.1.14
+
 metric_tags:
   # Serial number of the switch.
   - column:
