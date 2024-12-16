@@ -45,7 +45,7 @@ metrics:
       - OID: 1.3.6.1.4.1.21239.5.2.3.2.1.14
         name: pduPhasePowerFactor
     metric_tags:
-        column:
+       - column:
           OID: 1.3.6.1.4.1.21239.5.2.3.2.1.2
           name: pduPhaseName
   - MIB: VERTIV-V5-MIB
@@ -56,7 +56,7 @@ metrics:
       - OID: 1.3.6.1.4.1.21239.5.2.3.3.1.4
         name: pduBreakerCurrent
     metric_tags:
-        column:
+      - column:
           OID: 1.3.6.1.4.1.21239.5.2.3.3.1.2
           name: pduBreakerName
 
@@ -68,7 +68,7 @@ metrics:
       - OID: 1.3.6.1.4.1.21239.5.2.3.4.1.4
         name: pduLineCurrent
     metric_tags:
-        column:
+      - column:
           OID: 1.3.6.1.4.1.21239.5.2.3.4.1.2
           name: pduLineName
 
@@ -80,7 +80,7 @@ metrics:
       - OID: 1.3.6.1.4.1.21239.5.2.3.5.1.4
         name: pduOutletSwitchState
     metric_tags:
-        column:
+      - column:
           OID: 1.3.6.1.4.1.21239.5.2.3.5.1.2
           name: pduOutletSwitchName
 
@@ -100,7 +100,7 @@ metrics:
       - OID: 1.3.6.1.4.1.21239.5.2.3.6.1.4
         name: pduOutletMeterVoltage
     metric_tags:
-        column:
+      - column:
           OID: 1.3.6.1.4.1.21239.5.2.3.6.1.2
           name: pduOutletMeterName
 
