@@ -68,6 +68,12 @@ metrics:
         OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.4
       - name: panVsysMaxSessions
         OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.5
+      - name: panVsysActiveTcpCps
+        OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.6
+      - name: panVsysActiveUdpCps
+        OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.7
+      - name: panVsysActiveOtherIpCps
+        OID: 1.3.6.1.4.1.25461.2.1.2.3.9.1.8
     metric_tags:
       - tag: vsys_id
         column:
