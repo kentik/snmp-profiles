@@ -119,6 +119,7 @@ metrics:
         column:
           OID: 1.3.6.1.4.1.25461.2.1.2.3.11.1.2
           name: ifDescr
+
 metric_tags:
   - column:
       name: panSysSwVersion
