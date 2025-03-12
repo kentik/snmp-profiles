@@ -396,3 +396,16 @@ metrics:
       - column:
           name: fgLinkMonitorName
           OID: 1.3.6.1.4.1.12356.101.4.8.2.1.2
+
+  - MIB: FORTINET-FORTIGATE-MIB
+    table:
+      name: fgVpnTunTable
+      OID: 1.3.6.1.4.1.12356.101.12.2.2
+    symbols:
+      - name: fgVpnTunEntStatus
+        OID: 1.3.6.1.4.1.12356.101.12.2.2.1.20
+        enum:
+          down: 1
+          up: 2
+      - name: fgVpnTunEntPhase1Name
+        OID: 1.3.6.1.4.1.12356.101.12.2.2.1.2
