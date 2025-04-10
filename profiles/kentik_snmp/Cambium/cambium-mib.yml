@@ -21,6 +21,6 @@ metrics:
       - name: rssi
         OID: 1.3.6.1.4.1.17713.60.1.1.1.7
     metric_tags:
-        column:
+      - column:
           OID: 1.3.6.1.4.1.17713.60.1.1.1.2
           name: ifName
