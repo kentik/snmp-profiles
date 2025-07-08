@@ -859,3 +859,10 @@ metrics:
         OID: 1.3.6.1.4.1.9.9.817.1.1.1.1.1.3
       - name: cwceLteCurrSinr
         OID: 1.3.6.1.4.1.9.9.817.1.1.1.1.1.4
+  - MIB: ciscoMediaQualityMIB
+    table:
+      name: cmqVoIPCallActiveTable
+      OID: 1.3.6.1.4.1.9.9.769.1.1.1
+    symbols:
+      - name: cmqVoIPCallActiveRxPred107RMosConv
+        OID: 1.3.6.1.4.1.9.9.769.1.1.1.1.31
