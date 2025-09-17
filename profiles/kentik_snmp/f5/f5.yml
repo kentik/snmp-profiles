@@ -330,6 +330,7 @@ metrics:
       - column:
           OID: 1.3.6.1.4.1.3375.2.2.10.1.2.1.3
           name: ltmVirtualServAddr
+          conversion: hextoip
         tag: vs_address
       # The port number of the specified virtual server
       - column:
