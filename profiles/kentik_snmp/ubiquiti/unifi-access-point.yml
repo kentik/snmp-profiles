@@ -12,8 +12,7 @@ provider: kentik-wap
 
 sysobjectid:
   - 1.3.6.1.4.1.41112  # Ubiquiti Networks, Inc.
-  - 1.3.6.1.4.1.8072.3.2.10
-
+  - 1.3.6.1.4.1.8072.3.2.10.ubiquiti    # Generic Ubiquiti Device
 metrics:
   - MIB: FROGFOOT-RESOURCES-MIB
     symbol:
