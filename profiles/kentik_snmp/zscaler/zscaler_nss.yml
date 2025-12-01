@@ -266,7 +266,6 @@ metrics:
           name: osnicName
       - tag: zscaler_osnic_role
         column:
-          OID: Amen
           OID: 1.3.6.1.4.1.46262.1.2.1.3 # osnicRole
           name: osnicRole
       - tag: zscaler_osnic_instance
