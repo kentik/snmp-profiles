@@ -13,7 +13,7 @@ metrics:
     - OID: 1.3.6.1.4.1.38218.1.6.1
       name: pdu-meter1-VRMS
     - OID: 1.3.6.1.4.1.38218.1.6.2
-      name: pdu-meter1-IRMS OBJECT-TYPE
+      name: pdu-meter1-IRMS 
     - OID: 1.3.6.1.4.1.38218.1.6.10
       tag:  pdu-meter2-VRMS
     - OID: 1.3.6.1.4.1.38218.1.8.1
