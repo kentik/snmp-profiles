@@ -11,6 +11,7 @@ extends:
   - tcp-mib.yml
   - udp-mib.yml
   - if-mib.yml
+  - bgp4-mib.yml
 
 provider: kentik-router
 
