@@ -137,5 +137,5 @@ metrics:
   - MIB: LENOVO-ENV-MIB
     symbol:
       OID: 1.3.6.1.4.1.19046.2.3.11.1.4.1.0
-      name: lenovoEnvMIBTempSensorWarning
+      name: lenovoEnvMibTempSensorWarning
       tag: TempWarningThreshold
