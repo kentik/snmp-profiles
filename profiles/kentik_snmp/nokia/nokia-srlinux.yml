@@ -18,7 +18,8 @@ metrics:
       name: sgiCpuUsage
       poll_time_sec: 60
       tag: CPU
-  # Memory - polled at 60s to support anomaly detection
+  # Memory (KB) — tag MemoryUsed + MemoryFree so ktranslate computes MemoryUtilization %.
+  # SRL reports sgiKbMemoryAvailable (not "free"); map it to MemoryFree for compound calc.
   - MIB: TIMETRA-SYSTEM-MIB
     symbol:
       OID: 1.3.6.1.4.1.6527.3.1.2.1.1.9.0
@@ -30,7 +31,7 @@ metrics:
       OID: 1.3.6.1.4.1.6527.3.1.2.1.1.10.0
       name: sgiKbMemoryAvailable
       poll_time_sec: 60
-      tag: MemoryAvailable
+      tag: MemoryFree
   - MIB: TIMETRA-CHASSIS-MIB
     table:
       OID: 1.3.6.1.4.1.6527.3.1.2.2.1.8
