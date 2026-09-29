@@ -6,7 +6,7 @@ extends:
 provider: kentik-pdu
 
 sysobjectid:
-  - 1.3.6.1.4.1.21239.42.1.53
+  - 1.3.6.1.4.1.21239.42.1.53   # Vertiv PDU
 
 metrics:
   - MIB: VERTIV-V5-MIB
