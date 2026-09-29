@@ -7,7 +7,8 @@ extends:
 
 provider: kentik-nas
 
-sysobjectid: 1.3.6.1.4.1.6574.*   # DSM
+sysobjectid:
+  - 1.3.6.1.4.1.6574.*   # DSM
 
 metrics:
   # The 1 minute load averages as an integer. 
