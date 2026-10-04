@@ -6,7 +6,8 @@ extends:
   - ospf-mib.yml
   - entity-sensor-mib.yml
 provider: kentik-firewall
-sysobjectid: 1.3.6.1.4.1.25461.2.3.*
+sysobjectid:
+  - 1.3.6.1.4.1.25461.2.3.*   # Palo Alto
 metrics:
   - MIB: PAN-COMMON-MIB
     symbols:
