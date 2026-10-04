@@ -7,7 +7,7 @@ extends:
 provider: kentik-switch
 
 sysobjectid:
-  - 1.3.6.1.4.1.43.45*         # 3com-Huawei
+  - 1.3.6.1.4.1.43.45.*        # 3com-Huawei
 
 metrics:
   - MIB: A3COM-HUAWEI-LswDEVM-MIB
