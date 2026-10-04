@@ -9,4 +9,5 @@ extends:
 
 provider: kentik-firewall
 
-sysobjectid: 1.3.6.1.4.1.12325.*
+sysobjectid:
+  - 1.3.6.1.4.1.12325.*   # pfSense
