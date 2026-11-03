@@ -119,3 +119,273 @@ metrics:
         name: jnxRedAlarmCount
       - OID: 1.3.6.1.4.1.2636.3.4.2.3.3.0
         name: jnxRedAlarmLastChange
+
+  # RPM (JUNIPER-PING-MIB). Delays are microseconds.
+  # One-way egress/ingress columns stay 0 unless the probe is
+  # jnxPingIcmpTimeStamp (1.3.6.1.4.1.2636.3.7.2.1),
+  # jnxPingUdpTimestamp (1.3.6.1.4.1.2636.3.7.2.6), or one-way
+  # hardware timestamping is enabled.
+  # jnxPingResultsTable is the test still in progress. Loss is
+  # pingResultsSentProbes vs pingResultsProbeResponses (DISMAN-PING-MIB),
+  # same owner/test index. Per-probe history tables are not walked.
+  - MIB: JUNIPER-PING-MIB
+    table:
+      OID: 1.3.6.1.4.1.2636.3.7.1.3
+      name: jnxPingResultsTable
+    symbols:
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.1
+        name: jnxPingResultsRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.3
+        name: jnxPingResultsMinRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.4
+        name: jnxPingResultsMaxRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.5
+        name: jnxPingResultsAvgRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.6
+        name: jnxPingResultsStdDevRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.17
+        name: jnxPingResultsJitterRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.7
+        name: jnxPingResultsEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.8
+        name: jnxPingResultsMinEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.9
+        name: jnxPingResultsMaxEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.10
+        name: jnxPingResultsAvgEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.11
+        name: jnxPingResultsStddevEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.18
+        name: jnxPingResultsJitterEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.12
+        name: jnxPingResultsIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.13
+        name: jnxPingResultsMinIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.14
+        name: jnxPingResultsMaxIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.15
+        name: jnxPingResultsAvgIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.16
+        name: jnxPingResultsStddevIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.19
+        name: jnxPingResultsJitterIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.3.1.20
+        name: jnxPingResultsStatus
+        poll_time_sec: 60
+        enum:
+          responseReceived: 1
+          unknown: 2
+          internalError: 3
+          requestTimedOut: 4
+          unknownDestinationAddress: 5
+          noRouteToTarget: 6
+          interfaceInactiveToTarget: 7
+          arpFailure: 8
+          maxConcurrentLimitReached: 9
+          unableToResolveDnsName: 10
+          invalidHostAddress: 11
+      - OID: 1.3.6.1.2.1.80.1.3.1.7
+        name: pingResultsProbeResponses
+        poll_time_sec: 60
+      - OID: 1.3.6.1.2.1.80.1.3.1.8
+        name: pingResultsSentProbes
+        poll_time_sec: 60
+    metric_tags:
+      - tag: rpm_owner
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.3.1.22
+          name: jnxPingResultsOwnerIndex
+      - tag: rpm_test
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.3.1.23
+          name: jnxPingResultsTestName
+      - tag: rpm_descr
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.17
+          name: pingCtlDescr
+      - tag: rpm_probe_type
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.16
+          name: pingCtlType
+      - tag: rpm_target_type
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.3
+          name: pingCtlTargetAddressType
+          enum:
+            unknown: 0
+            ipv4: 1
+            ipv6: 2
+            ipv4z: 3
+            ipv6z: 4
+            dns: 16
+      - tag: rpm_target
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.4
+          name: pingCtlTargetAddress
+          conversion: hextoip
+      - tag: rpm_source_type
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.18
+          name: pingCtlSourceAddressType
+          enum:
+            unknown: 0
+            ipv4: 1
+            ipv6: 2
+            ipv4z: 3
+            ipv6z: 4
+            dns: 16
+      - tag: rpm_source
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.19
+          name: pingCtlSourceAddress
+          conversion: hextoip
+      - tag: rpm_interface
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.2.1.3
+          name: jnxPingCtlIfName
+      - tag: rpm_routing_instance
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.2.1.6
+          name: jnxPingCtlRoutingInstanceName
+      - tag: rpm_target_port
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.2.1.17
+          name: jnxPingCtlTargetPort
+
+  # Most recently completed RPM test. Same index as jnxPingResultsTable.
+  # Row appears after the first test finishes.
+  - MIB: JUNIPER-PING-MIB
+    table:
+      OID: 1.3.6.1.4.1.2636.3.7.1.5
+      name: jnxPingLastTestResultTable
+    symbols:
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.1
+        name: jnxPingLastTestResultProbeResponses
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.2
+        name: jnxPingLastTestResultSentProbes
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.4
+        name: jnxPingLastTestResultMinRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.5
+        name: jnxPingLastTestResultMaxRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.6
+        name: jnxPingLastTestResultAvgRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.7
+        name: jnxPingLastTestResultStdDevRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.16
+        name: jnxPingLastTestResultPeakToPeakJitterRttUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.8
+        name: jnxPingLastTestResultMinEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.9
+        name: jnxPingLastTestResultMaxEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.10
+        name: jnxPingLastTestResultAvgEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.11
+        name: jnxPingLastTestResultStddevEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.17
+        name: jnxPingLastTestResultPeakToPeakJitterEgressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.12
+        name: jnxPingLastTestResultMinIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.13
+        name: jnxPingLastTestResultMaxIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.14
+        name: jnxPingLastTestResultAvgIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.15
+        name: jnxPingLastTestResultStddevIngressUs
+        poll_time_sec: 60
+      - OID: 1.3.6.1.4.1.2636.3.7.1.5.1.18
+        name: jnxPingLastTestResultPeakToPeakJitterIngressUs
+        poll_time_sec: 60
+    metric_tags:
+      - tag: rpm_owner
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.3.1.22
+          name: jnxPingResultsOwnerIndex
+      - tag: rpm_test
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.3.1.23
+          name: jnxPingResultsTestName
+      - tag: rpm_descr
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.17
+          name: pingCtlDescr
+      - tag: rpm_probe_type
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.16
+          name: pingCtlType
+      - tag: rpm_target_type
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.3
+          name: pingCtlTargetAddressType
+          enum:
+            unknown: 0
+            ipv4: 1
+            ipv6: 2
+            ipv4z: 3
+            ipv6z: 4
+            dns: 16
+      - tag: rpm_target
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.4
+          name: pingCtlTargetAddress
+          conversion: hextoip
+      - tag: rpm_source_type
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.18
+          name: pingCtlSourceAddressType
+          enum:
+            unknown: 0
+            ipv4: 1
+            ipv6: 2
+            ipv4z: 3
+            ipv6z: 4
+            dns: 16
+      - tag: rpm_source
+        column:
+          OID: 1.3.6.1.2.1.80.1.2.1.19
+          name: pingCtlSourceAddress
+          conversion: hextoip
+      - tag: rpm_interface
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.2.1.3
+          name: jnxPingCtlIfName
+      - tag: rpm_routing_instance
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.2.1.6
+          name: jnxPingCtlRoutingInstanceName
+      - tag: rpm_target_port
+        column:
+          OID: 1.3.6.1.4.1.2636.3.7.1.2.1.17
+          name: jnxPingCtlTargetPort
