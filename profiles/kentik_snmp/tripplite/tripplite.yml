@@ -1,0 +1,346 @@
+# Tripp Lite combined UPS + PDU profile
+# http://oid-info.com/get/1.3.6.1.4.1.850
+---
+extends:
+  - system-mib.yml
+  - ups-mib.yml
+
+provider: kentik-ups
+
+sysobjectid:
+  - 1.3.6.1.4.1.850.1.*     # Tripp Lite generic
+  - 1.3.6.1.4.1.850.1.1.1   # Tripp Lite SNMP network card (UPS or PDU)
+  - 1.3.6.1.4.1.850.1.4     # SMART500RT1U
+
+metrics:
+  # ===========================================================================
+  # UPS: legacy TRIPPLITE-MIB tree (850.100 / 850.101)
+  # ===========================================================================
+  - MIB: TRIPPLITE-MIB
+    symbols:
+      # The current state of the main output of the device.
+      - OID: 1.3.6.1.4.1.850.100.1.12.1.0
+        name: tlUpsMainOutletState
+        enum:
+          unknown: 0
+          off: 1
+          on: 2
+          mixed: 3
+      # The ambient temperature. Units (C or F) depend on tlUpsConfigDisplayUnits.
+      - OID: 1.3.6.1.4.1.850.100.1.13.1.0
+        name: tlUpsTemperature
+      # The age of the battery in years (current date minus tlConfigBattReplDate).
+      - OID: 1.3.6.1.4.1.850.100.1.2.1.0
+        name: tlUpsBatteryAge
+      # The temperature of the battery in Fahrenheit (calculated from upsBatteryTemperature).
+      - OID: 1.3.6.1.4.1.850.100.1.2.2.0
+        name: tlUpsTemperatureF
+      # The age of the external battery in years.
+      - OID: 1.3.6.1.4.1.850.100.1.2.3.0
+        name: tlUpsExternalBatteryAge
+      # The present number of active alarm conditions.
+      - OID: 1.3.6.1.4.1.850.100.1.6.1.0
+        name: tlUpsAlarmsPresent
+      # The date of the last self-test, in the format YYYYMMDD.
+      - OID: 1.3.6.1.4.1.850.100.1.7.1.0
+        name: tlUpsTestDate
+        convert: to_one
+      # Result of the last self-test.
+      - OID: 1.3.6.1.4.1.850.100.1.7.2.0
+        name: tlUpsTestResultsDetail
+        convert: to_one
+      # The date on which the battery was last replaced, in the format YYYYMMDD.
+      - OID: 1.3.6.1.4.1.850.100.1.9.1.0
+        name: tlUpsConfigBattReplDate
+      # The date on which the external battery was last replaced, in the format YYYYMMDD.
+      - OID: 1.3.6.1.4.1.850.100.1.9.5.0
+        name: tlUpsConfigExternalBattReplDate
+      # The ambient temperature (C).
+      - OID: 1.3.6.1.4.1.850.101.1.1.1.0
+        name: tlEnvTemperatureC
+      # The ambient temperature (F).
+      - OID: 1.3.6.1.4.1.850.101.1.1.2.0
+        name: tlEnvTemperatureF
+      # Indicates whether or not temperature is in alarm.
+      - OID: 1.3.6.1.4.1.850.101.1.1.5.0
+        name: tlEnvTemperatureInAlarm
+        enum:
+          true: 1
+          false: 2
+      # The ambient humidity (%).
+      - OID: 1.3.6.1.4.1.850.101.1.2.1.0
+        name: tlEnvHumidity
+      # Indicates whether or not humidity is in alarm.
+      - OID: 1.3.6.1.4.1.850.101.1.2.4.0
+        name: tlEnvHumidityInAlarm
+        enum:
+          true: 1
+          false: 2
+
+  - MIB: TRIPPLITE-MIB
+    table:
+      OID: 1.3.6.1.4.1.850.100.1.3.2
+      name: tlUpsInputVoltageTable
+    symbols:
+      # The magnitude of the present input voltage. A value of 6553 indicates Unknown.
+      - OID: 1.3.6.1.4.1.850.100.1.3.2.1.3
+        name: tlUpsInputVoltage
+
+  - MIB: TRIPPLITE-MIB
+    table:
+      OID: 1.3.6.1.4.1.850.100.1.4.7
+      name: tlUpsOutputCircuitTable
+    symbols:
+      # Whether the breaker is open or closed.
+      - OID: 1.3.6.1.4.1.850.100.1.4.7.1.2
+        name: tlUpsOutputCircuitStatus
+        enum:
+          open: 0
+          closed: 1
+      # The magnitude of the present output current in tenths of an amp. 65534 indicates Unknown.
+      - OID: 1.3.6.1.4.1.850.100.1.4.7.1.3
+        name: tlUpsOutputCircuitLoadCurrent
+      # The magnitude of the present output voltage.
+      - OID: 1.3.6.1.4.1.850.100.1.4.7.1.4
+        name: tlUpsOutputCircuitVoltage
+      # The magnitude of the present output power.
+      - OID: 1.3.6.1.4.1.850.100.1.4.7.1.5
+        name: tlUpsOutputCircuitPower
+
+  - MIB: TRIPPLITE-MIB
+    table:
+      OID: 1.3.6.1.4.1.850.101.2.1
+      name: tlEnvContactTable
+    symbols:
+      # The current status of the contact.
+      - OID: 1.3.6.1.4.1.850.101.2.1.1.3
+        name: tlEnvContactStatus
+        enum:
+          normal: 0
+          alarm: 1
+    metric_tags:
+      # The name or description of the contact.
+      - column:
+          OID: 1.3.6.1.4.1.850.101.2.1.1.2
+          name: tlEnvContactName
+      # The configuration of the contact.
+      - column:
+          OID: 1.3.6.1.4.1.850.101.2.1.1.4
+          name: tlEnvContactConfig
+          enum:
+            normallyOpen: 0
+            normallyClosed: 1
+
+  - MIB: TRIPPLITE-MIB
+    table:
+      OID: 1.3.6.1.4.1.850.100.1.11.2       # was 100.1.10.2; fixed to match the columns below
+      name: tlUpsOutletTable
+    symbols:
+      # The current state of the outlet group.
+      - OID: 1.3.6.1.4.1.850.100.1.11.2.1.5
+        name: tlUpsOutletGroupStatusGroupState
+        enum:
+          upsOutletGroupStatusOn: 1
+          upsOutletGroupStatusOff: 2
+          upsOutletGroupStatusUnknown: 3
+    metric_tags:
+      # The name of the outlet group.
+      - column:
+          OID: 1.3.6.1.4.1.850.100.1.11.2.1.3
+          name: tlUpsOutletGroupName
+      # A description for this outlet group.
+      - column:
+          OID: 1.3.6.1.4.1.850.100.1.11.2.1.4
+          name: tlUpsOutletGroupDesc
+
+  # ===========================================================================
+  # PDU / device: TRIPPLITE-PRODUCTS tree (850.1.1.*)
+  # ===========================================================================
+  - MIB: TRIPPLITE-PRODUCTS
+    table:
+      OID: 1.3.6.1.4.1.850.1.1.1.2
+      name: tlpDeviceTable
+    symbols:
+      - OID: 1.3.6.1.4.1.850.1.1.1.2.1.10
+        name: tlpDeviceStatus
+        enum:
+          none: 0
+          critical: 1
+          warning: 2
+          info: 3
+          status: 4
+          offline: 5
+          custom: 6
+          configuration: 7
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.1.2.1.4
+          name: tlpDeviceManufacturer
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.1.2.1.5
+          name: tlpDeviceModel
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.1.2.1.6
+          name: tlpDeviceName
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.1.2.1.8
+          name: tlpDeviceLocation
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.1.2.1.9
+          name: tlpDeviceRegion
+
+  - MIB: TRIPPLITE-PRODUCTS
+    table:
+      OID: 1.3.6.1.4.1.850.1.1.2.1
+      name: tlpDeviceIdentTable
+    symbols:
+      - OID: 1.3.6.1.4.1.850.1.1.2.1.1.6
+        name: tlpDeviceIdentDateInstalled
+        conversion: to_one     # NOTE: UPS section uses "convert"; verify which key your poller accepts
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.2.1.1.5
+          name: tlpDeviceIdentSerialNum
+
+  - MIB: TRIPPLITE-PRODUCTS
+    table:
+      OID: 1.3.6.1.4.1.850.1.1.3.2.2.1
+      name: tlpPduDeviceTable
+    symbols:
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.2.1.1.1
+        name: tlpPduDeviceMainLoadState
+        enum:
+          unknown: 0
+          off: 1
+          on: 2
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.2.1.1.6
+        name: tlpPduDeviceTemperatureC
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.2.1.1.7
+        name: tlpPduDeviceTemperatureF
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.2.1.1.8
+        name: tlpPduDevicePhaseImbalance
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.2.1.1.9
+        name: tlpPduDeviceOutputPowerTotal
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.3.2.2.1.1.11
+          name: tlpPduDeviceOutputCurrentPrecision
+          enum:
+            none: 0
+            tenths: 1
+            hundredths: 2
+
+  - MIB: TRIPPLITE-PRODUCTS
+    table:
+      OID: 1.3.6.1.4.1.850.1.1.3.2.3.2.1
+      name: tlpPduOutputTable
+    symbols:
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.3.2.1.1.4
+        name: tlpPduOutputVoltage
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.3.2.1.1.5
+        name: tlpPduOutputCurrent
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.3.2.1.1.10
+        name: tlpPduOutputSource
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.3.2.1.1.11
+        name: tlpPduOutputFrequency
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.3.2.3.2.1.1.2
+          name: tlpPduOutputPhase
+          enum:
+            phase1: 1
+            phase2: 2
+            phase3: 3
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.3.2.3.2.1.1.3
+          name: tlpPduOutputPhaseType
+          enum:
+            phaseToNeutral: 0
+            phaseToPhase: 1
+
+  - MIB: TRIPPLITE-PRODUCTS
+    table:
+      OID: 1.3.6.1.4.1.850.1.1.3.2.3.3.1
+      name: tlpPduOutletTable
+    symbols:
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.3.3.1.1.4
+        name: tlpPduOutletState
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.3.3.1.1.7
+        name: tlpPduOutletVoltage
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.3.3.1.1.8
+        name: tlpPduOutletCurrent
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.3.3.1.1.9
+        name: tlpPduOutletPower
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.3.2.3.3.1.1.2
+          name: tlpPduOutletName
+      - column:
+          OID: 1.3.6.1.4.1.850.1.1.3.2.3.3.1.1.3
+          name: tlpPduOutletDescription
+
+  - MIB: TRIPPLITE-PRODUCTS
+    table:
+      OID: 1.3.6.1.4.1.850.1.1.3.2.3.5.1
+      name: tlpPduBreakerTable
+    symbols:
+      - OID: 1.3.6.1.4.1.850.1.1.3.2.3.5.1.1.2
+        name: tlpPduBreakerStatus
+        enum:
+          open: 0
+          closed: 1
+          notInstalled: 2
+
+  - MIB: TRIPPLITE-PRODUCTS
+    symbols:
+      - OID: 1.3.6.1.4.1.850.1.3.1.0
+        name: tlpAlarmsPresent
+
+  - MIB: TRIPPLITE-PRODUCTS
+    table:
+      OID: 1.3.6.1.4.1.850.1.3.2
+      name: tlpAlarmTable
+    symbols:
+      - OID: 1.3.6.1.4.1.850.1.3.2.1.8
+        name: tlpAlarmState
+        enum:
+          active: 1
+          inactive: 2
+      - OID: 1.3.6.1.4.1.850.1.3.2.1.9
+        name: tlpAlarmAcknowledged
+        enum:
+          notAcknowledged: 1
+          acknowledged: 2        # was mis-indented outside enum
+    metric_tags:
+      - column:
+          OID: 1.3.6.1.4.1.850.1.3.2.1.2
+          name: tlpAlarmDescr
+      - column:
+          OID: 1.3.6.1.4.1.850.1.3.2.1.3
+          name: tlpAlarmTime
+      - column:
+          OID: 1.3.6.1.4.1.850.1.3.2.1.6
+          name: tlpAlarmDetail
+
+# Global tags (scalars, so OID/symbol/tag rather than column)
+metric_tags:
+  # Serial number for the UPS.
+  - column:
+      OID: 1.3.6.1.4.1.850.100.1.1.2.0
+      name: tlUpsIdentSerialNum
+    tag: serial_number
+  # A user-supplied ID for the UPS.
+  - column:
+      OID: 1.3.6.1.4.1.850.100.1.1.3.0
+      name: tlUpsIdentID
+    tag: ups_ident_id
+  # Serial number for the UPS network card.
+  - column:
+      OID: 1.3.6.1.4.1.850.100.1.1.4.0
+      name: tlUpsSnmpCardSerialNum
+    tag: snmp_card_serial_number
+  # The device location string.
+  - column:
+      OID: 1.3.6.1.4.1.850.100.1.1.6.0
+      name: tlUpsLocation
+    tag: ups_location
